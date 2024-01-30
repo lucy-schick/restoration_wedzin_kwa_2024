@@ -1,0 +1,23 @@
+
+
+# Background
+
+
+## Project Location
+
+```{r overview-map, fig.cap = 'Overview map of Study Areas',eval=T}
+knitr::include_graphics("fig/nge-icon_name.png")
+```
+
+<br>
+
+```{r hydrology-plot, fig.cap = 'Hydrograph for Bulkley River at Quick (Station #08EE004) and near Houston (Station #08EE003).', fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=T}
+knitr::include_graphics("data/TimePhoto_20220814_112459.jpg")
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics("data/TimePhoto_20220814_112923.jpg")
+```
+
+
+`r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("<br><br><br><br>")`
+
+
