@@ -1,6 +1,9 @@
-
-
 # Background
+
+Process-based restoration is a relatively new approach to river restoration and is based on the understanding that river form and function is driven by the physical, chemical, and biological processes that take place within them [@beechieProcessbasedPrinciplesRestoring2010]. Together, these processes shape rivers and flood planes, which is known as a riverscape [@shahverdian_etal2019ChapterBackground]. The goal of process-based restoration is to restore these processes to their the natural rates and magnitudes, which leads to the system restoring itself and requires minimal corrective intervention [@ciottiDesignCriteriaProcessBased2021a]. This approach is in contrast to traditional river restoration, which focuses on restoring uniform and static form to the river, such as the channel shape, and is often done through hard engineering and has high costs [@beechieProcessbasedPrinciplesRestoring2010].
+
+Process-based restoration on the other hand includes many low-cost and low-tech restoration techniques. Resources are sourced from near-by areas, and the restoration is often done by hand, which makes it more accessible to a broad audience and can be done on a smaller scale [@shahverdian_etal2019ChapterBackground]. The primary goal of low-tech restoration is to improve the health of as many riverscapes possible by "letting the system do the work" [@shahverdian_etal2019ChapterBackground].
+
 
 
 ## Project Location
