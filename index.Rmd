@@ -1,5 +1,5 @@
 --- 
-title: "My Report"
+title: "Restoration Initiatives for the Upper Bulkley Riverscape"
 author: |
  |
  | Prepared for
@@ -22,11 +22,11 @@ output:
 nocite: |
 
 documentclass: book
-bibliography: [book.bib, packages.bib, references.bib]
+bibliography: [packages.bib, references.bib]
 biblio-style: apalike
 link-citations: no
 github-repo: rstudio/bookdown-demo
-description: "My Description."
+description: "Restoration Initiatives for the Upper Bulkley Riverscape"
 
 
 ---
