@@ -4,6 +4,9 @@ Process-based restoration is a relatively new approach to river restoration and 
 
 Process-based restoration on the other hand includes many low-cost and low-tech restoration techniques. Resources are sourced from near-by areas, and the restoration is often done by hand, which makes it more accessible to a broad audience and can be done on a smaller scale [@shahverdian_etal2019ChapterBackground]. The primary goal of low-tech restoration is to improve the health of as many riverscapes possible by "letting the system do the work" [@shahverdian_etal2019ChapterBackground].
 
+Low-cost process-based restoration could be an applicable in the Upper Bulkely riverscape.
+
+[QGIS Riverscapes Studio](https://qris.riverscapes.net/) (or QRis) is a free plugin for QGIS that helps you digitize your riverscape data. QRis is a great planning tool for helping users with spatial representation of riverscapes. 
 
 
 ## Project Location
