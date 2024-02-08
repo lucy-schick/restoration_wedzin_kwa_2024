@@ -1,5 +1,6 @@
 # Background
 
+## Stage 0
 The Stream Evolution Model (SEM) is used to understanding how the morphology of channels (such as rivers or streams) respond to disturbances like changes in base level, channelization, or alterations in flow and sediment regimes (Figure 1)[@cluerSTREAMEVOLUTIONMODEL2014]. An important features of the SEM is the inclusion of stage 0, which represents the state of the river before disturbances and is categorized as either an anastomosing wet woodland or an anastomosing grassed wetland (Figure 1) [@cluerSTREAMEVOLUTIONMODEL2014].
 
 ![Figure 1. Cluer and Thorne’s stream evolution model, which introduced stage 0](fig/SEM_stages.png)
@@ -14,6 +15,8 @@ The SEM also assigns a hydrogeomorphic attributes and habitat and ecosystem bene
 ![Figure 3. Examples of habitat and ecosystem benifits for stage 0 described by Hauer et al. (2016)](fig/benefits.png)
 
 <br>
+
+## Process-based Restoration
 
 Process-based restoration is a relatively new approach to river restoration and is based on the understanding that river form and function is driven by the physical, chemical, and biological processes that take place within them [@beechieProcessbasedPrinciplesRestoring2010]. Together, these processes shape rivers and flood planes, which is known as a riverscape [@shahverdian_etal2019ChapterBackground]. The goal of process-based restoration is to restore these processes to their the natural rates and magnitudes (essentially stage 0), which leads to the system restoring itself through biological processes and requires minimal corrective intervention [@ciottiDesignCriteriaProcessBased2021a, @polvi_wohl2013BioticDrivers]. This approach is in contrast to traditional river restoration, which focuses on restoring uniform and static form to the river, such as the channel shape, and is often done through hard engineering and has high costs [@beechieProcessbasedPrinciplesRestoring2010]. 
 
