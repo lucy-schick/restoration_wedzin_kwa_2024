@@ -1,33 +1,42 @@
 # Background
 
 ## Stage 0
-The Stream Evolution Model (SEM) is used to understanding how the morphology of channels (such as rivers or streams) respond to disturbances like changes in base level, channelization, or alterations in flow and sediment regimes (Figure 1)[@cluerSTREAMEVOLUTIONMODEL2014]. An important features of the SEM is the inclusion of stage 0, which represents the state of the river before disturbances and is categorized as either an anastomosing wet woodland or an anastomosing grassed wetland (Figure 1) [@cluerSTREAMEVOLUTIONMODEL2014].
+The Stream Evolution Model (SEM) is used to understanding how the morphology of channels (such as rivers or streams) respond to disturbances like changes in base level, channelization, or alterations in flow and sediment regimes (Figure \@ref(fig:SEM-stages))[@cluer_thorne2014StreamEvolution]. An important features of the SEM is the inclusion of stage 0, which represents the state of the river before disturbances and is categorized as either an anastomosing wet woodland or an anastomosing grassed wetland (Figure \@ref(fig:SEM-stages))[@cluer_thorne2014StreamEvolution].
 
-![Figure 1. Cluer and Thorne’s stream evolution model, which introduced stage 0](fig/SEM_stages.png)
-
-<br>
-
-The SEM also assigns a hydrogeomorphic attributes and habitat and ecosystem benefits score to each stage (Figure 2). Stage 0 is the ultimate restoration goal, but the SEM suggests that there is a big difference in performance between disconnected and incised streams (stages 3-6) and connected streams (stages 7-1), and that stages 7-1 are the best targets for restoration because they have the highest ecosystem potential (Figure 2)[@cluerSTREAMEVOLUTIONMODEL2014].
-
-![Figure 2. Habitat and Ecosystem benifits for each stage in the SEM (Cluer and Thorne 2014)](fig/SEM_hab_ben.png)
+```{r SEM-stages, fig.cap = 'Cluer and Thorne’s (2014) stream evolution model which introduced stage 0, a stage that represents the state of the river before disturbances.',eval=T}
+knitr::include_graphics("fig/SEM_stages.png")
+```
 
 
-![Figure 3. Examples of habitat and ecosystem benifits for stage 0 described by Hauer et al. (2016)](fig/benefits.png)
 
-<br>
+The SEM also assigns a hydrogeomorphic attributes and habitat and ecosystem benefits score to each stage (Figure \@ref(fig:SEM-hab-benifits)). Stage 0 is the ultimate restoration goal, but the SEM suggests that there is a big difference in performance between disconnected and incised streams (stages 3-6) and connected streams (stages 7-1), and that stages 7-1 are the best targets for restoration because they have the highest ecosystem potential (Figure \@ref(fig:SEM-hab-benifits))[@cluer_thorne2014StreamEvolution].
+
+```{r SEM-hab-benifits, fig.cap = 'Habitat and ecosystem benifits as well as hydrogeomorphic attributes associated with each stage of the SEM, suggesting that stages 7-1 have the highest ecosystem potential (Cluer and Thorne, 2014).',eval=T}
+knitr::include_graphics("fig/SEM_hab_ben.png")
+```
+
+
+```{r all-benefits, fig.cap = 'Examples of how a stage 0 stream can benifit the entire riverscape and play an important role in the biophysical interactions between organisms (Hauer et al., 2016).',eval=T}
+knitr::include_graphics("fig/benefits.png")
+```
+
+
 
 ## Process-based Restoration
 
 Process-based restoration is a relatively new approach to river restoration and is based on the understanding that river form and function is driven by the physical, chemical, and biological processes that take place within them [@beechieProcessbasedPrinciplesRestoring2010]. Together, these processes shape rivers and flood planes, which is known as a riverscape [@shahverdian_etal2019ChapterBackground]. The goal of process-based restoration is to restore these processes to their the natural rates and magnitudes (essentially stage 0), which leads to the system restoring itself through biological processes and requires minimal corrective intervention [@ciottiDesignCriteriaProcessBased2021a, @polvi_wohl2013BioticDrivers]. This approach is in contrast to traditional river restoration, which focuses on restoring uniform and static form to the river, such as the channel shape, and is often done through hard engineering and has high costs [@beechieProcessbasedPrinciplesRestoring2010]. 
 
-Below is an example of process-based restoration using stage 0 methodology done in at Deer Creek in Oregon, USA. In this project they filled in incised channels and added large wood to to the river to restore the natural floodplain elevation and re-establish multiple channels (Figure 4)[@meyer2018DeerCreek]. Although this project used relatively aggressive restoration techniques, they observed immediate improvements and the benefits were self-sustaining (Figure 5)[@meyer2018DeerCreek].
+Below is an example of process-based restoration using stage 0 methodology done at Deer Creek in Oregon, USA. In this project they filled in incised channels and added large wood to to the river to restore the natural floodplain elevation and re-establish multiple channels (Figure \@ref(fig:deer-creek-plan))[@meyer2018DeerCreek]. Although this project used relatively aggressive restoration techniques, they observed immediate improvements and the benefits were self-sustaining (Figure \@ref(fig:deer-creek-action))[@meyer2018DeerCreek].
 
-![Figure 4. Deer Creek stage 0 restoration project to restore the natural floodplain elevation (Meyer 2018)](fig/stage0_before_after.png)
+```{r deer-creek-plan, fig.cap = 'An example of process-based restoration using stage 0 methodology to restored the natural floodplain elevation. In this project they filled in incised channels and added large wood to restore the natural floodplain elevation and re-establish multiple channels (Meyer, 2018).',eval=T}
+knitr::include_graphics("fig/stage0_before_after.png")
+```
+
+```{r deer-creek-action, fig.cap = 'Before and after restoration took place at Deer Creek, USA. They observed imediate improvements to the habitat and the benefits were self-sustaining (Meyer, 2018).',eval=T}
+knitr::include_graphics("fig/deer_creek_before_after.png")
+```
 
 
-![Figure 5. Before and after stage 0 restoration at Deer Creek (Meyer 2018)](fig/deer_creek_before_after.png)
-
-<br>
 
 Process-based restoration also includes many low-cost and low-tech restoration techniques. Resources are sourced from near-by areas, and the restoration is often done by hand, which makes it more accessible to a broad audience and can be done on a smaller scale [@shahverdian_etal2019ChapterBackground]. The primary goal of low-tech restoration is to improve the health of as many riverscapes possible by "letting the system do the work" [@shahverdian_etal2019ChapterBackground].
 
