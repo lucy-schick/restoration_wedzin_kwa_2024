@@ -2,6 +2,6 @@ book_filename: "Template"
 language:
   ui:
     chapter_name: ""
-delete_merged_file: false
+delete_merged_file: true
 output_dir: "docs"
 
