@@ -3,11 +3,11 @@
 ## QRis
 
 
-[QGIS Riverscapes Studio](https://qris.riverscapes.net/) (or QRis) is a free plugin for QGIS that helps you digitize your riverscape data. QRis is a great planning tool for helping users with spatial representation of riverscapes. 
+[QGIS Riverscapes Studio](https://qris.riverscapes.net/) (QRis) is a free plugin for QGIS that helps you digitize your riverscape data. QRis is a great planning tool for helping users with spatial representation of riverscapes. 
 
 QRis has two distinct types of features:
   
   * Static: These are features that are relatively permanent, such as the valley bottom.
   * Dynamic: These are features that change over time, such as the active channel.
 
-QRis will be a useful tool for digitizing the upper Wetzin'kwa river and prirotizing restoration sites.
+QRis will be a useful tool for digitizing the upper Wetzin'kwa river and prioritizing restoration sites. To start using QRis, follow the instructions for [getting started](https://qris.riverscapes.net/getting-started/).
