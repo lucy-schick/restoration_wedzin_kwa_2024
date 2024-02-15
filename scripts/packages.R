@@ -8,7 +8,8 @@ pkgs_cran <- c(
   'pagedown',
   'readwritesqlite',
   'RPostgres',
-  'sf'
+  'sf',
+  'tidyhydat'
 )
 
 pkgs_gh <- c(
