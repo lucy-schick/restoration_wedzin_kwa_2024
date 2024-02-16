@@ -1,4 +1,4 @@
-library(ckanr)
+library(ckanr) #plus our standards with keyboard shortcut load
 
 ##set up the access
 ckanr_setup(url = "https://data.skeenasalmon.info/", key = Sys.getenv("SKT_API_KEY"))
@@ -7,19 +7,12 @@ ckanr_setup(url = "https://data.skeenasalmon.info/", key = Sys.getenv("SKT_API_K
 ckan_version()
 
 # Packages-----------------------------------------------------------------------------------------------------
-##get a tibble of the packages available.   a tibble so easy to view
-# packages_names <- as_tibble(package_list(as = "table", limit = 10000))
-
-# get all the packages and their detailss
+# get all the packages and their details
+# api limit is 1000 so we need to do it in two steps
 packages_all <- bind_rows(
   package_list_current(as = "table", limit = 10000),
   package_list_current(as = "table", limit = 10000, offset = 1000)
   )
-
-
-# t <- package_show('wild-salmon-policy', as = 'table') %>%
-#   pluck("resources")
-
 
 data_deets <- packages_all %>%
   # org_packages %>%
@@ -33,15 +26,12 @@ data_deets <- packages_all %>%
   bind_rows(.id = "source") %>%
   tidyr::separate(source, c("organization_name", "notes", "publication_yr", "author", "package_name"), sep = "===")
 
-
 # that takes a while to run so we will save so we don't need to repeat. gitignored....
 saveRDS(data_deets, "data/skt/data_deets.rds")
-
 
 # went quickly through the 3000 datasets and made some notes of the strings we want to detect to filter it down
 # would have been smarter to go through the packages names but that can be done too.  Doesn't take that long and is
 # a good process to get familiar with the data available
-
 dataset_filter_raw <- "Old Growth Geospatial Data
 Old Growth
 Legal Old Growth
@@ -111,7 +101,7 @@ urls_raw <- air_photo %>%
   na.omit() %>%
   .[str_detect(., ".*\\.[a-zA-Z0-9]+$")]
 
-# Use walk to apply ckan_fetch to download the files.
+# Use walk (designed to be used for its side effects vs map which returns info to get ckan_fetch to download all the files.
 walk(.x = urls_raw,
      .f = ~ckan_fetch(.x, store = 'disk', path = paste0('data/skt/', basename(.x))))
 
