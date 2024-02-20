@@ -53,13 +53,20 @@ fpr_dbq_clip_local <- function(
 fpr_create_hydrograph_local <- function(
     station,
     pane_hydat = TRUE,
-    single_hydat = TRUE){
+    single_hydat = TRUE,
+    start_year = NULL,
+    end_year = NULL){
 
 
   flow_raw <- tidyhydat::hy_daily_flows(station)
 
-  start_year <- flow_raw$Date %>% min() %>% lubridate::year()
-  end_year <- flow_raw$Date %>% max() %>% lubridate::year()
+  if(is.null(start_year)){
+    start_year <- flow_raw$Date %>% min() %>% lubridate::year()
+  }
+
+  if(is.null(end_year)){
+    end_year <- flow_raw$Date %>% max() %>% lubridate::year()
+  }
 
   tidyhat_info <- search_stn_number(station)
 
@@ -71,6 +78,7 @@ fpr_create_hydrograph_local <- function(
                                                             " to ",end_year, "."))
 
   hydrograph1_stats_caption <- caption_info$title_stats
+  #to.string(hydrograph1_stats_caption)
 
 
   if (pane_hydat == TRUE){
@@ -125,6 +133,8 @@ fpr_create_hydrograph_local <- function(
     ggsave(plot = plot, file=paste0("./fig/hydrograph_", station, ".png"),
            h=3.4, w=5.11, units="in", dpi=300)
   }
+
+  return(hydrograph1_stats_caption)
 
 
 }
