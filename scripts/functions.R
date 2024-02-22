@@ -24,5 +24,32 @@ fif <- function(what, where=".", in_files="\\.[Rr]$", recursive = TRUE,
 }
 
 
+# make a function for downloading files straight from skt ckan
+fetch_package <- function(package_nm = NULL,
+                          ckan_info = data_deets,
+                          store = "disk",
+                          path_stub = "data/skt/",
+                          csv_output = TRUE) {
+  info <- ckan_info %>%
+    filter(package_name == package_nm)
 
+  urls <- info %>%
+    pull(url) %>%
+  # to avoid dl errors we need to remove the NAs as well as those files that end without a file extension at the end (ex. .com/ and *123)
+  na.omit() %>%
+  .[str_detect(., ".*\\.[a-zA-Z0-9]+$")]
+
+  # create the directory if it doesn't exist
+  dir.create(paste0(path_stub, package_nm))
+
+  walk(.x = urls,
+       .f = ~ckan_fetch(.x, store = store, path = paste0(path_stub, package_nm, "/", basename(.x))))
+
+  # if csv_output = TRUE burn out a little csv file of the information about everything that is downloaded
+  if (csv_output) {
+    info %>%
+      arrange(basename(url)) %>%
+      write_csv(paste0(path_stub, package_nm, "/001_pkg_info_", package_nm, ".csv"))
+  }
+}
 
