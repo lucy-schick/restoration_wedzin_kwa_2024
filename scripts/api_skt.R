@@ -1,4 +1,5 @@
 library(ckanr) #plus our standards with keyboard shortcut load
+source("scripts/functions.R")
 
 ##set up the access
 ckanr_setup(url = "https://data.skeenasalmon.info/", key = Sys.getenv("SKT_API_KEY"))
@@ -67,46 +68,63 @@ dataset_filter <- strsplit(dataset_filter_raw, split = "\n")[[1]]
 
 rm(dataset_filter_raw)
 
+# read iin the rds
+data_deets <- readRDS("data/skt/data_deets.rds")
 
 # filter packages with stringr to find the ones that contain any of the strings in text_filter
 dat_filtered <- data_deets %>%
-  dplyr::filter(sapply(name, function(x) any(str_detect(x, text_filter))))
+  dplyr::filter(sapply(name, function(x) any(str_detect(x, dataset_filter))))
 
 # group by why it was filtered
-dat_filtered_list <- map(text_filter, ~data_deets %>% filter(str_detect(name, .x))) %>%
-  set_names(text_filter) %>%
-  bind_rows(.id = "source")
+dat_filtered_list <- map(dataset_filter, ~data_deets %>% filter(str_detect(name, .x))) %>%
+  set_names(dataset_filter) %>%
+  # remove empty list items
+  discard(~nrow(.x) == 0)
+  # bind_rows(.id = "source")
 
 # find the air photo datasets and download a few
 air_photo <- data_deets %>%
   dplyr::filter(str_detect(name, "Air Photo"))
   pull(url)
 
-# lets have a look at a Air Photo from 1937 of Lakelse area
-url <- "https://data.skeenasalmon.info/dataset/ab2c329c-b5ed-4d95-b830-7cf209ca4dd8/resource/702229f0-36e5-4e87-a58d-848020cdd64e/download/bc40087.tif"
-
 
 ##create a folder to download to
 dir.create('data/test')
 
-# grab Lakelse air photo
-ckan_fetch(url, store = 'disk', path = paste0('data/skt/', basename(url)))
+
+urls <- air_photo %>%
+  filter(package_name == "upper-bulkley-historic-air-photo-mosaics") %>%
+  pull(url) %>%
+  # to avoid dl errors we need to remove the NAs as well as those files that end without a file extension at the end (ex. .com/ and *123)
+  na.omit() %>%
+  .[str_detect(., ".*\\.[a-zA-Z0-9]+$")]
+
+# Use walk (designed to be used for its side effects vs map which returns info to get ckan_fetch to download all the files.
+walk(.x = urls,
+     .f = ~ckan_fetch(.x, store = 'disk', path = paste0('data/skt/', basename(.x))))
 
 
 # ah crap - it looks like they are all combined air photos. We want the raw dog I think.
-urls_raw <- air_photo %>%
-  filter(package_name == "upper-bulkley-historic-air-photo-mosaics") %>%
+
+# let's try the lakelse air photos
+urls <- air_photo %>%
+  filter(package_name == "lakelse-1937-historical-air-photo-archive") %>%
   pull(url) %>%
   # we need to remove the NAs as well as those files that end without a file extension at the end (ex. .com/ and *123)
   na.omit() %>%
   .[str_detect(., ".*\\.[a-zA-Z0-9]+$")]
 
 # Use walk (designed to be used for its side effects vs map which returns info to get ckan_fetch to download all the files.
-walk(.x = urls_raw,
+walk(.x = urls,
      .f = ~ckan_fetch(.x, store = 'disk', path = paste0('data/skt/', basename(.x))))
 
+# this can be used to read in the data_deets file so it need not always be rebuilt (takes a few minutes)
+# data_deets <- readRDS("data/skt/data_deets.rds")
 
-
+# there is a function in the scripts/functions.R file that will download all the files from a package at once
+fetch_package(package_nm = "upper-bulkley-fish-and-aquatic-review-riparian-disturbance")
+fetch_package(package_nm = "upper-bulkley-historic-air-photo-mosaics")
+fetch_package(package_nm = "riparian-ecosystems-and-fish-habitat")
 
 
 
