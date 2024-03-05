@@ -1,5 +1,8 @@
 # Background
 
+
+
+
 ## Stage 0
 The Stream Evolution Model (SEM) is used to understanding how the morphology of channels (such as rivers or streams) respond to disturbances like changes in base level, channelization, or alterations in flow and sediment regimes (Figure \@ref(fig:SEM-stages))[@cluer_thorne2014StreamEvolution]. An important features of the SEM is the inclusion of stage 0, which represents the state of the river before disturbances and is categorized as either an anastomosing wet woodland or an anastomosing grassed wetland (Figure \@ref(fig:SEM-stages))[@cluer_thorne2014StreamEvolution].
 
