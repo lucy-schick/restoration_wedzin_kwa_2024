@@ -1,9 +1,9 @@
 --- 
-title: "Restoration Initiatives for the Upper Bulkley Riverscape"
+title: "Restoration Initiatives for the Upper Wetzin'kwa Riverscape"
 author: |
  |
  | Prepared for
- | Office of Wet'suwet'en
+ | Wet’suwet’en Treaty Office Society
  |
  |
  | Prepared by
@@ -26,7 +26,7 @@ bibliography: [packages.bib, references.bib]
 biblio-style: apalike
 link-citations: no
 github-repo: rstudio/bookdown-demo
-description: "Restoration Initiatives for the Upper Bulkley Riverscape"
+description: "Restoration Initiatives for the Upper Wetzin'kwa Riverscape"
 
 
 ---
