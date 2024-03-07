@@ -29,7 +29,7 @@ fif <- function(what, where=".", in_files="\\.[Rr]$", recursive = TRUE,
 # @param join_column String (quoted) name of column to join tables on from polygon. See column names of any table with \link{fpr_dbq_lscols}
 # @param join_on String (quoted) or vector of specific terms to join on.
 #
-fpr_dbq_clip_local <- function(
+lfpr_dbq_clip <- function(
     schema_table_point,
     schema_table_polygon,
     join_column,
@@ -54,7 +54,7 @@ fpr_dbq_clip_local <- function(
 #' @param fig/hydrology_stats_ hydrology stats figure saved to the fig folder
 #' @param fig/hydrograph_ hydrograph figure saved to the fig folder
 
-fpr_create_hydrograph_local <- function(
+lfpr_create_hydrograph <- function(
     station = NULL,
     pane_hydat = TRUE,
     single_hydat = TRUE,
