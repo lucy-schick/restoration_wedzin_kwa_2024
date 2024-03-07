@@ -17,7 +17,7 @@ knitr::include_graphics("fig/OW_2024_bulk.png")
 
 ### Upper Wetzin’kwa Watershed
 
-The Bukley River is an 8th order stream that drains an area of 7,762 km^2^ in a generally northerly direction from Bulkley Lake on the Nechako Plateau to its confluence with the Skeena River at Hazleton. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08EE004")$LTMAD,1)` m^3^/s at station 08EE004 located near Quick (\~27km south of Telkwa) and `r round(fasstr::calc_longterm_mean(station_number = "08EE003")$LTMAD,1)` m^3^/s at station 08EE003 located upstream near Houston. Flow patterns at Quick are heavily influenced by inflows from the Morice River (enters just downstream of Houston) resulting in flow patterns typical of high elevation watersheds which receive large amounts of precipitation as snow leading to peak levels of discharge during snowmelt, typically from May to July (Figures \@ref(fig:hydrology-plots) - \@ref(fig:pane-hydat-08EE003)). The hydrograph peaks faster and generally earlier (May - June) for the Bulkley River upstream of Houston where the topography is of lower lower elevation (Figures \@ref(fig:hydrology-plots) and \@ref(fig:pane-hydat-08EE004)).
+The Bukley River is an 8th order stream that drains an area of 7,762 km^2^ in a generally northerly direction from Bulkley Lake on the Nechako Plateau to its confluence with the Skeena River at Hazleton. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08EE004")$LTMAD,1)` m^3^/s at station 08EE004 located near Quick (\~27km south of Telkwa) and `r round(fasstr::calc_longterm_mean(station_number = "08EE003")$LTMAD,1)` m^3^/s at station 08EE003 located upstream near Houston. Flow patterns at Quick are heavily influenced by inflows from the Morice River (enters just downstream of Houston) resulting in flow patterns typical of high elevation watersheds which receive large amounts of precipitation as snow leading to peak levels of discharge during snowmelt, typically from May to July (Figures \@ref(fig:hydrology-plots) - \@ref(fig:hydrology-stats1)). The hydrograph peaks faster and generally earlier (May - June) for the Bulkley River upstream of Houston where the topography is of lower lower elevation (Figures \@ref(fig:hydrology-plots) and \@ref(fig:hydrology-stats2)).
 
 <br>
 
@@ -29,7 +29,7 @@ The valley bottom has seen extensive settlement over the past hundred years with
 
 
 ```{r, eval= FALSE}
-hydat_stations <- fpr::fpr_db_query(query = fpr_dbq_clip_local('whse_environmental_monitoring.envcan_hydrometric_stn_sp',
+hydat_stations <- fpr::fpr_db_query(query = lfpr_dbq_clip('whse_environmental_monitoring.envcan_hydrometric_stn_sp',
 'whse_basemapping.fwa_watershed_groups_poly', 'watershed_group_code', c("BULK", "MORR")))
 
 hydat_stations <- hydat_stations %>% 
@@ -45,19 +45,19 @@ knitr::include_graphics("fig/hydrograph_08EE003.png")
 
 
 ```{r, eval=TRUE}
-fpr_create_hydrograph_local("08EE003", start_year = 1980)
+lfpr_create_hydrograph("08EE003", start_year = 1980)
 ```
 
-```{r pane-hydat-08EE003, fig.cap = "Bulkley River Near Houston (Station #08EE003 - Lat 54.39938 Lon -126.71941). Available daily discharge data from 1980 to 2022."}
+```{r hydrology-stats1, fig.cap = "Bulkley River Near Houston (Station #08EE003 - Lat 54.39938 Lon -126.71941). Available daily discharge data from 1980 to 2022."}
 knitr::include_graphics("fig/hydrology_stats_08EE003.png")
 ```
 
 
 ```{r, eval=TRUE}
-fpr_create_hydrograph_local("08EE004")
+lfpr_create_hydrograph("08EE004")
 ```
 
-```{r pane-hydat-08EE004, fig.cap = "Bulkley River At Quick (Station #08EE004 - Lat 54.61861 Lon -126.89997). Available daily discharge data from 1930 to 2022."}
+```{r hydrology-stats2, fig.cap = "Bulkley River At Quick (Station #08EE004 - Lat 54.61861 Lon -126.89997). Available daily discharge data from 1930 to 2022."}
 
 knitr::include_graphics("fig/hydrology_stats_08EE004.png")
 ```
@@ -65,20 +65,20 @@ knitr::include_graphics("fig/hydrology_stats_08EE004.png")
 
 ### Morice River Watershed
 
-The Morice River watershed drains 4,379 km^2^ of Coast Mountains and Interior Plateau in a generally south-eastern direction. The Morice River is an 8th order stream that flows approximatley 80km from Morice Lake to the confluence with the upper Bulkley River just north of Houston. Major tributaries include the Nanika River, the Atna River, Gosnell Creek and the Thautil River. There area numerous large lakes situated on the south side of the watershed including Morice Lake, McBride Lake, Stepp Lake, Nanika Lake, Kid Price Lake, Owen Lake and others. There is one active hydrometric station on the mainstem of the Morice River near the outlet of Morice Lake and one historic station that was located at the mouth of the river near Houston that gathered data in 1971 only [@canada2010NationalWater]. An estimate of mean annual discharge for the one year of data available for the Morice near it's confluence with the Bulkley River is `r round(fasstr::calc_longterm_mean(station_number = "08ED003")$LTMAD,1)` m^3^/s. Mean annual discharge is estimated at `r round(fasstr::calc_longterm_mean(station_number = "08ED002")$LTMAD,1)` m^3^/s at station 08ED002 located near the outlet of Morice Lake. Flow patterns are typical of high elevation watersheds influenced by coastal weather patterns which receive large amounts of winter precipitation as snow in the winter and large precipitation events in the fall. This leads to peak levels of discharge during snowmelt, typically from May to July with isolated high flows related to rain and rain on snow events common in the fall (Figures \@ref(fig:hydrograph-08ED002) - \@ref(fig:pane-hydat-08ED002)).
+The Morice River watershed drains 4,379 km^2^ of Coast Mountains and Interior Plateau in a generally south-eastern direction. The Morice River is an 8th order stream that flows approximatley 80km from Morice Lake to the confluence with the upper Bulkley River just north of Houston. Major tributaries include the Nanika River, the Atna River, Gosnell Creek and the Thautil River. There area numerous large lakes situated on the south side of the watershed including Morice Lake, McBride Lake, Stepp Lake, Nanika Lake, Kid Price Lake, Owen Lake and others. There is one active hydrometric station on the mainstem of the Morice River near the outlet of Morice Lake and one historic station that was located at the mouth of the river near Houston that gathered data in 1971 only [@canada2010NationalWater]. An estimate of mean annual discharge for the one year of data available for the Morice near it's confluence with the Bulkley River is `r round(fasstr::calc_longterm_mean(station_number = "08ED003")$LTMAD,1)` m^3^/s. Mean annual discharge is estimated at `r round(fasstr::calc_longterm_mean(station_number = "08ED002")$LTMAD,1)` m^3^/s at station 08ED002 located near the outlet of Morice Lake. Flow patterns are typical of high elevation watersheds influenced by coastal weather patterns which receive large amounts of winter precipitation as snow in the winter and large precipitation events in the fall. This leads to peak levels of discharge during snowmelt, typically from May to July with isolated high flows related to rain and rain on snow events common in the fall (Figures \@ref(fig:hydrograph1) - \@ref(fig:hydrology-stats3)).
 
 
 
 ```{r, eval=TRUE}
-fpr_create_hydrograph_local("08ED002")
+lfpr_create_hydrograph("08ED002")
 ```
 
-```{r hydrograph-08ED002, fig.cap = " Morice River Near Houston (Station #08ED002 - Lat 54.11683 Lon -127.42658). Available mean daily discharge data from 1961 to 2022."}
+```{r hydrograph1, fig.cap = " Morice River Near Houston (Station #08ED002 - Lat 54.11683 Lon -127.42658). Available mean daily discharge data from 1961 to 2022."}
 
 knitr::include_graphics("fig/hydrograph_08ED002.png")
 ```
 
-```{r pane-hydat-08ED002, fig.cap = " Morice River Near Houston (Station #08ED002 - Lat 54.11683 Lon -127.42658). Available daily discharge data from 1961 to 2022."}
+```{r hydrology-stats3, fig.cap = " Morice River Near Houston (Station #08ED002 - Lat 54.11683 Lon -127.42658). Available daily discharge data from 1961 to 2022."}
 
 knitr::include_graphics("fig/hydrology_stats_08ED002.png")
 ```
