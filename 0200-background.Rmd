@@ -1,5 +1,69 @@
 # Background
 
+## Project Location
+
+This project includes the Widzin Kwah (Morice River) and Neexdzii Kwah (Upper Bulkley River), as well as a small portion of the Lower Widzin Kwah (Lower Bulkley River) [@WidzinKwahWaterSustainabilityProject]. The project's western limit is defined by the headwaters of the Widzin Kwah (Widzin Bin/Morice Lake), which flows northeast and converges with the Upper Bulkley River near the District of Houston. The southern boundary of the project area separates the Morice and Bulkley River systems from the Stuart-Nechako watershed [@WidzinKwahWaterSustainabilityProject].
+
+
+```{r overview-map, fig.cap = 'Overview map of Widzin Kwah Study Area',eval=F}
+knitr::include_graphics("fig/OW_2024_bulk.png")
+```
+
+### Neexdzii Kwah (Upper Buklkey) Watershed
+
+The Neexdzii Kwah (Upper Bukley River) is an 8th order stream that drains an area of 7,762 km^2^ in a generally northerly direction from Bulkley Lake on the Nechako Plateau to its confluence with the Widzin Kwah (Morice River) near Houston [@WidzinKwahWaterSustainabilityProject]. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08EE003")$LTMAD,1)` m^3^/s at station 08EE003 located upstream near Houston. The hydrograph peaks around May - June for the Upper Bulkley River where the topography is of lower elevation (Figures \@ref(fig:hydrology-plots) and \@ref(fig:hydrology-stats2)). Below the Morice confluence is the Lower Widzin Kwah (Lower Bulkley River) which flows in a northwesterly direction to its confluence with the Skeena River in Hazleton, but only a small section is included in the project study area [@WidzinKwahWaterSustainabilityProject].
+
+<br>
+
+Changes to the climate systems are causing impacts to natural and human systems on all continents with alterations to hydrological systems caused by changing precipitation or melting snow and ice increasing the frequency and magnitude of extreme events such as floods and droughts [@ClimateChange2014SynthesisReportGenevaSwitzerlandIntergovernmentalPanelClimateChangeIPCC2014; @eccc2016Climatedataa]. These changes are resulting in modifications to the quantity and quality of water resources throughout British Columbia and are likely to compound issues related to drought and flooding in the Bulkley River watershed where numerous water licenses are held with a potential over-allocation of flows identified during low flow periods [@ilmb2007MoriceLanda].
+
+
+```{r, eval= FALSE}
+hydat_stations <- fpr::fpr_db_query(query = lfpr_dbq_clip('whse_environmental_monitoring.envcan_hydrometric_stn_sp',
+'whse_basemapping.fwa_watershed_groups_poly', 'watershed_group_code', c("BULK", "MORR")))
+
+hydat_stations_active <- hydat_stations %>% 
+  dplyr::filter(station_operating_status == "ACTIVE-REALTIME")
+```
+
+
+```{r hydrology-plots, fig.cap = 'Hydrograph for Bulkley River near Houston (Station #08EE003).', eval=T}
+knitr::include_graphics("fig/hydrograph_08EE003.png")
+```
+
+
+```{r, eval=TRUE}
+lfpr_create_hydrograph("08EE003", start_year = 1980)
+```
+
+```{r hydrology-stats2, fig.cap = "Bulkley River Near Houston (Station #08EE003 - Lat 54.39938 Lon -126.71941). Available daily discharge data from 1980 to 2022."}
+knitr::include_graphics("fig/hydrology_stats_08EE003.png")
+```
+
+
+
+### Widzin Kwah (Morice) Watershed
+
+The Widzin Kwah (Morice River) watershed drains 4,379 km^2^ of Coast Mountains and Interior Plateau in a generally south-eastern direction. The Morice River is an 8th order stream that flows approximatley 80km from Widzin Bin (Morice Lake) to the confluence with the upper Bulkley River just north of Houston. Major tributaries include the Nanika River, the Atna River, Gosnell Creek and the Thautil River. There area numerous large lakes situated on the south side of the watershed including Morice Lake, McBride Lake, Stepp Lake, Nanika Lake, Kid Price Lake, Owen Lake and others. There is one active hydrometric station on the mainstem of the Morice River near the outlet of Morice Lake and one historic station that was located at the mouth of the river near Houston that gathered data in 1971 only [@canada2010NationalWater]. An estimate of mean annual discharge for the one year of data available for the Morice near it's confluence with the Bulkley River is `r round(fasstr::calc_longterm_mean(station_number = "08ED003")$LTMAD,1)` m^3^/s. Mean annual discharge is estimated at `r round(fasstr::calc_longterm_mean(station_number = "08ED002")$LTMAD,1)` m^3^/s at station 08ED002 located near the outlet of Morice Lake. Flow patterns are typical of high elevation watersheds influenced by coastal weather patterns which receive large amounts of winter precipitation as snow in the winter and large precipitation events in the fall. This leads to peak levels of discharge during snowmelt, typically from May to July with isolated high flows related to rain and rain on snow events common in the fall (Figures \@ref(fig:hydrograph1) - \@ref(fig:hydrology-stats3)).
+
+
+
+```{r, eval=TRUE}
+lfpr_create_hydrograph("08ED002")
+```
+
+```{r hydrograph1, fig.cap = " Morice River Near Houston (Station #08ED002 - Lat 54.11683 Lon -127.42658). Available mean daily discharge data from 1961 to 2022."}
+
+knitr::include_graphics("fig/hydrograph_08ED002.png")
+```
+
+```{r hydrology-stats3, fig.cap = " Morice River Near Houston (Station #08ED002 - Lat 54.11683 Lon -127.42658). Available daily discharge data from 1961 to 2022."}
+
+knitr::include_graphics("fig/hydrology_stats_08ED002.png")
+```
+
+
+
 
 
 

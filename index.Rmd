@@ -1,5 +1,5 @@
 --- 
-title: "Restoration Initiatives for the Upper Wetzin'kwa Riverscape"
+title: "Restoration Initiatives for the Widzin Kwah 2024"
 author: |
  |
  | Prepared for
@@ -26,7 +26,7 @@ bibliography: [packages.bib, references.bib]
 biblio-style: apalike
 link-citations: no
 github-repo: rstudio/bookdown-demo
-description: "Restoration Initiatives for the Upper Wetzin'kwa Riverscape"
+description: "Restoration Initiatives for the Widzin Kwah 2024"
 
 
 ---
