@@ -198,7 +198,9 @@ fence_2021 <- sf::st_read(
   dplyr::select(-nfl) %>% 
   # we have multiple geometry types (linestring and multilinestring so we will convert to multilinestring before
   # combining)
-  sf::st_cast("MULTILINESTRING")
+  sf::st_cast("MULTILINESTRING") %>% 
+  # add a column that flags if this is going to be a new prescribed polygon
+  dplyr::mutate(prescribed = "no")
 
 
 fence_2022 <- sf::st_read(
@@ -213,14 +215,16 @@ fence_2022 <- sf::st_read(
   # rename geom to geometry to match other files
   dplyr::rename(geometry = geom) %>% 
   #remove the id col
-  dplyr::select(-id)
+  dplyr::select(-id) %>% 
+  # add a column that flags if this is going to be a new prescribed polygon
+  dplyr::mutate(prescribed = "no")
 
 # combine the two files and view
 fence <- dplyr::bind_rows(fence_2022, fence_2021) 
 
 ```
 
-```{r}
+```{r map-fence}
 ggplot(data = fence) +
   annotation_map_tile() +
   geom_sf() + # Plot the geometries
@@ -234,7 +238,7 @@ Now we will burn both the sites and the fencelines to a geopackage to share with
 names to sites may be to do it manually in QGIS so we will burn out our finished product directly to the QGIS project 
 directory. We turn this chunk off so that we only do it once vs every time we produce this memo.
 
-```{r burn-to-geopackage, eval = FALSE}
+```{r burn-to-geopackage, eval = TRUE}
 # write to geopackage
 sites_joined_raw %>% 
   # remove the fid
@@ -294,8 +298,5 @@ by hand in the console to render the document to a new directory called `memos`.
 ```{r render-manual, eval = FALSE}
 rmarkdown::render("scripts/historic_site_tidy.Rmd", output_file = "historic_site_tidy.html", output_dir = "memos")
 
-
-# we can run this to publish this work to the web
-rmarkdown::render("scripts/historic_site_tidy.Rmd", output_file = "index.html", output_dir = "memos")
 ```
 
