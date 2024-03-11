@@ -1,0 +1,301 @@
+---
+title: "historic_data_tidy"
+date: "2024-03-06"
+output: 
+  html_document:
+    code_folding: "hide"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, dpi=60, out.width = "100%")
+
+options(scipen=999)
+options(knitr.kable.NA = '--') #'--'
+options(knitr.kable.NAN = '--')
+```
+
+Import our libraries. We also need a custom function for renaming columns that span multiple rows of excel spreadsheets
+```{r import-libraries}
+library("sf")
+library("tidyverse")
+library("janitor")
+library("readxl")
+library("ggspatial")
+
+# we have to step back a directory (../)to import the custom function
+source('../scripts/functions.R')
+```
+
+
+
+
+Import shapefile provded by Adam (`TreatmentSitesMaster.shp`) as well as the site info provided by 
+Laura (`UB Restoration Site Names.xlsx`.
+
+```{r import-data}
+# define file paths
+file_sites_poly <- "/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/2024-069-ow-wedzin-kwa-restoration/data/historic_site_info/TreatmentSitesMaster/TreatmentSitesMaster.shp"
+file_sites_info <- "/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/2024-069-ow-wedzin-kwa-restoration/data/historic_site_info/UB Restoration Site Names.xlsx"
+
+# import data
+# read in the shapefile
+sites_poly <- sf::st_read(
+  dsn = file_sites_poly, quiet = TRUE) %>%
+  janitor::clean_names() %>%
+  # remove the site_name column since it is not populated
+  dplyr::select(-site_name)
+
+# to-do - create a small tribble that we can use to cross-reference the names provided vs our new names
+
+# read in the landowner information
+
+# read in the site details in and tidy
+sites_info_raw <- readxl::read_excel(
+  path = file_sites_info,
+  sheet = "Site Names", skip = 6) 
+
+```
+
+<br>
+
+We will process the column names in `UB Restoration Site Names.xlsx` a little bit to amalgamate mulitple lines of the excel spreadsheet and get ready for joining with the polygon data.
+
+```{r prep-column-names}
+
+## get the names of the columns ready with the wkb_ function
+sites_info_names <- readxl::read_excel(
+  path = file_sites_info,
+  sheet = "Site Names") %>%
+  wkb_col_names() %>%
+  # names(s) changed to "name_s" by janitor::clean_names
+  stringr::str_replace_all("name_s", "name") %>%
+  stringr::str_replace_all("x2024_site_name", "site_name_proposed")
+```
+
+<br>
+
+Now we will do a bit of tidying to get multiple years of info for same site into one row and convert to a spatial points file.
+
+
+```{r}
+sites_info <- sites_info_raw %>% 
+  purrr::set_names(sites_info_names) %>%
+  # if we call the site_name "name" it will show up in the menu of google earth for QA.
+  mutate(name = site_name_proposed) %>%
+  # #we have merged rows in the excel sheet too so we need to fill down to get all the columns populated
+  tidyr::fill(everything(), .direction = c("down")) %>%
+  # because "description" is a reserved word for kml we will rename it to "site_description"
+  dplyr::rename(site_description = description) %>%
+  # because we have more than one row for some sites (multiple years work) we will pivot those columns so they are
+  # appended to the end of the same row they came from
+  group_by(across(-c(work_done_year, work_done_treatment))) %>%
+  mutate(row_number = as.character(row_number())) %>%
+  pivot_wider(names_from = row_number, values_from = c("work_done_year", "work_done_treatment")) %>%
+  # replace N/A with na
+  mutate(previous_name_monitoring_report = str_replace_all(previous_name_monitoring_report, "N/A", NA_character_),
+  previous_name_site_survey = str_replace_all(previous_name_monitoring_report, "N/A", NA_character_)) %>%
+    # dplyr::mutate(across(everything(), ~na_if(., "N/A")))
+  #turn into spatial object
+  sf::st_as_sf(coords = c( "coordinates_longitude", "coordinates_latitude"), crs = 4326, remove = FALSE)
+```
+
+<br>
+
+Join the two datasets spatially (closest point get joins to every polygon) but remove all the sites_info column data when
+the funder is listed as SERNBC or MWMT because those sites were not in the `UB Restoration Site Names.xlsx` file.
+
+```{r join-data}
+# looks like we have site names for sites done by all fndr (funders) other than SERNBC. So - 
+sites_joined_raw <- sf::st_join(
+  sites_poly,
+  sites_info,
+  join = sf::st_nearest_feature) %>%
+  # remove the sites_info data when the sites are SERNbc and MWMT sites
+  dplyr::mutate(across(all_of(setdiff(names(sites_info), "geometry")), 
+                       ~case_when(fndr %in% c("SERNBC", "MWMT") ~ NA,
+                                         TRUE ~ .))) %>%
+  # make a new description column that combines comments and site_description
+  dplyr::mutate(description = paste0(comments, " - ", site_description))
+```
+
+<br>
+
+View what we have so far.
+
+```{r view-raw}
+sites_joined_raw %>% 
+  fpr::fpr_kable(font = 12)
+```
+
+the sites are quite small compared to the study area so doesn't view well. Geometries are valid though....
+```{r map-polygons}
+ggplot(data = sites_joined_raw) +
+  annotation_map_tile() +
+  geom_sf(color = "red", fill = "red", size = 10) + # Plot the geometries
+  # theme_minimal() + # Use a minimal theme for a cleaner look
+  labs(title = "Historic Sites")
+```
+
+Looks like the following actions could happen:
+
+1. having a look at the names of the sites so far there are a few things to consider.
+     a. The  contain abbreviations for `River` and `Creek` which in the long run are going to
+     be duplicated over and over - so perhaps better excluded.  Thinking we could just use the first name of the stream 
+     (ex. richfield_001) and then if we have "tributary to Maxam" or something like that in the long run we use "maxam_trib001_001" or something
+     that will describe the trib with unique identifier.
+     b. The year has been included in the site name but there are multiple years of work for the same sites so perhaps
+     we ditch that as well and just use a cross-reference table to keep track of the years.
+     c. We have two polygons with the same site name proposed (RC2-2021).  Perhaps we just start over with site names and 
+     have unique names for each site. We can consider useing what we have already as far as numbers (ie. RC1, RC2 but make each site 
+     name a bit more descriptive, remove the year and have a unique ID for each polygon put together by Adam - 
+     ex. richfield_001, richfield_002, etc.)
+     
+
+To prepare for the next steps we will add the stream name to sites that don't have it and break the proposed site names
+up so that we can use the numbering provided if we want to. 
+
+```{r name-simplify}
+
+sites_prep <- sites_joined_raw %>%
+  # lets populate the stream name for everything. AlSERNBC and MWMT sites were on Richfield Creek
+  dplyr::mutate(waterbody = case_when(
+    fndr %in% c("SERNBC", "MWMT") ~ "Richfield Creek",
+    TRUE ~ waterbody)) %>% 
+  # seperate the year from the site_name_proposed and the number from the abbreviated stream name
+  tidyr::extract(site_name_proposed, 
+                 into = c("site_name_proposed_stream_name_abb", "site_name_proposed_number", "site_name_proposed_year"), 
+                 regex = "([A-Za-z]+)(\\d+)?-?(\\d+)?",
+                 remove = FALSE) 
+  
+  
+  
+```
+
+3. The fencing sites financed by SERN in 2021 and 2022 are not yet represented so those will need to be added to this collection.
+Because fencelines are lines and not polygons we will keep them as a seperate layer in the same geopackage. 
+
+<br>
+
+
+Spatial representations of fencelines were provided by Adam following the contracts completed through SERN funding so 
+we will add the spatial files provided to onedrive - interact with them programatically from here - and add them to the 
+shared QGIS folder once processed (ie. two years of data amalgamated into one spatial file)...
+
+```{r add-richfield}
+# read in the two fenceline files
+fence_2021 <- sf::st_read(
+  dsn = "~/Library/CloudStorage/OneDrive-Personal/Projects/2024-069-ow-wedzin-kwa-restoration/data/historic_site_info/richfield_2021_2022/New Fenceline.shp", quiet = TRUE) %>% 
+  janitor::clean_names() %>% 
+  # grab just the "New Fenceline" values from the nfl column
+  dplyr::filter(nfl == "New Fenceline") %>%
+  # add columns for type, fndr, waterbody, trt_year and comments
+  dplyr::mutate(type = "fenceline",
+                fndr = "SERNBC",
+                waterbody = "Richfield Creek",
+                trt_year = 2021,
+                comments = "Fenceline installed on west side of Richfield Creek.") %>% 
+  # remove the nfl column
+  dplyr::select(-nfl) %>% 
+  # we have multiple geometry types (linestring and multilinestring so we will convert to multilinestring before
+  # combining)
+  sf::st_cast("MULTILINESTRING")
+
+
+fence_2022 <- sf::st_read(
+  dsn = "~/Library/CloudStorage/OneDrive-Personal/Projects/2024-069-ow-wedzin-kwa-restoration/data/historic_site_info/richfield_2021_2022/RichfieldRestoration2022.gpkg", quiet = TRUE) %>% 
+  janitor::clean_names() %>% 
+  # add columns for type, fndr, waterbody, trt_year and comments
+  dplyr::mutate(type = "fenceline",
+                fndr = "SERNBC",
+                waterbody = "Richfield Creek",
+                trt_year = 2022,
+                comments = "Fenceline installed on east side of Richfield Creek.") %>% 
+  # rename geom to geometry to match other files
+  dplyr::rename(geometry = geom) %>% 
+  #remove the id col
+  dplyr::select(-id)
+
+# combine the two files and view
+fence <- dplyr::bind_rows(fence_2022, fence_2021) 
+
+```
+
+```{r}
+ggplot(data = fence) +
+  annotation_map_tile() +
+  geom_sf() + # Plot the geometries
+  theme_minimal() + # Use a minimal theme for a cleaner look
+  labs(title = "Richfield Fence")
+```
+
+<br>
+
+Now we will burn both the sites and the fencelines to a geopackage to share with the QGIS project. The best way to assign 
+names to sites may be to do it manually in QGIS so we will burn out our finished product directly to the QGIS project 
+directory. We turn this chunk off so that we only do it once vs every time we produce this memo.
+
+```{r burn-to-geopackage, eval = FALSE}
+# write to geopackage
+sites_joined_raw %>% 
+  # remove the fid
+  select(-fid) %>%
+  sf::st_write(dsn = "~/Projects/gis/restoration_wedzin_kwa/sites_restoration.gpkg", 
+               layer = "sites_poly", 
+               delete_layer = TRUE,
+               quite = TRUE)
+
+
+sf::st_write(fence, 
+             dsn = "~/Projects/gis/restoration_wedzin_kwa/sites_restoration.gpkg", 
+             layer = "sites_lines", 
+             delete_layer = TRUE,
+             quite = TRUE)
+
+```
+
+
+**Still to do**
+4. There is landowner information in an excel file that can be linked to these sites. 
+
+<br>
+
+We can burn these files into a temporary location to view in google earth to see what is happening and do sanity checks too.
+We turn this chunk off so that we only do it once vs every time we produce this memo.
+
+```{r kml-burn, eval = FALSE}
+# burn to kml to view in google earth
+sites_poly %>%
+  sf::st_write(
+    dsn = "../temp/TreatmentSitesMaster.kml",
+    delete_layer = TRUE)
+
+sites_info %>%
+  sf::st_write(
+    dsn = "../temp/UB_Restoration_Site_Names.kml",
+    delete_layer = TRUE)
+
+sites_prep %>%
+  sf::st_write(
+    dsn = "../temp/historic_sites_joined.kml",
+    delete_layer = TRUE)
+
+fence %>%
+  sf::st_write(
+    dsn = "../temp/fencelines.kml",
+    delete_layer = TRUE)
+```
+
+<br>
+
+
+In order to render this memo we need a work around from the standard bookdown method. We run this command below
+by hand in the console to render the document to a new directory called `memos`.
+
+```{r render-manual, eval = FALSE}
+rmarkdown::render("scripts/historic_site_tidy.Rmd", output_file = "historic_site_tidy.html", output_dir = "memos")
+
+
+# we can run this to publish this work to the web
+rmarkdown::render("scripts/historic_site_tidy.Rmd", output_file = "index.html", output_dir = "memos")
+```
+
