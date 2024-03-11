@@ -1,0 +1,219 @@
+---
+title: "dfo_stock_assessment"
+author: "Al Irvine"
+date: "2024-03-07"
+output: 
+  html_document:
+    code_folding: "hide"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, dpi=60, out.width = "100%")
+
+options(scipen=999)
+options(knitr.kable.NA = '--') #'--'
+options(knitr.kable.NAN = '--')
+```
+
+
+We are going to quickly look at what data we have available on salmon in the Upper Bulkley and Morice. We can access the
+[NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
+through the [Open Government Portal](https://open.canada.ca/en) which is actually a CKAN - just like the Skeena Salmon Data Centre.
+
+<br>
+
+Load the packages we need
+```{r}
+library("rgovcan")
+library("ckanr")
+library("tidyverse")
+library("fpr")
+
+
+# set up the connection to the data portal
+ckanr_setup(url = "https://open.canada.ca/data/en")
+```
+
+<br>
+
+Search for the data we want using key words like "Pacific Salmon Conservation Units" and "North and Central Coast NuSEDS".
+
+
+```{r ckan-search}
+cu <- govcan_search(keywords = c("Pacific Salmon Conservation Units"), records = 100, format_results = TRUE) %>% 
+  pull(resources) %>% 
+  bind_rows()
+
+
+neseds <- govcan_search(keywords = c("North and Central Coast NuSEDS"), records = 150, format_results = TRUE) %>% 
+  pull(resources) %>% 
+  bind_rows()
+
+```
+
+<br>
+
+Have a look at select columns of the first 10 records of the search for "Pacific Salmon Conservation Units".  Can't view 
+all in this memo due structure of the data and the way it does not play nicely with `knitr::kable` that we use to view tables.
+```{r view-ckan-search1}
+cu %>% 
+  head(10) %>% 
+  dplyr::select(id, description, url, name) %>% 
+  fpr::fpr_kable(font = 12)
+```
+
+<br>
+
+Have a look at the first 10 records of select columns of the search for "North and Central Coast NuSEDS"
+```{r view-ckan-search2}
+neseds %>% 
+  head(10) %>% 
+  dplyr::select(id, description, url, name) %>% 
+  fpr::fpr_kable(font = 12)
+
+```
+
+<br>
+
+Download and filter an individual file.  A file called `All Areas NuSEDS_20240110.xlsx` looks promising and after initial 
+review we can confirm it has our study area in it. `North and Central Coast NuSEDS_20240110.xlsx` probably does too but
+guessing that is made from the `All Areas` file so we will skip for now.
+
+```{r}
+sample <- ckan_fetch("https://api-proxy.edh.azure.cloud.dfo-mpo.gc.ca/catalogue/records/c48669a3-045b-400d-b730-48aafe8c5ee6/attachments/All%20Areas%20NuSEDS_20240110.xlsx") 
+
+# filter for our area of interest
+sample_study_area <- sample %>%   
+  janitor::clean_names() %>% 
+  dplyr::filter(stringr::str_detect(gazetted_name, "BULKLEY|MORICE")) 
+
+# sample_study_area %>% 
+#   head() %>% 
+#   fpr::fpr_kable(font = 12)
+
+```
+
+<br>
+
+View the data for historic spawner data for the Upper Bulkley and Morice. **Note** the 
+
+```{r}
+# have a look at the historic spawner data for the upper Bulkley
+spawn <- sample_study_area %>% 
+  dplyr::filter(waterbody %in% c("BULKLEY RIVER - UPPER", "MORICE RIVER") & 
+                  !is.na(natural_adult_spawners) |
+                  !is.na(total_return_to_river)) %>% 
+  dplyr::arrange(waterbody, species, analysis_yr)
+
+# here is a bit of extra work that may come in handy later
+  # keep only rows with non-NA values in the columns with useful info
+  # dplyr::filter(if_any(natural_adult_spawners:total_return_to_river, ~ !is.na(.))) %>% 
+  # dplyr::filter(if_any(c(natural_adult_spawners:total_return_to_river, 
+  #                        starts_with("start"), 
+  #                        starts_with("end"), 
+  #                        starts_with("peak"),
+  #                        starts_with("natural"),
+  #                        starts_with("stream"),
+  #                        ends_with("presence")), ~ !is.na(.)))
+
+
+spawn %>% 
+  fpr::fpr_kable(font = 12)
+
+```
+
+<br>
+
+Note the results of the following columns since they may feed well into our production of xxxxxxxxxxx:
+
+`r names(spawn) %>% .[str_detect(., '_dt')]`
+
+<br>
+
+Since we are already here let's have a quick look at the data dictionary to see what those columns mean.
+
+```{r get-dict}
+dict <- neseds %>% 
+  filter(name == "Data Dictionary NuSEDS") 
+  # pull(url) %>% 
+  # ckan_fetch() 
+
+dict %>% 
+  dplyr::select(id, description, url, name) %>% 
+  fpr::fpr_kable(font = 12)
+
+
+```
+
+<br>
+
+Ha - looks like there is a duplicate name for the dictionary (french version - cool) that causes our call to ckan_fetch to fail.
+Let’s just grab the english one which is first so is kept with the `dplyr::distinct` call.
+
+
+```{r get-dict2}
+neseds %>% 
+  filter(name == "Data Dictionary NuSEDS") %>% 
+  dplyr::distinct(package_id, .keep_all = TRUE) %>% 
+  pull(url) %>% 
+  ckan_fetch(store = "disk", path = '../data/inputs_raw/data_dictionary_nu_seds.csv') 
+```
+
+
+<br>
+
+Let's have a look at it. Actually - it appears to have `invalid UTF-8` characters in the `Field Definition` column
+so we will need to remove those first. 
+
+    Error in sub(re, "", x, perl = TRUE) : input string 106 is invalid UTF-8
+    
+Seen this before...  Weird little copy and paste characters.  We can deal.
+
+```{r view-data-dict}
+dict <- read_csv('../data/inputs_raw/data_dictionary_nu_seds.csv')
+
+dict %>% 
+  # select(-`Field Definition`) %>% 
+  mutate(across(all_of(names(.)), ~str_replace_all(as.character(.), "[^ -~]", ""))) %>% 
+  fpr::fpr_kable(font = 12)
+```
+
+<br>
+
+Thinking about it - perhaps the `All Areas NuSEDS.csv` is the current version and the rest are designed as archives...
+Let's check
+
+```{r csv-dl}
+name_csv <- 'All Areas NuSEDS.csv'
+
+cu %>% 
+  dplyr::filter(name == name_csv) %>% 
+  dplyr::pull('url') %>% 
+  ckan_fetch(store = "disk", path = paste0('../data/inputs_raw/', name_csv)) 
+  
+csv <- read_csv(paste0('../data/inputs_raw/', name_csv))
+
+# filter for our area of interest
+sample_study_area2 <- csv %>%   
+  janitor::clean_names() %>% 
+  dplyr::filter(stringr::str_detect(gazetted_name, "BULKLEY|MORICE")) 
+
+sample_study_area2 %>% 
+  fpr::fpr_kable(font = 12)
+
+```
+
+<br>
+
+Yup - thinking that is what is going on... good to know.
+
+<br>
+
+In order to render this document we need a work around from the standard bookdown method. We run this command below
+by hand in the console to render the document.
+
+```{r render-manual, eval = FALSE}
+rmarkdown::render("scripts/dfo_stock_assess.Rmd", output_file = "dfo_stock_assess.html", output_dir = "memos")
+
+```
+
