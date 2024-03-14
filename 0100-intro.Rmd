@@ -1,86 +1,9 @@
 # Introduction
 
-The upper Wetzin’kwa (Bulkley) is one of the most degraded areas of salmon habitat in the Skeena watershed. In partnership with the Morice Water Monitoring Trust and A Rocha, both members of the Upper Bulkley Round Table, a low-tech, process-based, watershed restoration project will be implemented that builds upon previous work in the region (funded in-part by BC’s Healthy Watersheds Initiative) to engage with local land users to stabilize streambanks, rebuild riparian structure in degraded areas of importance to salmon and ecosystem function, and remove current barriers for migrating juvenile salmon. This process-based approach relies on assisting natural river corridor processes over time, learning what works on river reach and basin scales, a high degree of outreach and collaboration with interest holders and regulators, and the use of simple – cost-effective – non-engineered structural additions of natural materials to restore river processes (i.e., let the river do the work).
+The Neexdzii Kwah (Upper Bukley River) and Widzin Kwah (Morice River) are some of the most degraded areas of salmon habitat in the Skeena watershed. In partnership with the Morice Water Monitoring Trust and A Rocha, both members of the Upper Bulkley Round Table, a low-tech, process-based, watershed restoration project will be implemented that builds upon previous work in the region (funded in-part by BC’s Healthy Watersheds Initiative) to engage with local land users to stabilize streambanks, rebuild riparian structure in degraded areas of importance to salmon and ecosystem function, and remove current barriers for migrating juvenile salmon. This process-based approach relies on assisting natural river corridor processes over time, learning what works on river reach and basin scales, a high degree of outreach and collaboration with interest holders and regulators, and the use of simple – cost-effective – non-engineered structural additions of natural materials to restore river processes (i.e., let the river do the work).
 
-The purpose of this document is to outline watershed restoration initiatives for the upper Wetzin’kwa and Morice watershed. The upper Wetzin’kwa and Morice watersheds are located in the traditional territory of the Wet'suwet'en First Nation, and are home to the Bulkley River and Morice River. Both the Bulkley River, a major tributary of the Skeena River, and the Morice River, a major tributary of the Bulkley River, are known for their world-class steelhead and salmon fishing. The upper Wetzin’kwa watershed is a critical habitat for salmon and steelhead, and is an important area for the Wet'suwet'en First Nation. Additionally, this area plays a pivotal role in the local economy and is a favored destination for outdoor recreation. The upper Wetzin’kwa watershed is facing a number of challenges, including habitat degradation, water quality issues, and climate change. The purpose of this document is to outline watershed restoration initiatives for the upper Wetzin’kwa watershed which can be actionable in year 2 and 3 of the project.
+The purpose of this document is to outline watershed restoration initiatives for the Upper Bulkley River and Morice River. The Upper Bulkley and Morice watersheds are located in the traditional territory of the Wet'suwet'en First Nation, and are home to the Bulkley River and Morice River. Both the Bulkley River, a major tributary of the Skeena River, and the Morice River, a major tributary of the Bulkley River, are known for their world-class steelhead and salmon fishing. The Morice and upper Bulkley watersheds are critical habitat for salmon and steelhead, and are important areas for the Wet'suwet'en First Nation. Additionally, this area plays a pivotal role in the local economy and is a favored destination for outdoor recreation. These watersheds are facing a number of challenges, including habitat degradation, water quality issues, and climate change. The purpose of this document is to outline watershed restoration initiatives for the Upper Bulkley and Morice watersheds which can be actionable in year 2 and 3 of the project.
 
 ## Wet'suwet'en
 
 Wet'suwet'en hereditary territory covers an area of 22,000km^2^ including the Bulkley River watershed, Zymoetz River watershed, Morice River watershed and portions of the Nechako River watershed. The Wet'suwet'en people are a matrilineal society organized into the Gilseyhu (Big Frog), Laksilyu (Small Frog), Tsayu (Beaver clan), Gitdumden (Wolf/Bear) and Laksamshu (Fireweed) clans. Within each of the clans there are are a number of kin-based groups known as Yikhs or House groups. The Yikh is a partnership between the people and the territory. Thirteen Yikhs with Hereditary Chiefs manage a total of 38 distinct territories upon which they have jurisdiction. Within a clan, the head Chief is entrusted with the stewardship of the House territory to ensure the Land is managed in a sustainable manner. Inuk Nu'at'en (Wet'suwet'en law) governing the harvesting of fish within their lands are based on values founded on thousands of years of social, subsistence and environmental dynamics. The Yintahk (Land) is the centre of life as well as culture and it's management is intended to provide security for sustaining salmon, wildlife, and natural foods to ensure the health and well-being of the Wet'suwet'en [@officeofthewetsuweten2013Wetsuweta; @OfficeWetsuwet2021; @flnrord2017NaturalResourcea]. There are a total of six first nation bands that encompass the Wet'suwet'en. These are: Wet'suwet'en, Ts'il Kaz Koh, Hagwilget Village, Nee-Tahi-Buhn Band, Skin Tyee and Witset [@Wetsuweten2022a].
-
-
-## Project Location
-
-```{r overview-map, fig.cap = 'Overview map of Study Areas',eval=T}
-knitr::include_graphics("fig/OW_2024_bulk.png")
-```
-
-### Upper Wetzin’kwa Watershed
-
-The Bukley River is an 8th order stream that drains an area of 7,762 km^2^ in a generally northerly direction from Bulkley Lake on the Nechako Plateau to its confluence with the Skeena River at Hazleton. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08EE004")$LTMAD,1)` m^3^/s at station 08EE004 located near Quick (\~27km south of Telkwa) and `r round(fasstr::calc_longterm_mean(station_number = "08EE003")$LTMAD,1)` m^3^/s at station 08EE003 located upstream near Houston. Flow patterns at Quick are heavily influenced by inflows from the Morice River (enters just downstream of Houston) resulting in flow patterns typical of high elevation watersheds which receive large amounts of precipitation as snow leading to peak levels of discharge during snowmelt, typically from May to July (Figures \@ref(fig:hydrology-plots) - \@ref(fig:pane-hydat-08EE003)). The hydrograph peaks faster and generally earlier (May - June) for the Bulkley River upstream of Houston where the topography is of lower lower elevation (Figures \@ref(fig:hydrology-plots) and \@ref(fig:pane-hydat-08EE004)).
-
-<br>
-
-Changes to the climate systems are causing impacts to natural and human systems on all continents with alterations to hydrological systems caused by changing precipitation or melting snow and ice increasing the frequency and magnitude of extreme events such as floods and droughts [@ClimateChange2014SynthesisReportGenevaSwitzerlandIntergovernmentalPanelClimateChangeIPCC2014; @eccc2016Climatedataa]. These changes are resulting in modifications to the quantity and quality of water resources throughout British Columbia and are likely to compound issues related to drought and flooding in the Bulkley River watershed where numerous water licenses are held with a potential over-allocation of flows identified during low flow periods [@ilmb2007MoriceLanda].
-
-<br>
-
-The valley bottom has seen extensive settlement over the past hundred years with major population centers including the Village of Hazelton, the Town of Smithers, the Village of Telkwa and the District Municipality of Houston. As a major access corridor to northwestern British Columbia, Highway 16 and the Canadian National Railway are major linear developments that run along the Bulkley River within and adjacent to the floodplain with numerous crossing structures impeding fish access into and potentially out from important fish habitats. Additionally, as the valley bottom contains some of the most productive land in the area, there has been extensive conversion of riparian ecosystems to hayfields and pastures leading to alterations in flow regimes, increases in water temperatures, reduced streambank stability, loss of overstream cover and channelization [@ilmb2007MoriceLanda; @wilson_rabnett2007FishPassagea].
-
-
-```{r, eval= FALSE}
-hydat_stations <- fpr::fpr_db_query(query = fpr_dbq_clip_local('whse_environmental_monitoring.envcan_hydrometric_stn_sp',
-'whse_basemapping.fwa_watershed_groups_poly', 'watershed_group_code', c("BULK", "MORR")))
-
-hydat_stations <- hydat_stations %>% 
-  dplyr::filter(station_operating_status == "ACTIVE-REALTIME")
-```
-
-
-```{r hydrology-plots, fig.cap = 'Hydrograph for Bulkley River at Quick (Station #08EE004) and near Houston (Station #08EE003).', fig.show="hold", out.width= c("49.5%","1%","49.5%"), eval=T}
-knitr::include_graphics("fig/hydrograph_08EE004.png")
-knitr::include_graphics("fig/pixel.png")
-knitr::include_graphics("fig/hydrograph_08EE003.png")
-```
-
-
-```{r, eval=TRUE}
-fpr_create_hydrograph_local("08EE003", start_year = 1980)
-```
-
-```{r pane-hydat-08EE003, fig.cap = "Bulkley River Near Houston (Station #08EE003 - Lat 54.39938 Lon -126.71941). Available daily discharge data from 1980 to 2022."}
-knitr::include_graphics("fig/hydrology_stats_08EE003.png")
-```
-
-
-```{r, eval=TRUE}
-fpr_create_hydrograph_local("08EE004")
-```
-
-```{r pane-hydat-08EE004, fig.cap = "Bulkley River At Quick (Station #08EE004 - Lat 54.61861 Lon -126.89997). Available daily discharge data from 1930 to 2022."}
-
-knitr::include_graphics("fig/hydrology_stats_08EE004.png")
-```
-
-
-### Morice River Watershed
-
-The Morice River watershed drains 4,379 km^2^ of Coast Mountains and Interior Plateau in a generally south-eastern direction. The Morice River is an 8th order stream that flows approximatley 80km from Morice Lake to the confluence with the upper Bulkley River just north of Houston. Major tributaries include the Nanika River, the Atna River, Gosnell Creek and the Thautil River. There area numerous large lakes situated on the south side of the watershed including Morice Lake, McBride Lake, Stepp Lake, Nanika Lake, Kid Price Lake, Owen Lake and others. There is one active hydrometric station on the mainstem of the Morice River near the outlet of Morice Lake and one historic station that was located at the mouth of the river near Houston that gathered data in 1971 only [@canada2010NationalWater]. An estimate of mean annual discharge for the one year of data available for the Morice near it's confluence with the Bulkley River is `r round(fasstr::calc_longterm_mean(station_number = "08ED003")$LTMAD,1)` m^3^/s. Mean annual discharge is estimated at `r round(fasstr::calc_longterm_mean(station_number = "08ED002")$LTMAD,1)` m^3^/s at station 08ED002 located near the outlet of Morice Lake. Flow patterns are typical of high elevation watersheds influenced by coastal weather patterns which receive large amounts of winter precipitation as snow in the winter and large precipitation events in the fall. This leads to peak levels of discharge during snowmelt, typically from May to July with isolated high flows related to rain and rain on snow events common in the fall (Figures \@ref(fig:hydrograph-08ED002) - \@ref(fig:pane-hydat-08ED002)).
-
-
-
-```{r, eval=TRUE}
-fpr_create_hydrograph_local("08ED002")
-```
-
-```{r hydrograph-08ED002, fig.cap = " Morice River Near Houston (Station #08ED002 - Lat 54.11683 Lon -127.42658). Available mean daily discharge data from 1961 to 2022."}
-
-knitr::include_graphics("fig/hydrograph_08ED002.png")
-```
-
-```{r pane-hydat-08ED002, fig.cap = " Morice River Near Houston (Station #08ED002 - Lat 54.11683 Lon -127.42658). Available daily discharge data from 1961 to 2022."}
-
-knitr::include_graphics("fig/hydrology_stats_08ED002.png")
-```
-
-
