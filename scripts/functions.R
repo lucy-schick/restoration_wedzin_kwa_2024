@@ -29,7 +29,7 @@ fif <- function(what, where=".", in_files="\\.[Rr]$", recursive = TRUE,
 # @param join_column String (quoted) name of column to join tables on from polygon. See column names of any table with \link{fpr_dbq_lscols}
 # @param join_on String (quoted) or vector of specific terms to join on.
 #
-fpr_dbq_clip_local <- function(
+lfpr_dbq_clip <- function(
     schema_table_point,
     schema_table_polygon,
     join_column,
@@ -46,7 +46,7 @@ fpr_dbq_clip_local <- function(
 }
 
 # Creates hydrographs
-#' @param station String (quoted) number of station
+#' @param station String (quoted) station number
 #' @param pane_hydat Boolean TRUE if you want a pane layout of all hydrographs
 #' @param single_hydat Boolean TRUE if you want a single hydrograph with mean flows
 #' @param start_year Specific start year, if not specified, will use the first year of the data
@@ -54,7 +54,7 @@ fpr_dbq_clip_local <- function(
 #' @param fig/hydrology_stats_ hydrology stats figure saved to the fig folder
 #' @param fig/hydrograph_ hydrograph figure saved to the fig folder
 
-fpr_create_hydrograph_local <- function(
+lfpr_create_hydrograph <- function(
     station = NULL,
     pane_hydat = TRUE,
     single_hydat = TRUE,
@@ -84,38 +84,11 @@ fpr_create_hydrograph_local <- function(
 
   tidyhat_info <- tidyhydat::search_stn_number(station)
 
-# make a function for downloading files straight from skt ckan
-fetch_package <- function(package_nm = NULL,
-                          ckan_info = data_deets,
-                          store = "disk",
-                          path_stub = "data/skt/",
-                          csv_output = TRUE) {
-  info <- ckan_info %>%
-    filter(package_name == package_nm)
 
-  urls <- info %>%
-    pull(url) %>%
-  # to avoid dl errors we need to remove the NAs as well as those files that end without a file extension at the end (ex. .com/ and *123)
-  na.omit() %>%
-  .[str_detect(., ".*\\.[a-zA-Z0-9]+$")]
 
-  # create the directory if it doesn't exist
-  dir.create(paste0(path_stub, package_nm))
+  ##### Hydrograph Stats #####
 
-  walk(.x = urls,
-       .f = ~ckan_fetch(.x, store = store, path = paste0(path_stub, package_nm, "/", basename(.x))))
-
-  # if csv_output = TRUE burn out a little csv file of the information about everything that is downloaded
-  if (csv_output) {
-    info %>%
-      arrange(basename(url)) %>%
-      write_csv(paste0(path_stub, package_nm, "/001_pkg_info_", package_nm, ".csv"))
-  }
-}
-
-  ##### Hydrograph Pane #####
-
-  ##build caption for the pane figure
+  ##build caption for the stats figure
   caption_info <- dplyr::mutate(tidyhat_info, title_stats = paste0(stringr::str_to_title(STATION_NAME),
                                                                    " (Station #",STATION_NUMBER," - Lat " ,round(LATITUDE,6),
                                                                    " Lon ",round(LONGITUDE,6), "). Available daily discharge data from ", start_year,
@@ -142,8 +115,6 @@ fetch_package <- function(package_nm = NULL,
 
 
 
-
-
   ##### Single Hydrograph  #####
 
   ##build caption for the single figure
@@ -164,7 +135,7 @@ fetch_package <- function(package_nm = NULL,
                        daily_sd = sd(Value, na.rm = TRUE),
                        max = max(Value, na.rm = TRUE),
                        min = min(Value, na.rm = TRUE)) %>%
-      dplyr::mutate(Date = as.Date(day_of_year, origin = "2015-12-31"))
+      dplyr::mutate(Date = as.Date(day_of_year))
 
     plot <- ggplot2::ggplot()+
       ggplot2::geom_ribbon(data = flow, aes(x = Date, ymax = max,
@@ -182,6 +153,37 @@ fetch_package <- function(package_nm = NULL,
                     h=3.4, w=5.11, units="in", dpi=300)
 
     cli::cli_alert(hydrograph1_stats_caption2)
+  }
+}
+
+
+
+# make a function for downloading files straight from skt ckan
+fetch_package <- function(package_nm = NULL,
+                          ckan_info = data_deets,
+                          store = "disk",
+                          path_stub = "data/skt/",
+                          csv_output = TRUE) {
+  info <- ckan_info %>%
+    filter(package_name == package_nm)
+
+  urls <- info %>%
+    pull(url) %>%
+    # to avoid dl errors we need to remove the NAs as well as those files that end without a file extension at the end (ex. .com/ and *123)
+    na.omit() %>%
+    .[str_detect(., ".*\\.[a-zA-Z0-9]+$")]
+
+  # create the directory if it doesn't exist
+  dir.create(paste0(path_stub, package_nm))
+
+  walk(.x = urls,
+       .f = ~ckan_fetch(.x, store = store, path = paste0(path_stub, package_nm, "/", basename(.x))))
+
+  # if csv_output = TRUE burn out a little csv file of the information about everything that is downloaded
+  if (csv_output) {
+    info %>%
+      arrange(basename(url)) %>%
+      write_csv(paste0(path_stub, package_nm, "/001_pkg_info_", package_nm, ".csv"))
   }
 }
 
