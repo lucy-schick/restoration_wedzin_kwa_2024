@@ -2857,7 +2857,9 @@ use the numbering provided if we want to.</p>
   tidyr::extract(site_name_proposed, 
                  into = c(&quot;site_name_proposed_stream_name_abb&quot;, &quot;site_name_proposed_number&quot;, &quot;site_name_proposed_year&quot;), 
                  regex = &quot;([A-Za-z]+)(\\d+)?-?(\\d+)?&quot;,
-                 remove = FALSE) </code></pre>
+                 remove = FALSE)  %&gt;% 
+  # add a column that flags if this is going to be a new prescribed polygon
+  dplyr::mutate(prescribed = &quot;no&quot;)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>The fencing sites financed by SERN in 2021 and 2022 are not yet
 represented so those will need to be added to this collection. Because

@@ -165,7 +165,9 @@ sites_prep <- sites_joined_raw %>%
   tidyr::extract(site_name_proposed, 
                  into = c("site_name_proposed_stream_name_abb", "site_name_proposed_number", "site_name_proposed_year"), 
                  regex = "([A-Za-z]+)(\\d+)?-?(\\d+)?",
-                 remove = FALSE) 
+                 remove = FALSE)  %>% 
+  # add a column that flags if this is going to be a new prescribed polygon
+  dplyr::mutate(prescribed = "no")
   
   
   
