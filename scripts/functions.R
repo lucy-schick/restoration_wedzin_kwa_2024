@@ -187,4 +187,26 @@ fetch_package <- function(package_nm = NULL,
   }
 }
 
-
+# make column names for excel cols that span multiple rows (ie. 6 and 7)
+wkb_col_names <-  function(wkb,
+                           slice_from = 5,
+                           slice_to = 6,
+                           max_col = NULL
+){
+  a <- wkb %>%
+    slice(slice_from:slice_to) %>%
+    # rownames_to_column() %>%
+    t() %>%
+    tibble::as_tibble() %>%
+    tidyr::fill(V1, .direction = 'down') %>%
+    dplyr::mutate(across(everything(), .fns = ~replace_na(.,'')))
+  if(slice_from != slice_to){
+    a <- a %>% dplyr::mutate(col_names = paste0(V1, V2))
+  }else a <- a %>% dplyr::mutate(col_names = V1)
+  # replace_na(list(V2 = "unknown")) %>%
+  # (col_names = paste0(V1, V2)) %>%
+  b <- a %>% pull(col_names) %>%
+    janitor::make_clean_names()
+  if(!is.null(max_col)){length(b) <- max_col}
+  return(b)
+}
