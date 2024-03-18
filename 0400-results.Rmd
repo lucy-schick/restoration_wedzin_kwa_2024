@@ -1,0 +1,48 @@
+# Results
+
+## Collaborative GIS Environment
+A summary of layers loaded to the `background_layers.gpkg` geopackage of the `restoration_wedzin_kwa` project at the time of writing are included in Table \@ref(tab:tab-rfp-tracking).
+
+```{r rfp-tracking-copy, eval = FALSE}
+# first we will copy the doc from the Q project to this repo
+q_path_stub <- "/Users/airvine/Projects/gis/restoration_wedzin_kwa/"
+
+rfp_tracking_raw <- sf::st_read(paste0(q_path_stub, "background_layers.gpkg"),
+            layer = "rfp_tracking",
+            quite = TRUE)
+
+# grab the metadata
+md <- rfp_meta_bcd_xref()
+
+# remove the `_vw` from the end of content
+rfp_tracking_prep <- dplyr::left_join(
+  rfp_tracking_raw %>% 
+    dplyr::arrange(desc(timestamp)) %>% 
+    dplyr::distinct(content, .keep_all = FALSE),
+  
+  md %>% 
+    dplyr::select(content = object_name, url = url_browser, description),
+  
+  by = "content"
+) %>% 
+  arrange(content)
+
+rfp_tracking_prep %>% 
+  readr::write_csv("data/rfp_tracking_prep.csv")
+
+```
+
+```{r tab-rfp-tracking}
+rfp_tracking_prep <- readr::read_csv(
+  "data/rfp_tracking_prep.csv"
+)
+
+rfp_tracking_prep %>% 
+  fpr::fpr_kable(caption_text = "Layers loaded to collaborative GIS project.",
+                 footnote_text = "Metadata information for bcfishpass and bcfishobs layers can be provided here in the future but  currently can usually be sourced from https://smnorris.github.io/bcfishpass/06_data_dictionary.html .")
+
+
+
+```
+
+## Past Restoration Initiatives
