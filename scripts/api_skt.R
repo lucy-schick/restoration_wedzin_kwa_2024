@@ -76,7 +76,7 @@ dat_filtered <- data_deets %>%
   dplyr::filter(sapply(name, function(x) any(str_detect(x, dataset_filter))))
 
 # group by why it was filtered
-dat_filtered_list <- map(dataset_filter, ~data_deets %>% filter(str_detect(name, .x))) %>%
+dat_filtered_list <- map(dataset_filter, ~data_deets %>% dplyr::filter(str_detect(name, .x))) %>%
   set_names(dataset_filter) %>%
   # remove empty list items
   discard(~nrow(.x) == 0)
@@ -125,6 +125,10 @@ walk(.x = urls,
 fetch_package(package_nm = "upper-bulkley-fish-and-aquatic-review-riparian-disturbance")
 fetch_package(package_nm = "upper-bulkley-historic-air-photo-mosaics")
 fetch_package(package_nm = "riparian-ecosystems-and-fish-habitat")
-
-
-
+fetch_package(package_nm = "riparian-stream-assessment-bulkley-river-system-examination-impacts-tributaries")
+fetch_package(package_nm = "detailed-fish-habitat-riparian-and-channel-assessment-for-select-central-bulkley-river-tributaries")
+fetch_package(package_nm = "wet-suwet-en-fisheries-2004-summary")
+fetch_package(package_nm= "annual-compendium-of-aquatic-rehabilitation-projects-for-the-watershed-restoration-program-1998-1999")
+fetch_package(package_nm= "upper-bulkley-restoration-sites")
+fetch_package(package_nm= "as-built-report-of-aquatic-restoration-2016")
+fetch_package(package_nm= "as-built-report-of-aquatic-restoration-2017")
