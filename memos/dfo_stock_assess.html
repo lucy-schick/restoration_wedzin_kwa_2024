@@ -60849,7 +60849,7 @@ updated_dtt</p>
 <p>Since we are already here let’s have a quick look at the data
 dictionary to see what those columns mean.</p>
 <pre class="r"><code>dict &lt;- neseds %&gt;% 
-  filter(name == &quot;Data Dictionary NuSEDS&quot;) 
+  dplyr::filter(name == &quot;Data Dictionary NuSEDS&quot;) 
   # pull(url) %&gt;% 
   # ckan_fetch() 
 
@@ -60914,7 +60914,7 @@ version - cool) that causes our call to ckan_fetch to fail. Let’s just
 grab the english one which is first so is kept with the
 <code>dplyr::distinct</code> call.</p>
 <pre class="r"><code>neseds %&gt;% 
-  filter(name == &quot;Data Dictionary NuSEDS&quot;) %&gt;% 
+  dplyr::filter(name == &quot;Data Dictionary NuSEDS&quot;) %&gt;% 
   dplyr::distinct(package_id, .keep_all = TRUE) %&gt;% 
   pull(url) %&gt;% 
   ckan_fetch(store = &quot;disk&quot;, path = &#39;../data/inputs_raw/data_dictionary_nu_seds.csv&#39;) </code></pre>
@@ -61672,8 +61672,12 @@ Stream ID (Geo_Feature ID).
 </div>
 <p><br></p>
 <p>Thinking about it - perhaps the <code>All Areas NuSEDS.csv</code> is
-the current version and the rest are designed as archives… Let’s
-check</p>
+the current version and the rest are designed as archives… Let’s check.
+Looks as though the <code>All Areas NuSEDS.csv</code> is perhaps too big
+to download straight to memory as we did before (we get a 0 sized
+tibble). For this reason we will download the csv by adding the
+<code>store = &quot;disk&quot;</code> param to the <code>ckan_fetch</code>
+call.</p>
 <pre class="r"><code>name_csv &lt;- &#39;All Areas NuSEDS.csv&#39;
 
 cu %&gt;% 
@@ -219949,8 +219953,15 @@ Expert Opinion
 </table>
 </div>
 <p><br></p>
-<p>Yup - thinking that is what is going on… good to know.</p>
+<p>Yup - thinking that is what is going on… good to know.
+<strong>ANOTHER GOOD TO KNOW</strong> is that the
+<code>All Areas NuSEDS.csv</code> file is over 150mb which is waaaay to
+big for git. We needed to filter it down to our study area and replace
+the original file before we want commit to the repo. Will will do that
+below</p>
 <p><br></p>
+<pre class="r"><code>sample_study_area2 %&gt;% 
+  readr::write_csv(&#39;../data/inputs_raw/All Areas NuSEDS.csv&#39;)</code></pre>
 <p>In order to render this document we need a work around from the
 standard bookdown method. We run this command below by hand in the
 console to render the document.</p>
