@@ -134,7 +134,7 @@ Since we are already here let's have a quick look at the data dictionary to see 
 
 ```{r get-dict}
 dict <- neseds %>% 
-  filter(name == "Data Dictionary NuSEDS") 
+  dplyr::filter(name == "Data Dictionary NuSEDS") 
   # pull(url) %>% 
   # ckan_fetch() 
 
@@ -153,7 +153,7 @@ Let’s just grab the english one which is first so is kept with the `dplyr::dis
 
 ```{r get-dict2}
 neseds %>% 
-  filter(name == "Data Dictionary NuSEDS") %>% 
+  dplyr::filter(name == "Data Dictionary NuSEDS") %>% 
   dplyr::distinct(package_id, .keep_all = TRUE) %>% 
   pull(url) %>% 
   ckan_fetch(store = "disk", path = '../data/inputs_raw/data_dictionary_nu_seds.csv') 
