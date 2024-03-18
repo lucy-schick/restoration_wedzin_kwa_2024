@@ -165,7 +165,7 @@ fetch_package <- function(package_nm = NULL,
                           path_stub = "data/skt/",
                           csv_output = TRUE) {
   info <- ckan_info %>%
-    filter(package_name == package_nm)
+    dplyr::filter(package_name == package_nm)
 
   urls <- info %>%
     pull(url) %>%
@@ -209,4 +209,22 @@ wkb_col_names <-  function(wkb,
     janitor::make_clean_names()
   if(!is.null(max_col)){length(b) <- max_col}
   return(b)
+}
+
+#' Check for NULL values in a specific column of a SQL table
+#'
+#' @param schema_table A string specifying the schema and table in the format "schema.table".
+#' @param col_nulls A string specifying the column to check for NULL values.
+#'
+#' @return A string containing the SQL query.
+#' @importFrom glue glue
+#' @export
+ldbq_chk_null <- function(schema_table, col_nulls) {
+  query <- glue::glue(
+    "SELECT COUNT(*)
+    FROM {schema_table}
+    WHERE {col_nulls} IS NULL;"
+  )
+
+  return(query)
 }
