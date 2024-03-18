@@ -181,7 +181,7 @@ dict %>%
 <br>
 
 Thinking about it - perhaps the `All Areas NuSEDS.csv` is the current version and the rest are designed as archives...
-Let's check
+Let's check. Looks as though the `All Areas NuSEDS.csv` is perhaps too big to download straight to memory as we did before (we get a 0 sized tibble).  For this reason we will download the csv by adding the `store = "disk"` param to the `ckan_fetch` call.
 
 ```{r csv-dl}
 name_csv <- 'All Areas NuSEDS.csv'
@@ -205,9 +205,15 @@ sample_study_area2 %>%
 
 <br>
 
-Yup - thinking that is what is going on... good to know.
+Yup - thinking that is what is going on... good to know. **ANOTHER GOOD TO KNOW** is that the `All Areas NuSEDS.csv` file is over 150mb which is waaaay to big for git. We needed to filter it down  to our study area and replace the original file before we want commit to the repo.  Will will do that below
 
 <br>
+
+```{r csv-resize}
+sample_study_area2 %>% 
+  readr::write_csv('../data/inputs_raw/All Areas NuSEDS.csv')
+```
+
 
 In order to render this document we need a work around from the standard bookdown method. We run this command below
 by hand in the console to render the document.
