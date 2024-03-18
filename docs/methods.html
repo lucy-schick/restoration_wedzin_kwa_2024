@@ -4,20 +4,20 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Session Info | Restoration Initiatives for the Widzin Kwah 2024</title>
-  <meta name="description" content="Session Info | Restoration Initiatives for the Widzin Kwah 2024" />
+  <title>3 Methods | Restoration Initiatives for the Widzin Kwah 2024</title>
+  <meta name="description" content="3 Methods | Restoration Initiatives for the Widzin Kwah 2024" />
   <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Session Info | Restoration Initiatives for the Widzin Kwah 2024" />
+  <meta property="og:title" content="3 Methods | Restoration Initiatives for the Widzin Kwah 2024" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Session Info | Restoration Initiatives for the Widzin Kwah 2024" />
+  <meta property="og:description" content="3 Methods | Restoration Initiatives for the Widzin Kwah 2024" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Session Info | Restoration Initiatives for the Widzin Kwah 2024" />
+  <meta name="twitter:title" content="3 Methods | Restoration Initiatives for the Widzin Kwah 2024" />
   
-  <meta name="twitter:description" content="Session Info | Restoration Initiatives for the Widzin Kwah 2024" />
+  <meta name="twitter:description" content="3 Methods | Restoration Initiatives for the Widzin Kwah 2024" />
   
 
 
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="references.html"/>
-
+<link rel="prev" href="background.html"/>
+<link rel="next" href="results.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -241,175 +241,45 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="session-info" class="section level1 unnumbered hasAnchor">
-<h1>Session Info<a href="session-info.html#session-info" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb33-1"><a href="session-info.html#cb33-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
-<pre><code>─ Session info ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
- setting  value
- version  R version 4.3.2 (2023-10-31)
- os       &lt;NA&gt;
- system   aarch64, darwin20
- ui       RStudio
- language (EN)
- collate  en_US.UTF-8
- ctype    en_US.UTF-8
- tz       America/Vancouver
- date     2024-03-18
- rstudio  2023.12.1+402 Ocean Storm (desktop)
- pandoc   3.1.1 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
+<div id="methods" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Methods<a href="methods.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="collaborative-gis-environment" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Collaborative GIS Environment<a href="methods.html#collaborative-gis-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Geographical Information Systems are essential for understanding restoration plans and the reasons they are required. Without the ability to visualize the landscape and the data that is used to make decisions it is difficult to
+conduct and communicate the need for restoration, the details of past and future plans as well as and the potential results of physical works.</p>
+<p><br></p>
+<p>To facilitate the planning and implementation of restoration activities in the Neexdzii Kwah (and elsewhere within the Widzin Kwah Water Sustainability Project area), a collaborative GIS environment (titled <code>restoration_wedzin_kwa</code>) has been established using <a href="https://qgis.org/en/site/">QGIS</a> and <a href="https://merginmaps.com/">Mergin Maps</a> (source code <a href="https://github.com/MerginMaps">here</a>. This environment is intended to be a space where project team members can access and view and contribute to the amalgamation of background spatial data and the development of restoration as well as monitoring for the project. The collaborative GIS environment allows users to view, edit, and analyze shared up to date spatial data on personal computers in an office setting as well as phones and tablets in the field. At the time of reporting, the environment was being used to develop and share maps, conduct spatial analyses, communicate restoration plans to stakeholders as well as to provide a central place to store methodologies and tools for conducting field assessments on standardized pre-developed digital forms. The platform can also be used to track the progress of restoration activities and monitor changes in the landscape over time helping encourage the record keeping of past and future restoration activities in a coordinated manner.</p>
+<p><br></p>
+<p>The project was created using scripts currently kept in <a href="https://github.com/NewGraphEnvironment/dff-2022"><code>dff-2022</code></a> with the precise calls to project creation scripts tracked in the <code>project_creation_and_permissions.txt</code> document kept in the main project directory. Information about how GIS project creation and update scripts function can be viewed <a href="https://github.com/NewGraphEnvironment/dff-2022/tree/master/scripts/qgis">here</a> with outcomes of their use summarized below:</p>
+<ul>
+<li>download and clip user specified layers from the <a href="https://catalogue.data.gov.bc.ca/">BC Data Catalougue</a> as well as data layers stored in custom Amazon Web Services buckets for an area of interest defined by a list of watershed groups and load to a geopackage called <code>background_layers.gpkg</code> stored in the main directory of the project. An additional <code>lateral_habitat.tiff</code> layer is also clipped to the user defined area and loaded to the project.</li>
+<li>A project directory is created to hold the spatial data and <code>QGIS</code> project information (ie. layer symbology and naming conventions, metadata, etc.).<br />
+</li>
+<li>Metadata for individual project spatial layers is kept in the <code>rfp_tracking</code> table within the <code>background_layers.gpkg</code> along with tables related to user supplied stream width/gradient inputs to <code>bcfishpass</code> to model potentially high value habitat that is accessible to fish species of interest.</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="methods.html#cb29-1" tabindex="-1"></a><span class="do">## QRis</span></span>
+<span id="cb29-2"><a href="methods.html#cb29-2" tabindex="-1"></a><span class="co"># [QGIS Riverscapes Studio](https://qris.riverscapes.net/) (QRis) is a free plugin for QGIS that helps you digitize your riverscape data. QRis is a great planning tool for helping users with spatial representation of riverscapes. </span></span>
+<span id="cb29-3"><a href="methods.html#cb29-3" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb29-4"><a href="methods.html#cb29-4" tabindex="-1"></a><span class="co"># QRis has two distinct types of features:</span></span>
+<span id="cb29-5"><a href="methods.html#cb29-5" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb29-6"><a href="methods.html#cb29-6" tabindex="-1"></a><span class="co">#   * Static: These are features that are relatively permanent, such as the valley bottom.</span></span>
+<span id="cb29-7"><a href="methods.html#cb29-7" tabindex="-1"></a><span class="co">#   * Dynamic: These are features that change over time, such as the active channel.</span></span>
+<span id="cb29-8"><a href="methods.html#cb29-8" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb29-9"><a href="methods.html#cb29-9" tabindex="-1"></a><span class="co"># QRis will be a useful tool for digitizing the upper Wetzin&#39;kwa river and prioritizing restoration sites. To start using QRis, follow the instructions for [getting started](https://qris.riverscapes.net/getting-started/).</span></span></code></pre></div>
+</div>
+<div id="past-restoration" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Past Restoration<a href="methods.html#past-restoration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Information regarding past restoration prescriptions and activities is an important component of the restoration planning process. A wealth of information is present for the Neexdzii Kwah however it is located in many different locations and not always spatially represented. To address this, a comprehensive review of past restoration activities was conducted. This review included a review of the literature, interviews with local experts, and a review of the restoration prescriptions and activities that have been conducted in the Neexdzii Kwah. For information regarding relatively recent restoration efforts such as physical works conducted through Healthy Watersheds Initiative, representatives from the Morice Watershed Monitoring Trust amalgamated all information located on physical drives and either provided emails with the data attached or provided links to the data for the study team for download and review. This information was then subsequently downloaded and re-uploaded to a <code>OneDrive</code> folder for the study team to access. Additional data was also sourced from the Skeena Salmon Data Centre using the application programming interface to their CKAN database.</p>
 
-─ Packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
- package         * version    date (UTC) lib source
- bcdata            0.4.1      2023-03-18 [1] CRAN (R 4.3.0)
- bit               4.0.5      2022-11-15 [1] CRAN (R 4.3.0)
- bit64             4.0.5      2020-08-30 [1] CRAN (R 4.3.0)
- blob              1.2.4      2023-03-17 [1] CRAN (R 4.3.0)
- bookdown        * 0.38       2024-03-04 [1] CRAN (R 4.3.1)
- bslib             0.6.1      2023-11-28 [1] CRAN (R 4.3.2)
- cachem            1.0.8      2023-05-01 [1] CRAN (R 4.3.0)
- callr             3.7.3      2022-11-02 [1] CRAN (R 4.3.0)
- cellranger        1.1.0      2016-07-27 [1] CRAN (R 4.3.0)
- chattr            0.0.0.9006 2024-01-19 [1] Github (mlverse/chattr@b0dde1b)
- chk               0.9.1.9000 2024-01-08 [1] Github (poissonconsulting/chk@7ebd4b3)
- class             7.3-22     2023-05-03 [2] CRAN (R 4.3.2)
- classInt          0.4-10     2023-09-05 [1] CRAN (R 4.3.0)
- cli               3.6.2      2023-12-11 [1] CRAN (R 4.3.1)
- clipr             0.8.0      2022-02-22 [1] CRAN (R 4.3.0)
- colorspace        2.1-0      2023-01-23 [1] CRAN (R 4.3.0)
- conflicted      * 1.2.0.9000 2024-01-11 [1] Github (r-lib/conflicted@321d77c)
- crayon            1.5.2      2022-09-29 [1] CRAN (R 4.3.0)
- crul              1.4.0      2023-05-17 [1] CRAN (R 4.3.0)
- curl              5.2.0      2023-12-08 [1] CRAN (R 4.3.1)
- datapasta         3.1.0      2020-01-17 [1] CRAN (R 4.3.0)
- DBI               1.2.1      2024-01-12 [1] CRAN (R 4.3.2)
- dbplyr            2.4.0      2023-10-26 [1] CRAN (R 4.3.1)
- devtools        * 2.4.5      2022-10-11 [1] CRAN (R 4.3.0)
- digest            0.6.34     2024-01-11 [1] CRAN (R 4.3.1)
- dplyr           * 1.1.4      2023-11-17 [1] CRAN (R 4.3.1)
- e1071             1.7-14     2023-12-06 [1] CRAN (R 4.3.1)
- ellipsis          0.3.2      2021-04-29 [1] CRAN (R 4.3.0)
- evaluate          0.23       2023-11-01 [1] CRAN (R 4.3.2)
- fansi             1.0.6      2023-12-08 [1] CRAN (R 4.3.1)
- farver            2.1.1      2022-07-06 [1] CRAN (R 4.3.0)
- fasstr          * 0.5.1      2023-03-22 [1] CRAN (R 4.3.0)
- fastmap           1.1.1      2023-02-24 [1] CRAN (R 4.3.0)
- fishbc          * 0.2.1      2021-05-12 [1] CRAN (R 4.3.0)
- fontawesome       0.5.2      2023-08-19 [1] CRAN (R 4.3.2)
- forcats         * 1.0.0      2023-01-29 [1] CRAN (R 4.3.0)
- fpr             * 1.1.0      2024-03-06 [1] Github (newgraphenvironment/fpr@f3c021e)
- fs                1.6.3      2023-07-20 [1] CRAN (R 4.3.0)
- fwapgr            0.1.0.9014 2024-01-26 [1] Github (poissonconsulting/fwapgr@26c0daf)
- generics          0.1.3      2022-07-05 [1] CRAN (R 4.3.0)
- geojsonsf         2.0.3      2022-05-30 [1] CRAN (R 4.3.0)
- ggdark          * 0.2.1      2019-01-11 [1] CRAN (R 4.3.0)
- ggplot2         * 3.4.4      2023-10-12 [1] CRAN (R 4.3.1)
- glue              1.7.0      2024-01-09 [1] CRAN (R 4.3.1)
- gtable            0.3.4      2023-08-21 [1] CRAN (R 4.3.0)
- highr             0.10       2022-12-22 [1] CRAN (R 4.3.2)
- hms               1.1.3      2023-03-21 [1] CRAN (R 4.3.0)
- htmltools         0.5.7      2023-11-03 [1] CRAN (R 4.3.1)
- htmlwidgets       1.6.4      2023-12-06 [1] CRAN (R 4.3.1)
- httpcode          0.3.0      2020-04-10 [1] CRAN (R 4.3.0)
- httpuv            1.6.14     2024-01-26 [1] CRAN (R 4.3.1)
- httr              1.4.7      2023-08-15 [1] CRAN (R 4.3.0)
- httr2             1.0.0      2023-11-14 [1] CRAN (R 4.3.1)
- janitor           2.2.0      2023-02-02 [1] CRAN (R 4.3.0)
- jquerylib         0.1.4      2021-04-26 [1] CRAN (R 4.3.2)
- jsonlite          1.8.8      2023-12-04 [1] CRAN (R 4.3.1)
- kableExtra        1.4.0      2024-01-24 [1] CRAN (R 4.3.1)
- KernSmooth        2.23-22    2023-07-10 [2] CRAN (R 4.3.2)
- knitr           * 1.45       2023-10-30 [1] CRAN (R 4.3.2)
- labeling          0.4.3      2023-08-29 [1] CRAN (R 4.3.0)
- later             1.3.2      2023-12-06 [1] CRAN (R 4.3.1)
- lifecycle         1.0.4      2023-11-07 [1] CRAN (R 4.3.2)
- lubridate       * 1.9.3      2023-09-27 [1] CRAN (R 4.3.1)
- magrittr          2.0.3      2022-03-30 [1] CRAN (R 4.3.0)
- memoise           2.0.1      2021-11-26 [1] CRAN (R 4.3.2)
- mime              0.12       2021-09-28 [1] CRAN (R 4.3.0)
- miniUI            0.1.1.1    2018-05-18 [1] CRAN (R 4.3.0)
- munsell           0.5.0      2018-06-12 [1] CRAN (R 4.3.0)
- pagedown        * 0.20       2022-12-13 [1] CRAN (R 4.3.0)
- pak               0.7.1      2023-12-11 [1] CRAN (R 4.3.1)
- pgfeatureserv     0.0.0.9003 2024-01-26 [1] Github (poissonconsulting/pgfeatureserv@88af067)
- pillar            1.9.0      2023-03-22 [1] CRAN (R 4.3.0)
- pkgbuild          1.4.3      2023-12-10 [1] CRAN (R 4.3.1)
- pkgconfig         2.0.3      2019-09-22 [1] CRAN (R 4.3.0)
- pkgload           1.3.4      2024-01-16 [1] CRAN (R 4.3.1)
- png               0.1-8      2022-11-29 [1] CRAN (R 4.3.0)
- poisutils         0.0.0.9010 2024-01-08 [1] Github (poissonconsulting/poisutils@8310dc4)
- processx          3.8.3      2023-12-10 [1] CRAN (R 4.3.1)
- profvis           0.3.8      2023-05-02 [1] CRAN (R 4.3.0)
- promises          1.2.1      2023-08-10 [1] CRAN (R 4.3.0)
- proxy             0.4-27     2022-06-09 [1] CRAN (R 4.3.0)
- ps                1.7.6      2024-01-18 [1] CRAN (R 4.3.1)
- purrr           * 1.0.2      2023-08-10 [1] CRAN (R 4.3.0)
- R6                2.5.1      2021-08-19 [1] CRAN (R 4.3.2)
- ragg              1.2.7      2023-12-11 [1] CRAN (R 4.3.1)
- rappdirs          0.3.3      2021-01-31 [1] CRAN (R 4.3.0)
- Rcpp              1.0.12     2024-01-09 [1] CRAN (R 4.3.1)
- RcppRoll          0.3.0      2018-06-05 [1] CRAN (R 4.3.0)
- readr           * 2.1.5      2024-01-10 [1] CRAN (R 4.3.1)
- readwritesqlite * 0.2.0      2022-10-16 [1] CRAN (R 4.3.0)
- readxl            1.4.3      2023-07-06 [1] CRAN (R 4.3.0)
- remotes           2.4.2.1    2023-07-18 [1] CRAN (R 4.3.0)
- rfp             * 0.0.0.9000 2024-02-22 [1] local
- rJava             1.0-10     2023-12-02 [1] CRAN (R 4.3.1)
- rlang             1.1.3      2024-01-10 [1] CRAN (R 4.3.1)
- rmarkdown       * 2.26       2024-03-05 [1] CRAN (R 4.3.1)
- roxygen2          7.3.1      2024-01-22 [1] CRAN (R 4.3.1)
- RPostgres       * 1.4.6      2023-10-22 [1] CRAN (R 4.3.1)
- RSQLite           2.3.4      2023-12-08 [1] CRAN (R 4.3.1)
- rstudioapi        0.15.0     2023-07-07 [1] CRAN (R 4.3.0)
- sass              0.4.8      2023-12-06 [1] CRAN (R 4.3.1)
- scales            1.3.0      2023-11-28 [1] CRAN (R 4.3.1)
- sessioninfo       1.2.2      2021-12-06 [1] CRAN (R 4.3.0)
- sf              * 1.0-15     2023-12-18 [1] CRAN (R 4.3.2)
- shiny           * 1.8.0      2023-11-17 [1] CRAN (R 4.3.1)
- shrtcts           0.1.2      2024-01-25 [1] Github (gadenbuie/shrtcts@41051cf)
- snakecase         0.11.1     2023-08-27 [1] CRAN (R 4.3.0)
- stringi           1.8.3      2023-12-11 [1] CRAN (R 4.3.1)
- stringr         * 1.5.1      2023-11-14 [1] CRAN (R 4.3.2)
- svglite           2.1.3      2023-12-08 [1] CRAN (R 4.3.1)
- systemfonts       1.0.5      2023-10-09 [1] CRAN (R 4.3.1)
- tabulizer         0.2.3      2024-03-15 [1] Github (ropensci/tabulizer@bfc79cb)
- tabulizerjars     1.0.1      2024-03-15 [1] Github (ropensci/tabulizerjars@d1924e0)
- textshaping       0.3.7      2023-10-09 [1] CRAN (R 4.3.1)
- tibble          * 3.2.1      2023-03-20 [1] CRAN (R 4.3.0)
- tidyhydat       * 0.6.1      2024-01-11 [1] CRAN (R 4.3.1)
- tidyr           * 1.3.0      2023-01-24 [1] CRAN (R 4.3.0)
- tidyselect        1.2.0      2022-10-10 [1] CRAN (R 4.3.0)
- tidyverse       * 2.0.0      2023-02-22 [1] CRAN (R 4.3.0)
- timechange        0.3.0      2024-01-18 [1] CRAN (R 4.3.1)
- triebeard         0.4.1      2023-03-04 [1] CRAN (R 4.3.0)
- tzdb              0.4.0      2023-05-12 [1] CRAN (R 4.3.0)
- units             0.8-5      2023-11-28 [1] CRAN (R 4.3.1)
- urlchecker        1.0.1      2021-11-30 [1] CRAN (R 4.3.0)
- urltools          1.7.3      2019-04-14 [1] CRAN (R 4.3.0)
- usethis         * 2.2.2      2023-07-06 [1] CRAN (R 4.3.0)
- utf8              1.2.4      2023-10-22 [1] CRAN (R 4.3.1)
- vctrs             0.6.5      2023-12-01 [1] CRAN (R 4.3.1)
- viridisLite       0.4.2      2023-05-02 [1] CRAN (R 4.3.0)
- vroom             1.6.5      2023-12-05 [1] CRAN (R 4.3.1)
- withr             3.0.0      2024-01-16 [1] CRAN (R 4.3.1)
- xfun              0.41       2023-11-01 [1] CRAN (R 4.3.1)
- xml2              1.3.6      2023-12-04 [1] CRAN (R 4.3.1)
- xtable            1.8-4      2019-04-21 [1] CRAN (R 4.3.0)
- yaml              2.3.8      2023-12-11 [1] CRAN (R 4.3.1)
- yesno             0.1.2.9000 2024-01-11 [1] Github (poissonconsulting/yesno@2318599)
-
- [1] /Users/airvine/Library/R/arm64/4.3/library
- [2] /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library
-
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
-
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="background.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="results.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
