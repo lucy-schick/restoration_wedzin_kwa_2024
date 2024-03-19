@@ -64,4 +64,85 @@ ncfdc_1998_71a %>%
 ```
 
 
+## GIS parameters to Rank Future Restoration Sites
+
+A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the `restoration_site_priority_parameters.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv) is included in Table \@ref(tab:tab-gis-params).
+
+<br>
+
+```{r gis-params-update_meta, eval = gis_update}
+
+# load the data
+gis_params_raw_all <- readr::read_csv(
+  "data/inputs_raw/restoration_site_priority_parameters_raw.csv"
+) 
+
+
+gis_params_raw_to_update <- gis_params_raw_all %>% 
+  dplyr::filter(!is.na(source_schema_table) & 
+                  !is.na(source_column_name) &
+                  !str_detect(source_schema_table, "bcfishobs|bcfishpass")) %>% 
+  # we know that whse_forest_tenure.ften_range_poly_carto_vw is problematic so lets remove
+  dplyr::filter(!str_detect(source_schema_table, "whse_forest_tenure.ften_range_poly_carto_vw"))
+
+
+# grab the details about the source_schema_table as source_schema_table_details and then the 
+# source_column_name as source_column_name_details
+gis_param_details_prep_schtab <- left_join(
+  
+  gis_params_raw_to_update,
+  
+  rfp::rfp_meta_bcd_xref(),
+  
+  by = c("source_schema_table" = "object_name")
+)
+  
+
+# grab the column details
+params_cols_des <- purrr::map2_df(gis_param_details_prep_schtab$source_schema_table, gis_param_details_prep_schtab$source_column_name, rfp::rfp_meta_bcd_xref_col_comments)
+
+# left_join the column details to the gis_param_details_prep_schtab
+gis_param_details_prep <- left_join(
+  gis_param_details_prep_schtab,
+  params_cols_des,
+  by = c("source_schema_table" = "object_name", "source_column_name" = "col_name")
+)
+
+# need to add back all the layers filtered out above - this should not be repeated but will do for now
+gis_params_raw_all_updated <- bind_rows(
+  gis_params_raw_all %>% 
+    dplyr::filter(is.na(source_schema_table) | 
+                    is.na(source_column_name) |
+                    str_detect(source_schema_table, "bcfishobs|bcfishpass") |
+                    str_detect(source_schema_table, "whse_forest_tenure.ften_range_poly_carto_vw")),
+  gis_param_details_prep
+) %>% 
+  dplyr::mutate(url_browser = case_when(
+    str_detect(source_schema_table, "bcfishobs|bcfishpass") ~ "https://smnorris.github.io/bcfishpass/06_data_dictionary.html",
+    TRUE ~ url_browser)
+  ) %>% 
+  arrange(source_schema_table, source_column_name, column_name_raw)
+
+# this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag
+gis_params_raw_all_updated %>% 
+  write_csv("data/restoration_site_priority_parameters.csv")
+
+```
+
+```{r tab-gis-params, eval = gis_update}
+gis_param_details <- read_csv("data/restoration_site_priority_parameters.csv") %>% 
+  dplyr::select(
+    source_schema_table, 
+                source_column_name,
+    column_name_raw,
+    user_input,
+    url_browser,
+    description_table = description,
+    col_comments
+    ) %>% 
+  fpr::fpr_kable(caption_text = "GIS parameters used to rank future restoration sites.")
+
+  
+```
+
 
