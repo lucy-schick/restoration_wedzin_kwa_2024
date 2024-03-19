@@ -110,4 +110,14 @@ gpkg_info %>%
             file = "../data/sites_restoration_gpkg_tracking.csv")
 ```
 
+<br>
+
+
+In order to render this memo we need a work around from the standard bookdown method. We run this command below
+by hand in the console to render the document to a new directory called `memos`.
+
+```{r render-manual, eval = FALSE}
+rmarkdown::render("scripts/track_sites_restoration.Rmd", output_file = "track_sites_restoration.html", output_dir = "memos")
+
+```
 

@@ -2,10 +2,7 @@
 
 {
   library(tidyverse)
-  library(readwritesqlite)
-  library(data.table)
   library(sf)
-  # library(readxl)
   library(tabulizer)
 }
 
