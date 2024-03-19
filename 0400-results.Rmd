@@ -4,7 +4,7 @@
 
 A summary of background information layers loaded to the `background_layers.gpkg` geopackage of the `restoration_wedzin_kwa` project at the time of writing are included in Table \@ref(tab:tab-rfp-tracking).
 
-```{r rfp-tracking-copy, eval = FALSE}
+```{r rfp-tracking-copy, eval = gis_update}
 # first we will copy the doc from the Q project to this repo
 q_path_stub <- "/Users/airvine/Projects/gis/restoration_wedzin_kwa/"
 

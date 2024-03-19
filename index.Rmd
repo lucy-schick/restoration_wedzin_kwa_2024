@@ -56,8 +56,17 @@ photo_width <- "80%"
 font_set <- 9
 ```
 
+```{r settings-gis-update}
+gis_update <- FALSE
+# gis_update <- TRUE
 
-```{r}
+```
+
+
+
+
+
+```{r source-files}
 source('scripts/packages.R')
 source('scripts/functions.R')
 source('scripts/tables.R')
