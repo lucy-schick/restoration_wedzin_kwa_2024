@@ -240,7 +240,7 @@ Now we will burn both the sites and the fencelines to a geopackage to share with
 names to sites may be to do it manually in QGIS so we will burn out our finished product directly to the QGIS project 
 directory. We turn this chunk off so that we only do it once vs every time we produce this memo.
 
-```{r burn-to-geopackage, eval = TRUE}
+```{r burn-to-geopackage, eval = FALSE}
 # write to geopackage
 sites_joined_raw %>% 
   # remove the fid
