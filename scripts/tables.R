@@ -7,3 +7,22 @@ restoration_principles_pb <- tibble::tribble(
                             )
 
 restoration_principles_pb_caption <- "Principles of process-based restoration adapted from Beechie et al. (2010). Developed with the aid of GPT-4 as tracked in this link https://chat.openai.com/share/fb0de9b0-0d79-40f8-aec4-a35ac14c1164."
+
+
+
+ncfdc_1998_71a  <- tibble::tribble(
+  ~`Sub-Basin`, ~Fish.Values, ~Watershed.Value, ~Level.of.Impact, ~Cumulative.Impacts, ~Rank,
+  "Richfield",           6L,               3L,               2L,                  1L,    1L,
+    "Emerson",           2L,               8L,               1L,                  2L,    2L,
+  "McQuarrie",           7L,               4L,               3L,                  3L,    3L,
+     "Barren",           5L,               6L,               4L,                  4L,    4L,
+     "Aitken",           8L,               2L,               5L,                  6L,    5L,
+      "Byman",           4L,               5L,               6L,                  5L,    6L,
+       "Buck",           3L,               1L,               7L,                  7L,    7L,
+    "Bulkley",           1L,               7L,               8L,                  8L,    8L
+  )
+
+
+ncfdc_1998_71a_caption <- "Adapted from NCFDC (1998) Table 71a: Sub-Basin priority for restoration based on ranks assigned for
+fish values, relative watershed value (basin size, position), level of land-use impacts, and level of cumulative
+impacts. For the latter, a lower rank is assigned for a lower level of impact. Highest priority is 1 and lowest is 8."
