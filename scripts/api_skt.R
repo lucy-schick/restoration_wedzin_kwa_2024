@@ -132,3 +132,4 @@ fetch_package(package_nm= "annual-compendium-of-aquatic-rehabilitation-projects-
 fetch_package(package_nm= "upper-bulkley-restoration-sites")
 fetch_package(package_nm= "as-built-report-of-aquatic-restoration-2016")
 fetch_package(package_nm= "as-built-report-of-aquatic-restoration-2017")
+fetch_package(package_nm= "mid-bulkley-detailed-fish-habitat-riparian-channel-assessment-for-watershed-restoration")
