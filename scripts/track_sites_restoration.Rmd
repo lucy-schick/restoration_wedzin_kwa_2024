@@ -1,7 +1,10 @@
 ---
 title: "track sites_restoration.gpkg"
-output: html_document
-date: "2024-03-15"
+date: "Created: 2024-03-15 | Updated: `r format(Sys.Date(), '%Y-%m-%d')`"
+output: 
+  html_document:
+    code_folding: "hide"
+
 ---
 
 ```{r setup, include=FALSE}
@@ -12,7 +15,7 @@ options(knitr.kable.NA = '--') #'--'
 options(knitr.kable.NAN = '--')
 ```
 
-```{r}
+```{r pkgs-load}
 library(sf)
 library(tidyverse)
 ```
@@ -48,7 +51,7 @@ gpkg_info_raw <- map_dfr(layer_names, function(layer) {
 
 
 
-```{r sources-list, eval = FALSE}
+```{r sources-list, eval = TRUE}
 # these both were used for sites poly
 sites_poly_source <- "~/Library/CloudStorage/OneDrive-Personal/Projects/2024-069-ow-wedzin-kwa-restoration/data/historic_site_info/TreatmentSitesMaster/TreatmentSitesMaster.shp"
 sites_poly_source2 <- "~/Library/CloudStorage/OneDrive-Personal/Projects/2024-069-ow-wedzin-kwa-restoration/data/historic_site_info/UB Restoration Site Names.xlsx"
@@ -102,9 +105,9 @@ gpkg_info <- gpkg_info_raw %>%
 <br>
 
 Ok.  A bit of a pain but a good start and in a format that we can see raw on github and import and wrangle within
-our reporting later.  Let's burn it out and commit to the repo.
+our reporting later.  Let's burn it out and commit to the repo [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/sites_restoration_gpkg_tracking.csv).
 
-```{r csv-burn}
+```{r csv-burn, eval=FALSE}
 gpkg_info %>% 
   write_csv(na = "",
             file = "../data/sites_restoration_gpkg_tracking.csv")
