@@ -56,11 +56,12 @@ Information amalgamated from past restoration initiatives has been added to the 
 @ncfdc1998 utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah
 with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the
 digital deliverables could not be recovered.  Their work persists in pdf format however with summarized details of 
-their prioritization work and prescription locations extracted from the pdf and included in the `ncfdc_1998_prescriptions_raw.csv` file located and viewable [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions_raw.csv).  The prioritization table for sub-basins in the region are included in Table \@ref(tab:tab-ncfdc_1998_priority). Next steps for this dataset include mining of prescription locations and addition to the csv so that it can be converted to a spatial file and added to the `restoration_wedzin_kwa` project through the `sites_restoration.gpkg`.
+their prioritization work and prescription locations extracted from the pdf and included in the `ncfdc_1998_prescriptions_raw.csv` file located and viewable [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions_raw.csv).  The prioritization table for sub-basins in the region are included in Table \@ref(tab:tab-ncfdc-1998-priority). Next steps for this dataset include mining of prescription locations and addition to the csv so that it can be converted to a spatial file and added to the `restoration_wedzin_kwa` project through the `sites_restoration.gpkg`.
 
-```{r tab-ncfdc_1998_priority}
+```{r tab-ncfdc-1998-priority}
 ncfdc_1998_71a %>% 
-  fpr::fpr_kable(caption_text = "Table 71a from the NCFDC 1998 report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.")
+  fpr::fpr_kable(caption_text = "Table 71a from the NCFDC 1998 report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.",
+                 scroll = FALSE)
 ```
 
 
@@ -129,8 +130,8 @@ gis_params_raw_all_updated %>%
 
 ```
 
-```{r tab-gis-params, eval = gis_update}
-gis_param_details <- read_csv("data/restoration_site_priority_parameters.csv") %>% 
+```{r tab-gis-params, eval = TRUE}
+read_csv("data/restoration_site_priority_parameters.csv") %>% 
   dplyr::select(
     source_schema_table, 
                 source_column_name,
@@ -140,7 +141,8 @@ gis_param_details <- read_csv("data/restoration_site_priority_parameters.csv") %
     description_table = description,
     col_comments
     ) %>% 
-  fpr::fpr_kable(caption_text = "GIS parameters used to rank future restoration sites.")
+  fpr::fpr_kable(caption_text = "GIS parameters used to rank future restoration sites.",
+                 scroll = gitbook_on)
 
   
 ```
