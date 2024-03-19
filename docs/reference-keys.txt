@@ -11,6 +11,8 @@ fig:SEM-stages
 fig:SEM-hab-benifits
 fig:all-benefits
 tab:tab-rfp-tracking
+tab:tab-ncfdc-1998-priority
+tab:tab-gis-params
 introduction
 wetsuweten
 widzin-kwah-water-sustainability-project
@@ -36,7 +38,8 @@ results
 collaborative-gis-environment-1
 methodology
 past-restoration-initiatives
-future-restoration-initiatives
-target-sites
-priotization-matrix
+works-in-progress
+gis-parameters-to-rank-future-restoration-sites
+methodology-1
+methodology-2
 recomendations
