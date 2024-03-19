@@ -1,5 +1,5 @@
 --- 
-title: "Restoration Initiatives for the Widzin Kwah 2024"
+title: "Neexdzii Kwah Restoration Planning 2024"
 author: |
  |
  | Prepared for
@@ -9,10 +9,12 @@ author: |
  | Prepared by
  | Al Irvine, B.Sc., R.P.Bio. and Lucy Schick, B.Sc.
  | New Graph Environment Ltd.
+ | on behalf of 
+ | Society for Ecosystem Restoration in Northern British Columbia
 
 date: |
  |
- | Version 0.0.3 `r format(Sys.Date(), "%Y-%m-%d")`
+ | Version 0.0.1 `r format(Sys.Date(), "%Y-%m-%d")`
 toc-title: Table of Contents
 site: bookdown::bookdown_site
 output: 

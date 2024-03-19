@@ -4,10 +4,10 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">Restoration Initiatives for the Upper Wetzin'kwa Watershed 2024</a></li>
+        <li><a href="./">Neexdzii Kwah Restoration Planning 2024</a></li>
       after: |
         <li><a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024" target="blank">Scripts and Data</a></li>
-    download: ["OW2024.pdf", "OW2024.html"]
+    download: ["Restoration_Neexdzii_Kwah_2024.pdf", "Restoration_Neexdzii_Kwah_2024.html"]
     fontsettings:
       theme: night
       family: sans
