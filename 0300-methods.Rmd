@@ -10,7 +10,7 @@ To facilitate the planning and implementation of restoration activities in the N
 
 <br>
 
-The project was created using scripts currently kept in [`dff-2022`](https://github.com/NewGraphEnvironment/dff-2022) with the precise calls to project creation scripts tracked in the `project_creation_and_permissions.txt` document kept in the main project directory. Information about how GIS project creation and update scripts function can be viewed [here](https://github.com/NewGraphEnvironment/dff-2022/tree/master/scripts/qgis) with outcomes of their use summarized below:
+The shared QGIS project was created using scripts currently kept in [`dff-2022`](https://github.com/NewGraphEnvironment/dff-2022) with the precise calls to project creation scripts tracked in the `project_creation_and_permissions.txt` document kept in the main project directory. Information about how GIS project creation and update scripts function can be viewed [here](https://github.com/NewGraphEnvironment/dff-2022/tree/master/scripts/qgis) with outcomes of their use summarized below:
 
   - download and clip user specified layers from the [BC Data Catalougue](https://catalogue.data.gov.bc.ca/) as well as data layers stored in custom Amazon Web Services buckets for an area of interest defined by a list of watershed groups and load to a geopackage called `background_layers.gpkg` stored in the main directory of the project.  An additional `lateral_habitat.tiff` layer is also clipped to the user defined area and loaded to the project.
   - A project directory is created to hold the spatial data and `QGIS` project information (ie. layer symbology and naming conventions, metadata, etc.).  
@@ -28,6 +28,23 @@ The project was created using scripts currently kept in [`dff-2022`](https://git
 # QRis will be a useful tool for digitizing the upper Wetzin'kwa river and prioritizing restoration sites. To start using QRis, follow the instructions for [getting started](https://qris.riverscapes.net/getting-started/).
 ```
 
-## Past Restoration
+## Past Restoration Site Identification
 Information regarding past restoration prescriptions and activities is an important component of the restoration planning process. A wealth of information is present for the Neexdzii Kwah however it is located in many different locations and not always spatially represented.  To address this, a comprehensive review of past restoration activities is underway. This review included a review of the literature, interviews with local experts, and a review of the restoration prescriptions and activities that have been conducted in the Neexdzii Kwah. For information regarding relatively recent restoration efforts such as physical works conducted through Healthy Watersheds Initiative, representatives from the Morice Watershed Monitoring Trust amalgamated all information located on physical drives and either provided emails with the data attached or provided links to the data for the study team for download and review.  This information was then subsequently downloaded and re-uploaded to a `OneDrive` folder for the study team to access.  Additional data was also sourced from the [Skeena Salmon Data Centre](https://data.skeenasalmon.info/) using the application programming interface to their [CKAN](https://ckan.org/features/api) database.  
+
+## Future Restoration Site Selection
+The methodology for selection of future sites includes two approaches:
+
+The project team will select among some known areas of riparian removal and bank erosion where landowners are ameniable
+to project activities including installation of cattle exclusion fencing and riparian planting in the next two fiscal years.
+
+<br>
+
+Analysis of background and spatial data to feed priority ranking criteria used to select sites for restoration activities
+in the long term. Included in this process can be:
+
+  - evaluation of historic and current imagery to understand morphological changes in the Neexdzii Kwah and its tributaries
+  that have degraded watershed health and fish habitat.
+  - identification of areas known to have been impacted by past land use activities such as logging, mining, and road building.
+  - idenfication of areas of high fisheries values based on known spawning and rearing habitat for fish species of interest.
+  
 
