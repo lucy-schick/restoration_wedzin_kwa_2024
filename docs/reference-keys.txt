@@ -33,11 +33,12 @@ process-based-restoration
 stage-0
 methods
 collaborative-gis-environment
-past-restoration
+past-restoration-site-identification
+future-restoration-site-selection
 results
 collaborative-gis-environment-1
 methodology
 past-restoration-initiatives
 works-in-progress
 gis-parameters-to-rank-future-restoration-sites
-recomendations
+recommendations
