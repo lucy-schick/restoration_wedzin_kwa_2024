@@ -1,5 +1,6 @@
 # Recomendations
 
-  - Conduct an analysis of low flow periods at station 08EE003 located near Houston to evaluate the trend of flow volumes over the period of record.  A declining trend was noted between 1930 and 2000 at the Bulkley River at Quick (station #08EE002) by @gottesfeld_rabnett2007SkeenaFish.
-  - Conduct field assessments at all past restoration sites (HWI, MWMT, WFN, FIA, etc.) using pre-determined monitoring criteria to evaluate effectiveness of the work for achieving stated or inferred project objectives. Watershed Restoration Procedures - Routine effectiveness evaluation procedures and riparian inventory techniques (LMH25 - percent cover by structural stage, species composition, etc.) utilizing pre-built forms in the collaborative GIS project.
+ 
+  - Develop a monitoring plan for the Neexdzii Kwah watershed restoration works that incorporates past monitoring methodology and includes more details of a monitoring schedule, monitoring objectives, and monitoring methods. Methodology using Watershed Restoration Procedures - Routine effectiveness evaluation procedures and riparian inventory techniques (LMH25 - percent cover by structural stage, species composition, etc.) could be utilized using pre-built digital forms in the collaborative GIS project.
+   - Conduct field assessments at all past restoration sites (HWI, MWMT, WFN, FIA, etc.) using both past monitoring criteria and updated methods.
 
