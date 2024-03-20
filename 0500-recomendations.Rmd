@@ -1,6 +1,7 @@
-# Recomendations
+# Recommendations
 
- 
-  - Develop a monitoring plan for the Neexdzii Kwah watershed restoration works that incorporates past monitoring methodology and includes more details of a monitoring schedule, monitoring objectives, and monitoring methods. Methodology using Watershed Restoration Procedures - Routine effectiveness evaluation procedures and riparian inventory techniques (LMH25 - percent cover by structural stage, species composition, etc.) could be utilized using pre-built digital forms in the collaborative GIS project.
-   - Conduct field assessments at all past restoration sites (HWI, MWMT, WFN, FIA, etc.) using both past monitoring criteria and updated methods.
-
+-   Develop a monitoring plan for the Neexdzii Kwah watershed restoration works that incorporates past monitoring methodology and includes more details of a monitoring schedule, monitoring objectives, and monitoring methods. Methodology using Watershed Restoration Procedures - Routine effectiveness evaluation procedures and riparian inventory techniques (LMH25 - percent cover by structural stage, species composition, etc.) could be utilized using pre-built digital forms in the collaborative GIS project.
+-   Conduct field assessments at all past restoration sites (HWI, MWMT, WFN, FIA, etc.) using both past monitoring criteria and updated methods.
+-   Evaluate historic imagery to review past restoration sites and assess the effectiveness of past restoration activities.
+-   Further refine parameters to select future restoration sites and develop a scoring system to aid in the prioritization of future sites.\
+-   Develop criteria for minimal setbacks required for cattle exclusion and riparian restoration based on the ecosystem services provided by the riparian area and the potential for the area to provide habitat for fish species of interest. Utilize established standards when possible such as the [Riparian Areas Protection Regulation](https://www2.gov.bc.ca/gov/content/environment/plants-animals-ecosystems/fish/aquatic-habitat-management/riparian-areas-regulation) and the [Riparian Management Area Guidebook](https://www2.gov.bc.ca/gov/content/industry/forestry/managing-our-forest-resources/silviculture/silvicultural-systems/silviculture-guidebooks/riparian-management-area-guidebook) [@ministryofforests1995RiparianManagement].
