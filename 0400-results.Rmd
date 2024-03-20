@@ -138,7 +138,7 @@ read_csv("data/restoration_site_priority_parameters.csv") %>%
     column_name_raw,
     user_input,
     url_browser,
-    description_table = description,
+    # description_table = description,
     col_comments
     ) %>% 
   fpr::fpr_kable(caption_text = "GIS parameters used to rank future restoration sites.",

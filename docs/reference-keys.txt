@@ -40,6 +40,4 @@ methodology
 past-restoration-initiatives
 works-in-progress
 gis-parameters-to-rank-future-restoration-sites
-methodology-1
-methodology-2
 recomendations
