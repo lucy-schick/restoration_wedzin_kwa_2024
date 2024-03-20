@@ -5,7 +5,10 @@
   library(tabulizer)
 }
 
-path <- "/Users/airvine/zotero/storage/33222K2G/ncfdc_1998_mid-bulkley_detailed_fish_habitat-riparian-channel_assessment_for_watershed.pdf"
+source("scripts/functions.R")
+fetch_package(package_nm= "mid-bulkley-detailed-fish-habitat-riparian-channel-assessment-for-watershed-restoration")
+
+path <- "data/skt/mid-bulkley-detailed-fish-habitat-riparian-channel-assessment-for-watershed-restoration/mid-bulkley_detailed_assessment_watershed_restoration_report.pdf"
 
 
 # because this table spans multiple pages we will need to extract the tables from each page and then combine them
@@ -70,5 +73,11 @@ table_10_11 %>%
 # remove nas and - and insert real nas
 
 
+# --------------------------------------------- extract prescriptions
+# now lets try extracting pages 292 - 355 and feeding it to chattr to produce a tribble of all the prescriptions
+##now get rid of the first 10 pages
+pdftools::pdf_subset(path,
+                     pages = 292:355,
+                     output = "data/skt/mid-bulkley-detailed-fish-habitat-riparian-channel-assessment-for-watershed-restoration/mid-bulkley_detailed_assessment_watershed_restoration_report_prescriptions.pdf")
 
 
