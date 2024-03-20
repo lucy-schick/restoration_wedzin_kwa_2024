@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="methods.html"/>
-<link rel="next" href="recomendations.html"/>
+<link rel="next" href="recommendations.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -208,7 +208,8 @@ div.csl-indent {
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#collaborative-gis-environment"><i class="fa fa-check"></i><b>3.1</b> Collaborative GIS Environment</a></li>
-<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#past-restoration"><i class="fa fa-check"></i><b>3.2</b> Past Restoration</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#past-restoration-site-identification"><i class="fa fa-check"></i><b>3.2</b> Past Restoration Site Identification</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#future-restoration-site-selection"><i class="fa fa-check"></i><b>3.3</b> Future Restoration Site Selection</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
 <ul>
@@ -216,7 +217,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#past-restoration-initiatives"><i class="fa fa-check"></i><b>4.2</b> Past Restoration Initiatives</a></li>
 <li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#gis-parameters-to-rank-future-restoration-sites"><i class="fa fa-check"></i><b>4.3</b> GIS parameters to Rank Future Restoration Sites</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="recomendations.html"><a href="recomendations.html"><i class="fa fa-check"></i><b>5</b> Recomendations</a></li>
+<li class="chapter" data-level="5" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>5</b> Recommendations</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="divider"></li>
@@ -244,8 +245,8 @@ div.csl-indent {
 <div id="collaborative-gis-environment-1" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Collaborative GIS Environment<a href="results.html#collaborative-gis-environment-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A summary of background information layers loaded to the <code>background_layers.gpkg</code> geopackage of the <code>restoration_wedzin_kwa</code> project at the time of writing are included in Table <a href="results.html#tab:tab-rfp-tracking">4.1</a>.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="results.html#cb31-1" tabindex="-1"></a><span class="co"># first we will copy the doc from the Q project to this repo</span></span>
-<span id="cb31-2"><a href="results.html#cb31-2" tabindex="-1"></a>q_path_stub <span class="ot">&lt;-</span> <span class="st">&quot;/Users/airvine/Projects/gis/restoration_wedzin_kwa/&quot;</span></span>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="results.html#cb31-1" tabindex="-1"></a><span class="co"># first we will copy the doc from the Q project to this repo - the location of the Q project is outside of the repo!!</span></span>
+<span id="cb31-2"><a href="results.html#cb31-2" tabindex="-1"></a>q_path_stub <span class="ot">&lt;-</span> <span class="st">&quot;~/Projects/gis/restoration_wedzin_kwa/&quot;</span></span>
 <span id="cb31-3"><a href="results.html#cb31-3" tabindex="-1"></a></span>
 <span id="cb31-4"><a href="results.html#cb31-4" tabindex="-1"></a>rfp_tracking_raw <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(<span class="fu">paste0</span>(q_path_stub, <span class="st">&quot;background_layers.gpkg&quot;</span>),</span>
 <span id="cb31-5"><a href="results.html#cb31-5" tabindex="-1"></a>            <span class="at">layer =</span> <span class="st">&quot;rfp_tracking&quot;</span>,</span>
@@ -2647,7 +2648,7 @@ TRUE
         </div>
       </div>
 <a href="methods.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="recomendations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="recommendations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

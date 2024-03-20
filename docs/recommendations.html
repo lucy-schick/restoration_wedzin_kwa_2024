@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Methods | Neexdzii Kwah Restoration Planning 2024</title>
+  <title>5 Recommendations | Neexdzii Kwah Restoration Planning 2024</title>
   <meta name="description" content="Restoration Initiatives for the Widzin Kwah 2024" />
   <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Methods | Neexdzii Kwah Restoration Planning 2024" />
+  <meta property="og:title" content="5 Recommendations | Neexdzii Kwah Restoration Planning 2024" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Restoration Initiatives for the Widzin Kwah 2024" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Methods | Neexdzii Kwah Restoration Planning 2024" />
+  <meta name="twitter:title" content="5 Recommendations | Neexdzii Kwah Restoration Planning 2024" />
   
   <meta name="twitter:description" content="Restoration Initiatives for the Widzin Kwah 2024" />
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="background.html"/>
-<link rel="next" href="results.html"/>
+<link rel="prev" href="results.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -240,60 +240,25 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="methods" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Methods<a href="methods.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="collaborative-gis-environment" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Collaborative GIS Environment<a href="methods.html#collaborative-gis-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Geographical Information Systems are essential for understanding restoration plans and the reasons they are required. Without the ability to visualize the landscape and the data that is used to make decisions it is difficult to
-conduct and communicate the need for restoration, the details of past and future plans as well as and the potential results of physical works.</p>
-<p><br></p>
-<p>To facilitate the planning and implementation of restoration activities in the Neexdzii Kwah (and elsewhere within the Widzin Kwah Water Sustainability Project area), a collaborative GIS environment (titled <code>restoration_wedzin_kwa</code>) has been established using <a href="https://qgis.org/en/site/">QGIS</a> and <a href="https://merginmaps.com/">Mergin Maps</a> (source code <a href="https://github.com/MerginMaps">here</a>. This environment is intended to be a space where project team members can access and view and contribute to the amalgamation of background spatial data and the development of restoration as well as monitoring for the project. The collaborative GIS environment allows users to view, edit, and analyze shared up to date spatial data on personal computers in an office setting as well as phones and tablets in the field. At the time of reporting, the environment was being used to develop and share maps, conduct spatial analyses, communicate restoration plans to stakeholders as well as to provide a central place to store methodologies and tools for conducting field assessments on standardized pre-developed digital forms. The platform can also be used to track the progress of restoration activities and monitor changes in the landscape over time helping encourage the record keeping of past and future restoration activities in a coordinated manner.</p>
-<p><br></p>
-<p>The shared QGIS project was created using scripts currently kept in <a href="https://github.com/NewGraphEnvironment/dff-2022"><code>dff-2022</code></a> with the precise calls to project creation scripts tracked in the <code>project_creation_and_permissions.txt</code> document kept in the main project directory. Information about how GIS project creation and update scripts function can be viewed <a href="https://github.com/NewGraphEnvironment/dff-2022/tree/master/scripts/qgis">here</a> with outcomes of their use summarized below:</p>
+<div id="recommendations" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Recommendations<a href="recommendations.html#recommendations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <ul>
-<li>download and clip user specified layers from the <a href="https://catalogue.data.gov.bc.ca/">BC Data Catalougue</a> as well as data layers stored in custom Amazon Web Services buckets for an area of interest defined by a list of watershed groups and load to a geopackage called <code>background_layers.gpkg</code> stored in the main directory of the project. An additional <code>lateral_habitat.tiff</code> layer is also clipped to the user defined area and loaded to the project.</li>
-<li>A project directory is created to hold the spatial data and <code>QGIS</code> project information (ie. layer symbology and naming conventions, metadata, etc.).<br />
+<li>Develop a monitoring plan for the Neexdzii Kwah watershed restoration works that incorporates past monitoring methodology and includes more details of a monitoring schedule, monitoring objectives, and monitoring methods. Methodology using Watershed Restoration Procedures - Routine effectiveness evaluation procedures and riparian inventory techniques (LMH25 - percent cover by structural stage, species composition, etc.) could be utilized using pre-built digital forms in the collaborative GIS project.</li>
+<li>Conduct field assessments at all past restoration sites (HWI, MWMT, WFN, FIA, etc.) using both past monitoring criteria and updated methods.</li>
+<li>Evaluate historic imagery to review past restoration sites and assess the effectiveness of past restoration activities.</li>
+<li>Further refine parameters to select future restoration sites and develop a scoring system to aid in the prioritization of future sites.<br />
 </li>
-<li>Metadata for individual project spatial layers is kept in the <code>rfp_tracking</code> table within the <code>background_layers.gpkg</code> along with tables related to user supplied stream width/gradient inputs to <code>bcfishpass</code> to model potentially high value habitat that is accessible to fish species of interest.</li>
-</ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="methods.html#cb30-1" tabindex="-1"></a><span class="do">## QRis</span></span>
-<span id="cb30-2"><a href="methods.html#cb30-2" tabindex="-1"></a><span class="co"># [QGIS Riverscapes Studio](https://qris.riverscapes.net/) (QRis) is a free plugin for QGIS that helps you digitize your riverscape data. QRis is a great planning tool for helping users with spatial representation of riverscapes. </span></span>
-<span id="cb30-3"><a href="methods.html#cb30-3" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb30-4"><a href="methods.html#cb30-4" tabindex="-1"></a><span class="co"># QRis has two distinct types of features:</span></span>
-<span id="cb30-5"><a href="methods.html#cb30-5" tabindex="-1"></a><span class="co">#   </span></span>
-<span id="cb30-6"><a href="methods.html#cb30-6" tabindex="-1"></a><span class="co">#   * Static: These are features that are relatively permanent, such as the valley bottom.</span></span>
-<span id="cb30-7"><a href="methods.html#cb30-7" tabindex="-1"></a><span class="co">#   * Dynamic: These are features that change over time, such as the active channel.</span></span>
-<span id="cb30-8"><a href="methods.html#cb30-8" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb30-9"><a href="methods.html#cb30-9" tabindex="-1"></a><span class="co"># QRis will be a useful tool for digitizing the upper Wetzin&#39;kwa river and prioritizing restoration sites. To start using QRis, follow the instructions for [getting started](https://qris.riverscapes.net/getting-started/).</span></span></code></pre></div>
-</div>
-<div id="past-restoration-site-identification" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Past Restoration Site Identification<a href="methods.html#past-restoration-site-identification" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Information regarding past restoration prescriptions and activities is an important component of the restoration planning process. A wealth of information is present for the Neexdzii Kwah however it is located in many different locations and not always spatially represented. To address this, a comprehensive review of past restoration activities is underway. This review included a review of the literature, interviews with local experts, and a review of the restoration prescriptions and activities that have been conducted in the Neexdzii Kwah. For information regarding relatively recent restoration efforts such as physical works conducted through Healthy Watersheds Initiative, representatives from the Morice Watershed Monitoring Trust amalgamated all information located on physical drives and either provided emails with the data attached or provided links to the data for the study team for download and review. This information was then subsequently downloaded and re-uploaded to a <code>OneDrive</code> folder for the study team to access. Additional data was also sourced from the <a href="https://data.skeenasalmon.info/">Skeena Salmon Data Centre</a> using the application programming interface to their <a href="https://ckan.org/features/api">CKAN</a> database.</p>
-</div>
-<div id="future-restoration-site-selection" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Future Restoration Site Selection<a href="methods.html#future-restoration-site-selection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The methodology for selection of future sites includes two approaches:</p>
-<p>The project team will select among some known areas of riparian removal and bank erosion where landowners are ameniable
-to project activities including installation of cattle exclusion fencing and riparian planting in the next two fiscal years.</p>
-<p><br></p>
-<p>Analysis of background and spatial data to feed priority ranking criteria used to select sites for restoration activities
-in the long term. Included in this process can be:</p>
-<ul>
-<li>evaluation of historic and current imagery to understand morphological changes in the Neexdzii Kwah and its tributaries
-that have degraded watershed health and fish habitat.</li>
-<li>identification of areas known to have been impacted by past land use activities such as logging, mining, and road building.</li>
-<li>idenfication of areas of high fisheries values based on known spawning and rearing habitat for fish species of interest.</li>
+<li>Develop criteria for minimal setbacks required for cattle exclusion and riparian restoration based on the ecosystem services provided by the riparian area and the potential for the area to provide habitat for fish species of interest. Utilize established standards when possible such as the <a href="https://www2.gov.bc.ca/gov/content/environment/plants-animals-ecosystems/fish/aquatic-habitat-management/riparian-areas-regulation">Riparian Areas Protection Regulation</a> and the <a href="https://www2.gov.bc.ca/gov/content/industry/forestry/managing-our-forest-resources/silviculture/silvicultural-systems/silviculture-guidebooks/riparian-management-area-guidebook">Riparian Management Area Guidebook</a> <span class="citation">(Ministry of Forests 1995)</span>.</li>
 </ul>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="background.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="results.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="results.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
