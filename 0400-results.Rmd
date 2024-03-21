@@ -46,17 +46,14 @@ rfp_tracking_prep %>%
 
 ```
 
-## Past Restoration Initiatives
+## Past Restoration Initiative Identification
 
 Information amalgamated from past restoration initiatives has been added to the `restoration_wedzin_kwa` project in spatial formats through the `sites_restoration.gpkg` with details of source document locations, geometry type, description of the source document amalgamated, etc. documented in the `sites_restoration_gpkg_tracking.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/sites_restoration_gpkg_tracking.csv).  
 
 <br>
 
 ### Works in Progress
-@ncfdc1998 utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah
-with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the
-digital deliverables could not be recovered.  Their work persists in pdf format however with summarized details of 
-their prioritization work and prescription locations extracted from the pdf and included in the `ncfdc_1998_prescriptions_raw.csv` file located and viewable [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions_raw.csv).  The prioritization table for sub-basins in the region are included in Table \@ref(tab:tab-ncfdc-1998-priority). Next steps for this dataset include mining of prescription locations and addition to the csv so that it can be converted to a spatial file and added to the `restoration_wedzin_kwa` project through the `sites_restoration.gpkg`.
+@ncfdc1998 utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the digital deliverables could not be recovered.  Their work persists in pdf format however with summarized details of  their prioritization work and prescription locations extracted from the pdf and included in the `ncfdc_1998_prescriptions_raw.csv` file located and viewable [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions_raw.csv).  The prioritization table for sub-basins in the region are included in Table \@ref(tab:tab-ncfdc-1998-priority). Next steps for this dataset include mining of prescription locations and addition to the csv so that it can be converted to a spatial file and added to the `restoration_wedzin_kwa` project through the `sites_restoration.gpkg`.
 
 ```{r tab-ncfdc-1998-priority}
 ncfdc_1998_71a %>% 
@@ -65,7 +62,30 @@ ncfdc_1998_71a %>%
 ```
 
 
-## GIS parameters to Rank Future Restoration Sites
+## Future Restoration Site Selection
+
+### Fish Passage
+High priority fish passage restoration opportunities in the Neexdzii Kwah watershed include mulitple culverts on Highway 16 such as Richfield Creek, Johnny David Creek, and Byman Creek along with crossings on private roads, secondary roads  and the railway such as Ailport Creek, Perow Creek, tributary to Buck Creek (PSCIS 197640) and Cesford Creek.  Details are presented in the following reports:
+
+  - [Bulkley Watershed Fish Passage Restoration Planning 2022](https://www.newgraphenvironment.com/fish_passage_bulkley_2022_reporting/)[@irvine2023BulkleyWatershed]
+  - [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2021](https://www.newgraphenvironment.com/fish_passage_skeena_2021_reporting/)[@irvine2022BulkleyRiver]
+  - [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2020](https://www.newgraphenvironment.com/fish_passage_bulkley_2020_reporting/)[@irvine2021BulkleyRiver]
+  
+  
+At the time of writing, lateral connectivity analysis had been run for areas of the Neexdzii Kwah and tributaries floodplains for railway only. The results of this analysis are included in the `lateral_habitat.tiff` layer in the `background_layers.gpkg` and are viewable in the `restoration_wedzin_kwa` project.  The results of this analysis and future analysis incorperating major roadways as well (currently under development) will be used to inform future restoration activities.
+
+### Local Knowledge for Riparian Area and Erosion Protection Site Selection
+Sites proposed for riparian area and erosion protection activities in the next two fiscal years are located in the `sites_restoration.gpkg` and are viewable in the `restoration_wedzin_kwa` project.  These sites were selected based on local knowledge and landowner willingness to participate in restoration activities.
+
+
+
+### Evaluation of Historic and Current Imagery
+This work is ongoing and will be added to the `restoration_wedzin_kwa` project in the future.
+
+### Delineation of Areas of High Fisheries Values
+This work is ongoing and will be added to the `restoration_wedzin_kwa` project in the future.
+
+### Parameter Ranking to Select Future Restoration Sites 
 
 A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the `restoration_site_priority_parameters.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv) is included in Table \@ref(tab:tab-gis-params).
 
@@ -146,5 +166,4 @@ read_csv("data/restoration_site_priority_parameters.csv") %>%
 
   
 ```
-
 
