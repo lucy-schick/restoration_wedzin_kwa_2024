@@ -1,8 +1,12 @@
 ##pull the cv info from the Bulkley File
 
 {
+  # Install and load required packages
   library(tidyverse)
   library(tabulizer)
+  library(pdftools)
+  library(stringr)
+  library(tibble)
 }
 
 source("scripts/functions.R")
@@ -75,9 +79,84 @@ table_10_11 %>%
 
 # --------------------------------------------- extract prescriptions
 # now lets try extracting pages 292 - 355 and feeding it to chattr to produce a tribble of all the prescriptions
+
+#Link to the openAI chat which was used to build this script
+#https://chat.openai.com/share/da1497fd-7a2d-4ca9-a8de-95d47aa64982
+
 ##now get rid of the first 10 pages
 pdftools::pdf_subset(path,
                      pages = 292:355,
                      output = "data/skt/mid-bulkley-detailed-fish-habitat-riparian-channel-assessment-for-watershed-restoration/mid-bulkley_detailed_assessment_watershed_restoration_report_prescriptions.pdf")
 
 
+# Read PDF file and get the number of pages
+pdf_text <- pdf_text("data/skt/mid-bulkley-detailed-fish-habitat-riparian-channel-assessment-for-watershed-restoration/mid-bulkley_detailed_assessment_watershed_restoration_report_prescriptions.pdf")
+num_pages <- length(pdf_text)
+
+# Initialize an empty tibble
+data <- tibble(
+  SubBasin = character(),
+  Creek = character(),
+  Reach = numeric(),
+  PrescriptionNumber = numeric(),
+  RelatedRiparianPrescription = character(),
+  Category = numeric(),
+  Location = character(),
+  UTM = character(),
+  LandTenure = character(),
+  ImpactDescription = character()
+)
+
+# Loop through each page of the PDF
+for (i in 1:num_pages) {
+  # Extract text from the current page
+  current_text <- pdf_text[[i]]
+
+  # Check if the current page contains "Sub-Basin:"
+  if (grepl("Sub-Basin:", current_text)) {
+    # Define regular expressions
+    regex_sub_basin <- "Sub-Basin:\\s*([\\s\\S]+?)(?=Creek:|$)"
+    regex_creek <- "Creek:\\s*([\\s\\S]+?)(?=Reach:|$)"
+    regex_reach <- "Reach:\\s*([\\s\\S]+?)(?=Prescription #:|$)"
+    regex_prescription_number <- "Prescription #:\\s*([\\s\\S]+?)(?=Related Riparian Prescription:|$)"
+    regex_related_prescription <- "Related Riparian Prescription:\\s*([\\s\\S]+?)(?=Category:|$)"
+    regex_category <- "Category:\\s*([\\s\\S]+?)(?=Location:|$)"
+    regex_location <- "Location:\\s*([\\s\\S]+?)(?=Land Tenure:|$)"
+    regex_utm <- "(?<=UTM )\\d+\\.?\\d*\\s*\\d+\\.?\\d*"
+    regex_land_tenure <- "Land Tenure:\\s*([\\s\\S]+?)(?=Impact Description:|$)"
+    regex_impact_description <- "Impact Description:\\s*([\\s\\S]+?)(?=\\n\\s*\\n|$)"
+
+    # Extract information using regular expressions
+    sub_basin <- str_match(current_text, regex_sub_basin)[, 2]
+    creek <- str_match(current_text, regex_creek)[, 2]
+    reach <- str_match(current_text, regex_reach)[, 2]
+    prescription_number <- str_match(current_text, regex_prescription_number)[, 2]
+    related_prescription <- str_match(current_text, regex_related_prescription)[, 2]
+    category <- str_match(current_text, regex_category)[, 2]
+    location <- str_match(current_text, regex_location)[, 2]
+    utm <- str_extract(location, regex_utm)  # Extract UTM coordinates from Location
+    land_tenure <- str_match(current_text, regex_land_tenure)[, 2]
+    impact_description <- str_match(current_text, regex_impact_description)[, 2]
+
+    # Add extracted prescription to the tibble
+    data <- add_row(data,
+                    SubBasin = sub_basin,
+                    Creek = creek,
+                    Reach = as.numeric(reach),
+                    PrescriptionNumber = as.numeric(prescription_number),
+                    RelatedRiparianPrescription = related_prescription,
+                    Category = as.numeric(category),
+                    Location = location,
+                    UTM = utm,
+                    LandTenure = land_tenure,
+                    ImpactDescription = impact_description)
+  }
+}
+
+
+cleaned_data <- data %>%
+  mutate(across(everything(), ~gsub("\n", "", .)))
+
+# Write the tibble to a CSV file
+cleaned_data %>%
+  readr::write_csv("data/ncfdc_1998_prescriptions_clean.csv")
