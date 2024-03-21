@@ -32,19 +32,33 @@ The shared QGIS project was created using scripts currently kept in [`dff-2022`]
 Information regarding past restoration initiatives, prescriptions and activities is an important component of the restoration planning process. A wealth of information is present for the Neexdzii Kwah however it is located in many different locations and not always spatially represented.  To address this, a comprehensive review of past restoration activities is underway. This review included a review of the literature, interviews with local experts, and a review of the restoration prescriptions and activities that have been conducted in the Neexdzii Kwah. For information regarding relatively recent restoration efforts such as physical works conducted through Healthy Watersheds Initiative, representatives from the Morice Watershed Monitoring Trust amalgamated all information located on physical drives and either provided emails with the data attached or provided links to the data for the study team for download and review.  This information was then subsequently downloaded and re-uploaded to a `OneDrive` folder for the study team to access.  Additional data was also sourced from the [Skeena Salmon Data Centre](https://data.skeenasalmon.info/) using the application programming interface to their [CKAN](https://ckan.org/features/api) database.  
 
 ## Future Restoration Site Selection
-The methodology for selection of future sites includes two approaches:
 
-The project team will select among some known areas of riparian removal and bank erosion where landowners are ameniable
-to project activities including installation of cattle exclusion fencing and riparian planting in the next two fiscal years.
+### Fish Passage
+At the time of writing, extensive work related to fish passage restoration planning was underway in the Neexdzii Kwah watershed
+as well as other areas of the greater Skeena watershed.  Methodology for this work is presented in @irvine2023BulkleyWatershed,
+@irvine2022BulkleyRiver and @irvine2021BulkleyRiver.  Although these references detail work related to linear connectivity 
+(ie. upstream/downstream) there is ongoing work related to lateral connnectivity (ie. floodplain connectivity) with methodology
+realted to disconnections due to the railway documented in `bcfishpass` [@norris2024bcfishpass] [here](https://github.com/smnorris/bcfishpass/tree/main/model/03_habitat_lateral).  
+The results of this analysis and future analysis incorporating major roadways as well (currently under development) will 
+be added to the shared QGIS project and used to inform future restoration activity prioritization.
 
-<br>
+### Local Knowledge for Riparian Area and Erosion Protection Site Selection
+To facilitate project activities in the short term - the project team will select among some known areas of riparian 
+removal and bank erosion where landowners are amenable to project activities including installation of cattle exclusion 
+fencing and riparian planting in the next two fiscal years.
 
-Analysis of background and spatial data to feed priority ranking criteria used to select sites for restoration activities
-in the long term. Included in this process can be:
+### Parameter Ranking to Select Future Restoration Sites 
+Analysis of background and current data will be used to inform priority ranking criteria used to select sites for restoration activities in the long term. **Although this has not yet been conducted** - included in this process can be:
 
-  - evaluation of historic and current imagery to understand morphological changes in the Neexdzii Kwah and its tributaries
-  that have degraded watershed health and fish habitat.
-  - identification of areas known to have been impacted by past land use activities such as logging, mining, and road building.
-  - idenfication of areas of high fisheries values based on known spawning and rearing habitat for fish species of interest.
+  - GIS and user input parameters were selected based on project team meetings and review of available spatial information to rank future restoration sites.  Whenever possible standardized names for layers (schema and table) and fields were used to facilitate the reproducibility of similiar analysis on other or updated datasets, both by ourselves and by others.  
+  
+  
+### Evaluation of Historic and Current Imagery
+Evaluation of historic and current imagery to understand and quantify morphological changes in the Neexdzii Kwah and its major tributaries over time and guide future restoration efforts. This will require that the study team acquire, georeference, archive and analyze historic imagery for the Neexdzii Kwah watershed and compare with an analysis of recent LiDAR data to quantify historic changes in stream morphology resulting in loss of quantity and quality of water and fish habitat.  Through this process we hope to highlight areas of historic dredging, realignment, and floodplain disconnections due to infrastructure that have degraded watershed health and fish habitat.
+
+
+### Delineation of Areas of High Fisheries Values
+Spatially delineate areas of high fisheries values based on modelled and known spawning and rearing habitat for fish species of interest.  
+
   
 
