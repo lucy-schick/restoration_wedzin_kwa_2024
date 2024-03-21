@@ -208,14 +208,14 @@ div.csl-indent {
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#collaborative-gis-environment"><i class="fa fa-check"></i><b>3.1</b> Collaborative GIS Environment</a></li>
-<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#past-restoration-site-identification"><i class="fa fa-check"></i><b>3.2</b> Past Restoration Site Identification</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#past-restoration-initiative-identification"><i class="fa fa-check"></i><b>3.2</b> Past Restoration Initiative Identification</a></li>
 <li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#future-restoration-site-selection"><i class="fa fa-check"></i><b>3.3</b> Future Restoration Site Selection</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#collaborative-gis-environment-1"><i class="fa fa-check"></i><b>4.1</b> Collaborative GIS Environment</a></li>
-<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#past-restoration-initiatives"><i class="fa fa-check"></i><b>4.2</b> Past Restoration Initiatives</a></li>
-<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#gis-parameters-to-rank-future-restoration-sites"><i class="fa fa-check"></i><b>4.3</b> GIS parameters to Rank Future Restoration Sites</a></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#past-restoration-initiative-identification-1"><i class="fa fa-check"></i><b>4.2</b> Past Restoration Initiative Identification</a></li>
+<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#future-restoration-site-selection-1"><i class="fa fa-check"></i><b>4.3</b> Future Restoration Site Selection</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>5</b> Recommendations</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -794,16 +794,13 @@ The dataset contains approved legal boundaries for fisheries sensitive watershed
 </div>
 </div>
 </div>
-<div id="past-restoration-initiatives" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Past Restoration Initiatives<a href="results.html#past-restoration-initiatives" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="past-restoration-initiative-identification-1" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Past Restoration Initiative Identification<a href="results.html#past-restoration-initiative-identification-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Information amalgamated from past restoration initiatives has been added to the <code>restoration_wedzin_kwa</code> project in spatial formats through the <code>sites_restoration.gpkg</code> with details of source document locations, geometry type, description of the source document amalgamated, etc. documented in the <code>sites_restoration_gpkg_tracking.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/sites_restoration_gpkg_tracking.csv">here</a>.</p>
 <p><br></p>
 <div id="works-in-progress" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Works in Progress<a href="results.html#works-in-progress" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="citation">NCFDC (1998)</span> utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah
-with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the
-digital deliverables could not be recovered. Their work persists in pdf format however with summarized details of
-their prioritization work and prescription locations extracted from the pdf and included in the <code>ncfdc_1998_prescriptions_raw.csv</code> file located and viewable <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions_raw.csv">here</a>. The prioritization table for sub-basins in the region are included in Table <a href="results.html#tab:tab-ncfdc-1998-priority">4.3</a>. Next steps for this dataset include mining of prescription locations and addition to the csv so that it can be converted to a spatial file and added to the <code>restoration_wedzin_kwa</code> project through the <code>sites_restoration.gpkg</code>.</p>
+<p><span class="citation">NCFDC (1998)</span> utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the digital deliverables could not be recovered. Their work persists in pdf format however with summarized details of their prioritization work and prescription locations extracted from the pdf and included in the <code>ncfdc_1998_prescriptions_raw.csv</code> file located and viewable <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions_raw.csv">here</a>. The prioritization table for sub-basins in the region are included in Table <a href="results.html#tab:tab-ncfdc-1998-priority">4.3</a>. Next steps for this dataset include mining of prescription locations and addition to the csv so that it can be converted to a spatial file and added to the <code>restoration_wedzin_kwa</code> project through the <code>sites_restoration.gpkg</code>.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="results.html#cb33-1" tabindex="-1"></a>ncfdc_1998_71a <span class="sc">%&gt;%</span> </span>
 <span id="cb33-2"><a href="results.html#cb33-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Table 71a from the NCFDC 1998 report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.&quot;</span>,</span>
 <span id="cb33-3"><a href="results.html#cb33-3" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
@@ -998,8 +995,32 @@ Bulkley
 </table>
 </div>
 </div>
-<div id="gis-parameters-to-rank-future-restoration-sites" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> GIS parameters to Rank Future Restoration Sites<a href="results.html#gis-parameters-to-rank-future-restoration-sites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="future-restoration-site-selection-1" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Future Restoration Site Selection<a href="results.html#future-restoration-site-selection-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="fish-passage-1" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Fish Passage<a href="results.html#fish-passage-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>High priority fish passage restoration opportunities in the Neexdzii Kwah watershed include mulitple culverts on Highway 16 such as Richfield Creek, Johnny David Creek, and Byman Creek along with crossings on private roads, secondary roads and the railway such as Ailport Creek, Perow Creek, tributary to Buck Creek (PSCIS 197640) and Cesford Creek. Details are presented in the following reports:</p>
+<ul>
+<li><a href="https://www.newgraphenvironment.com/fish_passage_bulkley_2022_reporting/">Bulkley Watershed Fish Passage Restoration Planning 2022</a><span class="citation">(A. Irvine 2023)</span></li>
+<li><a href="https://www.newgraphenvironment.com/fish_passage_skeena_2021_reporting/">Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2021</a><span class="citation">(Irvine 2022)</span></li>
+<li><a href="https://www.newgraphenvironment.com/fish_passage_bulkley_2020_reporting/">Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2020</a><span class="citation">(Irvine 2021)</span></li>
+</ul>
+<p>At the time of writing, lateral connectivity analysis had been run for areas of the Neexdzii Kwah and tributaries floodplains for railway only. The results of this analysis are included in the <code>lateral_habitat.tiff</code> layer in the <code>background_layers.gpkg</code> and are viewable in the <code>restoration_wedzin_kwa</code> project. The results of this analysis and future analysis incorperating major roadways as well (currently under development) will be used to inform future restoration activities.</p>
+</div>
+<div id="local-knowledge-for-riparian-area-and-erosion-protection-site-selection-1" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Local Knowledge for Riparian Area and Erosion Protection Site Selection<a href="results.html#local-knowledge-for-riparian-area-and-erosion-protection-site-selection-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sites proposed for riparian area and erosion protection activities in the next two fiscal years are located in the <code>sites_restoration.gpkg</code> and are viewable in the <code>restoration_wedzin_kwa</code> project. These sites were selected based on local knowledge and landowner willingness to participate in restoration activities.</p>
+</div>
+<div id="evaluation-of-historic-and-current-imagery-1" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Evaluation of Historic and Current Imagery<a href="results.html#evaluation-of-historic-and-current-imagery-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This work is ongoing and will be added to the <code>restoration_wedzin_kwa</code> project in the future.</p>
+</div>
+<div id="delineation-of-areas-of-high-fisheries-values-1" class="section level3 hasAnchor" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Delineation of Areas of High Fisheries Values<a href="results.html#delineation-of-areas-of-high-fisheries-values-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This work is ongoing and will be added to the <code>restoration_wedzin_kwa</code> project in the future.</p>
+</div>
+<div id="parameter-ranking-to-select-future-restoration-sites-1" class="section level3 hasAnchor" number="4.3.5">
+<h3><span class="header-section-number">4.3.5</span> Parameter Ranking to Select Future Restoration Sites<a href="results.html#parameter-ranking-to-select-future-restoration-sites-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the <code>restoration_site_priority_parameters.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv">here</a> is included in Table <a href="results.html#tab:tab-gis-params">4.5</a>.</p>
 <p><br></p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="results.html#cb34-1" tabindex="-1"></a><span class="co"># load the data</span></span>
@@ -2624,6 +2645,26 @@ TRUE
 –
 </td>
 <td style="text-align:left;">
+traditional_fishing_site
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
 traditional_knowledge_rank
 </td>
 <td style="text-align:left;">
@@ -2640,6 +2681,7 @@ TRUE
 </table>
 </div>
 
+</div>
 </div>
 </div>
             </section>
