@@ -39,7 +39,7 @@ To collaboratively stop the drivers of watershed health degredation and set the 
 
   - identification of overlap between current and historically important fish habitat where riparian vegetation has been removed or degraded and where it may be most effective to restore or protect riparian vegetation to improve habitat values, water quality and quantity, 
   - identification of areas where stream channels/floodplain has been altered (ie. channel relocation/straightening, dredging, sediment blockages, etc.) and where it may be important to restore or protect channel morphology to improve fish habitat, water quality and quantity,
-     - identification and details of potential barriers to fish passage and subsequent fish passage restoration options,
+  - identification and details of potential barriers to fish passage and subsequent fish passage restoration options,
   - identification of landowners who are interested in participating in conservation and restoration - as well as monitoring and maintenance activities, 
   - idenfification of parcels of land that coincide with potentially high value aquatic habitats or areas that have the potential to significantly impact high value aquatic habitats that are publically owned and can be accessed by all without restriction or permission, and
   - identification of potential funding sources for restoration activities and monitoring and maintenance activities that can help maintain stability for a comprehensive program that allows the resources and time necessary to conduct a robust restoration implementation and monitoring program with a scale suitable to address the magnitude of the issues at hand.
