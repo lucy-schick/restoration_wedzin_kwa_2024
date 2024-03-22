@@ -1,9 +1,3 @@
-# mybookdown-template 0.0.2
+# restoration_wedzin_kwa_2024 DRAFT 0.0.1 20240322
 
-  * 20220516
-  * add references.bib
-  * add `NEWS.md` file
-  * update `README.md`
-  * update logos
-  * put date on line with version numbers
-  * tighten packages and functions
+  * initial release for update and engagement
