@@ -53,14 +53,29 @@ Information amalgamated from past restoration initiatives has been added to the 
 <br>
 
 ### Works in Progress
-@ncfdc1998 utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the digital deliverables could not be recovered.  Their work persists in pdf format however with summarized details of  their prioritization work and prescription locations extracted from the pdf and included in the `ncfdc_1998_prescriptions_raw.csv` file located and viewable [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions_raw.csv).  The prioritization table for sub-basins in the region are included in Table \@ref(tab:tab-ncfdc-1998-priority). Next steps for this dataset include mining of prescription locations and addition to the csv so that it can be converted to a spatial file and added to the `restoration_wedzin_kwa` project through the `sites_restoration.gpkg`.
+@ncfdc1998 utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the digital deliverables could not be recovered.  Their work persists in pdf format however with summarized details of  their prioritization work and prescription locations and details extracted from the pdf and included in the `ncfdc_1998_prescriptions.csv` file located and viewable [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions.csv).  The prioritization table for sub-basins in the region are included in Table \@ref(tab:tab-ncfdc-1998-priority) with details of individual prescriptions presented in Table \@ref(tab:tab-ncfdc-1998-pres). Next steps for this dataset include conversion of the csv to a spatial file and added to the `restoration_wedzin_kwa` project through the `sites_restoration.gpkg`.
+
+<br>
 
 ```{r tab-ncfdc-1998-priority}
+
+  
 ncfdc_1998_71a %>% 
-  fpr::fpr_kable(caption_text = "Table 71a from the NCFDC 1998 report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.",
+  fpr::fpr_kable(caption_text = "Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.",
                  scroll = FALSE)
 ```
 
+<br>
+
+```{r tab-ncfdc-1998-pres}
+ncfdc_1998 <- readr::read_csv(
+  "data/ncfdc_1998_prescriptions.csv"
+) 
+
+ncfdc_1998 %>% 
+  dplyr::select(SubBasin:MasterPlanObjectives) %>% 
+  fpr::fpr_kable(caption_text = "Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.")
+```
 
 ## Future Restoration Site Selection
 
