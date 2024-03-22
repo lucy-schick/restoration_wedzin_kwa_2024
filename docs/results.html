@@ -203,7 +203,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.1</b> Project Location</a></li>
 <li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.2</b> Fisheries</a></li>
-<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#restoration"><i class="fa fa-check"></i><b>2.3</b> Restoration</a></li>
+<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#restoration-philosophy"><i class="fa fa-check"></i><b>2.3</b> Restoration Philosophy</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
@@ -800,13 +800,14 @@ The dataset contains approved legal boundaries for fisheries sensitive watershed
 <p><br></p>
 <div id="works-in-progress" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Works in Progress<a href="results.html#works-in-progress" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="citation">NCFDC (1998)</span> utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the digital deliverables could not be recovered. Their work persists in pdf format however with summarized details of their prioritization work and prescription locations extracted from the pdf and included in the <code>ncfdc_1998_prescriptions_raw.csv</code> file located and viewable <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions_raw.csv">here</a>. The prioritization table for sub-basins in the region are included in Table <a href="results.html#tab:tab-ncfdc-1998-priority">4.3</a>. Next steps for this dataset include mining of prescription locations and addition to the csv so that it can be converted to a spatial file and added to the <code>restoration_wedzin_kwa</code> project through the <code>sites_restoration.gpkg</code>.</p>
+<p><span class="citation">NCFDC (1998)</span> utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the digital deliverables could not be recovered. Their work persists in pdf format however with summarized details of their prioritization work and prescription locations and details extracted from the pdf and included in the <code>ncfdc_1998_prescriptions.csv</code> file located and viewable <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions.csv">here</a>. The prioritization table for sub-basins in the region are included in Table <a href="results.html#tab:tab-ncfdc-1998-priority">4.3</a> with details of individual prescriptions presented in Table <a href="results.html#tab:tab-ncfdc-1998-pres">4.5</a>. Next steps for this dataset include conversion of the csv to a spatial file and added to the <code>restoration_wedzin_kwa</code> project through the <code>sites_restoration.gpkg</code>.</p>
+<p><br></p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="results.html#cb33-1" tabindex="-1"></a>ncfdc_1998_71a <span class="sc">%&gt;%</span> </span>
-<span id="cb33-2"><a href="results.html#cb33-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Table 71a from the NCFDC 1998 report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.&quot;</span>,</span>
+<span id="cb33-2"><a href="results.html#cb33-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.&quot;</span>,</span>
 <span id="cb33-3"><a href="results.html#cb33-3" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-ncfdc-1998-priority">Table 4.3: </span><span id="tab:tab-ncfdc-1998-priority">Table 4.4: </span>Table 71a from the NCFDC 1998 report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.
+<span id="tab:tab-ncfdc-1998-priority">Table 4.3: </span><span id="tab:tab-ncfdc-1998-priority">Table 4.4: </span>Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.
 </caption>
 <thead>
 <tr>
@@ -993,6 +994,1125 @@ Bulkley
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="results.html#cb34-1" tabindex="-1"></a>ncfdc_1998 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb34-2"><a href="results.html#cb34-2" tabindex="-1"></a>  <span class="st">&quot;data/ncfdc_1998_prescriptions.csv&quot;</span></span>
+<span id="cb34-3"><a href="results.html#cb34-3" tabindex="-1"></a>) </span>
+<span id="cb34-4"><a href="results.html#cb34-4" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="results.html#cb34-5" tabindex="-1"></a>ncfdc_1998 <span class="sc">%&gt;%</span> </span>
+<span id="cb34-6"><a href="results.html#cb34-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(SubBasin<span class="sc">:</span>MasterPlanObjectives) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-7"><a href="results.html#cb34-7" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.&quot;</span>)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:tab-ncfdc-1998-pres">Table 4.5: </span><span id="tab:tab-ncfdc-1998-pres">Table 4.6: </span>Summary of NCFDC (1998) prescriptions for the Neexdzii Kwah area.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+SubBasin
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Creek
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Reach
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PrescriptionNumber
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+RelatedRiparianPrescription
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Category
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Location
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+UTM
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+LandTenure
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+ImpactDescription
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Goals
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+MasterPlanObjectives
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Richfield
+</td>
+<td style="text-align:left;">
+Richfield
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+RIC007
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+0+850 metres upstream from mouth, UTM 9.6044150.672380, Highway 16crossing
+</td>
+<td style="text-align:left;">
+9.6044150.672380
+</td>
+<td style="text-align:left;">
+Private, highway right-of-way
+</td>
+<td style="text-align:left;">
+Channelizing on both banks with rip-rap to bankfull height, twopipe-arch culverts, one impassable at most flows, both impassable at low flows.
+</td>
+<td style="text-align:left;">
+To complex habitat and dissipate hydraulic energy. To provide access upstreamto juvenile salmonids during the summer low-flow period.
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal">
+<li>Reestablish upstream access to resident and anadromous fish species where barriers have been created by land-use.2) Reestablish spatial habitat diversity and quality, and hydraulic energy dissipation in areas that have been channelized. A long-term goal which requires cooperation between private landowners and regulatory agencies is the de-channelizing of these areas and their reconnection to normal floodplain functioning, which is beyond the scope of this project. Appendix G-1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Richfield
+</td>
+<td style="text-align:left;">
+Richfield
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0 to 0+390 metres and 1+050 to1+923 metres upstream from the mouth
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Crown (within bankfull width), private land on both banks throughoutprescription area
+</td>
+<td style="text-align:left;">
+Extensive point and mid-channel bars due to upstream sources ofsediment and bedload.
+</td>
+<td style="text-align:left;">
+To stabilize aggraded areas which will continue to promote channel instability despiteupstream restoration efforts for some time if not actively restored. This step is not to becarried out until all other restoration work in the reach is complete.
+</td>
+<td style="text-align:left;">
+<ol start="6" style="list-style-type: decimal">
+<li>Stabilize extensive bars and promote channel narrowing and deepening where feasible and when upstream sources of disturbance have been alleviated. Appendix G-4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Richfield
+</td>
+<td style="text-align:left;">
+Richfield
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+RIC011
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2+478 metres upstream from the mouth, UTM 9.6045100.672300
+</td>
+<td style="text-align:left;">
+9.6045100.672300
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Rotational slump on right valley wall, sand and clay slump blocksliding on a sandy stratum. Below cleared and grazed land. Cattle use of several bencheson the face is probably exacerbating the problem.
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Byman
+</td>
+<td style="text-align:left;">
+Byman
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2+045 metres, 2+421 metres, and 2+625 metres upstream from the mouth onthe (downstream) right bank.
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+PrivatePrescription Photo: One of two large slides on the right valley wall in the reach(location = 2+045m). Photo taken looking upstream.
+</td>
+<td style="text-align:left;">
+Constant diverting of the creek away from the alluvial fan andconfining it to the valley upstream has lead to significant slope instability in two areas.
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Byman
+</td>
+<td style="text-align:left;">
+Byman
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+1+030 to 1+660 metres upstream from the mouth. Left and right banks. UTM9.6044300.666280 to 9.6044350.666910
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Diversion of the creek using a long straight dyke (circa 1948) awayfrom the Bulkley River floodplain and West to connect with Perow Creek. This hascaused extensive degradation and channel feature homogenization. Combined withextensive cattle grazing and the removal of upstream LWD, this has severely damagedfish habitat in this section.
+</td>
+<td style="text-align:left;">
+To complex habitat and dissipate hydraulic energy. To provide increasedquantity and quality of summer rearing habitat for juvenile salmonids, particularly cohoand chinook salmon. Appendix G-11
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+McQuarrie
+</td>
+<td style="text-align:left;">
+McQuarrie
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+MCQ8
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0+900 metres upstream from the mouth. UTM 9.6044350.663900
+</td>
+<td style="text-align:left;">
+9.6044350.663900
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Sediment delivery from a rotational slump of fine-texturedmaterials. Impact vectors are thought to be cattle trampling/grazing and removal ofoverstory/shrub vegetation at the top of the slope altering surface and subsurface drainagepatterns in the slope, and removing the stabilizing and strengthening effect of plant roots.
+</td>
+<td style="text-align:left;">
+To mitigate the delivery of sediment downstream by continued mass movementof this slope.
+</td>
+<td style="text-align:left;">
+<ol start="5" style="list-style-type: decimal">
+<li>Stabilize upslope and riparian sources of sediment and prevent further occurrence of slope and bank instability when and if upstream sources of disturbance have been removed and/or where restoration will have a high probablity of success despite Appendix G-13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+McQuarrie
+</td>
+<td style="text-align:left;">
+McQuarrie
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+MCQ1 and 2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+0 to 0+420 metres upstream from the mouth, both banks. UTM
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Private, CNR and highway right-of-ways
+</td>
+<td style="text-align:left;">
+Channelizing on both banks with rip-rap to bankfull heighteliminating riparian/floodplain function and creating homogeneous riffle/glide habitat.
+</td>
+<td style="text-align:left;">
+To complex habitat and dissipate hydraulic energy.
+</td>
+<td style="text-align:left;">
+<ol start="2" style="list-style-type: decimal">
+<li>Reestablish spatial habitat diversity and quality, and hydraulic energy dissipation in areas that have been channelized. A long-term goal which requires cooperation between private landowners and regulatory agencies is the de-channelizing of these areas and their reconnection to normal floodplain functioning, which is beyond the scope of this project.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+McQuarrie
+</td>
+<td style="text-align:left;">
+McQuarrie
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+MCQ19
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+1+828 metres upstream from reach break. UTM 9.6048080.656500. MichelleBay FSR crossing.
+</td>
+<td style="text-align:left;">
+9.6048080.656500
+</td>
+<td style="text-align:left;">
+Crown
+</td>
+<td style="text-align:left;">
+Undersized culvert is a barrier to upstream fish passage at lowflows, and is undersized for flood flows in the reach, causing fill slope erosion at the roadcrossing, and channel disturbance downstream.
+</td>
+<td style="text-align:left;">
+To reestablish upstream fish access during summer low-flow periods, and tomitigate downstream sources of channel disturbance due to flow concentration andsubsequent velocity increase.
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal">
+<li>Reestablish upstream access to resident and anadromous fish species where barriers have been created by land-use.2) Stabilize upslope and riparian sources of sediment and prevent further occurrence of slope and bank instability when and if upstream sources of disturbance have been Appendix G-16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+BAR003
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+0 to 0+270 metres upstream from mouth. UTM 9.6038760.660650 to9.6038850.660450. Upstream end bounded by the Highway 16 crossing
+</td>
+<td style="text-align:left;">
+9.6038760.660650
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Upstream sediment sources causing extensive aggradation of finesandy materials in this area, coupled with extensive cattle grazing and bank compaction.
+</td>
+<td style="text-align:left;">
+Reestablish a single channel thread and provide access to oxbow pond adjacentto the channel.
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal">
+<li>Reestablish upstream access to resident and anadromous fish species where barriers have been created by land-use.2) Reestablish spatial habitat diversity and quality, and hydraulic energy dissipation in areas that have been channelized. A long-term goal which requires cooperation Appendix G-20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+BAR008
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0+275 metres upstream of reach 1/2 break, UTM 9.6037900.660350
+</td>
+<td style="text-align:left;">
+9.6037900.660350
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Slumping hillside below land clearing combined with toe erosioncaused by a log jam (lateral movement of thalweg)
+</td>
+<td style="text-align:left;">
+Add lifespan to natural toe armouring and restore ground and vegetation cover tomitigate surface erosion.
+</td>
+<td style="text-align:left;">
+<ol start="5" style="list-style-type: decimal">
+<li>Stabilize upslope and riparian sources of sediment and prevent further occurrence of slope and bank instability when and if upstream sources of disturbance have been removed and/or where restoration will have a high probablity of success despite Appendix G-23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+N/A
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+1+050 metres upstream from reach break. UTM 9.6038100.660100 to6038300.660020.
+</td>
+<td style="text-align:left;">
+9.6038100.660100
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Landowner has diverted creek away from their powerline (fromwhich all riparian vegetation was removed), and straight into the forest. This diversion isa huge source of sediment as indicated by field observations. This is only one of severaldiversions by the landowner to straighten the channel in the vicinity.
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+BAR017
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+2+300 metres upstream from reach break. UTM 9.6039000.659600. MichelleBay FSR crossing.
+</td>
+<td style="text-align:left;">
+9.6039000.659600
+</td>
+<td style="text-align:left;">
+Private/ MOF and BC Hydro right-of-way
+</td>
+<td style="text-align:left;">
+Poor culvert installation at Michelle Bay FSR is a barrier toupstream fish passage by salmonids. It is also highly undersized, and has caused a greatedeal of channel disturbance above it. Backwatering during floods has led to scouring ofunvegetated banks at the powerline and increased toe erosion of a slope upstream. Thissediment is aggrading upstream and being delivered downstream.
+</td>
+<td style="text-align:left;">
+To restore access to juvenile and adult salmonids, particularly coho salmon andsteelhead trout and to restore channel damage once the culvert has been replaced. Appendix G-28
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Aitken
+</td>
+<td style="text-align:left;">
+Aitken
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+AIT25
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+1+226 metres upstream from the reach break, UTM 9.6034200.663300
+</td>
+<td style="text-align:left;">
+9.6034200.663300
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Surface compaction, loss of vegetation leading to gully failure fromupslope cutblock (see figure 181).
+</td>
+<td style="text-align:left;">
+To rehabilitate slide and mitigate surface erosion from exposed face.
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal">
+<li>Stabilize upslope and riparian sources of sediment and prevent further occurrence of slope and bank instability when and if upstream sources of disturbance have been removed and/or where restoration will have a high probablity of success despite upstream sources of disturbance.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Aitken
+</td>
+<td style="text-align:left;">
+Aitken
+</td>
+<td style="text-align:right;">
+–
+</td>
+<td style="text-align:right;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+1+560 to 1+705 metres, 1+800 to 2+095 metres, 2+649 to 2+829 metres
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Riparian forest had undergone extensive clearcutting in the 1970’sto the streambanks and is not naturally regenerating, floodplain function is poor, and hashigh rates of lateral movement.
+</td>
+<td style="text-align:left;">
+To restore forest cover in the riparian zone and thus aid in restoring bankstability, LWD sources, and stream shading.
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal">
+<li>Stabilize upslope and riparian sources of sediment and prevent further occurrence of slope and bank instability when and if upstream sources of disturbance have been removed and/or where restoration will have a high probablity of success despite upstream sources of disturbance. Appendix G-34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Aitken
+</td>
+<td style="text-align:left;">
+Aitken
+</td>
+<td style="text-align:right;">
+–
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+AIT37
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+3+723 metres upstream from reach break. UTM 9.6037900.660350
+</td>
+<td style="text-align:left;">
+9.6037900.660350
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Slope failure related to concentration of surface water ontounstable slope above creek.
+</td>
+<td style="text-align:left;">
+To divert and slow surface drainage from this area, and to rehabilitate the slidesurface to mitigate surface erosion and sediment delivery to the creek.
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal">
+<li>Stabilize upslope and riparian sources of sediment and prevent further occurrence of slope and bank instability when and if upstream sources of disturbance have been removed and/or where restoration will have a high probablity of success despite upstream sources of disturbance.Description of Proposed Works (see figure 182):• outlined in riparian prescriptions Appendix G-36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Klo
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+KLO21 and 22
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+2+400 metres and 2+750 metres upstream from the reach break. Belowcutblock 93L.028, FLA 16827-CP314-02 (fprest cover map opening #10).
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Crown
+</td>
+<td style="text-align:left;">
+Forest harvesting to lip of slope and gully headwalls decreasingwind resistance and causing increased water load in gullies. A great deal of windthrow atblock boundaries is suspected to have been responsible for several small gully failuresand partial gully failures. The effects of this problem will likely worsen as root networkscontinue to decay after harvesting.
+</td>
+<td style="text-align:left;">
+To prevent further slope instability prior to major failures occurring
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal">
+<li>Stabilize upslope and riparian sources of sediment and prevent further occurrence of slope and bank instability Appendix G-38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Upper Buck
+</td>
+<td style="text-align:right;">
+–
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+UB8
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+FSR 2417 crossing of unnamed tributary to Buck Creek at upstream end ofstudy area. UTM 9.6003100.678400
+</td>
+<td style="text-align:left;">
+9.6003100.678400
+</td>
+<td style="text-align:left;">
+Crown
+</td>
+<td style="text-align:left;">
+Undesized and perched culvert is blocking upstream access torainbow trout, and causing bank erosion and aggradation downstream by increasing watervelocities and stream power.
+</td>
+<td style="text-align:left;">
+To restore fish passage and mitigate channel impacts.
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal">
+<li>Stabilize upslope and riparian sources of sediment and prevent further occurrence of slope and bank instability2) Reestablish upstream access to areas which have been blocked for resident fish passage by land-use activities Appendix G-40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+BUC004,006 and 007
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+0+980 to 1+650
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Private (municipal)
+</td>
+<td style="text-align:left;">
+Channelizing of both banks and diversion of creek away fromtownsite. Has lead to major habitat simplification, downstream sedimentation anderosion, and aggradation upstream and downstream, as well as loss of floodplain andriparian function within the channelized section.
+</td>
+<td style="text-align:left;">
+To increase the spatial complexity of salmonid habitat and decrease streampower in this section, thereby mitigating impacts downstream.
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal">
+<li>Reestablish spatial habitat diversity and quality, and hydraulic energy dissipation in areas that have been channelized. A long-term goal which requires cooperation between private landowners and regulatory agencies is the de-channelizing of these areas and their reconnection to normal floodplain functioning, which is beyond the scope of this project. Appendix G-44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+BUC010-012
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+0 metres to 0+980 metres
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Private, municipal
+</td>
+<td style="text-align:left;">
+Increased water velocities generated in the straight channelizedsection are leading to a gradual strightening of the channel pattern donwstream, asavulsions are slowly occurring. These will eventually lead to a straight channel all theway to the mouth.
+</td>
+<td style="text-align:left;">
+Maintain channel morphology and prevent forthcoming avulsions.
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal">
+<li>Not in master plan objectives.Description of Proposed Works (see figure 183):• Bank armouring of ouside meander banks at the edge of the bankfull width below the existing channelized section to maintain channel morphology and prevent avulsions. Energies are too high here to consider the use of organic materials, so large angular rock structures to bankfull height are prescribed. All rock toe armouring should be installed to below the deepest portion of the thalweg to prevent scouring and undercutting of bank toes and therefore structure failure. The structures should be appropriately engineered to withstand 1 in 50 to 1 in 100 year flood events. Structures should not infringe on the bankfull width, but should be installed at either edge of the bankfull width, allowing the channel to adjust its pattern somewhat to changes in discharge.• Riparian prescriptions outline riparian restoration to be carried out in concert with this prescription to restore stream shading and long-term LWD supply.Technical References:• WRP Technical Circular #9, Chapter 6• Donat, 1995 Appendix G-46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+N/A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+1+700 metres upstream from the reach 1/2 break. UTM 9.6028000.653720
+</td>
+<td style="text-align:left;">
+9.6028000.653720
+</td>
+<td style="text-align:left;">
+Private, lot 2094
+</td>
+<td style="text-align:left;">
+Loss of sediment storage function at geomorphic notch point (logjams at canyon mouth) due to decreasing upstream LWD supply and an altered basinrunoff regime. This is leading to cumulative sediment impacts propogating downstreamand exacerbating impacts there.
+</td>
+<td style="text-align:left;">
+Reestablish log jam in geomorphic notch point to store upstream sediment andLWD.
+</td>
+<td style="text-align:left;">
+<ol start="3" style="list-style-type: decimal">
+<li>Reestablish sediment storage functions such as log jams in geomorphic notch points where they are lacking. Maintain anadromous access through these areas in concert with the former goal where applicable. Appendix G-48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+N/A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+5+350 metres upstream from the reach 3/4 break. UTM 9.6019120.652980.Nearest road access at Buck Flats road, approximately 500 metres downstream.
+</td>
+<td style="text-align:left;">
+9.6019120.652980
+</td>
+<td style="text-align:left;">
+Private, lot 5205
+</td>
+<td style="text-align:left;">
+Loss of sediment storage function at geomorphic notch point (logjams at canyon mouth) due to decreasing upstream LWD supply and an altered basinrunoff regime. This is leading to cumulative sediment impacts propogating downstreamand exacerbating impacts there.
+</td>
+<td style="text-align:left;">
+Reestablish log jam in geomorphic notch point to store upstream sediment andLWD.
+</td>
+<td style="text-align:left;">
+<ol start="3" style="list-style-type: upper-roman">
+<li>Reestablish sediment storage functions such as log jams in geomorphic notch points where they are lacking. Maintain anadromous access through these areas in concert with the former goal where applicable.Description of Proposed Works (see figure 184):• Construction of two staggered lateral debris catchers to catch logs and create a full- spanning log jam at the notch point. The downstream debris catchers will be approximately 25-30 linear metres below the upstream catcher. A staggered configuration on such a sharp bend in the creek will enhance the potential and effectiveness of creating a full-spanning log jam. The lack of floodplain here will minimize the probability of lateral movement compromising the integrity of the works.• Construction will consist of a five log triangular configuration ballasted with cabled boulders. Main logs are to be keyed into the bank. Suggested dimensions for logs are 50-60 cm dbh and 6 m lengths. Logs should be coniferous stock to maximize longevity. Ballast requirements for each entire structure, based on single-log calculations for ballast, are 5400 kg. One large boulder and four smaller boulders are suggested. The largest boulder is to be cabled to the apex of the structure in the area of greatest stress and loading. Smaller boulders are cabled to single logs throughout the debris catcher to enhance the integrity of logs keyed into the bank. Suggested specifications for the largest boulder are 1.1 metres b-axis diameter (2000 kg), and the four smaller boulders are 0.8 metres diameter (850 kg) each.Technical References:• WRP Technical Circular #9, chapter 9• Streamlines (WRP technical bulletin) vol.3, no.2, pgs.17-18 Appendix G-50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulkley
+</td>
+<td style="text-align:left;">
+Bulkley River
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+BUL29 and BUL32
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Site 1= 4+553 to 4+750 metres (UTM 9.6030100.648600) upstream from theBulkley/Morice confluence and Site 2= 5+940 to 6+080 metres (UTM9.6029800.649100) upstream from the Bulkley/Morice confluence. Both sites aredownslope from the Michelle Bay FSR.
+</td>
+<td style="text-align:left;">
+9.6030100.648600
+</td>
+<td style="text-align:left;">
+Private, lots 2114 and 2116
+</td>
+<td style="text-align:left;">
+Subsurface and surface runoff diversion and concentrationdownslope by the Michelle Bay FSR (both sites) and a section of the old highway (site 1)are causing extensive surface erosion and slumping of the valley walls. These sites arelarge sources of fine sediment in runoff and mass movements to the Bulkley River.
+</td>
+<td style="text-align:left;">
+To stabilize slopes and mitigate fine sediment inputs from these sites to theriver. Appendix G-52
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulkley
+</td>
+<td style="text-align:left;">
+Bulkley River
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+BUL63
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+3+263 to 3+852 metres upstream of the reach 1/2 break. UTM9.6033300.655300. TRIM mapsheet 93L.047.
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Private, lot 1166
+</td>
+<td style="text-align:left;">
+Removal of riparian forest for hay farming upstream of a meanderneck led to extensive bank erosion. The bank erosion caused a change in the angle ofattack of the main flow (thalweg) on the outside bank of the meander downstream. Theincreased shear stress on the meander neck lead to an avulsion in the spring, 1997 flood.
+</td>
+<td style="text-align:left;">
+To increase river sinuosity and channel complexity by restoring flow to originalchannel. Avulsion channel will be blocked off and revegetated.
+</td>
+<td style="text-align:left;">
+No objective in master plan. Appendix G-54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulkley
+</td>
+<td style="text-align:left;">
+Bulkley River
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+BUL129
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+12+860 metres upstream from the reach 1/2 break, and 0 to 150 metresupstream of the Knockholt Bridge (McKilligan Road) on the downstream left bank.UTM 9.6037350.660800.
+</td>
+<td style="text-align:left;">
+9.6037350.660800
+</td>
+<td style="text-align:left;">
+Private, lots 2617 and 2087
+</td>
+<td style="text-align:left;">
+Severe bank erosion of fine-textured soils and aggradation atagricultural (hay) land due to channel constriction at the Knockholt Bridge and removalof riparian forest/soil compaction by agricultural machinery. The channel constriction bythe bridge downstream of the impact site is causing bank scouring and erosion as a largeeddy is formed above. The circular motion of the eddy is undercutting the bank toe.
+</td>
+<td style="text-align:left;">
+To rehabilitate the stream bank and stabilize bars, promoting sedimentdeposition and natural bar recolonization. To narrow the bankfull channel width in thisarea. Appendix G-56
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulkley
+</td>
+<td style="text-align:left;">
+Bulkley River
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+N/A
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Bulkley River floodplain overbank flow channels, downstream rightfloodplain between highway and river at the upstream end of reach 2. This is anextensive area of historic lateral movement and sediment deposition as the river channelbecomes less confined downstream of reach 3. See TRIM mapsheet 93L.048. The areaof interest is roughly bound by a square with corners with coordinates UTM9.6039000.661600, 9.6038500.662000, 9.6040100.662700, and 9.6039900.663200.
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Private, lots 3467, 3313 and 200.
+</td>
+<td style="text-align:left;">
+Extensive floodplain development for hay cultivation, anddiversion of the river has led to poor floodplain and riparian function and extensivesurface erosion during overbank floods.
+</td>
+<td style="text-align:left;">
+To restore floodplain functions, rehabilitate riparian forest and reduce surfaceerosion of unforested and compacted soils by restoring and revegetating overbank floodchannels.
+</td>
+<td style="text-align:left;">
+I. Restoring floodplain function and lateral channel movement where feasible to increase spatial habitat diversity and improve overwintering and summer rearing habitat, buffer high and low water levels and water temperatures downstream, and increase overbank sediment storage.II. Mitigate flood damage by overbank flooding and improve off-channel habitat creation and access to the mainstem on cleared land by revegetating and reconnecting floodplain flood channels and baffling them with LWD in key locations.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Emerson
+</td>
+<td style="text-align:left;">
+Emerson
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+EME2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+0+425 to 0+535 metres upstream from mouth. UTM 9.6035500.641720.Walcott road and CNR railway crossing.
+</td>
+<td style="text-align:left;">
+9.6035500.641720
+</td>
+<td style="text-align:left;">
+Private, road and CNR right-of-way, lot 741
+</td>
+<td style="text-align:left;">
+Channelizing and straightening of creek on both banks throughbridge-crossing area has led to habitat simplification, loss of riparian forest andfloodplain functions, donstream bank erosion and aggradation and upstream aggradation.
+</td>
+<td style="text-align:left;">
+To complex channelized section with hard structures, dissipate stream power,increase habitat area and diversity, and restore stream shading and overhead cover forfish through riparian shrub planting.
+</td>
+<td style="text-align:left;">
+<ol start="2" style="list-style-type: decimal">
+<li>Reestablish spatial habitat diversity and quality, and hydraulic energy dissipation in areas that have been channelized. A long-term goal which requires cooperation between private landowners and regulatory agencies is the de-channelizing of these areas and their reconnection to normal floodplain functioning, which is beyond the scope of this project.Description of Proposed Works (see figure 186):• Survey and design phase including consultation with a river engineer and/or geomorphologist.• Construction of two attracting groynes and one set of opposing wing deflectors using hard materials in-stream. Structures are constructed at 27 metre intervals from each other. Attracting groynes are oriented 45o downstream from the bank. Rock material is placed in a trench dug to 1 metre below the bed surface to reduce the chance of undercutting. Lateral grade from the bank to the apex of the groyne is 1:50. The height of the groyne is the average wetted depth in the channelized section. Size of materials should be 25.5 cm b-axis diameter or larger (average D in riffles in this reach times a safety factor of 1.5). The opposing wing deflectors are constructed at 45o up and downstream from the bank on either axis. Rock material is placed in trenches dug to 1 metre below the existing bed surface. Lateral grade from the bank to the apex of the deflector should ensure that the bank end (root) is to bankfull height and the apex is 0.3 metres above the mean water level. Rock material on the upstream face should be larger than downstream (recommended size in WRTC#9 is 2 m diameter on upstream face). The interior of the deflector can be filled with smaller granular spoil.• Low growing and overhanging shrubs are planted in the rip-rap as per the riparian prescription. Signs are to be placed indicating the riparian works to railway and road maintenance crews.Technical References: Appendix G-61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Emerson
+</td>
+<td style="text-align:left;">
+Emerson
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+EME6 and EME7
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+0+792 and 1+080 metres upstream from the mouth, right bank. UTM9.6035400.641700 and 9.6035180.641500 respectively. Both sites are directlydownslope from the Walcott Road.
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Private, lot 741.
+</td>
+<td style="text-align:left;">
+Diversion of surface and subsurface drainage by the Walcott Roadcausing two slope failures and inputs of sediment and debris. Sediment input is due tothe failures themselves and chronic surface erosion of the exposed mineral soils.
+</td>
+<td style="text-align:left;">
+To stabilize and revegetate the slopes by altering drainage patterns from theroad ditchlines and using bioengineering techniques when the road works have proveneffective.
+</td>
+<td style="text-align:left;">
+<ol start="5" style="list-style-type: decimal">
+<li>Stabilize upslope and riparian sources of sediment and prevent further occurrence of slope and bank instability when and if upstream sources of disturbance have been removed and/or where restoration will have a high probablity of success despite upstream sources of disturbance, and/or when passive restoration needs to be integrated with active restoration.
+</td>
+</tr>
+</tbody>
+</table>
+</div></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
 </div>
 </div>
 <div id="future-restoration-site-selection-1" class="section level2 hasAnchor" number="4.3">
@@ -1021,78 +2141,78 @@ Bulkley
 </div>
 <div id="parameter-ranking-to-select-future-restoration-sites-1" class="section level3 hasAnchor" number="4.3.5">
 <h3><span class="header-section-number">4.3.5</span> Parameter Ranking to Select Future Restoration Sites<a href="results.html#parameter-ranking-to-select-future-restoration-sites-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the <code>restoration_site_priority_parameters.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv">here</a> is included in Table <a href="results.html#tab:tab-gis-params">4.5</a>.</p>
+<p>A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the <code>restoration_site_priority_parameters.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv">here</a> is included in Table <a href="results.html#tab:tab-gis-params">4.7</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="results.html#cb34-1" tabindex="-1"></a><span class="co"># load the data</span></span>
-<span id="cb34-2"><a href="results.html#cb34-2" tabindex="-1"></a>gis_params_raw_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb34-3"><a href="results.html#cb34-3" tabindex="-1"></a>  <span class="st">&quot;data/inputs_raw/restoration_site_priority_parameters_raw.csv&quot;</span></span>
-<span id="cb34-4"><a href="results.html#cb34-4" tabindex="-1"></a>) </span>
-<span id="cb34-5"><a href="results.html#cb34-5" tabindex="-1"></a></span>
-<span id="cb34-6"><a href="results.html#cb34-6" tabindex="-1"></a></span>
-<span id="cb34-7"><a href="results.html#cb34-7" tabindex="-1"></a>gis_params_raw_to_update <span class="ot">&lt;-</span> gis_params_raw_all <span class="sc">%&gt;%</span> </span>
-<span id="cb34-8"><a href="results.html#cb34-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(source_schema_table) <span class="sc">&amp;</span> </span>
-<span id="cb34-9"><a href="results.html#cb34-9" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">is.na</span>(source_column_name) <span class="sc">&amp;</span></span>
-<span id="cb34-10"><a href="results.html#cb34-10" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-11"><a href="results.html#cb34-11" tabindex="-1"></a>  <span class="co"># we know that whse_forest_tenure.ften_range_poly_carto_vw is problematic so lets remove</span></span>
-<span id="cb34-12"><a href="results.html#cb34-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>))</span>
-<span id="cb34-13"><a href="results.html#cb34-13" tabindex="-1"></a></span>
-<span id="cb34-14"><a href="results.html#cb34-14" tabindex="-1"></a></span>
-<span id="cb34-15"><a href="results.html#cb34-15" tabindex="-1"></a><span class="co"># grab the details about the source_schema_table as source_schema_table_details and then the </span></span>
-<span id="cb34-16"><a href="results.html#cb34-16" tabindex="-1"></a><span class="co"># source_column_name as source_column_name_details</span></span>
-<span id="cb34-17"><a href="results.html#cb34-17" tabindex="-1"></a>gis_param_details_prep_schtab <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
-<span id="cb34-18"><a href="results.html#cb34-18" tabindex="-1"></a>  </span>
-<span id="cb34-19"><a href="results.html#cb34-19" tabindex="-1"></a>  gis_params_raw_to_update,</span>
-<span id="cb34-20"><a href="results.html#cb34-20" tabindex="-1"></a>  </span>
-<span id="cb34-21"><a href="results.html#cb34-21" tabindex="-1"></a>  rfp<span class="sc">::</span><span class="fu">rfp_meta_bcd_xref</span>(),</span>
-<span id="cb34-22"><a href="results.html#cb34-22" tabindex="-1"></a>  </span>
-<span id="cb34-23"><a href="results.html#cb34-23" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>)</span>
-<span id="cb34-24"><a href="results.html#cb34-24" tabindex="-1"></a>)</span>
-<span id="cb34-25"><a href="results.html#cb34-25" tabindex="-1"></a>  </span>
-<span id="cb34-26"><a href="results.html#cb34-26" tabindex="-1"></a></span>
-<span id="cb34-27"><a href="results.html#cb34-27" tabindex="-1"></a><span class="co"># grab the column details</span></span>
-<span id="cb34-28"><a href="results.html#cb34-28" tabindex="-1"></a>params_cols_des <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2_df</span>(gis_param_details_prep_schtab<span class="sc">$</span>source_schema_table, gis_param_details_prep_schtab<span class="sc">$</span>source_column_name, rfp<span class="sc">::</span>rfp_meta_bcd_xref_col_comments)</span>
-<span id="cb34-29"><a href="results.html#cb34-29" tabindex="-1"></a></span>
-<span id="cb34-30"><a href="results.html#cb34-30" tabindex="-1"></a><span class="co"># left_join the column details to the gis_param_details_prep_schtab</span></span>
-<span id="cb34-31"><a href="results.html#cb34-31" tabindex="-1"></a>gis_param_details_prep <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
-<span id="cb34-32"><a href="results.html#cb34-32" tabindex="-1"></a>  gis_param_details_prep_schtab,</span>
-<span id="cb34-33"><a href="results.html#cb34-33" tabindex="-1"></a>  params_cols_des,</span>
-<span id="cb34-34"><a href="results.html#cb34-34" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>, <span class="st">&quot;source_column_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;col_name&quot;</span>)</span>
-<span id="cb34-35"><a href="results.html#cb34-35" tabindex="-1"></a>)</span>
-<span id="cb34-36"><a href="results.html#cb34-36" tabindex="-1"></a></span>
-<span id="cb34-37"><a href="results.html#cb34-37" tabindex="-1"></a><span class="co"># need to add back all the layers filtered out above - this should not be repeated but will do for now</span></span>
-<span id="cb34-38"><a href="results.html#cb34-38" tabindex="-1"></a>gis_params_raw_all_updated <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb34-39"><a href="results.html#cb34-39" tabindex="-1"></a>  gis_params_raw_all <span class="sc">%&gt;%</span> </span>
-<span id="cb34-40"><a href="results.html#cb34-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">is.na</span>(source_schema_table) <span class="sc">|</span> </span>
-<span id="cb34-41"><a href="results.html#cb34-41" tabindex="-1"></a>                    <span class="fu">is.na</span>(source_column_name) <span class="sc">|</span></span>
-<span id="cb34-42"><a href="results.html#cb34-42" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">|</span></span>
-<span id="cb34-43"><a href="results.html#cb34-43" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>)),</span>
-<span id="cb34-44"><a href="results.html#cb34-44" tabindex="-1"></a>  gis_param_details_prep</span>
-<span id="cb34-45"><a href="results.html#cb34-45" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-46"><a href="results.html#cb34-46" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">url_browser =</span> <span class="fu">case_when</span>(</span>
-<span id="cb34-47"><a href="results.html#cb34-47" tabindex="-1"></a>    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">~</span> <span class="st">&quot;https://smnorris.github.io/bcfishpass/06_data_dictionary.html&quot;</span>,</span>
-<span id="cb34-48"><a href="results.html#cb34-48" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> url_browser)</span>
-<span id="cb34-49"><a href="results.html#cb34-49" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-50"><a href="results.html#cb34-50" tabindex="-1"></a>  <span class="fu">arrange</span>(source_schema_table, source_column_name, column_name_raw)</span>
-<span id="cb34-51"><a href="results.html#cb34-51" tabindex="-1"></a></span>
-<span id="cb34-52"><a href="results.html#cb34-52" tabindex="-1"></a><span class="co"># this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag</span></span>
-<span id="cb34-53"><a href="results.html#cb34-53" tabindex="-1"></a>gis_params_raw_all_updated <span class="sc">%&gt;%</span> </span>
-<span id="cb34-54"><a href="results.html#cb34-54" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="results.html#cb35-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a href="results.html#cb35-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb35-3"><a href="results.html#cb35-3" tabindex="-1"></a>    source_schema_table, </span>
-<span id="cb35-4"><a href="results.html#cb35-4" tabindex="-1"></a>                source_column_name,</span>
-<span id="cb35-5"><a href="results.html#cb35-5" tabindex="-1"></a>    column_name_raw,</span>
-<span id="cb35-6"><a href="results.html#cb35-6" tabindex="-1"></a>    user_input,</span>
-<span id="cb35-7"><a href="results.html#cb35-7" tabindex="-1"></a>    url_browser,</span>
-<span id="cb35-8"><a href="results.html#cb35-8" tabindex="-1"></a>    <span class="co"># description_table = description,</span></span>
-<span id="cb35-9"><a href="results.html#cb35-9" tabindex="-1"></a>    col_comments</span>
-<span id="cb35-10"><a href="results.html#cb35-10" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-11"><a href="results.html#cb35-11" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;GIS parameters used to rank future restoration sites.&quot;</span>,</span>
-<span id="cb35-12"><a href="results.html#cb35-12" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="results.html#cb35-1" tabindex="-1"></a><span class="co"># load the data</span></span>
+<span id="cb35-2"><a href="results.html#cb35-2" tabindex="-1"></a>gis_params_raw_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb35-3"><a href="results.html#cb35-3" tabindex="-1"></a>  <span class="st">&quot;data/inputs_raw/restoration_site_priority_parameters_raw.csv&quot;</span></span>
+<span id="cb35-4"><a href="results.html#cb35-4" tabindex="-1"></a>) </span>
+<span id="cb35-5"><a href="results.html#cb35-5" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="results.html#cb35-6" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="results.html#cb35-7" tabindex="-1"></a>gis_params_raw_to_update <span class="ot">&lt;-</span> gis_params_raw_all <span class="sc">%&gt;%</span> </span>
+<span id="cb35-8"><a href="results.html#cb35-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(source_schema_table) <span class="sc">&amp;</span> </span>
+<span id="cb35-9"><a href="results.html#cb35-9" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">is.na</span>(source_column_name) <span class="sc">&amp;</span></span>
+<span id="cb35-10"><a href="results.html#cb35-10" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-11"><a href="results.html#cb35-11" tabindex="-1"></a>  <span class="co"># we know that whse_forest_tenure.ften_range_poly_carto_vw is problematic so lets remove</span></span>
+<span id="cb35-12"><a href="results.html#cb35-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>))</span>
+<span id="cb35-13"><a href="results.html#cb35-13" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="results.html#cb35-14" tabindex="-1"></a></span>
+<span id="cb35-15"><a href="results.html#cb35-15" tabindex="-1"></a><span class="co"># grab the details about the source_schema_table as source_schema_table_details and then the </span></span>
+<span id="cb35-16"><a href="results.html#cb35-16" tabindex="-1"></a><span class="co"># source_column_name as source_column_name_details</span></span>
+<span id="cb35-17"><a href="results.html#cb35-17" tabindex="-1"></a>gis_param_details_prep_schtab <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb35-18"><a href="results.html#cb35-18" tabindex="-1"></a>  </span>
+<span id="cb35-19"><a href="results.html#cb35-19" tabindex="-1"></a>  gis_params_raw_to_update,</span>
+<span id="cb35-20"><a href="results.html#cb35-20" tabindex="-1"></a>  </span>
+<span id="cb35-21"><a href="results.html#cb35-21" tabindex="-1"></a>  rfp<span class="sc">::</span><span class="fu">rfp_meta_bcd_xref</span>(),</span>
+<span id="cb35-22"><a href="results.html#cb35-22" tabindex="-1"></a>  </span>
+<span id="cb35-23"><a href="results.html#cb35-23" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>)</span>
+<span id="cb35-24"><a href="results.html#cb35-24" tabindex="-1"></a>)</span>
+<span id="cb35-25"><a href="results.html#cb35-25" tabindex="-1"></a>  </span>
+<span id="cb35-26"><a href="results.html#cb35-26" tabindex="-1"></a></span>
+<span id="cb35-27"><a href="results.html#cb35-27" tabindex="-1"></a><span class="co"># grab the column details</span></span>
+<span id="cb35-28"><a href="results.html#cb35-28" tabindex="-1"></a>params_cols_des <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2_df</span>(gis_param_details_prep_schtab<span class="sc">$</span>source_schema_table, gis_param_details_prep_schtab<span class="sc">$</span>source_column_name, rfp<span class="sc">::</span>rfp_meta_bcd_xref_col_comments)</span>
+<span id="cb35-29"><a href="results.html#cb35-29" tabindex="-1"></a></span>
+<span id="cb35-30"><a href="results.html#cb35-30" tabindex="-1"></a><span class="co"># left_join the column details to the gis_param_details_prep_schtab</span></span>
+<span id="cb35-31"><a href="results.html#cb35-31" tabindex="-1"></a>gis_param_details_prep <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb35-32"><a href="results.html#cb35-32" tabindex="-1"></a>  gis_param_details_prep_schtab,</span>
+<span id="cb35-33"><a href="results.html#cb35-33" tabindex="-1"></a>  params_cols_des,</span>
+<span id="cb35-34"><a href="results.html#cb35-34" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>, <span class="st">&quot;source_column_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;col_name&quot;</span>)</span>
+<span id="cb35-35"><a href="results.html#cb35-35" tabindex="-1"></a>)</span>
+<span id="cb35-36"><a href="results.html#cb35-36" tabindex="-1"></a></span>
+<span id="cb35-37"><a href="results.html#cb35-37" tabindex="-1"></a><span class="co"># need to add back all the layers filtered out above - this should not be repeated but will do for now</span></span>
+<span id="cb35-38"><a href="results.html#cb35-38" tabindex="-1"></a>gis_params_raw_all_updated <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb35-39"><a href="results.html#cb35-39" tabindex="-1"></a>  gis_params_raw_all <span class="sc">%&gt;%</span> </span>
+<span id="cb35-40"><a href="results.html#cb35-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">is.na</span>(source_schema_table) <span class="sc">|</span> </span>
+<span id="cb35-41"><a href="results.html#cb35-41" tabindex="-1"></a>                    <span class="fu">is.na</span>(source_column_name) <span class="sc">|</span></span>
+<span id="cb35-42"><a href="results.html#cb35-42" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">|</span></span>
+<span id="cb35-43"><a href="results.html#cb35-43" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>)),</span>
+<span id="cb35-44"><a href="results.html#cb35-44" tabindex="-1"></a>  gis_param_details_prep</span>
+<span id="cb35-45"><a href="results.html#cb35-45" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-46"><a href="results.html#cb35-46" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">url_browser =</span> <span class="fu">case_when</span>(</span>
+<span id="cb35-47"><a href="results.html#cb35-47" tabindex="-1"></a>    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">~</span> <span class="st">&quot;https://smnorris.github.io/bcfishpass/06_data_dictionary.html&quot;</span>,</span>
+<span id="cb35-48"><a href="results.html#cb35-48" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> url_browser)</span>
+<span id="cb35-49"><a href="results.html#cb35-49" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-50"><a href="results.html#cb35-50" tabindex="-1"></a>  <span class="fu">arrange</span>(source_schema_table, source_column_name, column_name_raw)</span>
+<span id="cb35-51"><a href="results.html#cb35-51" tabindex="-1"></a></span>
+<span id="cb35-52"><a href="results.html#cb35-52" tabindex="-1"></a><span class="co"># this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag</span></span>
+<span id="cb35-53"><a href="results.html#cb35-53" tabindex="-1"></a>gis_params_raw_all_updated <span class="sc">%&gt;%</span> </span>
+<span id="cb35-54"><a href="results.html#cb35-54" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="results.html#cb36-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="results.html#cb36-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb36-3"><a href="results.html#cb36-3" tabindex="-1"></a>    source_schema_table, </span>
+<span id="cb36-4"><a href="results.html#cb36-4" tabindex="-1"></a>                source_column_name,</span>
+<span id="cb36-5"><a href="results.html#cb36-5" tabindex="-1"></a>    column_name_raw,</span>
+<span id="cb36-6"><a href="results.html#cb36-6" tabindex="-1"></a>    user_input,</span>
+<span id="cb36-7"><a href="results.html#cb36-7" tabindex="-1"></a>    url_browser,</span>
+<span id="cb36-8"><a href="results.html#cb36-8" tabindex="-1"></a>    <span class="co"># description_table = description,</span></span>
+<span id="cb36-9"><a href="results.html#cb36-9" tabindex="-1"></a>    col_comments</span>
+<span id="cb36-10"><a href="results.html#cb36-10" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-11"><a href="results.html#cb36-11" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;GIS parameters used to rank future restoration sites.&quot;</span>,</span>
+<span id="cb36-12"><a href="results.html#cb36-12" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-gis-params">Table 4.5: </span><span id="tab:tab-gis-params">Table 4.6: </span>GIS parameters used to rank future restoration sites.
+<span id="tab:tab-gis-params">Table 4.7: </span><span id="tab:tab-gis-params">Table 4.8: </span>GIS parameters used to rank future restoration sites.
 </caption>
 <thead>
 <tr>

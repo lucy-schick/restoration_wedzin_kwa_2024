@@ -12,6 +12,7 @@ fig:SEM-hab-benifits
 fig:all-benefits
 tab:tab-rfp-tracking
 tab:tab-ncfdc-1998-priority
+tab:tab-ncfdc-1998-pres
 tab:tab-gis-params
 introduction
 wetsuweten
@@ -28,7 +29,7 @@ fisheries
 neexdzii-kwah
 morice-river
 fish-species
-restoration
+restoration-philosophy
 process-based-restoration
 stage-0
 methods
