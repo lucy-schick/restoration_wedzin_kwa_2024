@@ -28,8 +28,82 @@ The shared QGIS project was created using scripts currently kept in [`dff-2022`]
 # QRis will be a useful tool for digitizing the upper Wetzin'kwa river and prioritizing restoration sites. To start using QRis, follow the instructions for [getting started](https://qris.riverscapes.net/getting-started/).
 ```
 
+## Open Source - Iterative Reporting
+There is a key question we have been asking ourselves lately and that is 
+
+<br>
+
+    
+  >"What is the most useful way to present information?" 
+  
+<br>
+  
+
+From our perspective - the most useful way to present information is in a version controlled format that allows it to be
+interactive, reproducible, read online, served out as a static document, updated,  copied, used as a template, etc.
+Iterative reporting, managed with a version control system such as
+[git](https://docs.github.com/en/get-started/using-git/about-git) (see example of tracking edits [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/commits/main/0300-methods.Rmd))
+with a permissive license is a great way to do all
+those things.  Although there is a steep learning curve to using programming tools and producing this type of product
+and although it can be quite time consuming - it then allows leveraging of all the components of the work to future
+projects for everyone. Licenseing is also key and should be considered.
+[Here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/LICENSE) is an example of
+a license that promotes collaboration and sharing/leveraging of work.
+
+<br>
+
+From our perspective - restoration planning are the type of initiatives that are well suited to an iterative reporting format such as
+can be demonstrated within this [code
+repository](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024) which builds and serves this
+[online report](https://newgraphenvironment.github.io/restoration_wedzin_kwa_2024/). 
+
+
+### Issue and Discussion Tracking
+Issues and discussions are effective ways to track tasks, enhancements, and bugs for the  project. Issues can be used to keep track of all the things that need to be done, and can be used to discuss in-line with references to code used to address them linked to the issues through `git` commit messages.  Issues for this project are kept [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/issues) and
+discussions are kept [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/discussions).
+
+
+
+### Tables and Figures
+There are many tables within this document that can take have a long time to format.  Within this document the tables have been imported often as simple csv files or pages of an excel workbook and pulled into the project using scripts. This allows others to access the data and use it in their own projects.  These tables can also then be easily updated
+with new data as it becomes available often with the formatting for presentation to reader handled by the scripting. An example of this can be
+seen here in Table \@ref(tab:kable-resources) with the actual file served
+[here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/data):
+
+```{r kable-resources}
+
+
+read_csv("data/aquatic_restoration_resources.csv") %>%
+  fpr::fpr_kable(caption_text = "Aquatic Restoration Resources.")
+```
+
+<br>
+ 
+Any figures used in the reporting are saved in the project and can be used by anyone else in their work to tell there own
+story and help their teams achieve their goals.  An example of this can be seen here Table \@ref(tab:kable-resources)
+with the actual file served
+[here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/fig/collaboration.jpg).
+
+### Data Sourceing from Skeena Salmon Data Centre
+Whenever possible we have attempted to tie into existing data govenment infrastructure in the Skeena region by downloading data directly from the [Skeena Salmon Data Centre](https://data.skeenasalmon.info/) using the application programming interface to their [CKAN](https://ckan.org/features/api) database. To facilitate and simlify this process we developed a function to download data from the CKAN database and load it into local versions of the project repository. This `fetch_package` function is kept in the `scripts/functions.R` file of the project and can be used to download entire "packages" of data from the Skeena Salmon Data Centre.
+
+### Documentation of Workflows
+Select workflows were documented in memo format to illustrate the process used for others and promote reproducibility/leverageing of Neexdzii Kwah.  The memos are stored in the `memo` directory of the project [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos) and can be viewed in Table Table \@ref(tab:memos) by downloading the `.html` documents to a local computer and opening in a web browser such as `Chrome` (usually a double click of the document will open it in the browser).  
+
+```{r memos}
+
+## make a tibble of the list and display it as a fpr_kable
+list.files("memos", full.names = FALSE) %>% 
+  tibble::tibble(memo_name = .) %>% 
+  fpr::fpr_kable(caption_text = "Memos stored at https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos.")
+
+```
+
+
+
 ## Past Restoration Initiative Identification
-Information regarding past restoration initiatives, prescriptions and activities is an important component of the restoration planning process. A wealth of information is present for the Neexdzii Kwah however it is located in many different locations and not always spatially represented.  To address this, a comprehensive review of past restoration activities is underway. This review included a review of the literature, interviews with local experts, and a review of the restoration prescriptions and activities that have been conducted in the Neexdzii Kwah. For information regarding relatively recent restoration efforts such as physical works conducted through Healthy Watersheds Initiative, representatives from the Morice Watershed Monitoring Trust amalgamated all information located on physical drives and either provided emails with the data attached or provided links to the data for the study team for download and review.  This information was then subsequently downloaded and re-uploaded to a `OneDrive` folder for the study team to access.  Additional data was also sourced from the [Skeena Salmon Data Centre](https://data.skeenasalmon.info/) using the application programming interface to their [CKAN](https://ckan.org/features/api) database.  
+Information regarding past restoration initiatives, prescriptions and activities is an important component of the restoration planning process. A wealth of information is present for the Neexdzii Kwah however it is located in many different locations and not always spatially represented.  To address this, a comprehensive review of past restoration activities is underway. This review included a review of the literature, interviews with local experts, and a review of the restoration prescriptions and activities that have been conducted in the Neexdzii Kwah. For information regarding relatively recent restoration efforts such as physical works conducted through Healthy Watersheds Initiative, representatives from the Morice Watershed Monitoring Trust amalgamated all information located on physical drives and either provided emails with the data attached or provided links to the data for the study team for download and review.  This information was then subsequently downloaded and re-uploaded to a `OneDrive` folder for the study team to access. 
+
 
 ## Future Restoration Site Selection
 
