@@ -170,3 +170,18 @@ cleaned_data <- data %>%
 # Write the tibble to a CSV file
 cleaned_data %>%
   readr::write_csv("data/ncfdc_1998_prescriptions.csv")
+
+
+
+
+##-----------make sure we get all the data even if Sub-Basin is not present on the page
+
+
+fields <- c("Sub-Basin", "Creek", "Reach", "Prescription Number", "Related Riparian Prescription",
+            "Category", "Location", "UTM", "Land Tenure", "Impact Description",
+            "Goals", "Master Plan Objectives", "Description of Proposed Works", "Technical References")
+
+
+
+
+
