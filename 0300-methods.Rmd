@@ -57,7 +57,7 @@ discussions are kept [here](https://github.com/NewGraphEnvironment/restoration_w
 
 
 ### Tables and Figures
-There are many tables within this document that can take have a long time to format.  Within this document the tables have been imported often as simple csv files or pages of an excel workbook and pulled into the project using scripts. This allows others to access the data and use it in their own projects.  These tables can also then be easily updated
+There are many tables within this document that can take a long time to format.  Within this document the tables have been imported often as simple csv files or pages of an excel workbook and pulled into the project using scripts. This allows others to access the data and use it in their own projects.  These tables can also then be easily updated
 with new data as it becomes available often with the formatting for presentation to reader handled by the scripting. An example of this can be
 seen here in Table \@ref(tab:kable-resources) with the actual file served
 [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/data):
@@ -80,7 +80,7 @@ with the actual file served
 Whenever possible we have attempted to tie into existing data govenment infrastructure in the Skeena region by downloading data directly from the [Skeena Salmon Data Centre](https://data.skeenasalmon.info/) using the application programming interface to their [CKAN](https://ckan.org/features/api) database. To facilitate and simlify this process we developed a function to download data from the CKAN database and load it into local versions of the project repository. This `fetch_package` function is kept in the `scripts/functions.R` file of the project and can be used to download entire "packages" of data from the Skeena Salmon Data Centre.
 
 ### Documentation of Workflows
-Select workflows were documented in memo format to illustrate the process used for others and promote reproducibility/leverageing of Neexdzii Kwah.  The memos are stored in the `memo` directory of the project [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos) and can be viewed in Table Table \@ref(tab:memos) by downloading the `.html` documents to a local computer and opening in a web browser such as `Chrome` (usually a double click of the document will open it in the browser).  
+Select workflows were documented in memo format to illustrate the process used for others and promote reproducibility/leverageing of Neexdzii Kwah.  The memos are stored in the `memo` directory of the project [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos) and can be viewed in Table Table \@ref(tab:tab-memos) by downloading the `.html` documents to a local computer and opening in a web browser such as `Chrome` (usually a double click of the document will open it in the browser).  
 
 ```{r tab-memos}
 
