@@ -1,6 +1,8 @@
 # restoration_wedzin_kwa_2024 DRAFT 0.0.2
   
-  - recomendations - mention develop and document data management workflows to leverage existing established data storage systems to retrieve data from and load too and build capacity for all interested to do the same
+  - recommendations are now numbered and reordered
+  - MIT license
+  - recommendations - mention develop and document data management workflows to leverage existing established data storage systems to retrieve data from and load too and build capacity for all interested to do the same
   - methods - include details of Open Source - Iterative Reporting. include aquatic_restoration_resources.csv as example of data management and presentation strategies 
   - issue #42 - turn DFO NuSeds tables and graph generating code to functions with region and data elements etc. as params
   - background - add DFO NuSeds tables and graphs to Neexdzii Kwah section
