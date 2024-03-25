@@ -39,16 +39,9 @@ There is a key question we have been asking ourselves lately and that is
 <br>
   
 
-From our perspective - the most useful way to present information is in a version controlled format that allows it to be
-interactive, reproducible, read online, served out as a static document, updated,  copied, used as a template, etc.
-Iterative reporting, managed with a version control system such as
+From our perspective - the most useful way to present information is in a version controlled format that allows it to be interactive, reproducible, read online, served out as a static document, updated,  copied, used as a template, etc. Iterative reporting, managed with a version control system such as
 [git](https://docs.github.com/en/get-started/using-git/about-git) (see example of tracking edits [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/commits/main/0300-methods.Rmd))
-with a permissive license is a great way to do all
-those things.  Although there is a steep learning curve to using programming tools and producing this type of product
-and although it can be quite time consuming - it then allows leveraging of all the components of the work to future
-projects for everyone. Licenseing is also key and should be considered.
-[Here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/LICENSE) is an example of
-a license that promotes collaboration and sharing/leveraging of work.
+with a permissive license is a great way to do all those things.  Although there is a steep learning curve to using programming tools and producing this type of product and although it can be quite time consuming - it then allows leveraging of all the components of the work to future projects for everyone. Licensing is also key for work to be shared. [MIT License](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/LICENSE.md) is an example of a license that promotes collaboration and sharing/leveraging of work while.
 
 <br>
 
