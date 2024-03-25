@@ -1,6 +1,6 @@
 ---
 title: "historic_data_tidy"
-date: "2024-03-06"
+date: "Created: 2024-03-06 | Updated: `r format(Sys.Date(), '%Y-%m-%d')`"
 output: 
   html_document:
     code_folding: "hide"
