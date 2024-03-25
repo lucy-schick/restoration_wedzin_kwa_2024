@@ -1,7 +1,7 @@
 ---
 title: "dfo_stock_assessment"
 author: "Al Irvine"
-date: "2024-03-07"
+date: "Created: 2024-03-07 | Updated: `r format(Sys.Date(), '%Y-%m-%d')`"
 output: 
   html_document:
     code_folding: "hide"
@@ -194,11 +194,11 @@ cu %>%
 csv <- read_csv(paste0('../data/inputs_raw/', name_csv))
 
 # filter for our area of interest
-sample_study_area2 <- csv %>%   
+sample_study_area <- csv %>%   
   janitor::clean_names() %>% 
   dplyr::filter(stringr::str_detect(gazetted_name, "BULKLEY|MORICE")) 
 
-sample_study_area2 %>% 
+sample_study_area %>% 
   fpr::fpr_kable(font = 12)
 
 ```
@@ -210,8 +210,19 @@ Yup - thinking that is what is going on... good to know. **ANOTHER GOOD TO KNOW*
 <br>
 
 ```{r csv-resize}
-sample_study_area2 %>% 
+sample_study_area %>% 
   readr::write_csv('../data/inputs_raw/All Areas NuSEDS.csv')
+```
+
+<br>
+
+lets grab it back and make a plot with the function (`ldfo_sad_plot_line`) newly minted in https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/scripts/functions.R
+
+
+```{r fig-dfo}
+# lets grab it back and make a plot with the functionl dfo_sad_plot_line newly minted in `scripts/functions.R`
+read_csv(paste0('../data/inputs_raw/', name_csv)) %>%
+  ldfo_sad_plot_line("BULKLEY RIVER - UPPER", "total_return_to_river", "species", "analysis_yr", col_group_exclude = "Coho")
 ```
 
 
