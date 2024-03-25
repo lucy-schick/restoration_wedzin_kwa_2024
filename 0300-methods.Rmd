@@ -90,12 +90,15 @@ Whenever possible we have attempted to tie into existing data govenment infrastr
 ### Documentation of Workflows
 Select workflows were documented in memo format to illustrate the process used for others and promote reproducibility/leverageing of Neexdzii Kwah.  The memos are stored in the `memo` directory of the project [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos) and can be viewed in Table Table \@ref(tab:memos) by downloading the `.html` documents to a local computer and opening in a web browser such as `Chrome` (usually a double click of the document will open it in the browser).  
 
-```{r memos}
+```{r tab-memos}
 
 ## make a tibble of the list and display it as a fpr_kable
 list.files("memos", full.names = FALSE) %>% 
   tibble::tibble(memo_name = .) %>% 
-  fpr::fpr_kable(caption_text = "Memos stored at https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos.")
+  fpr::fpr_kable(caption_text = "Memos stored at https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos.",
+                 scroll = FALSE,
+                 scroll_box_height = "300px"
+                 )
 
 ```
 
