@@ -52,8 +52,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 <script type="text/javascript">
 
@@ -208,8 +206,9 @@ div.csl-indent {
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#collaborative-gis-environment"><i class="fa fa-check"></i><b>3.1</b> Collaborative GIS Environment</a></li>
-<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#past-restoration-initiative-identification"><i class="fa fa-check"></i><b>3.2</b> Past Restoration Initiative Identification</a></li>
-<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#future-restoration-site-selection"><i class="fa fa-check"></i><b>3.3</b> Future Restoration Site Selection</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#open-source---iterative-reporting"><i class="fa fa-check"></i><b>3.2</b> Open Source - Iterative Reporting</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#past-restoration-initiative-identification"><i class="fa fa-check"></i><b>3.3</b> Past Restoration Initiative Identification</a></li>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#future-restoration-site-selection"><i class="fa fa-check"></i><b>3.4</b> Future Restoration Site Selection</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
 <ul>
@@ -245,38 +244,38 @@ div.csl-indent {
 <div id="collaborative-gis-environment-1" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Collaborative GIS Environment<a href="results.html#collaborative-gis-environment-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A summary of background information layers loaded to the <code>background_layers.gpkg</code> geopackage of the <code>restoration_wedzin_kwa</code> project at the time of writing are included in Table <a href="results.html#tab:tab-rfp-tracking">4.1</a>.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="results.html#cb31-1" tabindex="-1"></a><span class="co"># first we will copy the doc from the Q project to this repo - the location of the Q project is outside of the repo!!</span></span>
-<span id="cb31-2"><a href="results.html#cb31-2" tabindex="-1"></a>q_path_stub <span class="ot">&lt;-</span> <span class="st">&quot;~/Projects/gis/restoration_wedzin_kwa/&quot;</span></span>
-<span id="cb31-3"><a href="results.html#cb31-3" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="results.html#cb31-4" tabindex="-1"></a>rfp_tracking_raw <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(<span class="fu">paste0</span>(q_path_stub, <span class="st">&quot;background_layers.gpkg&quot;</span>),</span>
-<span id="cb31-5"><a href="results.html#cb31-5" tabindex="-1"></a>            <span class="at">layer =</span> <span class="st">&quot;rfp_tracking&quot;</span>,</span>
-<span id="cb31-6"><a href="results.html#cb31-6" tabindex="-1"></a>            <span class="at">quite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb31-7"><a href="results.html#cb31-7" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="results.html#cb31-8" tabindex="-1"></a><span class="co"># grab the metadata</span></span>
-<span id="cb31-9"><a href="results.html#cb31-9" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">rfp_meta_bcd_xref</span>()</span>
-<span id="cb31-10"><a href="results.html#cb31-10" tabindex="-1"></a></span>
-<span id="cb31-11"><a href="results.html#cb31-11" tabindex="-1"></a><span class="co"># remove the `_vw` from the end of content</span></span>
-<span id="cb31-12"><a href="results.html#cb31-12" tabindex="-1"></a>rfp_tracking_prep <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(</span>
-<span id="cb31-13"><a href="results.html#cb31-13" tabindex="-1"></a>  rfp_tracking_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb31-14"><a href="results.html#cb31-14" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(timestamp)) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-15"><a href="results.html#cb31-15" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">distinct</span>(content, <span class="at">.keep_all =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb31-16"><a href="results.html#cb31-16" tabindex="-1"></a>  </span>
-<span id="cb31-17"><a href="results.html#cb31-17" tabindex="-1"></a>  md <span class="sc">%&gt;%</span> </span>
-<span id="cb31-18"><a href="results.html#cb31-18" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="at">content =</span> object_name, <span class="at">url =</span> url_browser, description),</span>
-<span id="cb31-19"><a href="results.html#cb31-19" tabindex="-1"></a>  </span>
-<span id="cb31-20"><a href="results.html#cb31-20" tabindex="-1"></a>  <span class="at">by =</span> <span class="st">&quot;content&quot;</span></span>
-<span id="cb31-21"><a href="results.html#cb31-21" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-22"><a href="results.html#cb31-22" tabindex="-1"></a>  <span class="fu">arrange</span>(content)</span>
-<span id="cb31-23"><a href="results.html#cb31-23" tabindex="-1"></a></span>
-<span id="cb31-24"><a href="results.html#cb31-24" tabindex="-1"></a>rfp_tracking_prep <span class="sc">%&gt;%</span> </span>
-<span id="cb31-25"><a href="results.html#cb31-25" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(<span class="st">&quot;data/rfp_tracking_prep.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="results.html#cb32-1" tabindex="-1"></a>rfp_tracking_prep <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb32-2"><a href="results.html#cb32-2" tabindex="-1"></a>  <span class="st">&quot;data/rfp_tracking_prep.csv&quot;</span></span>
-<span id="cb32-3"><a href="results.html#cb32-3" tabindex="-1"></a>)</span>
-<span id="cb32-4"><a href="results.html#cb32-4" tabindex="-1"></a></span>
-<span id="cb32-5"><a href="results.html#cb32-5" tabindex="-1"></a>rfp_tracking_prep <span class="sc">%&gt;%</span> </span>
-<span id="cb32-6"><a href="results.html#cb32-6" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Layers loaded to collaborative GIS project.&quot;</span>,</span>
-<span id="cb32-7"><a href="results.html#cb32-7" tabindex="-1"></a>                 <span class="at">footnote_text =</span> <span class="st">&quot;Metadata information for bcfishpass and bcfishobs layers can be provided here in the future but  currently can usually be sourced from https://smnorris.github.io/bcfishpass/06_data_dictionary.html .&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="results.html#cb38-1" tabindex="-1"></a><span class="co"># first we will copy the doc from the Q project to this repo - the location of the Q project is outside of the repo!!</span></span>
+<span id="cb38-2"><a href="results.html#cb38-2" tabindex="-1"></a>q_path_stub <span class="ot">&lt;-</span> <span class="st">&quot;~/Projects/gis/restoration_wedzin_kwa/&quot;</span></span>
+<span id="cb38-3"><a href="results.html#cb38-3" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="results.html#cb38-4" tabindex="-1"></a>rfp_tracking_raw <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(<span class="fu">paste0</span>(q_path_stub, <span class="st">&quot;background_layers.gpkg&quot;</span>),</span>
+<span id="cb38-5"><a href="results.html#cb38-5" tabindex="-1"></a>            <span class="at">layer =</span> <span class="st">&quot;rfp_tracking&quot;</span>,</span>
+<span id="cb38-6"><a href="results.html#cb38-6" tabindex="-1"></a>            <span class="at">quite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb38-7"><a href="results.html#cb38-7" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="results.html#cb38-8" tabindex="-1"></a><span class="co"># grab the metadata</span></span>
+<span id="cb38-9"><a href="results.html#cb38-9" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">rfp_meta_bcd_xref</span>()</span>
+<span id="cb38-10"><a href="results.html#cb38-10" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="results.html#cb38-11" tabindex="-1"></a><span class="co"># remove the `_vw` from the end of content</span></span>
+<span id="cb38-12"><a href="results.html#cb38-12" tabindex="-1"></a>rfp_tracking_prep <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(</span>
+<span id="cb38-13"><a href="results.html#cb38-13" tabindex="-1"></a>  rfp_tracking_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb38-14"><a href="results.html#cb38-14" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(timestamp)) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-15"><a href="results.html#cb38-15" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">distinct</span>(content, <span class="at">.keep_all =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb38-16"><a href="results.html#cb38-16" tabindex="-1"></a>  </span>
+<span id="cb38-17"><a href="results.html#cb38-17" tabindex="-1"></a>  md <span class="sc">%&gt;%</span> </span>
+<span id="cb38-18"><a href="results.html#cb38-18" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="at">content =</span> object_name, <span class="at">url =</span> url_browser, description),</span>
+<span id="cb38-19"><a href="results.html#cb38-19" tabindex="-1"></a>  </span>
+<span id="cb38-20"><a href="results.html#cb38-20" tabindex="-1"></a>  <span class="at">by =</span> <span class="st">&quot;content&quot;</span></span>
+<span id="cb38-21"><a href="results.html#cb38-21" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-22"><a href="results.html#cb38-22" tabindex="-1"></a>  <span class="fu">arrange</span>(content)</span>
+<span id="cb38-23"><a href="results.html#cb38-23" tabindex="-1"></a></span>
+<span id="cb38-24"><a href="results.html#cb38-24" tabindex="-1"></a>rfp_tracking_prep <span class="sc">%&gt;%</span> </span>
+<span id="cb38-25"><a href="results.html#cb38-25" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(<span class="st">&quot;data/rfp_tracking_prep.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="results.html#cb39-1" tabindex="-1"></a>rfp_tracking_prep <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb39-2"><a href="results.html#cb39-2" tabindex="-1"></a>  <span class="st">&quot;data/rfp_tracking_prep.csv&quot;</span></span>
+<span id="cb39-3"><a href="results.html#cb39-3" tabindex="-1"></a>)</span>
+<span id="cb39-4"><a href="results.html#cb39-4" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="results.html#cb39-5" tabindex="-1"></a>rfp_tracking_prep <span class="sc">%&gt;%</span> </span>
+<span id="cb39-6"><a href="results.html#cb39-6" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Layers loaded to collaborative GIS project.&quot;</span>,</span>
+<span id="cb39-7"><a href="results.html#cb39-7" tabindex="-1"></a>                 <span class="at">footnote_text =</span> <span class="st">&quot;Metadata information for bcfishpass and bcfishobs layers can be provided here in the future but  currently can usually be sourced from https://smnorris.github.io/bcfishpass/06_data_dictionary.html .&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
@@ -802,9 +801,9 @@ The dataset contains approved legal boundaries for fisheries sensitive watershed
 <h3><span class="header-section-number">4.2.1</span> Works in Progress<a href="results.html#works-in-progress" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><span class="citation">NCFDC (1998)</span> utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the digital deliverables could not be recovered. Their work persists in pdf format however with summarized details of their prioritization work and prescription locations and details extracted from the pdf and included in the <code>ncfdc_1998_prescriptions.csv</code> file located and viewable <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions.csv">here</a>. The prioritization table for sub-basins in the region are included in Table <a href="results.html#tab:tab-ncfdc-1998-priority">4.3</a> with details of individual prescriptions presented in Table <a href="results.html#tab:tab-ncfdc-1998-pres">4.5</a>. Next steps for this dataset include conversion of the csv to a spatial file and added to the <code>restoration_wedzin_kwa</code> project through the <code>sites_restoration.gpkg</code>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="results.html#cb33-1" tabindex="-1"></a>ncfdc_1998_71a <span class="sc">%&gt;%</span> </span>
-<span id="cb33-2"><a href="results.html#cb33-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.&quot;</span>,</span>
-<span id="cb33-3"><a href="results.html#cb33-3" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="results.html#cb40-1" tabindex="-1"></a>ncfdc_1998_71a <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a href="results.html#cb40-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.&quot;</span>,</span>
+<span id="cb40-3"><a href="results.html#cb40-3" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-ncfdc-1998-priority">Table 4.3: </span><span id="tab:tab-ncfdc-1998-priority">Table 4.4: </span>Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.
@@ -995,13 +994,13 @@ Bulkley
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="results.html#cb34-1" tabindex="-1"></a>ncfdc_1998 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb34-2"><a href="results.html#cb34-2" tabindex="-1"></a>  <span class="st">&quot;data/ncfdc_1998_prescriptions.csv&quot;</span></span>
-<span id="cb34-3"><a href="results.html#cb34-3" tabindex="-1"></a>) </span>
-<span id="cb34-4"><a href="results.html#cb34-4" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="results.html#cb34-5" tabindex="-1"></a>ncfdc_1998 <span class="sc">%&gt;%</span> </span>
-<span id="cb34-6"><a href="results.html#cb34-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(SubBasin<span class="sc">:</span>MasterPlanObjectives) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-7"><a href="results.html#cb34-7" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="results.html#cb41-1" tabindex="-1"></a>ncfdc_1998 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb41-2"><a href="results.html#cb41-2" tabindex="-1"></a>  <span class="st">&quot;data/ncfdc_1998_prescriptions.csv&quot;</span></span>
+<span id="cb41-3"><a href="results.html#cb41-3" tabindex="-1"></a>) </span>
+<span id="cb41-4"><a href="results.html#cb41-4" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="results.html#cb41-5" tabindex="-1"></a>ncfdc_1998 <span class="sc">%&gt;%</span> </span>
+<span id="cb41-6"><a href="results.html#cb41-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(SubBasin<span class="sc">:</span>MasterPlanObjectives) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-7"><a href="results.html#cb41-7" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -2143,72 +2142,72 @@ To stabilize and revegetate the slopes by altering drainage patterns from theroa
 <h3><span class="header-section-number">4.3.5</span> Parameter Ranking to Select Future Restoration Sites<a href="results.html#parameter-ranking-to-select-future-restoration-sites-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the <code>restoration_site_priority_parameters.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv">here</a> is included in Table <a href="results.html#tab:tab-gis-params">4.7</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="results.html#cb35-1" tabindex="-1"></a><span class="co"># load the data</span></span>
-<span id="cb35-2"><a href="results.html#cb35-2" tabindex="-1"></a>gis_params_raw_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb35-3"><a href="results.html#cb35-3" tabindex="-1"></a>  <span class="st">&quot;data/inputs_raw/restoration_site_priority_parameters_raw.csv&quot;</span></span>
-<span id="cb35-4"><a href="results.html#cb35-4" tabindex="-1"></a>) </span>
-<span id="cb35-5"><a href="results.html#cb35-5" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="results.html#cb35-6" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="results.html#cb35-7" tabindex="-1"></a>gis_params_raw_to_update <span class="ot">&lt;-</span> gis_params_raw_all <span class="sc">%&gt;%</span> </span>
-<span id="cb35-8"><a href="results.html#cb35-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(source_schema_table) <span class="sc">&amp;</span> </span>
-<span id="cb35-9"><a href="results.html#cb35-9" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">is.na</span>(source_column_name) <span class="sc">&amp;</span></span>
-<span id="cb35-10"><a href="results.html#cb35-10" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-11"><a href="results.html#cb35-11" tabindex="-1"></a>  <span class="co"># we know that whse_forest_tenure.ften_range_poly_carto_vw is problematic so lets remove</span></span>
-<span id="cb35-12"><a href="results.html#cb35-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>))</span>
-<span id="cb35-13"><a href="results.html#cb35-13" tabindex="-1"></a></span>
-<span id="cb35-14"><a href="results.html#cb35-14" tabindex="-1"></a></span>
-<span id="cb35-15"><a href="results.html#cb35-15" tabindex="-1"></a><span class="co"># grab the details about the source_schema_table as source_schema_table_details and then the </span></span>
-<span id="cb35-16"><a href="results.html#cb35-16" tabindex="-1"></a><span class="co"># source_column_name as source_column_name_details</span></span>
-<span id="cb35-17"><a href="results.html#cb35-17" tabindex="-1"></a>gis_param_details_prep_schtab <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
-<span id="cb35-18"><a href="results.html#cb35-18" tabindex="-1"></a>  </span>
-<span id="cb35-19"><a href="results.html#cb35-19" tabindex="-1"></a>  gis_params_raw_to_update,</span>
-<span id="cb35-20"><a href="results.html#cb35-20" tabindex="-1"></a>  </span>
-<span id="cb35-21"><a href="results.html#cb35-21" tabindex="-1"></a>  rfp<span class="sc">::</span><span class="fu">rfp_meta_bcd_xref</span>(),</span>
-<span id="cb35-22"><a href="results.html#cb35-22" tabindex="-1"></a>  </span>
-<span id="cb35-23"><a href="results.html#cb35-23" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>)</span>
-<span id="cb35-24"><a href="results.html#cb35-24" tabindex="-1"></a>)</span>
-<span id="cb35-25"><a href="results.html#cb35-25" tabindex="-1"></a>  </span>
-<span id="cb35-26"><a href="results.html#cb35-26" tabindex="-1"></a></span>
-<span id="cb35-27"><a href="results.html#cb35-27" tabindex="-1"></a><span class="co"># grab the column details</span></span>
-<span id="cb35-28"><a href="results.html#cb35-28" tabindex="-1"></a>params_cols_des <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2_df</span>(gis_param_details_prep_schtab<span class="sc">$</span>source_schema_table, gis_param_details_prep_schtab<span class="sc">$</span>source_column_name, rfp<span class="sc">::</span>rfp_meta_bcd_xref_col_comments)</span>
-<span id="cb35-29"><a href="results.html#cb35-29" tabindex="-1"></a></span>
-<span id="cb35-30"><a href="results.html#cb35-30" tabindex="-1"></a><span class="co"># left_join the column details to the gis_param_details_prep_schtab</span></span>
-<span id="cb35-31"><a href="results.html#cb35-31" tabindex="-1"></a>gis_param_details_prep <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
-<span id="cb35-32"><a href="results.html#cb35-32" tabindex="-1"></a>  gis_param_details_prep_schtab,</span>
-<span id="cb35-33"><a href="results.html#cb35-33" tabindex="-1"></a>  params_cols_des,</span>
-<span id="cb35-34"><a href="results.html#cb35-34" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>, <span class="st">&quot;source_column_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;col_name&quot;</span>)</span>
-<span id="cb35-35"><a href="results.html#cb35-35" tabindex="-1"></a>)</span>
-<span id="cb35-36"><a href="results.html#cb35-36" tabindex="-1"></a></span>
-<span id="cb35-37"><a href="results.html#cb35-37" tabindex="-1"></a><span class="co"># need to add back all the layers filtered out above - this should not be repeated but will do for now</span></span>
-<span id="cb35-38"><a href="results.html#cb35-38" tabindex="-1"></a>gis_params_raw_all_updated <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb35-39"><a href="results.html#cb35-39" tabindex="-1"></a>  gis_params_raw_all <span class="sc">%&gt;%</span> </span>
-<span id="cb35-40"><a href="results.html#cb35-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">is.na</span>(source_schema_table) <span class="sc">|</span> </span>
-<span id="cb35-41"><a href="results.html#cb35-41" tabindex="-1"></a>                    <span class="fu">is.na</span>(source_column_name) <span class="sc">|</span></span>
-<span id="cb35-42"><a href="results.html#cb35-42" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">|</span></span>
-<span id="cb35-43"><a href="results.html#cb35-43" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>)),</span>
-<span id="cb35-44"><a href="results.html#cb35-44" tabindex="-1"></a>  gis_param_details_prep</span>
-<span id="cb35-45"><a href="results.html#cb35-45" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-46"><a href="results.html#cb35-46" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">url_browser =</span> <span class="fu">case_when</span>(</span>
-<span id="cb35-47"><a href="results.html#cb35-47" tabindex="-1"></a>    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">~</span> <span class="st">&quot;https://smnorris.github.io/bcfishpass/06_data_dictionary.html&quot;</span>,</span>
-<span id="cb35-48"><a href="results.html#cb35-48" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> url_browser)</span>
-<span id="cb35-49"><a href="results.html#cb35-49" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-50"><a href="results.html#cb35-50" tabindex="-1"></a>  <span class="fu">arrange</span>(source_schema_table, source_column_name, column_name_raw)</span>
-<span id="cb35-51"><a href="results.html#cb35-51" tabindex="-1"></a></span>
-<span id="cb35-52"><a href="results.html#cb35-52" tabindex="-1"></a><span class="co"># this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag</span></span>
-<span id="cb35-53"><a href="results.html#cb35-53" tabindex="-1"></a>gis_params_raw_all_updated <span class="sc">%&gt;%</span> </span>
-<span id="cb35-54"><a href="results.html#cb35-54" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="results.html#cb36-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-2"><a href="results.html#cb36-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb36-3"><a href="results.html#cb36-3" tabindex="-1"></a>    source_schema_table, </span>
-<span id="cb36-4"><a href="results.html#cb36-4" tabindex="-1"></a>                source_column_name,</span>
-<span id="cb36-5"><a href="results.html#cb36-5" tabindex="-1"></a>    column_name_raw,</span>
-<span id="cb36-6"><a href="results.html#cb36-6" tabindex="-1"></a>    user_input,</span>
-<span id="cb36-7"><a href="results.html#cb36-7" tabindex="-1"></a>    url_browser,</span>
-<span id="cb36-8"><a href="results.html#cb36-8" tabindex="-1"></a>    <span class="co"># description_table = description,</span></span>
-<span id="cb36-9"><a href="results.html#cb36-9" tabindex="-1"></a>    col_comments</span>
-<span id="cb36-10"><a href="results.html#cb36-10" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb36-11"><a href="results.html#cb36-11" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;GIS parameters used to rank future restoration sites.&quot;</span>,</span>
-<span id="cb36-12"><a href="results.html#cb36-12" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="results.html#cb42-1" tabindex="-1"></a><span class="co"># load the data</span></span>
+<span id="cb42-2"><a href="results.html#cb42-2" tabindex="-1"></a>gis_params_raw_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb42-3"><a href="results.html#cb42-3" tabindex="-1"></a>  <span class="st">&quot;data/inputs_raw/restoration_site_priority_parameters_raw.csv&quot;</span></span>
+<span id="cb42-4"><a href="results.html#cb42-4" tabindex="-1"></a>) </span>
+<span id="cb42-5"><a href="results.html#cb42-5" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="results.html#cb42-6" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="results.html#cb42-7" tabindex="-1"></a>gis_params_raw_to_update <span class="ot">&lt;-</span> gis_params_raw_all <span class="sc">%&gt;%</span> </span>
+<span id="cb42-8"><a href="results.html#cb42-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(source_schema_table) <span class="sc">&amp;</span> </span>
+<span id="cb42-9"><a href="results.html#cb42-9" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">is.na</span>(source_column_name) <span class="sc">&amp;</span></span>
+<span id="cb42-10"><a href="results.html#cb42-10" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-11"><a href="results.html#cb42-11" tabindex="-1"></a>  <span class="co"># we know that whse_forest_tenure.ften_range_poly_carto_vw is problematic so lets remove</span></span>
+<span id="cb42-12"><a href="results.html#cb42-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>))</span>
+<span id="cb42-13"><a href="results.html#cb42-13" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="results.html#cb42-14" tabindex="-1"></a></span>
+<span id="cb42-15"><a href="results.html#cb42-15" tabindex="-1"></a><span class="co"># grab the details about the source_schema_table as source_schema_table_details and then the </span></span>
+<span id="cb42-16"><a href="results.html#cb42-16" tabindex="-1"></a><span class="co"># source_column_name as source_column_name_details</span></span>
+<span id="cb42-17"><a href="results.html#cb42-17" tabindex="-1"></a>gis_param_details_prep_schtab <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb42-18"><a href="results.html#cb42-18" tabindex="-1"></a>  </span>
+<span id="cb42-19"><a href="results.html#cb42-19" tabindex="-1"></a>  gis_params_raw_to_update,</span>
+<span id="cb42-20"><a href="results.html#cb42-20" tabindex="-1"></a>  </span>
+<span id="cb42-21"><a href="results.html#cb42-21" tabindex="-1"></a>  rfp<span class="sc">::</span><span class="fu">rfp_meta_bcd_xref</span>(),</span>
+<span id="cb42-22"><a href="results.html#cb42-22" tabindex="-1"></a>  </span>
+<span id="cb42-23"><a href="results.html#cb42-23" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>)</span>
+<span id="cb42-24"><a href="results.html#cb42-24" tabindex="-1"></a>)</span>
+<span id="cb42-25"><a href="results.html#cb42-25" tabindex="-1"></a>  </span>
+<span id="cb42-26"><a href="results.html#cb42-26" tabindex="-1"></a></span>
+<span id="cb42-27"><a href="results.html#cb42-27" tabindex="-1"></a><span class="co"># grab the column details</span></span>
+<span id="cb42-28"><a href="results.html#cb42-28" tabindex="-1"></a>params_cols_des <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2_df</span>(gis_param_details_prep_schtab<span class="sc">$</span>source_schema_table, gis_param_details_prep_schtab<span class="sc">$</span>source_column_name, rfp<span class="sc">::</span>rfp_meta_bcd_xref_col_comments)</span>
+<span id="cb42-29"><a href="results.html#cb42-29" tabindex="-1"></a></span>
+<span id="cb42-30"><a href="results.html#cb42-30" tabindex="-1"></a><span class="co"># left_join the column details to the gis_param_details_prep_schtab</span></span>
+<span id="cb42-31"><a href="results.html#cb42-31" tabindex="-1"></a>gis_param_details_prep <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb42-32"><a href="results.html#cb42-32" tabindex="-1"></a>  gis_param_details_prep_schtab,</span>
+<span id="cb42-33"><a href="results.html#cb42-33" tabindex="-1"></a>  params_cols_des,</span>
+<span id="cb42-34"><a href="results.html#cb42-34" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>, <span class="st">&quot;source_column_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;col_name&quot;</span>)</span>
+<span id="cb42-35"><a href="results.html#cb42-35" tabindex="-1"></a>)</span>
+<span id="cb42-36"><a href="results.html#cb42-36" tabindex="-1"></a></span>
+<span id="cb42-37"><a href="results.html#cb42-37" tabindex="-1"></a><span class="co"># need to add back all the layers filtered out above - this should not be repeated but will do for now</span></span>
+<span id="cb42-38"><a href="results.html#cb42-38" tabindex="-1"></a>gis_params_raw_all_updated <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb42-39"><a href="results.html#cb42-39" tabindex="-1"></a>  gis_params_raw_all <span class="sc">%&gt;%</span> </span>
+<span id="cb42-40"><a href="results.html#cb42-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">is.na</span>(source_schema_table) <span class="sc">|</span> </span>
+<span id="cb42-41"><a href="results.html#cb42-41" tabindex="-1"></a>                    <span class="fu">is.na</span>(source_column_name) <span class="sc">|</span></span>
+<span id="cb42-42"><a href="results.html#cb42-42" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">|</span></span>
+<span id="cb42-43"><a href="results.html#cb42-43" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>)),</span>
+<span id="cb42-44"><a href="results.html#cb42-44" tabindex="-1"></a>  gis_param_details_prep</span>
+<span id="cb42-45"><a href="results.html#cb42-45" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-46"><a href="results.html#cb42-46" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">url_browser =</span> <span class="fu">case_when</span>(</span>
+<span id="cb42-47"><a href="results.html#cb42-47" tabindex="-1"></a>    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">~</span> <span class="st">&quot;https://smnorris.github.io/bcfishpass/06_data_dictionary.html&quot;</span>,</span>
+<span id="cb42-48"><a href="results.html#cb42-48" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> url_browser)</span>
+<span id="cb42-49"><a href="results.html#cb42-49" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-50"><a href="results.html#cb42-50" tabindex="-1"></a>  <span class="fu">arrange</span>(source_schema_table, source_column_name, column_name_raw)</span>
+<span id="cb42-51"><a href="results.html#cb42-51" tabindex="-1"></a></span>
+<span id="cb42-52"><a href="results.html#cb42-52" tabindex="-1"></a><span class="co"># this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag</span></span>
+<span id="cb42-53"><a href="results.html#cb42-53" tabindex="-1"></a>gis_params_raw_all_updated <span class="sc">%&gt;%</span> </span>
+<span id="cb42-54"><a href="results.html#cb42-54" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="results.html#cb43-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-2"><a href="results.html#cb43-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb43-3"><a href="results.html#cb43-3" tabindex="-1"></a>    source_schema_table, </span>
+<span id="cb43-4"><a href="results.html#cb43-4" tabindex="-1"></a>                source_column_name,</span>
+<span id="cb43-5"><a href="results.html#cb43-5" tabindex="-1"></a>    column_name_raw,</span>
+<span id="cb43-6"><a href="results.html#cb43-6" tabindex="-1"></a>    user_input,</span>
+<span id="cb43-7"><a href="results.html#cb43-7" tabindex="-1"></a>    url_browser,</span>
+<span id="cb43-8"><a href="results.html#cb43-8" tabindex="-1"></a>    <span class="co"># description_table = description,</span></span>
+<span id="cb43-9"><a href="results.html#cb43-9" tabindex="-1"></a>    col_comments</span>
+<span id="cb43-10"><a href="results.html#cb43-10" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-11"><a href="results.html#cb43-11" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;GIS parameters used to rank future restoration sites.&quot;</span>,</span>
+<span id="cb43-12"><a href="results.html#cb43-12" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">

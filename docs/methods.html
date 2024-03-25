@@ -52,8 +52,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 <script type="text/javascript">
 
@@ -208,8 +206,9 @@ div.csl-indent {
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#collaborative-gis-environment"><i class="fa fa-check"></i><b>3.1</b> Collaborative GIS Environment</a></li>
-<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#past-restoration-initiative-identification"><i class="fa fa-check"></i><b>3.2</b> Past Restoration Initiative Identification</a></li>
-<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#future-restoration-site-selection"><i class="fa fa-check"></i><b>3.3</b> Future Restoration Site Selection</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#open-source---iterative-reporting"><i class="fa fa-check"></i><b>3.2</b> Open Source - Iterative Reporting</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#past-restoration-initiative-identification"><i class="fa fa-check"></i><b>3.3</b> Past Restoration Initiative Identification</a></li>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#future-restoration-site-selection"><i class="fa fa-check"></i><b>3.4</b> Future Restoration Site Selection</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
 <ul>
@@ -256,24 +255,488 @@ conduct and communicate the need for restoration, the details of past and future
 </li>
 <li>Metadata for individual project spatial layers is kept in the <code>rfp_tracking</code> table within the <code>background_layers.gpkg</code> along with tables related to user supplied stream width/gradient inputs to <code>bcfishpass</code> to model potentially high value habitat that is accessible to fish species of interest.</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="methods.html#cb30-1" tabindex="-1"></a><span class="do">## QRis</span></span>
-<span id="cb30-2"><a href="methods.html#cb30-2" tabindex="-1"></a><span class="co"># [QGIS Riverscapes Studio](https://qris.riverscapes.net/) (QRis) is a free plugin for QGIS that helps you digitize your riverscape data. QRis is a great planning tool for helping users with spatial representation of riverscapes. </span></span>
-<span id="cb30-3"><a href="methods.html#cb30-3" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb30-4"><a href="methods.html#cb30-4" tabindex="-1"></a><span class="co"># QRis has two distinct types of features:</span></span>
-<span id="cb30-5"><a href="methods.html#cb30-5" tabindex="-1"></a><span class="co">#   </span></span>
-<span id="cb30-6"><a href="methods.html#cb30-6" tabindex="-1"></a><span class="co">#   * Static: These are features that are relatively permanent, such as the valley bottom.</span></span>
-<span id="cb30-7"><a href="methods.html#cb30-7" tabindex="-1"></a><span class="co">#   * Dynamic: These are features that change over time, such as the active channel.</span></span>
-<span id="cb30-8"><a href="methods.html#cb30-8" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb30-9"><a href="methods.html#cb30-9" tabindex="-1"></a><span class="co"># QRis will be a useful tool for digitizing the upper Wetzin&#39;kwa river and prioritizing restoration sites. To start using QRis, follow the instructions for [getting started](https://qris.riverscapes.net/getting-started/).</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="methods.html#cb35-1" tabindex="-1"></a><span class="do">## QRis</span></span>
+<span id="cb35-2"><a href="methods.html#cb35-2" tabindex="-1"></a><span class="co"># [QGIS Riverscapes Studio](https://qris.riverscapes.net/) (QRis) is a free plugin for QGIS that helps you digitize your riverscape data. QRis is a great planning tool for helping users with spatial representation of riverscapes. </span></span>
+<span id="cb35-3"><a href="methods.html#cb35-3" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb35-4"><a href="methods.html#cb35-4" tabindex="-1"></a><span class="co"># QRis has two distinct types of features:</span></span>
+<span id="cb35-5"><a href="methods.html#cb35-5" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb35-6"><a href="methods.html#cb35-6" tabindex="-1"></a><span class="co">#   * Static: These are features that are relatively permanent, such as the valley bottom.</span></span>
+<span id="cb35-7"><a href="methods.html#cb35-7" tabindex="-1"></a><span class="co">#   * Dynamic: These are features that change over time, such as the active channel.</span></span>
+<span id="cb35-8"><a href="methods.html#cb35-8" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb35-9"><a href="methods.html#cb35-9" tabindex="-1"></a><span class="co"># QRis will be a useful tool for digitizing the upper Wetzin&#39;kwa river and prioritizing restoration sites. To start using QRis, follow the instructions for [getting started](https://qris.riverscapes.net/getting-started/).</span></span></code></pre></div>
 </div>
-<div id="past-restoration-initiative-identification" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Past Restoration Initiative Identification<a href="methods.html#past-restoration-initiative-identification" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Information regarding past restoration initiatives, prescriptions and activities is an important component of the restoration planning process. A wealth of information is present for the Neexdzii Kwah however it is located in many different locations and not always spatially represented. To address this, a comprehensive review of past restoration activities is underway. This review included a review of the literature, interviews with local experts, and a review of the restoration prescriptions and activities that have been conducted in the Neexdzii Kwah. For information regarding relatively recent restoration efforts such as physical works conducted through Healthy Watersheds Initiative, representatives from the Morice Watershed Monitoring Trust amalgamated all information located on physical drives and either provided emails with the data attached or provided links to the data for the study team for download and review. This information was then subsequently downloaded and re-uploaded to a <code>OneDrive</code> folder for the study team to access. Additional data was also sourced from the <a href="https://data.skeenasalmon.info/">Skeena Salmon Data Centre</a> using the application programming interface to their <a href="https://ckan.org/features/api">CKAN</a> database.</p>
+<div id="open-source---iterative-reporting" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Open Source - Iterative Reporting<a href="methods.html#open-source---iterative-reporting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There is a key question we have been asking ourselves lately and that is</p>
+<p><br></p>
+<blockquote>
+<p>“What is the most useful way to present information?”</p>
+</blockquote>
+<p><br></p>
+<p>From our perspective - the most useful way to present information is in a version controlled format that allows it to be
+interactive, reproducible, read online, served out as a static document, updated, copied, used as a template, etc.
+Iterative reporting, managed with a version control system such as
+<a href="https://docs.github.com/en/get-started/using-git/about-git">git</a> (see example of tracking edits <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/commits/main/0300-methods.Rmd">here</a>)
+with a permissive license is a great way to do all
+those things. Although there is a steep learning curve to using programming tools and producing this type of product
+and although it can be quite time consuming - it then allows leveraging of all the components of the work to future
+projects for everyone. Licenseing is also key and should be considered.
+<a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/LICENSE">Here</a> is an example of
+a license that promotes collaboration and sharing/leveraging of work.</p>
+<p><br></p>
+<p>From our perspective - restoration planning are the type of initiatives that are well suited to an iterative reporting format such as
+can be demonstrated within this <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024">code
+repository</a> which builds and serves this
+<a href="https://newgraphenvironment.github.io/restoration_wedzin_kwa_2024/">online report</a>.</p>
+<div id="issue-and-discussion-tracking" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Issue and Discussion Tracking<a href="methods.html#issue-and-discussion-tracking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Issues and discussions are effective ways to track tasks, enhancements, and bugs for the project. Issues can be used to keep track of all the things that need to be done, and can be used to discuss in-line with references to code used to address them linked to the issues through <code>git</code> commit messages. Issues for this project are kept <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/issues">here</a> and
+discussions are kept <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/discussions">here</a>.</p>
 </div>
-<div id="future-restoration-site-selection" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Future Restoration Site Selection<a href="methods.html#future-restoration-site-selection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="fish-passage" class="section level3 hasAnchor" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> Fish Passage<a href="methods.html#fish-passage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="tables-and-figures" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Tables and Figures<a href="methods.html#tables-and-figures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are many tables within this document that can take have a long time to format. Within this document the tables have been imported often as simple csv files or pages of an excel workbook and pulled into the project using scripts. This allows others to access the data and use it in their own projects. These tables can also then be easily updated
+with new data as it becomes available often with the formatting for presentation to reader handled by the scripting. An example of this can be
+seen here in Table <a href="methods.html#tab:kable-resources">3.1</a> with the actual file served
+<a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/data">here</a>:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="methods.html#cb36-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/aquatic_restoration_resources.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="methods.html#cb36-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Aquatic Restoration Resources.&quot;</span>)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:kable-resources">Table 3.1: </span><span id="tab:kable-resources">Table 3.2: </span>Aquatic Restoration Resources.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Resource
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+URL
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Details
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+bcfishpass
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/smnorris/bcfishpass" class="uri">https://github.com/smnorris/bcfishpass</a>
+</td>
+<td style="text-align:left;">
+Build and maintain an aquatic connectivity / fish passage database for British Columbia to track known barriers to fish passage, model potential barriers to fish passage, model passability/accessibility of streams based on species swimming ability, model streams with potential for spawning and rearing activity, etc
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fpr
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/NewGraphEnvironment/fpr" class="uri">https://github.com/NewGraphEnvironment/fpr</a>
+</td>
+<td style="text-align:left;">
+Fish Passage Reporting functions for British Columbia. R package used for cleaning, transforming and extracting data to build interactive reports related to fish passage planning including fish passage assessments and habitat confirmation assessments at road-stream crossings. In
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dff-2022
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/NewGraphEnvironment/dff-2022" class="uri">https://github.com/NewGraphEnvironment/dff-2022</a>
+</td>
+<td style="text-align:left;">
+Building digital field forms for field work in British Columbia, mobile QGIS projects and processing data collected using standardized provincial data layer and data collection templates. Utilizes open source software including R, python, bash and QGIS and others.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+rfp
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/NewGraphEnvironment/rfp" class="uri">https://github.com/NewGraphEnvironment/rfp</a>
+</td>
+<td style="text-align:left;">
+Reproducible Field Projects for British Columbia. R package to standardize and track the creation of collaborative GIS projects for aquatic restoration/conservation planning and field work. Under development incorporating many dff-2022 scripts into R package functions.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Restoration Framework
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/NewGraphEnvironment/restoration_framework" class="uri">https://github.com/NewGraphEnvironment/restoration_framework</a>
+</td>
+<td style="text-align:left;">
+Public repository for development of and linking to restoration / conservation planning tools and concepts.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Restoring Fish Passage in the Peace Region 2023
+</td>
+<td style="text-align:left;">
+<a href="https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/" class="uri">https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/</a>
+</td>
+<td style="text-align:left;">
+REPORT NOT YET LIVE (20240220).
+Interactive reporting for 2023 fish passage restoration planning activities in the Parsnip, Carp and Crooked Watershed Groups north of Prince George in the Peace Region. Designs completed for two crossings in the Table River watershed (Parsnip River watershed group) and materials purchased for remediation. Phase 1 and Phase 2 assessments in Carp and Crooked watershed groups. Fish sampling with PIT tagging conducted in Parsnip River watershed group. Aerial imagery collected by drone. Repository located at <a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting" class="uri">https://github.com/NewGraphEnvironment/fish_passage_peace_2023_reporting</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Restoring Fish Passage in the Peace Region 2022
+</td>
+<td style="text-align:left;">
+<a href="https://newgraphenvironment.github.io/fish_passage_peace_2022_reporting/" class="uri">https://newgraphenvironment.github.io/fish_passage_peace_2022_reporting/</a>
+</td>
+<td style="text-align:left;">
+Interactive reporting for 2022 fish passage restoration planning activities in the Parsnip, Carp and Crooked Watershed Groups north of Prince George in the Peace Region. Includes interactive planning dashboard. Crossing in Missinka watershed replaced and design done for site on Chuchinka-Arctic FSR. Fish sampling with PIT tagging conducted. Aerial imagery collected by drone.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Restoring Fish Passage in the Peace Region 2021
+</td>
+<td style="text-align:left;">
+<a href="https://newgraphenvironment.github.io/fish_passage_parsnip_2021_reporting/" class="uri">https://newgraphenvironment.github.io/fish_passage_parsnip_2021_reporting/</a>
+</td>
+<td style="text-align:left;">
+Interactive reporting for 2021 fish passage restoration planning activities in the Parsnip Watershed Group north of Prince George in the Peace Region. Includes interactive planning dashboard and .
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Parsnip_Fish_Passage
+</td>
+<td style="text-align:left;">
+<a href="https://newgraphenvironment.github.io/Parsnip_Fish_Passage/" class="uri">https://newgraphenvironment.github.io/Parsnip_Fish_Passage/</a>
+</td>
+<td style="text-align:left;">
+Interactive reporting for 2019 fish confirmation assessments in the Parsnip Watershed Group north of Prince George in the Peace Region. Fish sampling conducted. Aerial imagery collected by drone.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Skeena Fish Passage Restoration Planning 2023
+</td>
+<td style="text-align:left;">
+<a href="https://newgraphenvironment.github.io/fish_passage_skeena_2023_reporting" class="uri">https://newgraphenvironment.github.io/fish_passage_skeena_2023_reporting</a>
+</td>
+<td style="text-align:left;">
+REPORT NOT YET LIVE (20240220).
+Interactive reporting for Fish passage and habitat confirmation assessments in the Bulkey River, Morice River, Zymoetz River and Kispiox River watershed groups. Fish sampling conducted. Repository located at <a href="https://github.com/NewGraphEnvironment/fish_passage_skeena_2023_reporting" class="uri">https://github.com/NewGraphEnvironment/fish_passage_skeena_2023_reporting</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Skeena Fish Passage Restoration Planning 2022
+</td>
+<td style="text-align:left;">
+<a href="https://newgraphenvironment.github.io/fish_passage_skeena_2022_reporting" class="uri">https://newgraphenvironment.github.io/fish_passage_skeena_2022_reporting</a>
+</td>
+<td style="text-align:left;">
+Interactive reporting for Fish passage and habitat confirmation assessments in the Morice River, Zymoetz River and Kispiox River watershed groups. Fish sampling conducted.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulkley River Watershed Group Fish Passage Restoration Planning 2022
+</td>
+<td style="text-align:left;">
+<a href="https://newgraphenvironment.github.io/fish_passage_bulkley_2022_reporting/" class="uri">https://newgraphenvironment.github.io/fish_passage_bulkley_2022_reporting/</a>
+</td>
+<td style="text-align:left;">
+Interactive reporting for fish passage assessments and habitat confirmation assessments at sites in the Bulkley River watershed group. Fish sampling with PIT tagging conducted.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2021
+</td>
+<td style="text-align:left;">
+<a href="https://newgraphenvironment.github.io/fish_passage_skeena_2021_reporting/" class="uri">https://newgraphenvironment.github.io/fish_passage_skeena_2021_reporting/</a>
+</td>
+<td style="text-align:left;">
+Interactive reporting for Fish passage assessments and habitat confirmation assessments in the Bulkley River and Morice River watershed groups. Fish sampling conducted.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2020
+</td>
+<td style="text-align:left;">
+<a href="https://newgraphenvironment.github.io/fish_passage_bulkley_2020_reporting/" class="uri">https://newgraphenvironment.github.io/fish_passage_bulkley_2020_reporting/</a>
+</td>
+<td style="text-align:left;">
+Interactive reporting for fish passage assessments and habitat confirmation assessments in the Bulkley River and Morice River watershed groups. Fish sampling conducted.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Elk River Watershed Group Fish Passage Restoration Planning 2022
+</td>
+<td style="text-align:left;">
+<a href="https://newgraphenvironment.github.io/fish_passage_elk_2022_reporting/" class="uri">https://newgraphenvironment.github.io/fish_passage_elk_2022_reporting/</a>
+</td>
+<td style="text-align:left;">
+Interactive reporting for fish passage assessments and habitat confirmation assessments in the Elk River watershed group. Fish sampling, fish habitat assessment procedures, temperature monitoring and stream discharge measurements were conducted.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Elk River Watershed Group Fish Passage Restoration Planning 2021
+</td>
+<td style="text-align:left;">
+<a href="https://newgraphenvironment.github.io/fish_passage_elk_2021_reporting/" class="uri">https://newgraphenvironment.github.io/fish_passage_elk_2021_reporting/</a>
+</td>
+<td style="text-align:left;">
+Interactive reporting for fish passage assessments and habitat confirmation assessments in the Elk River watershed group. Fish sampling, fish habitat assessment procedures and temperature monitoring were conducted.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Elk River Watershed Group Fish Passage Restoration Planning 2020
+</td>
+<td style="text-align:left;">
+<a href="https://newgraphenvironment.github.io/fish_passage_elk_2020_reporting/" class="uri">https://newgraphenvironment.github.io/fish_passage_elk_2020_reporting/</a>
+</td>
+<td style="text-align:left;">
+Interactive reporting for fish passage assessments and habitat confirmation assessments in the Elk River watershed group. Fish sampling conducted.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fraser Fish Passage Restoration Planning 2023
+</td>
+<td style="text-align:left;">
+<a href="https://newgraphenvironment.github.io/fish_passage_fraser_2023_reporting/" class="uri">https://newgraphenvironment.github.io/fish_passage_fraser_2023_reporting/</a>
+</td>
+<td style="text-align:left;">
+REPORT NOT YET LIVE (20240220).
+Interactive reporting for fish passage assessments in the Nechacko River, Lower Chilako River, Francois Lake, Upper Fraser River and Mork River watershed groups. Repository at <a href="https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting" class="uri">https://github.com/NewGraphEnvironment/fish_passage_fraser_2023_reporting</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Richfield Creek Riparian Restoration 2022
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/raw/main/docs/SERN_Richfield_Fencing_2022_Final%20Report.pdf" class="uri">https://github.com/NewGraphEnvironment/fish_passage_bulkley_2022_reporting/raw/main/docs/SERN_Richfield_Fencing_2022_Final%20Report.pdf</a>
+</td>
+<td style="text-align:left;">
+Leveraging other investments in the watershed by Morice Watershed Monitoring Trust (streambank stabilization and riparian planting at four locations) and A Rocha Canada, we supported installation of 840m of cattle exclusion fence on previously unfenced areas of rangeland adjacent to high fisheries values in Richfield Creek. Installation of live cuttings in four distinct polygons covering 866m2 of riparian area. Use of drone to gather Lidar and temperature data to help inform future process-based restoration actions in the Upper Bulkley Watershed.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Richfield Creek Riparian Fencing 2021
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/raw/master/docs/Attachment_4.pdf" class="uri">https://github.com/NewGraphEnvironment/fish_passage_skeena_2021_reporting/raw/master/docs/Attachment_4.pdf</a>
+</td>
+<td style="text-align:left;">
+Leveraging other investments in the watershed by Morice Watershed Monitoring Trust (streambank stabilization and riparian planting at four locations) we supported the installation of 1100 m of fencing on the west of Richfield Creek in in the Upper Bulkley Watershed.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fish-passage-22
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/poissonconsulting/fish-passage-22" class="uri">https://github.com/poissonconsulting/fish-passage-22</a>
+</td>
+<td style="text-align:left;">
+Mapping stream discharge and temperature causal effects pathways to focus aquatic restoration actions in areas of highest potential for positive impacts on fisheries values. Includes scripts to download real-time hydrometric flow and temperature data as well as Pacific Climate Impact Consortium hydrometric data (modelled historic and projected)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fissr-explore
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/NewGraphEnvironment/fissr_explore" class="uri">https://github.com/NewGraphEnvironment/fissr_explore</a>
+</td>
+<td style="text-align:left;">
+Exploratory analysis of provincial fish sampling dataset to explore utility for building evidence based approach to the parameters used to model the best habitat for individual fish species to help make decisions around where to invest in aquatic restoration activities
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fissr-explore-21
+</td>
+<td style="text-align:left;">
+<a href="https://www.poissonconsulting.ca/f/1386346791" class="uri">https://www.poissonconsulting.ca/f/1386346791</a>
+</td>
+<td style="text-align:left;">
+Analysis of relationships between rainbow trout density (from province wide electrofishing dataset) , channel width and gradient
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+channel-width-21b
+</td>
+<td style="text-align:left;">
+<a href="https://www.poissonconsulting.ca/f/859859031" class="uri">https://www.poissonconsulting.ca/f/859859031</a>
+</td>
+<td style="text-align:left;">
+Modelled estimate of channel width based on watershed area and mean annual precipitation. Used to help estimate rearing and spawning suitability of streams for fish use by numerous species in .
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bcdata
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/smnorris/bcdata" class="uri">https://github.com/smnorris/bcdata</a>
+</td>
+<td style="text-align:left;">
+Simplifies downloads of BC geographic data () and DEMs. Integrates with postgres databases using schema and table names identical to those of the province. Allows real-time updates of datasets and collaborative sharing of scripts/workflows.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+fwapg
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/smnorris/fwapg" class="uri">https://github.com/smnorris/fwapg</a>
+</td>
+<td style="text-align:left;">
+Extends British Columbia’s Freshwater Atlas (FWA) with PostgreSQL/PostGIS to enable speedy upstream/downstream queries throughout BC, quickly and cleanly generate watershed boundaries upstream of arbitrary locations, enable quickly serving FWA features as vector tiles, etc.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bcfishobs
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/smnorris/bcfishobs" class="uri">https://github.com/smnorris/bcfishobs</a>
+</td>
+<td style="text-align:left;">
+Locate up to date fish observation points as linear referencing events on the Freshwater Atlas.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bcbrat
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/smnorris/bcbrat" class="uri">https://github.com/smnorris/bcbrat</a>
+</td>
+<td style="text-align:left;">
+Experimental tool for generating BRAT project data for British Columbia watersheds.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+roadintegrator
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/smnorris/roadintegrator" class="uri">https://github.com/smnorris/roadintegrator</a>
+</td>
+<td style="text-align:left;">
+Merge multiple BC road datasets into a single layer for Cumulative Effects analysis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+designatedlands
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/smnorris/designatedlands" class="uri">https://github.com/smnorris/designatedlands</a>
+</td>
+<td style="text-align:left;">
+Combine spatial data for 40+ designations that contribute to land management to create a single ‘Designated Lands’ layer for British Columbia
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fish Passage Maps
+</td>
+<td style="text-align:left;">
+<a href="https://hillcrestgeo.ca/outgoing/fishpassage/projects/" class="uri">https://hillcrestgeo.ca/outgoing/fishpassage/projects/</a>
+</td>
+<td style="text-align:left;">
+Georeferenced maps for all Skeena watershed groups, Elk River as well as the Parsnip River, Crooked, and Carp River watershed groups in the Peace Region. Can be imported to phone or table for navigation real-time in Avenza Maps.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mergin Maps
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/MerginMaps" class="uri">https://github.com/MerginMaps</a>
+</td>
+<td style="text-align:left;">
+Geodata platform for hosting shared QGIS projects on the cloud and collecting field data through forms on phones and tablets. Open source software with paid plans to simplify setup and maintenance. Command line tools to interact with projects including for syncing and permissions.
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<p>Any figures used in the reporting are saved in the project and can be used by anyone else in their work to tell there own
+story and help their teams achieve their goals. An example of this can be seen here Table <a href="methods.html#tab:kable-resources">3.1</a>
+with the actual file served
+<a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/fig/collaboration.jpg">here</a>.</p>
+</div>
+<div id="data-sourceing-from-skeena-salmon-data-centre" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Data Sourceing from Skeena Salmon Data Centre<a href="methods.html#data-sourceing-from-skeena-salmon-data-centre" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Whenever possible we have attempted to tie into existing data govenment infrastructure in the Skeena region by downloading data directly from the <a href="https://data.skeenasalmon.info/">Skeena Salmon Data Centre</a> using the application programming interface to their <a href="https://ckan.org/features/api">CKAN</a> database. To facilitate and simlify this process we developed a function to download data from the CKAN database and load it into local versions of the project repository. This <code>fetch_package</code> function is kept in the <code>scripts/functions.R</code> file of the project and can be used to download entire “packages” of data from the Skeena Salmon Data Centre.</p>
+</div>
+<div id="documentation-of-workflows" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Documentation of Workflows<a href="methods.html#documentation-of-workflows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Select workflows were documented in memo format to illustrate the process used for others and promote reproducibility/leverageing of Neexdzii Kwah. The memos are stored in the <code>memo</code> directory of the project <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos">here</a> and can be viewed in Table Table <a href="#tab:memos"><strong>??</strong></a> by downloading the <code>.html</code> documents to a local computer and opening in a web browser such as <code>Chrome</code> (usually a double click of the document will open it in the browser).</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="methods.html#cb37-1" tabindex="-1"></a><span class="do">## make a tibble of the list and display it as a fpr_kable</span></span>
+<span id="cb37-2"><a href="methods.html#cb37-2" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;memos&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href="methods.html#cb37-3" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">memo_name =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-4"><a href="methods.html#cb37-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Memos stored at https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos.&quot;</span>,</span>
+<span id="cb37-5"><a href="methods.html#cb37-5" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb37-6"><a href="methods.html#cb37-6" tabindex="-1"></a>                 <span class="at">scroll_box_height =</span> <span class="st">&quot;300px&quot;</span></span>
+<span id="cb37-7"><a href="methods.html#cb37-7" tabindex="-1"></a>                 )</span></code></pre></div>
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:tab-memos">Table 3.3: </span><span id="tab:tab-memos">Table 3.4: </span>Memos stored at <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos" class="uri">https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos</a>.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+memo_name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+dfo_stock_assess.html
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+historic_site_tidy.html
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+track_sites_restoration.html
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="past-restoration-initiative-identification" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Past Restoration Initiative Identification<a href="methods.html#past-restoration-initiative-identification" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Information regarding past restoration initiatives, prescriptions and activities is an important component of the restoration planning process. A wealth of information is present for the Neexdzii Kwah however it is located in many different locations and not always spatially represented. To address this, a comprehensive review of past restoration activities is underway. This review included a review of the literature, interviews with local experts, and a review of the restoration prescriptions and activities that have been conducted in the Neexdzii Kwah. For information regarding relatively recent restoration efforts such as physical works conducted through Healthy Watersheds Initiative, representatives from the Morice Watershed Monitoring Trust amalgamated all information located on physical drives and either provided emails with the data attached or provided links to the data for the study team for download and review. This information was then subsequently downloaded and re-uploaded to a <code>OneDrive</code> folder for the study team to access.</p>
+</div>
+<div id="future-restoration-site-selection" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Future Restoration Site Selection<a href="methods.html#future-restoration-site-selection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="fish-passage" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Fish Passage<a href="methods.html#fish-passage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>At the time of writing, extensive work related to fish passage restoration planning was underway in the Neexdzii Kwah watershed
 as well as other areas of the greater Skeena watershed. Methodology for this work is presented in <span class="citation">A. Irvine (2023)</span>,
 <span class="citation">Irvine (2022)</span> and <span class="citation">Irvine (2021)</span>. Although these references detail work related to linear connectivity
@@ -282,25 +745,25 @@ realted to disconnections due to the railway documented in <code>bcfishpass</cod
 The results of this analysis and future analysis incorporating major roadways as well (currently under development) will
 be added to the shared QGIS project and used to inform future restoration activity prioritization.</p>
 </div>
-<div id="local-knowledge-for-riparian-area-and-erosion-protection-site-selection" class="section level3 hasAnchor" number="3.3.2">
-<h3><span class="header-section-number">3.3.2</span> Local Knowledge for Riparian Area and Erosion Protection Site Selection<a href="methods.html#local-knowledge-for-riparian-area-and-erosion-protection-site-selection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="local-knowledge-for-riparian-area-and-erosion-protection-site-selection" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Local Knowledge for Riparian Area and Erosion Protection Site Selection<a href="methods.html#local-knowledge-for-riparian-area-and-erosion-protection-site-selection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To facilitate project activities in the short term - the project team will select among some known areas of riparian
 removal and bank erosion where landowners are amenable to project activities including installation of cattle exclusion
 fencing and riparian planting in the next two fiscal years.</p>
 </div>
-<div id="evaluation-of-historic-and-current-imagery" class="section level3 hasAnchor" number="3.3.3">
-<h3><span class="header-section-number">3.3.3</span> Evaluation of Historic and Current Imagery<a href="methods.html#evaluation-of-historic-and-current-imagery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="evaluation-of-historic-and-current-imagery" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Evaluation of Historic and Current Imagery<a href="methods.html#evaluation-of-historic-and-current-imagery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Evaluation of historic and current imagery to understand and quantify morphological changes in the Neexdzii Kwah and its major tributaries over time and guide future restoration efforts. This will require that the study team acquire, georeference, archive and analyze historic imagery for the Neexdzii Kwah watershed and compare with an analysis of recent LiDAR data to quantify historic changes in stream morphology resulting in loss of quantity and quality of water and fish habitat. Through this process we hope to highlight areas of historic dredging, realignment, and floodplain disconnections due to infrastructure that have degraded watershed health and fish habitat.</p>
 </div>
-<div id="delineation-of-areas-of-high-fisheries-values" class="section level3 hasAnchor" number="3.3.4">
-<h3><span class="header-section-number">3.3.4</span> Delineation of Areas of High Fisheries Values<a href="methods.html#delineation-of-areas-of-high-fisheries-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="delineation-of-areas-of-high-fisheries-values" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Delineation of Areas of High Fisheries Values<a href="methods.html#delineation-of-areas-of-high-fisheries-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Spatially delineate areas of high fisheries values based on modelled and known spawning and rearing habitat for fish species of interest.<br />
 Project team members have mentioned that there was work done in the past to spatially delineate areas of high value habitat
 for chinook and potentially sockeye salmon. This data will hopefully be aquired. Additionally background literature includes some decriptions of traditional Wet’suwet’en
 Fisheries sites which can be spatialized for the project.</p>
 </div>
-<div id="parameter-ranking-to-select-future-restoration-sites" class="section level3 hasAnchor" number="3.3.5">
-<h3><span class="header-section-number">3.3.5</span> Parameter Ranking to Select Future Restoration Sites<a href="methods.html#parameter-ranking-to-select-future-restoration-sites" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="parameter-ranking-to-select-future-restoration-sites" class="section level3 hasAnchor" number="3.4.5">
+<h3><span class="header-section-number">3.4.5</span> Parameter Ranking to Select Future Restoration Sites<a href="methods.html#parameter-ranking-to-select-future-restoration-sites" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Analysis of background and current data will be used to inform priority ranking criteria used to select sites for restoration activities in the long term. <strong>Although this has not yet been conducted</strong> - included in this process can be:</p>
 <ul>
 <li>GIS and user input parameters were selected based on project team meetings and review of available spatial information to rank future restoration sites. Whenever possible standardized names for layers (schema and table) and fields were used to facilitate the reproducibility of similiar analysis on other or updated datasets, both by ourselves and by others.</li>
