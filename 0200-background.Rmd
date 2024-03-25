@@ -132,9 +132,31 @@ knitr::include_graphics("fig/hydrology_stats_08ED002.png")
 
 ### Neexdzii Kwah
 
-Traditionally, the salmon stocks passing through and spawning in the greater Bulkley River were the principal food source for the Gitxsan and Wet’suwet’en people living there [@wilsonFishPassageAssessment2007]. Traditional fishing areas located within the Neexdzii Kwah as documented by @wilsonFishPassageAssessment2007 are detailed in Table \@ref(tab:tab-hist-sites). Anadromous lamprey passing through and spawning in the upper Neexdzii Kwah were traditionally also an important food source for the Wet'suwet'en (@gottesfeld_rabnett2007SkeenaFish; pers comm. Mike Ridsdale, Environmental Assessment Coordinator, Office of the Wet'suwet'en).  @gottesfeld_rabnett2007SkeenaFish report sourceing information from @departmentoffisheriesandoceans1991Fishhabitat that principal spawning areas for chinook in the Neexdzii Kwah include the mainstem above and below Buck and McQuarrie Creeks, between Cesford and Watson Creeks, and the reaches upstream and downstream of Bulkley Falls.
+Traditionally, the salmon stocks passing through and spawning in the greater Bulkley River were the principal food source for the Gitxsan and Wet’suwet’en people living there [@wilsonFishPassageAssessment2007].  Anadromous lamprey passing through and spawning in the upper Neexdzii Kwah were traditionally also an important food source for the Wet'suwet'en (@gottesfeld_rabnett2007SkeenaFish; pers comm. Mike Ridsdale, Environmental Assessment Coordinator, Office of the Wet'suwet'en).  @gottesfeld_rabnett2007SkeenaFish report sourceing information from @departmentoffisheriesandoceans1991Fishhabitat that principal spawning areas for chinook in the Neexdzii Kwah include the mainstem above and below Buck and McQuarrie Creeks, between Cesford and Watson Creeks, and the reaches upstream and downstream of Bulkley Falls.
 
 <br>
+
+Renowned as a world class recreational steelhead and coho fishery, the greater Bulkley River downstream of Neexdzii Kwah receives some of the heaviest angling pressure in the province. In response to longstanding angler concerns with respect to overcrowding, quality of experience and conflict amongst anglers, an Angling Management Plan was drafted for the river following the initiation of the Skeena Quality Waters Strategy process in 2006 and an extensive multi-year consultation process. The plan introduces a number of regulatory measures with the intent to provide Canadian resident anglers with quality steelhead fishing opportunities. Regulatory measures introduced with the Angling Management Plan include prohibited angling for non-guided non-resident aliens on Saturdays and Sundays, Sept 1 - Oct 31 within the Bulkley River, angling prohibited for non-guided non-resident aliens on Saturdays and Sundays, all year within the Suskwa River and angling prohibited for non-guided non-resident aliens Sept 1 - Oct 31 in the Telkwa River. The Neexdzii Kwah is considered Class II water and there is no fshing permitted upstream of the Morice/Bulkley River Confluence [@flnroBulkleyRiverAngling2013; @flnroOverviewAnglingManagement2013; @flnrordFreshwaterFishingRegulations2019].
+
+<br>
+
+#### Upper Bulkley Falls
+
+A detailed field assessment and write up regarding the upper Bulkley falls was conducted as part of fish passage restoration in the watershed - is presented in @irvine2021BulkleyRiver with a condensed summary here. The site was assessed on October 28, 2021 by Nallas Nikal, B.i.T, and Chad Lewis, Environmental Technician. The top of the falls is located at 11U.678269.6038266 at an elevation of 697m approximatley 11.3km downstream of Bulkley Lake and upstream of Ailport Creek.  Within the Bulkley River immediately below the 12 - 15m high bedrock falls, channel width was 17.4m and the wetted width was 15.6m. Two channels comprised the falls. The primary channel was 20m long, had a channel/wetted width of 8.5m, a 16% grade and water depths ranging from 35 - 63cm.  The secondary channel was 25m long, with channel/wetted widths of 7.5m, a grade of 12% and water depths ranging from 3 - 13cm [@irvine2021BulkleyRiver].
+
+<br>
+
+@dysonBulkleyFallsInvestigation1949 and @stokesUpperBulkleyRiver1956 report substantial use of habitat above Bulkley Falls by steelhead, chinook, coho and sockeye utilization in the past (pre-1950) based on spawning reports.  Both authors concluded that the Bulkley Falls pose a partial obstruction to migrating fish based on flow levels. Chinook, which migrate early in the summer when water levels are high, have been noted as able to ascend the falls in normal to high water years and in high water years it was thought that coho and steelhead could ascend.  @gottesfeld_rabnett2007SkeenaFish report that the falls are almost completely impassable to all salmon during low water flows.  @stokesUpperBulkleyRiver1956 reports that there was high value spawning habitat located within the first 3km of the Neexdzii Kwah from the outlet of Bulkley Lake.
+
+<br>
+
+@wilsonFishPassageAssessment2007 reported thataApproximately 11.3 km downstream of the Bulkley Lake outlet and just upstream of Watson Creek, the upper Bulkley falls is an approximately 4m high narrow rock sill that crosses the Neexdzii Kwah, producing a steep cascade section. This obstacle to fish passage is recorded as an almost complete barrier to fish passage for salmon during low water flows. @wilsonFishPassageAssessment2007 also reported that coho have not been observed beyond the falls since 1972. 
+
+<br>
+
+#### Traditional Fishing Sites within the Neexdzii Kwah
+
+Traditional fishing areas located within the Neexdzii Kwah as documented by @wilsonFishPassageAssessment2007 are detailed in Table \@ref(tab:tab-hist-sites).
 
 
 ```{r hist-sites-extract, eval=FALSE}
@@ -179,22 +201,77 @@ readr::read_csv('data/trad_fish_sites_wilson_rabnett2007FishPassage.csv') %>%
                  scroll = FALSE)
 ```
 
+#### Salmon Stock Assessment Data
 
-<br>
 
-Approximately 11.3 km downstream of the Bulkley Lake outlet and just upstream of Watson Creek, the upper Bulkley falls is an approximately 4m high narrow rock sill that crosses the Bulkley River, producing a steep cascade section. This obstacle to fish passage is recorded as an almost complete barrier to fish passage for salmon during low water flows. Coho have not been observed beyond the falls since 1972 [@wilsonFishPassageAssessment2007].
+```{r tab-dfo-sad-tr-neexdzii}
 
-<br>
+#names(dfo_sad_raw)
 
-Renowned as a world class recreational steelhead and coho fishery, the Bulkley River receives some of the heaviest angling pressure in the province. In response to longstanding angler concerns with respect to overcrowding, quality of experience and conflict amongst anglers, an Angling Management Plan was drafted for the river following the initiation of the Skeena Quality Waters Strategy process in 2006 and an extensive multi-year consultation process. The plan introduces a number of regulatory measures with the intent to provide Canadian resident anglers with quality steelhead fishing opportunities. Regulatory measures introduced with the Angling Management Plan include prohibited angling for non-guided non-resident aliens on Saturdays and Sundays, Sept 1 - Oct 31 within the Bulkley River, angling prohibited for non-guided non-resident aliens on Saturdays and Sundays, all year within the Suskwa River and angling prohibited for non-guided non-resident aliens Sept 1 - Oct 31 in the Telkwa River. The Bukley River is considered Class II waterand there is no fshing permitted upstream of the Morice/Bulkley River Confluence [@flnroBulkleyRiverAngling2013; @flnroOverviewAnglingManagement2013; @flnrordFreshwaterFishingRegulations2019].
+dfo_sad_raw <- readr::read_csv('data/inputs_raw/All Areas NuSEDS.csv')
 
-<br>
+dfo_sad_tr <- readr::read_csv('data/inputs_raw/All Areas NuSEDS.csv') %>% 
+  dplyr::filter(waterbody == "BULKLEY RIVER - UPPER") %>% 
+  dplyr::filter(!is.na(total_return_to_river)) %>% 
+  arrange(species, analysis_yr) %>% 
+  dplyr::select(species, analysis_yr, 
+                total_return_to_river, 
+                start_spawn_dt_from,
+                peak_spawn_dt_from,
+                end_spawn_dt_from)
+
+dfo_sad_tr %>% 
+  fpr::fpr_kable(caption_text = "Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with total return to river data.",
+                 scroll = gitbook_on)
+```
+
+
+```{r fig-dfo-sad-tr1, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with total return to river data."}
+
+ggplot(dfo_sad_tr, aes(x = analysis_yr, y = total_return_to_river, group = species)) +
+  geom_line() +
+  facet_wrap(~species, scales = "free_y") +
+  labs(x = "Year", y = "Total Return to River") +
+  ggdark::dark_theme_bw()
+```
+
+```{r fig-dfo-sad-nad1, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with natural adult spawners data."}
+
+dfo_sad_raw %>% 
+  dplyr::filter(waterbody == "BULKLEY RIVER - UPPER") %>% 
+  dplyr::filter(!is.na(natural_adult_spawners)) %>% 
+  arrange(species, analysis_yr) %>% 
+  ggplot(aes(x = analysis_yr, y = natural_adult_spawners, group = species)) +
+  geom_line() +
+  facet_wrap(~species, scales = "free") +
+  labs(x = "Year", y = "Natural Adult Spawners") +
+  ggdark::dark_theme_bw()
+```
+
 
 ### Morice River
 
 Detailed reviews of Morice River watershed fisheries can be found in @bustardConservingMoriceWatershed2002, @gottesfeldConservingSkeenaFish2002, @schellBriefOverviewFish2003, @gottesfeldSkeenaFishPopulations2007, and @ilmb2007MoriceLanda with a comprehensive review of water quality by @oliverAnalysisWaterQuality2018 Overall, the Morice watershed contains high fisheries values as a major producer of chinook, pink, sockeye, coho and steelhead.
 
 <br>
+
+#### Salmon Stock Assessment Data
+
+```{r fig-dfo-sad-tr2, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Morice River.  Data is filtered to only include records with total return to river data."}
+
+dfo_sad_raw %>%
+  ldfo_sad_plot_line("MORICE RIVER", "total_return_to_river", "species", "analysis_yr", col_group_exclude = "Coho")
+
+```
+
+```{r fig-dfo-sad-nad2, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Morice River.  Data is filtered to only include records with natural adult spawners data."}
+
+dfo_sad_raw %>%
+  ldfo_sad_plot_line("MORICE RIVER", "natural_adult_spawners", "species", "analysis_yr", col_group_exclude = "Coho")
+
+
+```
+
 
 #### Fish Species
 
