@@ -1,8 +1,7 @@
 # Methods
 
 ## Collaborative GIS Environment
-Geographical Information Systems are essential for understanding restoration plans and the reasons they are required. Without the ability to visualize the landscape and the data that is used to make decisions it is difficult to
-conduct and communicate the need for restoration, the details of past and future plans as well as and the potential results of physical works. 
+Geographical Information Systems are essential for developing and communicating restoration plans as well as the reasons they are required and how they are developed. Without the ability to visualize the landscape and the data that is used to make decisions it is difficult to conduct and communicate the need for restoration, the details of past and future plans as well as and the potential results of physical works. 
 
 <br>
 
@@ -10,7 +9,7 @@ To facilitate the planning and implementation of restoration activities in the N
 
 <br>
 
-The shared QGIS project was created using scripts currently kept in [`dff-2022`](https://github.com/NewGraphEnvironment/dff-2022) with the precise calls to project creation scripts tracked in the `project_creation_and_permissions.txt` document kept in the main project directory. Information about how GIS project creation and update scripts function can be viewed [here](https://github.com/NewGraphEnvironment/dff-2022/tree/master/scripts/qgis) with outcomes of their use summarized below:
+The shared QGIS project was created using scripts currently kept in [`dff-2022`](https://github.com/NewGraphEnvironment/dff-2022) with the precise calls to project creation scripts tracked in the `project_creation_and_permissions.txt` document kept in the main QGIS project directory. Information about how GIS project creation and update scripts function can be viewed [here](https://github.com/NewGraphEnvironment/dff-2022/tree/master/scripts/qgis) with outcomes of their use summarized below:
 
   - download and clip user specified layers from the [BC Data Catalougue](https://catalogue.data.gov.bc.ca/) as well as data layers stored in custom Amazon Web Services buckets for an area of interest defined by a list of watershed groups and load to a geopackage called `background_layers.gpkg` stored in the main directory of the project.  An additional `lateral_habitat.tiff` layer is also clipped to the user defined area and loaded to the project.
   - A project directory is created to hold the spatial data and `QGIS` project information (ie. layer symbology and naming conventions, metadata, etc.).  
@@ -29,7 +28,7 @@ The shared QGIS project was created using scripts currently kept in [`dff-2022`]
 ```
 
 ## Open Source - Iterative Reporting
-There is a key question we have been asking ourselves lately and that is 
+A key question we have been asking ourselves is: 
 
 <br>
 
