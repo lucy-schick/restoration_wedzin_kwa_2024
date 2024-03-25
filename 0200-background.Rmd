@@ -225,27 +225,21 @@ dfo_sad_tr %>%
                  scroll = gitbook_on)
 ```
 
+<br>
 
 ```{r fig-dfo-sad-tr1, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with total return to river data."}
 
-ggplot(dfo_sad_tr, aes(x = analysis_yr, y = total_return_to_river, group = species)) +
-  geom_line() +
-  facet_wrap(~species, scales = "free_y") +
-  labs(x = "Year", y = "Total Return to River") +
-  ggdark::dark_theme_bw()
+dfo_sad_raw %>%
+  ldfo_sad_plot_line("BULKLEY RIVER - UPPER", "total_return_to_river", "species", "analysis_yr", col_group_exclude = "Coho")
 ```
+
+<br>
 
 ```{r fig-dfo-sad-nad1, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with natural adult spawners data."}
 
-dfo_sad_raw %>% 
-  dplyr::filter(waterbody == "BULKLEY RIVER - UPPER") %>% 
-  dplyr::filter(!is.na(natural_adult_spawners)) %>% 
-  arrange(species, analysis_yr) %>% 
-  ggplot(aes(x = analysis_yr, y = natural_adult_spawners, group = species)) +
-  geom_line() +
-  facet_wrap(~species, scales = "free") +
-  labs(x = "Year", y = "Natural Adult Spawners") +
-  ggdark::dark_theme_bw()
+dfo_sad_raw %>%
+  ldfo_sad_plot_line("BULKLEY RIVER - UPPER", "natural_adult_spawners", "species", "analysis_yr", col_group_exclude = "Coho")
+
 ```
 
 
@@ -260,7 +254,7 @@ Detailed reviews of Morice River watershed fisheries can be found in @bustardCon
 ```{r fig-dfo-sad-tr2, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Morice River.  Data is filtered to only include records with total return to river data."}
 
 dfo_sad_raw %>%
-  ldfo_sad_plot_line("MORICE RIVER", "total_return_to_river", "species", "analysis_yr", col_group_exclude = "Coho")
+  ldfo_sad_plot_line("BULKLEY RIVER - UPPER", "total_return_to_river", "species", "analysis_yr", col_group_exclude = "Coho")
 
 ```
 
@@ -320,12 +314,15 @@ restoration_principles_pb %>%
 
 ```
 
+<br>
 
 Below is an example of process-based restoration using stage 0 methodology done at Deer Creek in Oregon, USA. In this project they filled in incised channels and added large wood to to the river to restore the natural floodplain elevation and re-establish multiple channels (Figure \@ref(fig:deer-creek-plan))[@meyer2018DeerCreek]. Although this project used relatively aggressive restoration techniques, they observed immediate improvements and the benefits were self-sustaining (Figure \@ref(fig:deer-creek-action))[@meyer2018DeerCreek].
 
 ```{r deer-creek-plan, fig.cap = 'An example of process-based restoration using stage 0 methodology to restored the natural floodplain elevation. In this project they filled in incised channels and added large wood to restore the natural floodplain elevation and re-establish multiple channels (Meyer, 2018).',eval=T}
 knitr::include_graphics("fig/stage0_before_after.png")
 ```
+
+<br>
 
 ```{r deer-creek-action, fig.cap = 'Before and after restoration took place at Deer Creek, USA. They observed imediate improvements to the habitat and the benefits were self-sustaining (Meyer, 2018).',eval=T}
 knitr::include_graphics("fig/deer_creek_before_after.png")
