@@ -243,12 +243,11 @@ div.csl-indent {
 <h1><span class="header-section-number">3</span> Methods<a href="methods.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="collaborative-gis-environment" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Collaborative GIS Environment<a href="methods.html#collaborative-gis-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Geographical Information Systems are essential for understanding restoration plans and the reasons they are required. Without the ability to visualize the landscape and the data that is used to make decisions it is difficult to
-conduct and communicate the need for restoration, the details of past and future plans as well as and the potential results of physical works.</p>
+<p>Geographical Information Systems are essential for developing and communicating restoration plans as well as the reasons they are required and how they are developed. Without the ability to visualize the landscape and the data that is used to make decisions it is difficult to conduct and communicate the need for restoration, the details of past and future plans as well as and the potential results of physical works.</p>
 <p><br></p>
 <p>To facilitate the planning and implementation of restoration activities in the Neexdzii Kwah (and elsewhere within the Widzin Kwah Water Sustainability Project area), a collaborative GIS environment (titled <code>restoration_wedzin_kwa</code>) has been established using <a href="https://qgis.org/en/site/">QGIS</a> and <a href="https://merginmaps.com/">Mergin Maps</a> (source code <a href="https://github.com/MerginMaps">here</a>. This environment is intended to be a space where project team members can access and view and contribute to the amalgamation of background spatial data and the development of restoration as well as monitoring for the project. The collaborative GIS environment allows users to view, edit, and analyze shared up to date spatial data on personal computers in an office setting as well as phones and tablets in the field. At the time of reporting, the environment was being used to develop and share maps, conduct spatial analyses, communicate restoration plans to stakeholders as well as to provide a central place to store methodologies and tools for conducting field assessments on standardized pre-developed digital forms. The platform can also be used to track the progress of restoration activities and monitor changes in the landscape over time helping encourage the record keeping of past and future restoration activities in a coordinated manner.</p>
 <p><br></p>
-<p>The shared QGIS project was created using scripts currently kept in <a href="https://github.com/NewGraphEnvironment/dff-2022"><code>dff-2022</code></a> with the precise calls to project creation scripts tracked in the <code>project_creation_and_permissions.txt</code> document kept in the main project directory. Information about how GIS project creation and update scripts function can be viewed <a href="https://github.com/NewGraphEnvironment/dff-2022/tree/master/scripts/qgis">here</a> with outcomes of their use summarized below:</p>
+<p>The shared QGIS project was created using scripts currently kept in <a href="https://github.com/NewGraphEnvironment/dff-2022"><code>dff-2022</code></a> with the precise calls to project creation scripts tracked in the <code>project_creation_and_permissions.txt</code> document kept in the main QGIS project directory. Information about how GIS project creation and update scripts function can be viewed <a href="https://github.com/NewGraphEnvironment/dff-2022/tree/master/scripts/qgis">here</a> with outcomes of their use summarized below:</p>
 <ul>
 <li>download and clip user specified layers from the <a href="https://catalogue.data.gov.bc.ca/">BC Data Catalougue</a> as well as data layers stored in custom Amazon Web Services buckets for an area of interest defined by a list of watershed groups and load to a geopackage called <code>background_layers.gpkg</code> stored in the main directory of the project. An additional <code>lateral_habitat.tiff</code> layer is also clipped to the user defined area and loaded to the project.</li>
 <li>A project directory is created to hold the spatial data and <code>QGIS</code> project information (ie. layer symbology and naming conventions, metadata, etc.).<br />
@@ -267,22 +266,15 @@ conduct and communicate the need for restoration, the details of past and future
 </div>
 <div id="open-source---iterative-reporting" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Open Source - Iterative Reporting<a href="methods.html#open-source---iterative-reporting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>There is a key question we have been asking ourselves lately and that is</p>
+<p>A key question we have been asking ourselves is:</p>
 <p><br></p>
 <blockquote>
 <p>“What is the most useful way to present information?”</p>
 </blockquote>
 <p><br></p>
-<p>From our perspective - the most useful way to present information is in a version controlled format that allows it to be
-interactive, reproducible, read online, served out as a static document, updated, copied, used as a template, etc.
-Iterative reporting, managed with a version control system such as
+<p>From our perspective - the most useful way to present information is in a version controlled format that allows it to be interactive, reproducible, read online, served out as a static document, updated, copied, used as a template, etc. Iterative reporting, managed with a version control system such as
 <a href="https://docs.github.com/en/get-started/using-git/about-git">git</a> (see example of tracking edits <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/commits/main/0300-methods.Rmd">here</a>)
-with a permissive license is a great way to do all
-those things. Although there is a steep learning curve to using programming tools and producing this type of product
-and although it can be quite time consuming - it then allows leveraging of all the components of the work to future
-projects for everyone. Licenseing is also key and should be considered.
-<a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/LICENSE">Here</a> is an example of
-a license that promotes collaboration and sharing/leveraging of work.</p>
+with a permissive license is a great way to do all those things. Although there is a steep learning curve to using programming tools and producing this type of product and although it can be quite time consuming - it then allows leveraging of all the components of the work to future projects for everyone. Licensing is also key for work to be shared. <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/LICENSE.md">MIT License</a> is an example of a license that promotes collaboration and sharing/leveraging of work while.</p>
 <p><br></p>
 <p>From our perspective - restoration planning are the type of initiatives that are well suited to an iterative reporting format such as
 can be demonstrated within this <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024">code
@@ -295,7 +287,7 @@ discussions are kept <a href="https://github.com/NewGraphEnvironment/restoration
 </div>
 <div id="tables-and-figures" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Tables and Figures<a href="methods.html#tables-and-figures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>There are many tables within this document that can take have a long time to format. Within this document the tables have been imported often as simple csv files or pages of an excel workbook and pulled into the project using scripts. This allows others to access the data and use it in their own projects. These tables can also then be easily updated
+<p>There are many tables within this document that can take a long time to format. Within this document the tables have been imported often as simple csv files or pages of an excel workbook and pulled into the project using scripts. This allows others to access the data and use it in their own projects. These tables can also then be easily updated
 with new data as it becomes available often with the formatting for presentation to reader handled by the scripting. An example of this can be
 seen here in Table <a href="methods.html#tab:kable-resources">3.1</a> with the actual file served
 <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/data">here</a>:</p>
@@ -690,7 +682,7 @@ with the actual file served
 </div>
 <div id="documentation-of-workflows" class="section level3 hasAnchor" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> Documentation of Workflows<a href="methods.html#documentation-of-workflows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Select workflows were documented in memo format to illustrate the process used for others and promote reproducibility/leverageing of Neexdzii Kwah. The memos are stored in the <code>memo</code> directory of the project <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos">here</a> and can be viewed in Table Table <a href="#tab:memos"><strong>??</strong></a> by downloading the <code>.html</code> documents to a local computer and opening in a web browser such as <code>Chrome</code> (usually a double click of the document will open it in the browser).</p>
+<p>Select workflows were documented in memo format to illustrate the process used for others and promote reproducibility/leverageing of Neexdzii Kwah. The memos are stored in the <code>memo</code> directory of the project <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos">here</a> and can be viewed in Table Table <a href="methods.html#tab:tab-memos">3.3</a> by downloading the <code>.html</code> documents to a local computer and opening in a web browser such as <code>Chrome</code> (usually a double click of the document will open it in the browser).</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="methods.html#cb37-1" tabindex="-1"></a><span class="do">## make a tibble of the list and display it as a fpr_kable</span></span>
 <span id="cb37-2"><a href="methods.html#cb37-2" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;memos&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb37-3"><a href="methods.html#cb37-3" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">memo_name =</span> .) <span class="sc">%&gt;%</span> </span>
