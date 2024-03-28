@@ -1,3 +1,9 @@
+# restoration_wedzin_kwa_2024 DRAFT 0.0.3
+
+  - add `sites_restoration_gpkg_tracking.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/sites_restoration_gpkg_tracking.csv
+  - add Gaboury and Smith 2016 report to references via index file
+
+
 # restoration_wedzin_kwa_2024 DRAFT 0.0.2
   
   - recommendations are now numbered and reordered
