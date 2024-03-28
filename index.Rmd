@@ -22,7 +22,7 @@ output:
           includes:
             in_header: header.html
 nocite: |
-
+  @gaboury_smith2016DevelopmentAquatic
 documentclass: book
 bibliography: [packages.bib, references.bib]
 biblio-style: apalike
