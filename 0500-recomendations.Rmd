@@ -4,7 +4,7 @@ Developing comprehensive restoration planning for the Neexdzii Kwah watershed wi
 
 
 
-1. Spatially represent past prescriptions in the watershed where information is available. @ncfdc1998 prescriptions have been extracted from their report and are presented in Table \@ref(tab:tab-ncfdc-1998-pres).  These prescriptions can be loaded into the collaborative GIS project and reviewed collaboratively to understand historic priority ranking, reevaluate the utility of the work 30 years later and help feed into adaptive management where restoration actions were persued.
+1. Spatially represent past prescriptions in the watershed where information is available. @ncfdc1998MidBulkleyDetailed prescriptions have been extracted from their report and are presented in Table \@ref(tab:tab-ncfdc-1998-pres).  These prescriptions can be loaded into the collaborative GIS project and reviewed collaboratively to understand historic priority ranking, reevaluate the utility of the work 30 years later and help feed into adaptive management where restoration actions were persued.
 
 2. Spatially represent historic fisheries sites presented in  Table \@ref(tab:tab-hist-sites) so the option is available that potential areas of restoration can be ranked according to their proximity to these sites.
 
