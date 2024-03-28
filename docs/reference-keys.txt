@@ -18,6 +18,7 @@ fig:all-benefits
 tab:kable-resources
 tab:tab-memos
 tab:tab-rfp-tracking
+tab:tab-sites-restoration-gpkg-tracking
 tab:tab-ncfdc-1998-priority
 tab:tab-ncfdc-1998-pres
 tab:tab-gis-params
