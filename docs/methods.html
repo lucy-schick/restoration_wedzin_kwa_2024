@@ -52,6 +52,8 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 <script type="text/javascript">
 
@@ -296,7 +298,7 @@ seen here in Table <a href="methods.html#tab:kable-resources">3.1</a> with the a
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:kable-resources">Table 3.1: </span><span id="tab:kable-resources">Table 3.2: </span>Aquatic Restoration Resources.
+<span id="tab:kable-resources">Table 3.1: </span>Aquatic Restoration Resources.
 </caption>
 <thead>
 <tr>
@@ -682,7 +684,7 @@ with the actual file served
 </div>
 <div id="documentation-of-workflows" class="section level3 hasAnchor" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> Documentation of Workflows<a href="methods.html#documentation-of-workflows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Select workflows were documented in memo format to illustrate the process used for others and promote reproducibility/leverageing of Neexdzii Kwah. The memos are stored in the <code>memo</code> directory of the project <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos">here</a> and can be viewed in Table Table <a href="methods.html#tab:tab-memos">3.3</a> by downloading the <code>.html</code> documents to a local computer and opening in a web browser such as <code>Chrome</code> (usually a double click of the document will open it in the browser).</p>
+<p>Select workflows were documented in memo format to illustrate the process used for others and promote reproducibility/leverageing of Neexdzii Kwah. The memos are stored in the <code>memo</code> directory of the project <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos">here</a> and can be viewed in Table Table <a href="methods.html#tab:tab-memos">3.2</a> by downloading the <code>.html</code> documents to a local computer and opening in a web browser such as <code>Chrome</code> (usually a double click of the document will open it in the browser).</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="methods.html#cb37-1" tabindex="-1"></a><span class="do">## make a tibble of the list and display it as a fpr_kable</span></span>
 <span id="cb37-2"><a href="methods.html#cb37-2" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;memos&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb37-3"><a href="methods.html#cb37-3" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">memo_name =</span> .) <span class="sc">%&gt;%</span> </span>
@@ -692,7 +694,7 @@ with the actual file served
 <span id="cb37-7"><a href="methods.html#cb37-7" tabindex="-1"></a>                 )</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-memos">Table 3.3: </span><span id="tab:tab-memos">Table 3.4: </span>Memos stored at <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos" class="uri">https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos</a>.
+<span id="tab:tab-memos">Table 3.2: </span>Memos stored at <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos" class="uri">https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos</a>.
 </caption>
 <thead>
 <tr>

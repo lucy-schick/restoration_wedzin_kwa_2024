@@ -52,6 +52,8 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 <script type="text/javascript">
 
@@ -242,9 +244,9 @@ div.csl-indent {
 <div id="session-info" class="section level1 unnumbered hasAnchor">
 <h1>Session Info<a href="session-info.html#session-info" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb46-1"><a href="session-info.html#cb46-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
-<pre><code>─ Session info ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<pre><code>─ Session info ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
  setting  value
- version  R version 4.3.2 (2023-10-31)
+ version  R version 4.3.3 (2024-02-29)
  os       &lt;NA&gt;
  system   aarch64, darwin20
  ui       RStudio
@@ -252,11 +254,11 @@ div.csl-indent {
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       America/Vancouver
- date     2024-03-27
+ date     2024-04-10
  rstudio  2023.12.1+402 Ocean Storm (desktop)
  pandoc   3.1.1 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
 
-─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
  package         * version    date (UTC) lib source
  bcdata            0.4.1      2023-03-18 [1] CRAN (R 4.3.0)
  bit               4.0.5      2022-11-15 [1] CRAN (R 4.3.0)
@@ -267,16 +269,15 @@ div.csl-indent {
  cachem            1.0.8      2023-05-01 [1] CRAN (R 4.3.0)
  cellranger        1.1.0      2016-07-27 [1] CRAN (R 4.3.0)
  chk               0.9.1.9000 2024-01-08 [1] Github (poissonconsulting/chk@7ebd4b3)
- class             7.3-22     2023-05-03 [2] CRAN (R 4.3.2)
+ class             7.3-22     2023-05-03 [2] CRAN (R 4.3.3)
  classInt          0.4-10     2023-09-05 [1] CRAN (R 4.3.0)
  cli               3.6.2      2023-12-11 [1] CRAN (R 4.3.1)
  colorspace        2.1-0      2023-01-23 [1] CRAN (R 4.3.0)
- conflicted      * 1.2.0.9000 2024-01-11 [1] Github (r-lib/conflicted@321d77c)
  crayon            1.5.2      2022-09-29 [1] CRAN (R 4.3.0)
  curl              5.2.0      2023-12-08 [1] CRAN (R 4.3.1)
- DBI               1.2.1      2024-01-12 [1] CRAN (R 4.3.2)
+ DBI               1.2.2      2024-02-16 [1] CRAN (R 4.3.1)
  dbplyr            2.4.0      2023-10-26 [1] CRAN (R 4.3.1)
- devtools        * 2.4.5      2022-10-11 [1] CRAN (R 4.3.0)
+ devtools          2.4.5      2022-10-11 [1] CRAN (R 4.3.0)
  digest            0.6.34     2024-01-11 [1] CRAN (R 4.3.1)
  dplyr           * 1.1.4      2023-11-17 [1] CRAN (R 4.3.1)
  e1071             1.7-14     2023-12-06 [1] CRAN (R 4.3.1)
@@ -284,13 +285,13 @@ div.csl-indent {
  evaluate          0.23       2023-11-01 [1] CRAN (R 4.3.2)
  fansi             1.0.6      2023-12-08 [1] CRAN (R 4.3.1)
  farver            2.1.1      2022-07-06 [1] CRAN (R 4.3.0)
- fasstr          * 0.5.1      2023-03-22 [1] CRAN (R 4.3.0)
+ fasstr          * 0.5.2      2024-03-28 [1] CRAN (R 4.3.1)
  fastmap           1.1.1      2023-02-24 [1] CRAN (R 4.3.0)
  fishbc          * 0.2.1      2021-05-12 [1] CRAN (R 4.3.0)
  forcats         * 1.0.0      2023-01-29 [1] CRAN (R 4.3.0)
- fpr             * 1.1.0      2024-03-06 [1] Github (newgraphenvironment/fpr@f3c021e)
+ fpr             * 1.1.0      2024-04-10 [1] Github (newgraphenvironment/fpr@edde4ab)
  fs                1.6.3      2023-07-20 [1] CRAN (R 4.3.0)
- fwapgr            0.1.0.9014 2024-01-26 [1] Github (poissonconsulting/fwapgr@26c0daf)
+ fwapgr            0.1.0.9015 2024-04-01 [1] Github (poissonconsulting/fwapgr@a81de3d)
  generics          0.1.3      2022-07-05 [1] CRAN (R 4.3.0)
  geojsonsf         2.0.3      2022-05-30 [1] CRAN (R 4.3.0)
  ggdark          * 0.2.1      2019-01-11 [1] CRAN (R 4.3.0)
@@ -306,13 +307,14 @@ div.csl-indent {
  janitor           2.2.0      2023-02-02 [1] CRAN (R 4.3.0)
  jquerylib         0.1.4      2021-04-26 [1] CRAN (R 4.3.2)
  jsonlite          1.8.8      2023-12-04 [1] CRAN (R 4.3.1)
- kableExtra        1.4.0      2024-01-24 [1] CRAN (R 4.3.1)
- KernSmooth        2.23-22    2023-07-10 [2] CRAN (R 4.3.2)
- knitr           * 1.45       2023-10-30 [1] CRAN (R 4.3.2)
+ kableExtra        1.4.0.3    2024-04-10 [1] Github (haozhu233/kableExtra@a9c509a)
+ KernSmooth        2.23-22    2023-07-10 [2] CRAN (R 4.3.3)
+ knitr           * 1.46       2024-04-06 [1] CRAN (R 4.3.3)
  labeling          0.4.3      2023-08-29 [1] CRAN (R 4.3.0)
  later             1.3.2      2023-12-06 [1] CRAN (R 4.3.1)
  lifecycle         1.0.4      2023-11-07 [1] CRAN (R 4.3.2)
  lubridate       * 1.9.3      2023-09-27 [1] CRAN (R 4.3.1)
+ magick            2.8.3      2024-02-18 [1] CRAN (R 4.3.1)
  magrittr          2.0.3      2022-03-30 [1] CRAN (R 4.3.0)
  memoise           2.0.1      2021-11-26 [1] CRAN (R 4.3.2)
  mime              0.12       2021-09-28 [1] CRAN (R 4.3.0)
@@ -339,7 +341,6 @@ div.csl-indent {
  readwritesqlite * 0.2.0      2022-10-16 [1] CRAN (R 4.3.0)
  readxl            1.4.3      2023-07-06 [1] CRAN (R 4.3.0)
  remotes           2.4.2.1    2023-07-18 [1] CRAN (R 4.3.0)
- rfp             * 0.0.0.9000 2024-03-19 [1] local
  rlang             1.1.3      2024-01-10 [1] CRAN (R 4.3.1)
  rmarkdown       * 2.26       2024-03-05 [1] CRAN (R 4.3.1)
  roxygen2          7.3.1      2024-01-22 [1] CRAN (R 4.3.1)
@@ -359,7 +360,7 @@ div.csl-indent {
  systemfonts       1.0.5      2023-10-09 [1] CRAN (R 4.3.1)
  textshaping       0.3.7      2023-10-09 [1] CRAN (R 4.3.1)
  tibble          * 3.2.1      2023-03-20 [1] CRAN (R 4.3.0)
- tidyhydat       * 0.6.1      2024-01-11 [1] CRAN (R 4.3.1)
+ tidyhydat         0.6.1      2024-01-11 [1] CRAN (R 4.3.1)
  tidyr           * 1.3.0      2023-01-24 [1] CRAN (R 4.3.0)
  tidyselect        1.2.0      2022-10-10 [1] CRAN (R 4.3.0)
  tidyverse       * 2.0.0      2023-02-22 [1] CRAN (R 4.3.0)
@@ -367,13 +368,13 @@ div.csl-indent {
  tzdb              0.4.0      2023-05-12 [1] CRAN (R 4.3.0)
  units             0.8-5      2023-11-28 [1] CRAN (R 4.3.1)
  urlchecker        1.0.1      2021-11-30 [1] CRAN (R 4.3.0)
- usethis         * 2.2.2      2023-07-06 [1] CRAN (R 4.3.0)
+ usethis           2.2.2      2023-07-06 [1] CRAN (R 4.3.0)
  utf8              1.2.4      2023-10-22 [1] CRAN (R 4.3.1)
  vctrs             0.6.5      2023-12-01 [1] CRAN (R 4.3.1)
  viridisLite       0.4.2      2023-05-02 [1] CRAN (R 4.3.0)
  vroom             1.6.5      2023-12-05 [1] CRAN (R 4.3.1)
  withr             3.0.0      2024-01-16 [1] CRAN (R 4.3.1)
- xfun              0.41       2023-11-01 [1] CRAN (R 4.3.1)
+ xfun              0.43       2024-03-25 [1] CRAN (R 4.3.1)
  xml2              1.3.6      2023-12-04 [1] CRAN (R 4.3.1)
  xtable            1.8-4      2019-04-21 [1] CRAN (R 4.3.0)
  yaml              2.3.8      2023-12-11 [1] CRAN (R 4.3.1)
@@ -382,7 +383,7 @@ div.csl-indent {
  [1] /Users/airvine/Library/R/arm64/4.3/library
  [2] /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library
 
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 
 </div>
             </section>
