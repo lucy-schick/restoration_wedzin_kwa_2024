@@ -52,6 +52,8 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 <script type="text/javascript">
 
@@ -279,7 +281,7 @@ div.csl-indent {
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-rfp-tracking">Table 4.1: </span><span id="tab:tab-rfp-tracking">Table 4.2: </span>Layers loaded to collaborative GIS project.
+<span id="tab:tab-rfp-tracking">Table 4.1: </span>Layers loaded to collaborative GIS project.
 </caption>
 <thead>
 <tr>
@@ -596,7 +598,7 @@ whse_cadastre.pmbc_parcel_fabric_poly_svw
 <p>• Apply BARC thresholds (76, 110, 187) to create a 4-class image (unburned, low severity, medium severity, and high severity)</p>
 <p>• Apply region-based filters to reduce noise</p>
 <p>• Confirm burn severity analysis results through visual quality control</p>
-• Produce a vector dataset and apply E
+• Produce a vector dataset and apply Euclidian distance smoothing
 </td>
 </tr>
 <tr>
@@ -684,7 +686,12 @@ whse_legal_admin_boundaries.abms_municipalities_sp
 <p>The OIC_YEAR and OIC_NUMBER fields indicate the year that the boundary was passed under OIC and its associated number. The AFFECTED_ADMIN_AREA_ABRVN identifies the administrative areas that are affected by the OIC.</p>
 <p>See all of the administrative areas currently in the <a href="https://catalogue.data.gov.bc.ca/dataset/12f0fd64-94d5-422a-832e-6627a2a01702"><strong>Administrative Boundaries Management System (ABMS)</strong></a>.</p>
 <p>The complimentary <a href="https://catalogue.data.gov.bc.ca/dataset/e50b6560-0549-41a6-8035-6b828066692e">point dataset</a> that defines the administrative areas is also available.</p>
-Other individual legally defined administrative area datasets
+<p>Other individual legally defined administrative area datasets are available from the following records:</p>
+<p><a href="https://catalogue.data.gov.bc.ca/dataset/d1aff64e-dbfe-45a6-af97-582b7f6418b9">Regional Districts</a>
+<a href="https://catalogue.data.gov.bc.ca/dataset/81940c47-a534-47e0-94d0-947c96a59de4">Electoral Areas</a></p>
+<p><a href="https://catalogue.data.gov.bc.ca/dataset/a7e32e45-63ae-4f5a-9275-9402b6deebdc">Province of British Columbia</a></p>
+<p><a href="https://catalogue.data.gov.bc.ca/dataset/df3f5a9f-2dc0-4b9e-b593-fc205933e32d">Islands Trust</a></p>
+<a href="https://catalogue.data.gov.bc.ca/dataset/cea5f554-f2f7-4cfd-a8f0-63e7c83dc191">Local Trust Areas</a>
 </td>
 </tr>
 <tr>
@@ -795,7 +802,7 @@ The dataset contains approved legal boundaries for fisheries sensitive watershed
 </div>
 <div id="past-restoration-initiative-identification-1" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Past Restoration Initiative Identification<a href="results.html#past-restoration-initiative-identification-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Information amalgamated from past restoration initiatives has been added to the <code>restoration_wedzin_kwa</code> project in spatial formats through the <code>sites_restoration.gpkg</code> with details of source document locations, geometry type, description of the source document amalgamated, etc. documented in the <code>sites_restoration_gpkg_tracking.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/sites_restoration_gpkg_tracking.csv">here</a> with results presented in Table <a href="results.html#tab:tab-sites-restoration-gpkg-tracking">4.3</a>.</p>
+<p>Information amalgamated from past restoration initiatives has been added to the <code>restoration_wedzin_kwa</code> project in spatial formats through the <code>sites_restoration.gpkg</code> with details of source document locations, geometry type, description of the source document amalgamated, etc. documented in the <code>sites_restoration_gpkg_tracking.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/sites_restoration_gpkg_tracking.csv">here</a> with results presented in Table <a href="results.html#tab:tab-sites-restoration-gpkg-tracking">4.2</a>.</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="results.html#cb40-1" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
 <span id="cb40-2"><a href="results.html#cb40-2" tabindex="-1"></a>  <span class="st">&quot;data/sites_restoration_gpkg_tracking.csv&quot;</span></span>
 <span id="cb40-3"><a href="results.html#cb40-3" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
@@ -803,7 +810,7 @@ The dataset contains approved legal boundaries for fisheries sensitive watershed
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-sites-restoration-gpkg-tracking">Table 4.3: </span><span id="tab:tab-sites-restoration-gpkg-tracking">Table 4.4: </span>Summary of past restoration initiatives added to the <code>sites_restoration.gpkg</code> geopackage of the <code>restoration_wedzin_kwa</code> project. Work in progress.
+<span id="tab:tab-sites-restoration-gpkg-tracking">Table 4.2: </span>Summary of past restoration initiatives added to the <code>sites_restoration.gpkg</code> geopackage of the <code>restoration_wedzin_kwa</code> project. Work in progress.
 </caption>
 <thead>
 <tr>
@@ -990,14 +997,14 @@ Provided by Wet’suwet’en First Nation in 2021. Includes all sites proposed b
 <p><br></p>
 <div id="works-in-progress" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Works in Progress<a href="results.html#works-in-progress" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="citation">NCFDC (1998)</span> utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the digital deliverables could not be recovered. Their work persists in pdf format however with summarized details of their prioritization work and prescription locations and details extracted from the pdf and included in the <code>ncfdc_1998_prescriptions.csv</code> file located and viewable <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions.csv">here</a>. The prioritization table for sub-basins in the region are included in Table <a href="results.html#tab:tab-ncfdc-1998-priority">4.5</a> with details of individual prescriptions presented in Table <a href="results.html#tab:tab-ncfdc-1998-pres">4.7</a>. Next steps for this dataset include conversion of the csv to a spatial file and added to the <code>restoration_wedzin_kwa</code> project through the <code>sites_restoration.gpkg</code>.</p>
+<p><span class="citation">NCFDC (1998)</span> utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the digital deliverables could not be recovered. Their work persists in pdf format however with summarized details of their prioritization work and prescription locations and details extracted from the pdf and included in the <code>ncfdc_1998_prescriptions.csv</code> file located and viewable <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions.csv">here</a>. The prioritization table for sub-basins in the region are included in Table <a href="results.html#tab:tab-ncfdc-1998-priority">4.3</a> with details of individual prescriptions presented in Table <a href="results.html#tab:tab-ncfdc-1998-pres">4.4</a>. Next steps for this dataset include conversion of the csv to a spatial file and added to the <code>restoration_wedzin_kwa</code> project through the <code>sites_restoration.gpkg</code>.</p>
 <p><br></p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="results.html#cb41-1" tabindex="-1"></a>ncfdc_1998_71a <span class="sc">%&gt;%</span> </span>
 <span id="cb41-2"><a href="results.html#cb41-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.&quot;</span>,</span>
 <span id="cb41-3"><a href="results.html#cb41-3" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-ncfdc-1998-priority">Table 4.5: </span><span id="tab:tab-ncfdc-1998-priority">Table 4.6: </span>Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.
+<span id="tab:tab-ncfdc-1998-priority">Table 4.3: </span>Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.
 </caption>
 <thead>
 <tr>
@@ -1195,7 +1202,7 @@ Bulkley
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-ncfdc-1998-pres">Table 4.7: </span><span id="tab:tab-ncfdc-1998-pres">Table 4.8: </span>Summary of NCFDC (1998) prescriptions for the Neexdzii Kwah area.
+<span id="tab:tab-ncfdc-1998-pres">Table 4.4: </span>Summary of NCFDC (1998) prescriptions for the Neexdzii Kwah area.
 </caption>
 <thead>
 <tr>
@@ -2331,7 +2338,7 @@ To stabilize and revegetate the slopes by altering drainage patterns from theroa
 </div>
 <div id="parameter-ranking-to-select-future-restoration-sites-1" class="section level3 hasAnchor" number="4.3.5">
 <h3><span class="header-section-number">4.3.5</span> Parameter Ranking to Select Future Restoration Sites<a href="results.html#parameter-ranking-to-select-future-restoration-sites-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the <code>restoration_site_priority_parameters.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv">here</a> is included in Table <a href="results.html#tab:tab-gis-params">4.9</a>.</p>
+<p>A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the <code>restoration_site_priority_parameters.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv">here</a> is included in Table <a href="results.html#tab:tab-gis-params">4.5</a>.</p>
 <p><br></p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="results.html#cb43-1" tabindex="-1"></a><span class="co"># load the data</span></span>
 <span id="cb43-2"><a href="results.html#cb43-2" tabindex="-1"></a>gis_params_raw_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
@@ -2402,7 +2409,7 @@ To stabilize and revegetate the slopes by altering drainage patterns from theroa
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-gis-params">Table 4.9: </span><span id="tab:tab-gis-params">Table 4.10: </span>GIS parameters used to rank future restoration sites.
+<span id="tab:tab-gis-params">Table 4.5: </span>GIS parameters used to rank future restoration sites.
 </caption>
 <thead>
 <tr>
