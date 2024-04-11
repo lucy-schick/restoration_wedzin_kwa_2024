@@ -29,6 +29,7 @@ biblio-style: apalike
 link-citations: no
 github-repo: rstudio/bookdown-demo
 description: "Restoration Initiatives for the Widzin Kwah 2024"
+lof: TRUE
 
 
 ---

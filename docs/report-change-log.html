@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Session Info | Neexdzii Kwah Restoration Planning 2024</title>
+  <title>Report Change Log | Neexdzii Kwah Restoration Planning 2024</title>
   <meta name="description" content="Restoration Initiatives for the Widzin Kwah 2024" />
   <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Session Info | Neexdzii Kwah Restoration Planning 2024" />
+  <meta property="og:title" content="Report Change Log | Neexdzii Kwah Restoration Planning 2024" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Restoration Initiatives for the Widzin Kwah 2024" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Session Info | Neexdzii Kwah Restoration Planning 2024" />
+  <meta name="twitter:title" content="Report Change Log | Neexdzii Kwah Restoration Planning 2024" />
   
   <meta name="twitter:description" content="Restoration Initiatives for the Widzin Kwah 2024" />
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="report-change-log.html"/>
-
+<link rel="prev" href="references.html"/>
+<link rel="next" href="session-info.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -242,164 +242,56 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="session-info" class="section level1 unnumbered hasAnchor">
-<h1>Session Info<a href="session-info.html#session-info" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r fold-show"><code class="sourceCode r"><span id="cb46-1"><a href="session-info.html#cb46-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
-<pre><code>─ Session info ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
- setting  value
- version  R version 4.3.3 (2024-02-29)
- os       &lt;NA&gt;
- system   aarch64, darwin20
- ui       RStudio
- language (EN)
- collate  en_US.UTF-8
- ctype    en_US.UTF-8
- tz       America/Vancouver
- date     2024-04-11
- rstudio  2023.12.1+402 Ocean Storm (desktop)
- pandoc   3.1.1 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
+<div id="report-change-log" class="section level1 unnumbered hasAnchor">
+<h1>Report Change Log<a href="report-change-log.html#report-change-log" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="development" class="section level3 unnumbered hasAnchor">
+<h3>Development<a href="report-change-log.html#development" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>add NEWS.md to the report with <code>news_to_appendix()</code> function</li>
+</ul>
+</div>
+<div id="restoration_wedzin_kwa_2024-draft-0.0.4" class="section level3 unnumbered hasAnchor">
+<h3>restoration_wedzin_kwa_2024 DRAFT 0.0.4<a href="report-change-log.html#restoration_wedzin_kwa_2024-draft-0.0.4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>fix duplicate table captions and dark table captions with <a href="https://github.com/NewGraphEnvironment/fpr/issues/68" class="uri">https://github.com/NewGraphEnvironment/fpr/issues/68</a></li>
+</ul>
+</div>
+<div id="restoration_wedzin_kwa_2024-draft-0.0.3" class="section level3 unnumbered hasAnchor">
+<h3>restoration_wedzin_kwa_2024 DRAFT 0.0.3<a href="report-change-log.html#restoration_wedzin_kwa_2024-draft-0.0.3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>add <code>sites_restoration_gpkg_tracking.csv</code> file located [here](<a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/sites_restoration_gpkg_tracking.csv" class="uri">https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/sites_restoration_gpkg_tracking.csv</a></li>
+<li>add Gaboury and Smith 2016 report to references via index file</li>
+</ul>
+</div>
+<div id="restoration_wedzin_kwa_2024-draft-0.0.2" class="section level3 unnumbered hasAnchor">
+<h3>restoration_wedzin_kwa_2024 DRAFT 0.0.2<a href="report-change-log.html#restoration_wedzin_kwa_2024-draft-0.0.2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>recommendations are now numbered and reordered</li>
+<li>MIT license</li>
+<li>recommendations - mention develop and document data management workflows to leverage existing established data storage systems to retrieve data from and load too and build capacity for all interested to do the same</li>
+<li>methods - include details of Open Source - Iterative Reporting. include aquatic_restoration_resources.csv as example of data management and presentation strategies</li>
+<li>issue #42 - turn DFO NuSeds tables and graph generating code to functions with region and data elements etc. as params</li>
+<li>background - add DFO NuSeds tables and graphs to Neexdzii Kwah section</li>
+<li>background - create seperate headings for Traditional Fishing sites and upper Bulkley falls</li>
+<li>background - add detail of upper Bulkley Falls from 2021 Skeena fish passage planning report - issue #</li>
+<li>background - re-organize background fisheries info to focus on Neexdzii Kwah study area.</li>
+</ul>
+</div>
+<div id="restoration_wedzin_kwa_2024-draft-0.0.1-20240322" class="section level3 unnumbered hasAnchor">
+<h3>restoration_wedzin_kwa_2024 DRAFT 0.0.1 20240322<a href="report-change-log.html#restoration_wedzin_kwa_2024-draft-0.0.1-20240322" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>initial release for update and engagement</li>
+</ul>
 
-─ Packages ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
- package         * version    date (UTC) lib source
- bcdata            0.4.1      2023-03-18 [1] CRAN (R 4.3.0)
- bit               4.0.5      2022-11-15 [1] CRAN (R 4.3.0)
- bit64             4.0.5      2020-08-30 [1] CRAN (R 4.3.0)
- blob              1.2.4      2023-03-17 [1] CRAN (R 4.3.0)
- bookdown        * 0.38       2024-03-04 [1] CRAN (R 4.3.1)
- bslib             0.6.1      2023-11-28 [1] CRAN (R 4.3.2)
- cachem            1.0.8      2023-05-01 [1] CRAN (R 4.3.0)
- callr             3.7.3      2022-11-02 [1] CRAN (R 4.3.0)
- cellranger        1.1.0      2016-07-27 [1] CRAN (R 4.3.0)
- chattr            0.0.0.9006 2024-01-19 [1] Github (mlverse/chattr@b0dde1b)
- chk               0.9.1.9000 2024-01-08 [1] Github (poissonconsulting/chk@7ebd4b3)
- class             7.3-22     2023-05-03 [2] CRAN (R 4.3.3)
- classInt          0.4-10     2023-09-05 [1] CRAN (R 4.3.0)
- cli               3.6.2      2023-12-11 [1] CRAN (R 4.3.1)
- clipr             0.8.0      2022-02-22 [1] CRAN (R 4.3.0)
- colorspace        2.1-0      2023-01-23 [1] CRAN (R 4.3.0)
- crayon            1.5.2      2022-09-29 [1] CRAN (R 4.3.0)
- curl              5.2.0      2023-12-08 [1] CRAN (R 4.3.1)
- DBI               1.2.2      2024-02-16 [1] CRAN (R 4.3.1)
- dbplyr            2.4.0      2023-10-26 [1] CRAN (R 4.3.1)
- devtools          2.4.5      2022-10-11 [1] CRAN (R 4.3.0)
- digest            0.6.34     2024-01-11 [1] CRAN (R 4.3.1)
- dplyr           * 1.1.4      2023-11-17 [1] CRAN (R 4.3.1)
- e1071             1.7-14     2023-12-06 [1] CRAN (R 4.3.1)
- ellipsis          0.3.2      2021-04-29 [1] CRAN (R 4.3.0)
- evaluate          0.23       2023-11-01 [1] CRAN (R 4.3.2)
- fansi             1.0.6      2023-12-08 [1] CRAN (R 4.3.1)
- farver            2.1.1      2022-07-06 [1] CRAN (R 4.3.0)
- fasstr          * 0.5.2      2024-03-28 [1] CRAN (R 4.3.1)
- fastmap           1.1.1      2023-02-24 [1] CRAN (R 4.3.0)
- fishbc          * 0.2.1      2021-05-12 [1] CRAN (R 4.3.0)
- forcats         * 1.0.0      2023-01-29 [1] CRAN (R 4.3.0)
- fpr             * 1.1.0      2024-04-11 [1] Github (newgraphenvironment/fpr@d4ff9e7)
- fs                1.6.3      2023-07-20 [1] CRAN (R 4.3.0)
- fwapgr            0.1.0.9015 2024-04-01 [1] Github (poissonconsulting/fwapgr@a81de3d)
- generics          0.1.3      2022-07-05 [1] CRAN (R 4.3.0)
- geojsonsf         2.0.3      2022-05-30 [1] CRAN (R 4.3.0)
- ggdark          * 0.2.1      2019-01-11 [1] CRAN (R 4.3.0)
- ggplot2         * 3.4.4      2023-10-12 [1] CRAN (R 4.3.1)
- glue              1.7.0      2024-01-09 [1] CRAN (R 4.3.1)
- gtable            0.3.4      2023-08-21 [1] CRAN (R 4.3.0)
- highr             0.10       2022-12-22 [1] CRAN (R 4.3.2)
- hms               1.1.3      2023-03-21 [1] CRAN (R 4.3.0)
- htmltools         0.5.7      2023-11-03 [1] CRAN (R 4.3.1)
- htmlwidgets       1.6.4      2023-12-06 [1] CRAN (R 4.3.1)
- httpuv            1.6.14     2024-01-26 [1] CRAN (R 4.3.1)
- httr              1.4.7      2023-08-15 [1] CRAN (R 4.3.0)
- httr2             1.0.0      2023-11-14 [1] CRAN (R 4.3.1)
- janitor           2.2.0      2023-02-02 [1] CRAN (R 4.3.0)
- jquerylib         0.1.4      2021-04-26 [1] CRAN (R 4.3.2)
- jsonlite          1.8.8      2023-12-04 [1] CRAN (R 4.3.1)
- kableExtra        1.4.0.3    2024-04-10 [1] Github (haozhu233/kableExtra@a9c509a)
- KernSmooth        2.23-22    2023-07-10 [2] CRAN (R 4.3.3)
- knitr           * 1.46       2024-04-06 [1] CRAN (R 4.3.3)
- labeling          0.4.3      2023-08-29 [1] CRAN (R 4.3.0)
- later             1.3.2      2023-12-06 [1] CRAN (R 4.3.1)
- lifecycle         1.0.4      2023-11-07 [1] CRAN (R 4.3.2)
- lubridate       * 1.9.3      2023-09-27 [1] CRAN (R 4.3.1)
- magick            2.8.3      2024-02-18 [1] CRAN (R 4.3.1)
- magrittr          2.0.3      2022-03-30 [1] CRAN (R 4.3.0)
- memoise           2.0.1      2021-11-26 [1] CRAN (R 4.3.2)
- mime              0.12       2021-09-28 [1] CRAN (R 4.3.0)
- miniUI            0.1.1.1    2018-05-18 [1] CRAN (R 4.3.0)
- munsell           0.5.0      2018-06-12 [1] CRAN (R 4.3.0)
- pagedown        * 0.20       2022-12-13 [1] CRAN (R 4.3.0)
- pak               0.7.1      2023-12-11 [1] CRAN (R 4.3.1)
- pgfeatureserv     0.0.0.9003 2024-01-26 [1] Github (poissonconsulting/pgfeatureserv@88af067)
- pillar            1.9.0      2023-03-22 [1] CRAN (R 4.3.0)
- pkgbuild          1.4.3      2023-12-10 [1] CRAN (R 4.3.1)
- pkgconfig         2.0.3      2019-09-22 [1] CRAN (R 4.3.0)
- pkgload           1.3.4      2024-01-16 [1] CRAN (R 4.3.1)
- poisutils         0.0.0.9010 2024-01-08 [1] Github (poissonconsulting/poisutils@8310dc4)
- processx          3.8.3      2023-12-10 [1] CRAN (R 4.3.1)
- profvis           0.3.8      2023-05-02 [1] CRAN (R 4.3.0)
- promises          1.2.1      2023-08-10 [1] CRAN (R 4.3.0)
- proxy             0.4-27     2022-06-09 [1] CRAN (R 4.3.0)
- ps                1.7.6      2024-01-18 [1] CRAN (R 4.3.1)
- purrr           * 1.0.2      2023-08-10 [1] CRAN (R 4.3.0)
- R6                2.5.1      2021-08-19 [1] CRAN (R 4.3.2)
- ragg              1.2.7      2023-12-11 [1] CRAN (R 4.3.1)
- rappdirs          0.3.3      2021-01-31 [1] CRAN (R 4.3.0)
- Rcpp              1.0.12     2024-01-09 [1] CRAN (R 4.3.1)
- RcppRoll          0.3.0      2018-06-05 [1] CRAN (R 4.3.0)
- readr           * 2.1.5      2024-01-10 [1] CRAN (R 4.3.1)
- readwritesqlite * 0.2.0      2022-10-16 [1] CRAN (R 4.3.0)
- readxl            1.4.3      2023-07-06 [1] CRAN (R 4.3.0)
- remotes           2.4.2.1    2023-07-18 [1] CRAN (R 4.3.0)
- rlang             1.1.3      2024-01-10 [1] CRAN (R 4.3.1)
- rmarkdown       * 2.26       2024-03-05 [1] CRAN (R 4.3.1)
- roxygen2          7.3.1      2024-01-22 [1] CRAN (R 4.3.1)
- RPostgres       * 1.4.6      2023-10-22 [1] CRAN (R 4.3.1)
- RSQLite           2.3.4      2023-12-08 [1] CRAN (R 4.3.1)
- rstudioapi        0.15.0     2023-07-07 [1] CRAN (R 4.3.0)
- sass              0.4.8      2023-12-06 [1] CRAN (R 4.3.1)
- scales            1.3.0      2023-11-28 [1] CRAN (R 4.3.1)
- sessioninfo       1.2.2      2021-12-06 [1] CRAN (R 4.3.0)
- sf              * 1.0-16     2024-03-24 [1] CRAN (R 4.3.2)
- shiny             1.8.0      2023-11-17 [1] CRAN (R 4.3.1)
- shrtcts           0.1.2      2024-01-25 [1] Github (gadenbuie/shrtcts@41051cf)
- snakecase         0.11.1     2023-08-27 [1] CRAN (R 4.3.0)
- stringi           1.8.3      2023-12-11 [1] CRAN (R 4.3.1)
- stringr         * 1.5.1      2023-11-14 [1] CRAN (R 4.3.2)
- svglite           2.1.3      2023-12-08 [1] CRAN (R 4.3.1)
- systemfonts       1.0.5      2023-10-09 [1] CRAN (R 4.3.1)
- textshaping       0.3.7      2023-10-09 [1] CRAN (R 4.3.1)
- tibble          * 3.2.1      2023-03-20 [1] CRAN (R 4.3.0)
- tidyhydat       * 0.6.1      2024-01-11 [1] CRAN (R 4.3.1)
- tidyr           * 1.3.0      2023-01-24 [1] CRAN (R 4.3.0)
- tidyselect        1.2.0      2022-10-10 [1] CRAN (R 4.3.0)
- tidyverse       * 2.0.0      2023-02-22 [1] CRAN (R 4.3.0)
- timechange        0.3.0      2024-01-18 [1] CRAN (R 4.3.1)
- tzdb              0.4.0      2023-05-12 [1] CRAN (R 4.3.0)
- units             0.8-5      2023-11-28 [1] CRAN (R 4.3.1)
- urlchecker        1.0.1      2021-11-30 [1] CRAN (R 4.3.0)
- usethis           2.2.2      2023-07-06 [1] CRAN (R 4.3.0)
- utf8              1.2.4      2023-10-22 [1] CRAN (R 4.3.1)
- vctrs             0.6.5      2023-12-01 [1] CRAN (R 4.3.1)
- viridisLite       0.4.2      2023-05-02 [1] CRAN (R 4.3.0)
- vroom             1.6.5      2023-12-05 [1] CRAN (R 4.3.1)
- withr             3.0.0      2024-01-16 [1] CRAN (R 4.3.1)
- xfun              0.43       2024-03-25 [1] CRAN (R 4.3.1)
- xml2              1.3.6      2023-12-04 [1] CRAN (R 4.3.1)
- xtable            1.8-4      2019-04-21 [1] CRAN (R 4.3.0)
- yaml              2.3.8      2023-12-11 [1] CRAN (R 4.3.1)
- yesno             0.1.2.9000 2024-01-11 [1] Github (poissonconsulting/yesno@2318599)
-
- [1] /Users/airvine/Library/R/arm64/4.3/library
- [2] /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library
-
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
-
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="report-change-log.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="references.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="session-info.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
