@@ -203,6 +203,9 @@ readr::read_csv('data/trad_fish_sites_wilson_rabnett2007FishPassage.csv') %>%
 
 #### Salmon Stock Assessment Data
 
+Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
+through the [Open Government Portal](https://open.canada.ca/en) with results presented in Table \@ref(tab-dfo-sad-tr-neexdzii). A brief memo on the data extraction process is available in the [memos directory](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos).
+
 
 ```{r tab-dfo-sad-tr-neexdzii}
 dfo_sad_raw <- readr::read_csv('data/inputs_raw/All Areas NuSEDS.csv')
@@ -267,6 +270,9 @@ dfo_sad_raw %>%
 Detailed reviews of Morice River watershed fisheries can be found in @bustardConservingMoriceWatershed2002, @gottesfeldConservingSkeenaFish2002, @schellBriefOverviewFish2003, @gottesfeldSkeenaFishPopulations2007, and @ilmb2007MoriceLanda with a comprehensive review of water quality by @oliverAnalysisWaterQuality2018 Overall, the Morice watershed contains high fisheries values as a major producer of chinook, pink, sockeye, coho and steelhead.
 
 #### Salmon Stock Assessment Data
+
+Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
+through the [Open Government Portal](https://open.canada.ca/en) with results presented in Table \@ref(tab-dfo-sad-tr-morice). A brief memo on the data extraction process is available in the [memos directory](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos).
 
 ```{r tab-dfo-sad-tr-morice}
 

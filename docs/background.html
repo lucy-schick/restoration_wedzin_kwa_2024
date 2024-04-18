@@ -499,6 +499,8 @@ CO, ST, CH
 </div>
 <div id="salmon-stock-assessment-data" class="section level4 hasAnchor" number="2.2.1.3">
 <h4><span class="header-section-number">2.2.1.3</span> Salmon Stock Assessment Data<a href="background.html#salmon-stock-assessment-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Fisheries and Oceans Canada stock assessment data was accessed via the <a href="https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6">NuSEDS-New Salmon Escapement Database System</a>
+through the <a href="https://open.canada.ca/en">Open Government Portal</a> with results presented in Table <a href="#tab-dfo-sad-tr-neexdzii"><strong>??</strong></a>. A brief memo on the data extraction process is available in the <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos">memos directory</a>.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="background.html#cb22-1" tabindex="-1"></a>dfo_sad_raw <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;data/inputs_raw/All Areas NuSEDS.csv&#39;</span>)</span>
 <span id="cb22-2"><a href="background.html#cb22-2" tabindex="-1"></a><span class="co">#names(dfo_sad_raw)</span></span>
 <span id="cb22-3"><a href="background.html#cb22-3" tabindex="-1"></a></span>
@@ -5708,6 +5710,8 @@ Unknown Estimate Method
 <p>Detailed reviews of Morice River watershed fisheries can be found in <span class="citation">Bustard and Schell (2002)</span>, <span class="citation">Allen Gottesfeld, Rabnett, and Hall (2002)</span>, <span class="citation">Schell (2003)</span>, <span class="citation">A. Gottesfeld and Rabnett (2007a)</span>, and <span class="citation">ILMB (2007)</span> with a comprehensive review of water quality by <span class="citation">Oliver (2018)</span> Overall, the Morice watershed contains high fisheries values as a major producer of chinook, pink, sockeye, coho and steelhead.</p>
 <div id="salmon-stock-assessment-data-1" class="section level4 hasAnchor" number="2.2.2.1">
 <h4><span class="header-section-number">2.2.2.1</span> Salmon Stock Assessment Data<a href="background.html#salmon-stock-assessment-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Fisheries and Oceans Canada stock assessment data was accessed via the <a href="https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6">NuSEDS-New Salmon Escapement Database System</a>
+through the <a href="https://open.canada.ca/en">Open Government Portal</a> with results presented in Table <a href="#tab-dfo-sad-tr-morice"><strong>??</strong></a>. A brief memo on the data extraction process is available in the <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos">memos directory</a>.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="background.html#cb25-1" tabindex="-1"></a>dfo_sad_tr <span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a href="background.html#cb25-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(waterbody <span class="sc">==</span> <span class="st">&quot;MORICE RIVER&quot;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb25-3"><a href="background.html#cb25-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>waterbody) <span class="sc">|&gt;</span> </span>
