@@ -4,10 +4,7 @@ fig:hydrograph2
 fig:hydrology-stats2
 tab:tab-hist-sites
 tab:tab-dfo-sad-tr-neexdzii
-fig:fig-dfo-sad-tr1
-fig:fig-dfo-sad-nad1
-fig:fig-dfo-sad-tr2
-fig:fig-dfo-sad-nad2
+tab:tab-dfo-sad-tr-morice
 tab:fiss-species-table
 tab:tab-rest-princ-pb
 fig:deer-creek-plan
