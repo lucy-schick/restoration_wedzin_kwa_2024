@@ -1,5 +1,6 @@
-# Development
+# restoration_wedzin_kwa_2024 DRAFT 0.0.4 (20240418)
 
+  - pull DFO stock assessment plots and update tables to include more columns as per https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/issues/42
   - add NEWS.md to the report with `news_to_appendix()` function
 
 # restoration_wedzin_kwa_2024 DRAFT 0.0.4
