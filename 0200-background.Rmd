@@ -205,29 +205,48 @@ readr::read_csv('data/trad_fish_sites_wilson_rabnett2007FishPassage.csv') %>%
 
 
 ```{r tab-dfo-sad-tr-neexdzii}
-
+dfo_sad_raw <- readr::read_csv('data/inputs_raw/All Areas NuSEDS.csv')
 #names(dfo_sad_raw)
 
-dfo_sad_raw <- readr::read_csv('data/inputs_raw/All Areas NuSEDS.csv')
-
 dfo_sad_tr <- readr::read_csv('data/inputs_raw/All Areas NuSEDS.csv') %>% 
-  dplyr::filter(waterbody == "BULKLEY RIVER - UPPER") %>% 
+  dplyr::filter(waterbody == "BULKLEY RIVER - UPPER" | waterbody == "MORICE RIVER") %>% 
   dplyr::filter(!is.na(total_return_to_river)) %>% 
   arrange(species, analysis_yr) %>% 
-  dplyr::select(species, analysis_yr, 
+  dplyr::select(waterbody,
+                species, analysis_yr, 
                 total_return_to_river, 
                 start_spawn_dt_from,
                 peak_spawn_dt_from,
-                end_spawn_dt_from)
+                end_spawn_dt_from, 
+                accuracy,	
+                precision,	
+                index_yn,	
+                reliability,	
+                estimate_stage,	
+                estimate_classification,	
+                no_inspections_used,	
+                estimate_method)
 
-dfo_sad_tr %>% 
+# started looking at GT
+# dfo_sad_tr |> 
+#   dplyr::filter(waterbody == "BULKLEY RIVER - UPPER") |> 
+#   dplyr::select(-waterbody) |>
+#   gt::gt() |>
+#   gt::tab_options(table.font.size = 10) |> 
+#   # gt::opt_interactive(page_size_default = 5, use_filters = TRUE, use_compact_mode = TRUE) |> 
+#   gt::tab_caption(caption = md("Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with total return to river data."))
+
+
+dfo_sad_tr %>%
+  dplyr::filter(waterbody == "BULKLEY RIVER - UPPER") |>
+  dplyr::select(-waterbody) |> 
   fpr::fpr_kable(caption_text = "Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with total return to river data.",
                  scroll = gitbook_on)
 ```
 
 <br>
 
-```{r fig-dfo-sad-tr1, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with total return to river data."}
+```{r fig-dfo-sad-tr1, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with total return to river data.", eval= FALSE}
 
 dfo_sad_raw %>%
   ldfo_sad_plot_line("BULKLEY RIVER - UPPER", "total_return_to_river", "species", "analysis_yr", col_group_exclude = "Coho")
@@ -235,7 +254,7 @@ dfo_sad_raw %>%
 
 <br>
 
-```{r fig-dfo-sad-nad1, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with natural adult spawners data."}
+```{r fig-dfo-sad-nad1, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with natural adult spawners data.", eval = FALSE}
 
 dfo_sad_raw %>%
   ldfo_sad_plot_line("BULKLEY RIVER - UPPER", "natural_adult_spawners", "species", "analysis_yr", col_group_exclude = "Coho")
@@ -247,18 +266,29 @@ dfo_sad_raw %>%
 
 Detailed reviews of Morice River watershed fisheries can be found in @bustardConservingMoriceWatershed2002, @gottesfeldConservingSkeenaFish2002, @schellBriefOverviewFish2003, @gottesfeldSkeenaFishPopulations2007, and @ilmb2007MoriceLanda with a comprehensive review of water quality by @oliverAnalysisWaterQuality2018 Overall, the Morice watershed contains high fisheries values as a major producer of chinook, pink, sockeye, coho and steelhead.
 
-<br>
-
 #### Salmon Stock Assessment Data
 
-```{r fig-dfo-sad-tr2, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Morice River.  Data is filtered to only include records with total return to river data."}
+```{r tab-dfo-sad-tr-morice}
 
-dfo_sad_raw %>%
-  ldfo_sad_plot_line("BULKLEY RIVER - UPPER", "total_return_to_river", "species", "analysis_yr", col_group_exclude = "Coho")
+dfo_sad_tr %>%
+  dplyr::filter(waterbody == "MORICE RIVER") |>
+  dplyr::select(-waterbody) |> 
+  fpr::fpr_kable(caption_text = "Fisheries and Oceans Canada stock assessment data for the Morice River.  Data is filtered to only include records with total return to river data.",
+                 scroll = gitbook_on)
+
 
 ```
 
-```{r fig-dfo-sad-nad2, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Morice River.  Data is filtered to only include records with natural adult spawners data."}
+```{r fig-dfo-sad-tr2, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Morice River.  Data is filtered to only include records with total return to river data.", eval = FALSE}
+
+#### Salmon Stock Assessment Data
+
+dfo_sad_raw %>%
+  ldfo_sad_plot_line("MORICE RIVER", "total_return_to_river", "species", "analysis_yr", col_group_exclude = "Coho", eval = FALSE)
+
+```
+
+```{r fig-dfo-sad-nad2, fig.cap = "Fisheries and Oceans Canada stock assessment data for the Morice River.  Data is filtered to only include records with natural adult spawners data.", eval = FALSE}
 
 dfo_sad_raw %>%
   ldfo_sad_plot_line("MORICE RIVER", "natural_adult_spawners", "species", "analysis_yr", col_group_exclude = "Coho")
