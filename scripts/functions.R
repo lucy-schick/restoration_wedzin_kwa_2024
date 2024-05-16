@@ -230,13 +230,14 @@ ldbq_chk_null <- function(schema_table, col_nulls) {
 }
 
 
-ldfo_sad_plot_line <- function(dat, region, col_y, col_facet, col_group, col_group_exclude = NULL, theme = ggdark::dark_theme_bw()) {
+ldfo_sad_plot_line <- function(dat, region, col_y, col_facet, col_group, col_group_exclude = NULL, value_group_exclude = NULL, theme = ggdark::dark_theme_bw()) {
   dat <- dat %>%
     dplyr::filter(waterbody == region) %>%
     dplyr::filter(!is.na(!!sym(col_y)))
 
   if (!is.null(col_group_exclude)) {
-    dat <- dat[!dat[[col_group]] %in% col_group_exclude, ]
+    dat <- dat |>
+      dplyr::filter(!!sym(col_group_exclude) != value_group_exclude)
   }
 
   dat %>%
