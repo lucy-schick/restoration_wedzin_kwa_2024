@@ -21,6 +21,9 @@ output:
   bookdown::gitbook:
           includes:
             in_header: header.html
+params:
+  repo_url: 'https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/'
+  report_url: 'https://newgraphenvironment.github.io/restoration_wedzin_kwa_2024'
 nocite: |
   @gaboury_smith2016DevelopmentAquatic
 documentclass: book
