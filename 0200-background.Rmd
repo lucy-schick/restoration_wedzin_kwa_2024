@@ -204,7 +204,7 @@ readr::read_csv('data/trad_fish_sites_wilson_rabnett2007FishPassage.csv') %>%
 #### Salmon Stock Assessment Data
 
 Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
-through the [Open Government Portal](https://open.canada.ca/en) with results presented in Table \@ref(tab-dfo-sad-tr-neexdzii). A brief memo on the data extraction process is available in the [memos directory](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos).
+through the [Open Government Portal](https://open.canada.ca/en) with results presented in Table \@ref(tab:tab-dfo-sad-tr-neexdzii). A brief memo on the data extraction process is available in the [memos directory](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos).
 
 
 ```{r tab-dfo-sad-tr-neexdzii}
@@ -272,7 +272,7 @@ Detailed reviews of Morice River watershed fisheries can be found in @bustardCon
 #### Salmon Stock Assessment Data
 
 Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
-through the [Open Government Portal](https://open.canada.ca/en) with results presented in Table \@ref(tab-dfo-sad-tr-morice). A brief memo on the data extraction process is available in the [memos directory](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos).
+through the [Open Government Portal](https://open.canada.ca/en) with results presented in Table \@ref(tab:tab-dfo-sad-tr-morice). A brief memo on the data extraction process is available in the [memos directory](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos).
 
 ```{r tab-dfo-sad-tr-morice}
 
@@ -317,7 +317,7 @@ Fish species recorded in the greater Bulkley River and Morice River watershed gr
 <!-- `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("<br><br><br><br>")` -->
 
 ```{r fiss-species-table}
-fiss_species_table <- readr::read_csv('data/extracted_inputs/fiss_species_table.csv')
+fiss_species_table <- readr::read_csv('data/inputs_extracted/fiss_species_table.csv')
 
 fiss_species_table %>% 
   fpr::fpr_kable(caption_text = 'Fish species recorded in the Bulkley River and Morice River watershed groups.', 
