@@ -41,3 +41,60 @@ unique_field_names <- names(field_names_list)[unlist(field_names_list) == 1]
 
 unique_field_names
 repeated_field_names
+
+##!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+################## this is work  i had done on this but kind of forget how it all fits together.  will commit though
+#####################################################################################################################
+
+generateDynamicRegexSpecial <- function(fieldNames) {
+  # Initialize an empty list to store the regex strings
+  regexList <- list()
+
+  for (i in 1:length(fieldNames)) {
+    # The current field name
+    currentField <- fieldNames[i]
+
+    # Replace spaces and special characters in field names for variable naming
+    varName <- tolower(gsub("[^A-Za-z0-9]", "_", currentField))
+    varName <- paste0("regex_", varName)
+
+    # Check for special cases
+    if (currentField == "UTM") {
+      # Special regex for UTM
+      regexString <- "(?<=UTM )\\d+\\.?\\d*\\s*\\d+\\.?\\d*"
+    } else if (currentField == "Goal(s)") {
+      # Adjust the lookahead for Goal(s) to match the specific pattern
+      lookahead <- "(?=Master Plan Objectives:|$)"
+      regexString <- sprintf("%s:\\s*([\\s\\S]+?)%s", gsub("\\(s\\)", "\\\\(s\\\\)", currentField), lookahead)
+    } else {
+      # Determine the lookahead for the regex based on the next field name, or set to end of input
+      if (i < length(fieldNames)) {
+        nextField <- fieldNames[i + 1]
+        lookahead <- sprintf("(?=%s:|$)", nextField)
+      } else {
+        lookahead <- "(?=\\n\\s*\\n|$)"
+      }
+
+      # Construct the regex string
+      regexString <- sprintf("%s:\\s*([\\s\\S]+?)%s", currentField, lookahead)
+    }
+
+    # Assign the regex string to the list with a dynamic name
+    regexList[[varName]] <- regexString
+  }
+
+  return(regexList)
+}
+
+# Define the field names
+fieldNames <- c("Sub-Basin", "Creek", "Reach", "Prescription #",
+                "Related Riparian Prescription", "Category", "Location",
+                "UTM", "Land Tenure", "Impact Description", "Goal(s)",
+                "Master Plan Objectives", "Description of Proposed Works",
+                "Technical References")
+
+# Generate the regex patterns with special considerations
+regexPatterns <- generateDynamicRegexSpecial(fieldNames)
+
+# Print the generated regular expressions
+print(regexPatterns)
