@@ -1,13 +1,16 @@
+# Script to extract prescriptions from mid-bulkley_detailed_assessment_watershed_restoration_report_prescriptions.pdf
+# With the help of Chat gpt
+
 # Load necessary packages
 library(tibble)
 library(stringr)
 library(purrr)
 library(pdftools)
 
-# Read PDF file and get the number of pages
+# Read PDF file
 pdf_text <- pdftools::pdf_text("data/skt/mid-bulkley-detailed-fish-habitat-riparian-channel-assessment-for-watershed-restoration/mid-bulkley_detailed_assessment_watershed_restoration_report_prescriptions.pdf")
-num_pages <- length(pdf_text)
 
+# Remove header and appendix text
 header_pattern <-  "Mid-Bulkley Detailed Fish Habitat/Riparian/Channel Assessment for Watershed Restoration\n\n\n"
 appendix_pattern <- "Appendix G-\\d+\\n"
 multiple_newlines_pattern <- "\\n{2,}"
@@ -18,6 +21,8 @@ pdf_text_cleaned <- purrr::map(pdf_text, ~ {
     stringr::str_remove_all(appendix_pattern) |>
     stringr::str_replace_all(multiple_newlines_pattern, "\n")
 })
+
+## This part (turning into list) is straight from Chat GPT, probably better ways to do this but its works so leaving it for now
 
 # Combine all pages into a single string
 pdf_text_combined <- paste(pdf_text_cleaned, collapse = "\n")
@@ -32,12 +37,15 @@ prescriptions_list <- c(paste0("Sub-Basin:", prescriptions_list[1]), paste0("Sub
 # Turn into list
 prescriptions_list_clean <- as.list(prescriptions_list)
 
-# Initialize an empty tibble to store the results
+
+
+
+# Initialize an empty tibble to store the prescriptions
 data <- tibble(
   sub_basin = character(),
   creek = character(),
-  reach = numeric(),
-  prescription_number = numeric(),
+  reach = character(),
+  prescription_number = character(),
   related_riparian_prescription = character(),
   category = numeric(),
   location = character(),
@@ -54,30 +62,29 @@ data <- tibble(
   approvals_required = character()
 )
 
-# Define the patterns for each section
+# Define the regex for each section
 regex_sub_basin <- "Sub-Basin:\\s*([\\s\\S]+?)(?=Creek:|$)"
 regex_creek <- "Creek:\\s*([\\s\\S]+?)(?=Reach:|$)"
-regex_reach <- "Reach:\\s*([\\s\\S]+?)(?=Prescription #:|$)"
-regex_prescription_number <- "Prescription #:\\s*([\\s\\S]+?)(?=Related Riparian Prescription:|$)"
-regex_related_prescription <- "Related Riparian Prescription:\\s*([\\s\\S]+?)(?=Category:|$)"
+regex_reach <- "Reach:\\s*(\\d+[A-Za-z]*)(?=\\s*Prescription #:|$)"
+regex_prescription_number <- "Prescription #:\\s*([\\d]+(?:\\s*and\\s*[\\d]+)*)\\s*(?=Related Riparian Prescription[s]?:|$)"
+regex_related_prescription <- "Related Riparian Prescription[s]?:\\s*([\\s\\S]+?)(?=Category:|$)"
 regex_category <- "Category:\\s*([\\s\\S]+?)(?=Location:|$)"
 ## We need to extract text from Location all the way to Land Tenure (not just until UTM) because some prescriptions
 ## have more locations info after the UTM coordinates
 regex_location <- "Location:\\s*([\\s\\S]+?)(?=Land Tenure:|$)"
 regex_utm <- "(?<=UTM )\\d+\\.?\\d*\\s*\\d+\\.?\\d*"
 regex_land_tenure <- "Land Tenure:\\s*([\\s\\S]+?)(?=Impact Description:|$)"
-regex_impact_description <- "Impact Description:\\s*([\\s\\S]+?)(?=\\n\\s*\\n|$)"
+regex_impact_description <- "Impact Description:\\s*([\\s\\S]+?)(?=Prescription Photo:|Goal\\(s\\):|\\n\\s*\\n|$)"
 regex_goals <- "Goal\\(s\\):\\s*([\\s\\S]+?)(?=Master Plan Objectives:|$)"
-# regex_master_plan_objectives <- "Master Plan Objectives:\\s*([\\s\\S]+?)(?=Description of Proposed Works:|$)"
-regex_master_plan_objectives <- "Master Plan Objectives(?:\\s*\\(see figure [0-9]+\\):)?\\s*([\\s\\S]+?)(?=Description of Proposed Works(?:\\s*\\(see figure [0-9]+\\):)?|Technical References:|$)"
-regex_description_of_proposed_works <- "Description of Proposed Works(?:\\s*\\(see figure [0-9]+\\):)?\\s*([\\s\\S]+?)(?=Technical References:|$)"
+regex_master_plan_objectives <- "Master Plan Objectives(?:\\s*\\(see figure [0-9]+\\):)?\\s*:?\\s*([\\s\\S]+?)(?=Description of Proposed Works(?:\\s*\\(see figure [0-9]+\\):)?|Technical References:|$)"
+regex_description_of_proposed_works <- "Description of Proposed Works(?:\\s*\\(see figure [0-9]+\\):)?\\s*:?\\s*([\\s\\S]+?)(?=Technical References:|$)"
 regex_technical_references <- "Technical References:\\s*([\\s\\S]+?)(?=\\n\\s*\\n|$)"
 regex_survey_and_design_work_required <- "Survey and Design Work Required:\\s*([\\s\\S]+?)(?=Survey and Design Cost Estimate:|$)"
 regex_survey_and_design_cost_estimate <- "Survey and Design Cost Estimate:\\s*([\\s\\S]+?)(?=Estimated Cost of Implementing Works:|$)"
 regex_estimated_cost_of_implementing_works <- "Estimated Cost of Implementing Works:\\s*([\\s\\S]+?)(?=Approvals Required:|$)"
 regex_approvals_required <- "Approvals Required:\\s*([\\s\\S]+?)(?=\\n\\s*\\n|$)"
 
-# Extract information using regular expressions and add to the tibble
+# Extract information using regexs and add to the tibble
 data <- purrr::map_df(prescriptions_list_clean, ~ {
   current_text <- .x
 
@@ -105,8 +112,8 @@ data <- purrr::map_df(prescriptions_list_clean, ~ {
   tibble(
     sub_basin = sub_basin,
     creek = creek,
-    reach = as.numeric(reach),
-    prescription_number = as.numeric(prescription_number),
+    reach = reach,
+    prescription_number = prescription_number,
     related_riparian_prescription = related_prescription,
     category = as.numeric(category),
     location = location,
@@ -125,27 +132,23 @@ data <- purrr::map_df(prescriptions_list_clean, ~ {
 })
 
 
+# Separate the UTM coordinates. We will leave the UTM info in the location description because in some cases it contains
+# more than one set of UTM coordinates, but since we are only extracting the first set, we need to leave the others somewhere
 extract_utms <- data |>
-  # Separate the UTM coordinates. We will leave the UTM info in the location description because in some cases it contains
-  # more than one set of UTM coordinates, but since we are only extracted the first set, its good to leave the others somewhere
   tidyr::separate_wider_delim(cols = utm, delim = ".", names = c('utm_zone', 'utm_easting', 'utm_northing'))
 
+# Final cleaning
 cleaned_data <- extract_utms %>%
   # replace all \n with empty strings
-  mutate(across(everything(), ~gsub("\n", "", .)))
+  dplyr::mutate(across(everything(), ~gsub("\n", "", .))) |>
   # replace none (chr) and N/A (chr) to N/A
+  dplyr::mutate(related_riparian_prescription = dplyr::case_when(
+      related_riparian_prescription == "none" ~ NA_character_,
+      related_riparian_prescription == "N/A" ~ NA_character_,
+      TRUE ~ related_riparian_prescription
+    ))
 
 
-  # Write the tibble to a CSV file
+ # Write the tibble to a CSV file
   cleaned_data %>%
   readr::write_csv("data/ncfdc_1998_prescriptions.csv")
-
-
-
-
-##-----------make sure we get all the data even if Sub-Basin is not present on the page
-
-
-fields <- c("Sub-Basin", "Creek", "Reach", "Prescription Number", "Related Riparian Prescription",
-            "Category", "Location", "UTM", "Land Tenure", "Impact Description",
-            "Goals", "Master Plan Objectives", "Description of Proposed Works", "Technical References")
