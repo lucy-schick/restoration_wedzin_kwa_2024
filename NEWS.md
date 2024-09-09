@@ -1,5 +1,9 @@
 # Development
+
+# restoration_wedzin_kwa_2024 DRAFT 0.0.6 (20240809)
   
+  - swap in `ncfdc_1998_prescriptions_hand_bomb.csv` 
+  - swap in SERNbc logo
   - add a bit of detail on stock assessment data in background and put link to memo on how it was done
 
 # restoration_wedzin_kwa_2024 DRAFT 0.0.4 (20240418)

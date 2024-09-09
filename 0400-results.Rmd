@@ -77,11 +77,11 @@ ncfdc_1998_71a %>%
 
 ```{r tab-ncfdc-1998-pres}
 ncfdc_1998 <- readr::read_csv(
-  "data/ncfdc_1998_prescriptions.csv"
+  "data/ncfdc_1998_prescriptions_hand_bomb.csv"
 ) 
 
 ncfdc_1998 %>% 
-  dplyr::select(SubBasin:MasterPlanObjectives) %>% 
+  dplyr::select(sub_basin:technical_references) %>% 
   fpr::fpr_kable(caption_text = "Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.")
 ```
 

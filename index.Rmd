@@ -14,7 +14,7 @@ author: |
 
 date: |
  |
- | DRAFT Version 0.0.5 `r format(Sys.Date(), "%Y-%m-%d")`
+ | DRAFT Version 0.0.6 `r format(Sys.Date(), "%Y-%m-%d")`
 toc-title: Table of Contents
 site: bookdown::bookdown_site
 output: 
@@ -31,7 +31,7 @@ bibliography: [packages.bib, references.bib]
 biblio-style: apalike
 link-citations: no
 github-repo: rstudio/bookdown-demo
-description: "Restoration Initiatives for the Widzin Kwah 2024"
+description: "Restoration Planning for the Neexdzii Kwah (Upper Bulkley River)"
 lof: TRUE
 
 
@@ -96,6 +96,6 @@ Modern civilization has a long journey ahead to acknowledge and address the hist
 
 ```{js, logo-header, echo = FALSE, eval= T}
 title=document.getElementById('header');
-title.innerHTML = '<img src="fig/nge-full_white.png" alt="NewGraph">' + title.innerHTML
+title.innerHTML = '<img src="fig/logo_sern/SERNbc-Logo-HALF.jpg" alt="SERNbc">' + title.innerHTML
 ```
 
