@@ -152,3 +152,27 @@ cleaned_data <- extract_utms %>%
  # Write the tibble to a CSV file
   cleaned_data %>%
   readr::write_csv("data/ncfdc_1998_prescriptions.csv")
+
+################################################################################################################
+#--------------------------------------------------Hand Bomb---------------------------------------------------
+################################################################################################################
+
+  # hand bombed some UTMs as per https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/issues/48
+
+prescriptions_raw <- readr::read_csv("data/ncfdc_1998_prescriptions_hand_bomb.csv")
+
+# make a unique id for each prescription and make spatial file
+  prescriptions <- prescriptions_raw |>
+    dplyr::mutate(id = stringr::str_to_lower(
+      stringr::str_c(creek, reach, prescription_number, sep = "_")
+    )) |>
+    # !we need to remove the bulkley mainstem site with no utms for now
+    # tracked in issue 48
+    dplyr::filter(!is.na(utm_easting)) |>
+    sf::st_as_sf(coords = c("utm_easting", "utm_northing"), crs = 26909) |>
+    sf::st_transform(3005) |>
+    sf::st_write(
+      dsn = "~/Projects/gis/restoration_wedzin_kwa/sites_restoration.gpkg",
+      layer = 'ncfdc_1998_prescriptions',
+      delete_layer = TRUE
+    )
