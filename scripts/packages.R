@@ -17,8 +17,8 @@ pkgs_cran <- c(
 )
 
 pkgs_gh <- c(
-  "newgraphenvironment/fpr",
-  "haozhu233/kableExtra"
+  "haozhu233/kableExtra@a9c509a",
+  "newgraphenvironment/fpr"
 )
 
 pkgs_all <- c(pkgs_cran,
