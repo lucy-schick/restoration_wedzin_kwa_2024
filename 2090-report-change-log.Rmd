@@ -2,6 +2,13 @@
 
 ### Development {-}
 
+### restoration_wedzin_kwa_2024 DRAFT 0.0.7 (20240814) {-}
+
+  - add detailed prioritization table for Mid-Bulkley Detailed Fish Habitat/Riparian/Channel Assessment for Watershed Restoration.” Nadina Community Futures Development Corporation (NCFDC) 1998.
+  - add detail about Price 2014 to results, waypoint table to report and spatialize waypoints in QGIS.
+  - update packages conditionally on param
+
+
 ### restoration_wedzin_kwa_2024 DRAFT 0.0.6 (20240809) {-}
   
   - swap in `ncfdc_1998_prescriptions_hand_bomb.csv` 
