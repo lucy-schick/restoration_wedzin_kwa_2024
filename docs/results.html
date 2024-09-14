@@ -12,7 +12,7 @@
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Restoration Planning for the Neexdzii Kwah (Upper Bulkley River)" />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  <meta name="github-repo" content="NewGraphEnvironment/restoration_wedzin_kwa_2024" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="4 Results | Neexdzii Kwah Restoration Planning 2024" />
@@ -210,13 +210,13 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#collaborative-gis-environment"><i class="fa fa-check"></i><b>3.1</b> Collaborative GIS Environment</a></li>
 <li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#open-source---iterative-reporting"><i class="fa fa-check"></i><b>3.2</b> Open Source - Iterative Reporting</a></li>
-<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#past-restoration-initiative-identification"><i class="fa fa-check"></i><b>3.3</b> Past Restoration Initiative Identification</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#historic-information-regarding-impacts-and-restoration-initiatives"><i class="fa fa-check"></i><b>3.3</b> Historic Information Regarding Impacts and Restoration Initiatives</a></li>
 <li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#future-restoration-site-selection"><i class="fa fa-check"></i><b>3.4</b> Future Restoration Site Selection</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#collaborative-gis-environment-1"><i class="fa fa-check"></i><b>4.1</b> Collaborative GIS Environment</a></li>
-<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#past-restoration-initiative-identification-1"><i class="fa fa-check"></i><b>4.2</b> Past Restoration Initiative Identification</a></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#historic-information-regarding-impacts-and-restoration-initiatives-1"><i class="fa fa-check"></i><b>4.2</b> Historic Information Regarding Impacts and Restoration Initiatives</a></li>
 <li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#future-restoration-site-selection-1"><i class="fa fa-check"></i><b>4.3</b> Future Restoration Site Selection</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>5</b> Recommendations</a></li>
@@ -802,8 +802,8 @@ The dataset contains approved legal boundaries for fisheries sensitive watershed
 </div>
 </div>
 </div>
-<div id="past-restoration-initiative-identification-1" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Past Restoration Initiative Identification<a href="results.html#past-restoration-initiative-identification-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="historic-information-regarding-impacts-and-restoration-initiatives-1" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Historic Information Regarding Impacts and Restoration Initiatives<a href="results.html#historic-information-regarding-impacts-and-restoration-initiatives-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Information amalgamated from past restoration initiatives has been added to the <code>restoration_wedzin_kwa</code> project in spatial formats through the <code>sites_restoration.gpkg</code> with details of source document locations, geometry type, description of the source document amalgamated, etc. documented in the <code>sites_restoration_gpkg_tracking.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/sites_restoration_gpkg_tracking.csv">here</a> with results presented in Table <a href="results.html#tab:tab-sites-restoration-gpkg-tracking">4.2</a>.</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="results.html#cb41-1" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
 <span id="cb41-2"><a href="results.html#cb41-2" tabindex="-1"></a>  <span class="st">&quot;data/sites_restoration_gpkg_tracking.csv&quot;</span></span>
@@ -997,16 +997,4188 @@ Provided by Wet’suwet’en First Nation in 2021. Includes all sites proposed b
 </table>
 </div>
 <p><br></p>
-<div id="works-in-progress" class="section level3 hasAnchor" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Works in Progress<a href="results.html#works-in-progress" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="citation">NCFDC (1998)</span> utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the digital deliverables could not be recovered. Their work persists in pdf format however with summarized details of their prioritization work and prescription locations and details extracted from the pdf and included in the <code>ncfdc_1998_prescriptions.csv</code> file located and viewable <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions.csv">here</a>. The prioritization table for sub-basins in the region are included in Table <a href="results.html#tab:tab-ncfdc-1998-priority">4.3</a> with details of individual prescriptions presented in Table <a href="results.html#tab:tab-ncfdc-1998-pres">4.4</a>. Next steps for this dataset include conversion of the csv to a spatial file and added to the <code>restoration_wedzin_kwa</code> project through the <code>sites_restoration.gpkg</code>.</p>
-<p><br></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="results.html#cb42-1" tabindex="-1"></a>ncfdc_1998_71a <span class="sc">%&gt;%</span> </span>
-<span id="cb42-2"><a href="results.html#cb42-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.&quot;</span>,</span>
-<span id="cb42-3"><a href="results.html#cb42-3" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div id="price2014upperbulkleya---upper-bulkley-floodplain-habitat-modifications-physical-barriers-and-sites-of-potential-importance-to-salmonids" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> <span class="citation">Price (2014)</span> - Upper Bulkley floodplain habitat: modifications, physical barriers, and sites of potential importance to salmonids<a href="results.html#price2014upperbulkleya---upper-bulkley-floodplain-habitat-modifications-physical-barriers-and-sites-of-potential-importance-to-salmonids" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="citation">Price (2014)</span> documented human-induced modifications to floodplain habitat and river channelization, investigated potential barriers to fish migration, and assessed areas of upwelling groundwater in the Upper Bulkley mainstem having potential importance to salmonids. The coordinates of points of interest were extracted from a pdf version of the report and are included in the <code>price_2014_waypoints.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/inputs_extracted/price_2014_waypoints.csv">here</a> and were added to the <code>sites_restoration.gpkg</code> (layer name = price_2014). Individual waypoint information is also presented in Table <a href="results.html#tab:tab-price-2014-waypoints">4.3</a>.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="results.html#cb42-1" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;/Users/airvine/zotero/storage/7JCL42Y3/price_2014_upper_bulkley_floodplain_habitat_-_modifications,_physical_barriers,_and_sites.pdf&quot;</span></span>
+<span id="cb42-2"><a href="results.html#cb42-2" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="results.html#cb42-3" tabindex="-1"></a><span class="co"># name our csv we are creating</span></span>
+<span id="cb42-4"><a href="results.html#cb42-4" tabindex="-1"></a>path_file <span class="ot">&lt;-</span> <span class="st">&quot;data/inputs_extracted/price_2014_waypoints.csv&quot;</span></span>
+<span id="cb42-5"><a href="results.html#cb42-5" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="results.html#cb42-6" tabindex="-1"></a><span class="co"># define page to extract table</span></span>
+<span id="cb42-7"><a href="results.html#cb42-7" tabindex="-1"></a>page <span class="ot">&lt;-</span> <span class="dv">32</span></span>
+<span id="cb42-8"><a href="results.html#cb42-8" tabindex="-1"></a></span>
+<span id="cb42-9"><a href="results.html#cb42-9" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="results.html#cb42-10" tabindex="-1"></a><span class="co"># #if you wanted to define the area to extract would run with this the first time</span></span>
+<span id="cb42-11"><a href="results.html#cb42-11" tabindex="-1"></a><span class="co"># tabulapdf::locate_areas(path, pages = page)</span></span>
+<span id="cb42-12"><a href="results.html#cb42-12" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="results.html#cb42-13" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="results.html#cb42-14" tabindex="-1"></a><span class="co"># to get.... </span></span>
+<span id="cb42-15"><a href="results.html#cb42-15" tabindex="-1"></a><span class="co"># tab_area = list(c(151.17224,  87.13111, 715.14139,604.27249 ))</span></span>
+<span id="cb42-16"><a href="results.html#cb42-16" tabindex="-1"></a><span class="co"># but....looks like it will guess correct with no help so let&#39;s do that</span></span>
+<span id="cb42-17"><a href="results.html#cb42-17" tabindex="-1"></a>tabulapdf<span class="sc">::</span><span class="fu">extract_tables</span>(path,</span>
+<span id="cb42-18"><a href="results.html#cb42-18" tabindex="-1"></a>                                  <span class="at">pages =</span> page,</span>
+<span id="cb42-19"><a href="results.html#cb42-19" tabindex="-1"></a>                                  <span class="co"># method = &quot;lattice&quot;,</span></span>
+<span id="cb42-20"><a href="results.html#cb42-20" tabindex="-1"></a>                                  <span class="co"># output = c(&quot;tibble&quot;),</span></span>
+<span id="cb42-21"><a href="results.html#cb42-21" tabindex="-1"></a>                                  <span class="co"># guess = FALSE,</span></span>
+<span id="cb42-22"><a href="results.html#cb42-22" tabindex="-1"></a>                                  <span class="co"># area = tab_area</span></span>
+<span id="cb42-23"><a href="results.html#cb42-23" tabindex="-1"></a>                                  ) <span class="sc">|&gt;</span> </span>
+<span id="cb42-24"><a href="results.html#cb42-24" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb42-25"><a href="results.html#cb42-25" tabindex="-1"></a>  <span class="co"># need to make the first row be the names due to muti-line header</span></span>
+<span id="cb42-26"><a href="results.html#cb42-26" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">row_to_names</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb42-27"><a href="results.html#cb42-27" tabindex="-1"></a>  <span class="co"># now let&#39;s burn it to a csv so we can correct the types</span></span>
+<span id="cb42-28"><a href="results.html#cb42-28" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(path_file)</span>
+<span id="cb42-29"><a href="results.html#cb42-29" tabindex="-1"></a></span>
+<span id="cb42-30"><a href="results.html#cb42-30" tabindex="-1"></a><span class="co"># read it back in to get the types right</span></span>
+<span id="cb42-31"><a href="results.html#cb42-31" tabindex="-1"></a>tab1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(path_file)</span>
+<span id="cb42-32"><a href="results.html#cb42-32" tabindex="-1"></a></span>
+<span id="cb42-33"><a href="results.html#cb42-33" tabindex="-1"></a><span class="co"># now let&#39;s define the rest of the pages to extract from</span></span>
+<span id="cb42-34"><a href="results.html#cb42-34" tabindex="-1"></a>page <span class="ot">&lt;-</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">36</span></span>
+<span id="cb42-35"><a href="results.html#cb42-35" tabindex="-1"></a></span>
+<span id="cb42-36"><a href="results.html#cb42-36" tabindex="-1"></a></span>
+<span id="cb42-37"><a href="results.html#cb42-37" tabindex="-1"></a><span class="co"># build a function to pull them all out at the same time </span></span>
+<span id="cb42-38"><a href="results.html#cb42-38" tabindex="-1"></a>extract_tables_multi <span class="ot">&lt;-</span> <span class="cf">function</span>(page){</span>
+<span id="cb42-39"><a href="results.html#cb42-39" tabindex="-1"></a>  tabulapdf<span class="sc">::</span><span class="fu">extract_tables</span>(path,</span>
+<span id="cb42-40"><a href="results.html#cb42-40" tabindex="-1"></a>                                  <span class="at">pages =</span> page,</span>
+<span id="cb42-41"><a href="results.html#cb42-41" tabindex="-1"></a>                                  ) <span class="sc">|&gt;</span> </span>
+<span id="cb42-42"><a href="results.html#cb42-42" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb42-43"><a href="results.html#cb42-43" tabindex="-1"></a>    <span class="co"># use the names from the header table</span></span>
+<span id="cb42-44"><a href="results.html#cb42-44" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="at">nm =</span> <span class="fu">names</span>(tab1))</span>
+<span id="cb42-45"><a href="results.html#cb42-45" tabindex="-1"></a>}</span>
+<span id="cb42-46"><a href="results.html#cb42-46" tabindex="-1"></a></span>
+<span id="cb42-47"><a href="results.html#cb42-47" tabindex="-1"></a><span class="co"># run our function </span></span>
+<span id="cb42-48"><a href="results.html#cb42-48" tabindex="-1"></a>tabs_extra <span class="ot">&lt;-</span> page <span class="sc">|&gt;</span> </span>
+<span id="cb42-49"><a href="results.html#cb42-49" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map_df</span>(</span>
+<span id="cb42-50"><a href="results.html#cb42-50" tabindex="-1"></a>    extract_tables_multi</span>
+<span id="cb42-51"><a href="results.html#cb42-51" tabindex="-1"></a>  )</span>
+<span id="cb42-52"><a href="results.html#cb42-52" tabindex="-1"></a></span>
+<span id="cb42-53"><a href="results.html#cb42-53" tabindex="-1"></a><span class="co"># join our og table to our multi-page output but fix a type </span></span>
+<span id="cb42-54"><a href="results.html#cb42-54" tabindex="-1"></a>tab <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(</span>
+<span id="cb42-55"><a href="results.html#cb42-55" tabindex="-1"></a>  tab1 <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">as.numeric</span>(number)),</span>
+<span id="cb42-56"><a href="results.html#cb42-56" tabindex="-1"></a>  tabs_extra </span>
+<span id="cb42-57"><a href="results.html#cb42-57" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb42-58"><a href="results.html#cb42-58" tabindex="-1"></a>  <span class="co"># clean the names for the report</span></span>
+<span id="cb42-59"><a href="results.html#cb42-59" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="at">nm =</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(<span class="fu">names</span>(tab1))) <span class="sc">|&gt;</span> </span>
+<span id="cb42-60"><a href="results.html#cb42-60" tabindex="-1"></a>  <span class="co"># add a theme</span></span>
+<span id="cb42-61"><a href="results.html#cb42-61" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Theme =</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb42-62"><a href="results.html#cb42-62" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;spawning|Spawners&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Spawning&quot;</span>,</span>
+<span id="cb42-63"><a href="results.html#cb42-63" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;culvert|bridge|crossing&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Stream Crossing&quot;</span>,</span>
+<span id="cb42-64"><a href="results.html#cb42-64" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;richfield&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Other&quot;</span>, </span>
+<span id="cb42-65"><a href="results.html#cb42-65" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;floodplain&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Floodplain&quot;</span>,</span>
+<span id="cb42-66"><a href="results.html#cb42-66" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;rail&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Railway&quot;</span>,</span>
+<span id="cb42-67"><a href="results.html#cb42-67" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;field|cattle&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Agriculture&quot;</span>,</span>
+<span id="cb42-68"><a href="results.html#cb42-68" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;beaver&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Beaver&quot;</span>,</span>
+<span id="cb42-69"><a href="results.html#cb42-69" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;forest|clearcut|cutblock&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Forestry&quot;</span>,</span>
+<span id="cb42-70"><a href="results.html#cb42-70" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;rip-rap&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Rip-rap&quot;</span>,</span>
+<span id="cb42-71"><a href="results.html#cb42-71" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;Log jam&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Log jam&quot;</span>,</span>
+<span id="cb42-72"><a href="results.html#cb42-72" tabindex="-1"></a>    </span>
+<span id="cb42-73"><a href="results.html#cb42-73" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Other&quot;</span> <span class="co"># Default to Other if no other conditions are met</span></span>
+<span id="cb42-74"><a href="results.html#cb42-74" tabindex="-1"></a>  )) <span class="sc">|&gt;</span> </span>
+<span id="cb42-75"><a href="results.html#cb42-75" tabindex="-1"></a></span>
+<span id="cb42-76"><a href="results.html#cb42-76" tabindex="-1"></a>  <span class="co">#there is an issue at row 182... so fix by appending UB-643 to 645 [UB- to the beginning of the photo series column</span></span>
+<span id="cb42-77"><a href="results.html#cb42-77" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="st">`</span><span class="at">Photo Series</span><span class="st">`</span> <span class="ot">=</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb42-78"><a href="results.html#cb42-78" tabindex="-1"></a>    Number <span class="sc">==</span> <span class="dv">182</span> <span class="sc">~</span> <span class="fu">paste0</span>(<span class="st">&quot;UB-643 to 645 [UB-&quot;</span>, <span class="st">`</span><span class="at">Photo Series</span><span class="st">`</span>),</span>
+<span id="cb42-79"><a href="results.html#cb42-79" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">`</span><span class="at">Photo Series</span><span class="st">`</span></span>
+<span id="cb42-80"><a href="results.html#cb42-80" tabindex="-1"></a>  )) <span class="sc">|&gt;</span> </span>
+<span id="cb42-81"><a href="results.html#cb42-81" tabindex="-1"></a>  <span class="co"># remove rows without a Number</span></span>
+<span id="cb42-82"><a href="results.html#cb42-82" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Number)) </span>
+<span id="cb42-83"><a href="results.html#cb42-83" tabindex="-1"></a></span>
+<span id="cb42-84"><a href="results.html#cb42-84" tabindex="-1"></a><span class="co"># burn over our csv so we can put as table in report</span></span>
+<span id="cb42-85"><a href="results.html#cb42-85" tabindex="-1"></a>tab <span class="sc">|&gt;</span> </span>
+<span id="cb42-86"><a href="results.html#cb42-86" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(path_file, <span class="at">na =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb42-87"><a href="results.html#cb42-87" tabindex="-1"></a></span>
+<span id="cb42-88"><a href="results.html#cb42-88" tabindex="-1"></a><span class="co"># create a spatial file and save to the shared project</span></span>
+<span id="cb42-89"><a href="results.html#cb42-89" tabindex="-1"></a>tab <span class="sc">|&gt;</span> </span>
+<span id="cb42-90"><a href="results.html#cb42-90" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb42-91"><a href="results.html#cb42-91" tabindex="-1"></a>  <span class="co"># convert the time to character to preserve as gpkg won&#39;t accept</span></span>
+<span id="cb42-92"><a href="results.html#cb42-92" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">as.character</span>(time)) <span class="sc">|&gt;</span></span>
+<span id="cb42-93"><a href="results.html#cb42-93" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(easting)) <span class="sc">|&gt;</span></span>
+<span id="cb42-94"><a href="results.html#cb42-94" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;easting&quot;</span>, <span class="st">&quot;northing&quot;</span>), <span class="at">crs =</span> <span class="dv">26909</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-95"><a href="results.html#cb42-95" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_transform</span>(<span class="dv">3005</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-96"><a href="results.html#cb42-96" tabindex="-1"></a>  <span class="co"># put time after number and put notes as last column</span></span>
+<span id="cb42-97"><a href="results.html#cb42-97" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(number, time, theme, <span class="fu">everything</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb42-98"><a href="results.html#cb42-98" tabindex="-1"></a>  </span>
+<span id="cb42-99"><a href="results.html#cb42-99" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_write</span>(</span>
+<span id="cb42-100"><a href="results.html#cb42-100" tabindex="-1"></a>      <span class="at">dsn =</span> <span class="st">&quot;~/Projects/gis/restoration_wedzin_kwa/sites_restoration.gpkg&quot;</span>,</span>
+<span id="cb42-101"><a href="results.html#cb42-101" tabindex="-1"></a>      <span class="at">layer =</span> <span class="st">&#39;price_2014&#39;</span>,</span>
+<span id="cb42-102"><a href="results.html#cb42-102" tabindex="-1"></a>      <span class="at">delete_layer =</span> <span class="cn">TRUE</span></span>
+<span id="cb42-103"><a href="results.html#cb42-103" tabindex="-1"></a>    )</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="results.html#cb43-1" tabindex="-1"></a><span class="co"># read in the price 2014 data</span></span>
+<span id="cb43-2"><a href="results.html#cb43-2" tabindex="-1"></a>price_2014 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/inputs_extracted/price_2014_waypoints.csv&quot;</span>)</span>
+<span id="cb43-3"><a href="results.html#cb43-3" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="results.html#cb43-4" tabindex="-1"></a><span class="co"># present as table</span></span>
+<span id="cb43-5"><a href="results.html#cb43-5" tabindex="-1"></a>price_2014 <span class="sc">%&gt;%</span> </span>
+<span id="cb43-6"><a href="results.html#cb43-6" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Summary of Price (2014) waypoints for the Upper Bulkley floodplain including locations of river channelization, potential barriers to fish migration, and assessed areas of upwelling groundwater having potential importance to salmonids.&quot;</span>)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-ncfdc-1998-priority">Table 4.3: </span>Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.
+<span id="tab:tab-price-2014-waypoints">Table 4.3: </span>Summary of Price (2014) waypoints for the Upper Bulkley floodplain including locations of river channelization, potential barriers to fish migration, and assessed areas of upwelling groundwater having potential importance to salmonids.
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Number
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Photo Series
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Time
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Easting
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Northing
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Notes
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Theme
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+UB-1 to 5
+</td>
+<td style="text-align:left;">
+12:17:24
+</td>
+<td style="text-align:right;">
+651142
+</td>
+<td style="text-align:right;">
+6029782
+</td>
+<td style="text-align:left;">
+Helicopter hanger
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+UB-6
+</td>
+<td style="text-align:left;">
+12:17:35
+</td>
+<td style="text-align:right;">
+651145
+</td>
+<td style="text-align:right;">
+6029783
+</td>
+<td style="text-align:left;">
+Above hanger
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+UB-7 to 11
+</td>
+<td style="text-align:left;">
+13:13:51
+</td>
+<td style="text-align:right;">
+655753
+</td>
+<td style="text-align:right;">
+6034037
+</td>
+<td style="text-align:left;">
+Upstream floodplain
+</td>
+<td style="text-align:left;">
+Floodplain
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:left;">
+UB-12 to 25
+</td>
+<td style="text-align:left;">
+13:14:15
+</td>
+<td style="text-align:right;">
+656263
+</td>
+<td style="text-align:right;">
+6034756
+</td>
+<td style="text-align:left;">
+Floodplain/railway
+</td>
+<td style="text-align:left;">
+Floodplain
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:left;">
+UB-26 to 40
+</td>
+<td style="text-align:left;">
+13:14:36
+</td>
+<td style="text-align:right;">
+656802
+</td>
+<td style="text-align:right;">
+6035246
+</td>
+<td style="text-align:left;">
+Disconnected floodplain
+</td>
+<td style="text-align:left;">
+Floodplain
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:left;">
+UB-41 to 56
+</td>
+<td style="text-align:left;">
+13:16:07
+</td>
+<td style="text-align:right;">
+659412
+</td>
+<td style="text-align:right;">
+6036188
+</td>
+<td style="text-align:left;">
+Riparian loss - Field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+UB-57 to 58
+</td>
+<td style="text-align:left;">
+13:16:43
+</td>
+<td style="text-align:right;">
+660202
+</td>
+<td style="text-align:right;">
+6036794
+</td>
+<td style="text-align:left;">
+Forest removal - slash piles
+</td>
+<td style="text-align:left;">
+Forestry
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:left;">
+UB-59 to 64
+</td>
+<td style="text-align:left;">
+13:17:16
+</td>
+<td style="text-align:right;">
+660839
+</td>
+<td style="text-align:right;">
+6037624
+</td>
+<td style="text-align:left;">
+Disconnected floodplain
+</td>
+<td style="text-align:left;">
+Floodplain
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:left;">
+UB-65 to 74
+</td>
+<td style="text-align:left;">
+13:17:51
+</td>
+<td style="text-align:right;">
+661597
+</td>
+<td style="text-align:right;">
+6038300
+</td>
+<td style="text-align:left;">
+Cattle farm
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:left;">
+UB-75 to 81
+</td>
+<td style="text-align:left;">
+13:19:00
+</td>
+<td style="text-align:right;">
+662959
+</td>
+<td style="text-align:right;">
+6039601
+</td>
+<td style="text-align:left;">
+Hay field
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:left;">
+UB-82 to 88
+</td>
+<td style="text-align:left;">
+13:19:37
+</td>
+<td style="text-align:right;">
+662892
+</td>
+<td style="text-align:right;">
+6040706
+</td>
+<td style="text-align:left;">
+Floodplain loss to Hwy/rail
+</td>
+<td style="text-align:left;">
+Floodplain
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+UB-89 to 91
+</td>
+<td style="text-align:left;">
+13:20:36
+</td>
+<td style="text-align:right;">
+663515
+</td>
+<td style="text-align:right;">
+6042344
+</td>
+<td style="text-align:left;">
+Backchannel cutoff
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:left;">
+UB-92 to 93
+</td>
+<td style="text-align:left;">
+13:21:19
+</td>
+<td style="text-align:right;">
+664256
+</td>
+<td style="text-align:right;">
+6043397
+</td>
+<td style="text-align:left;">
+Hay field
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:left;">
+UB-94 to 103
+</td>
+<td style="text-align:left;">
+13:22:29
+</td>
+<td style="text-align:right;">
+666027
+</td>
+<td style="text-align:right;">
+6043735
+</td>
+<td style="text-align:left;">
+Hay field
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:left;">
+UB-104 to 106
+</td>
+<td style="text-align:left;">
+13:23:10
+</td>
+<td style="text-align:right;">
+667123
+</td>
+<td style="text-align:right;">
+6043706
+</td>
+<td style="text-align:left;">
+Floodplain loss to rail
+</td>
+<td style="text-align:left;">
+Floodplain
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:left;">
+UB-107
+</td>
+<td style="text-align:left;">
+13:24:06
+</td>
+<td style="text-align:right;">
+668607
+</td>
+<td style="text-align:right;">
+6043932
+</td>
+<td style="text-align:left;">
+Rail impediment at Oxbows
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+UB-107
+</td>
+<td style="text-align:left;">
+13:24:52
+</td>
+<td style="text-align:right;">
+669825
+</td>
+<td style="text-align:right;">
+6044009
+</td>
+<td style="text-align:left;">
+Rail crossing
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+UB-108
+</td>
+<td style="text-align:left;">
+13:25:17
+</td>
+<td style="text-align:right;">
+670482
+</td>
+<td style="text-align:right;">
+6043704
+</td>
+<td style="text-align:left;">
+Floodplain loss to rail
+</td>
+<td style="text-align:left;">
+Floodplain
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:left;">
+UB-109 to 120
+</td>
+<td style="text-align:left;">
+13:26:15
+</td>
+<td style="text-align:right;">
+672259
+</td>
+<td style="text-align:right;">
+6043155
+</td>
+<td style="text-align:left;">
+Backchannel cutoff by rail, field to river
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;">
+UB-121
+</td>
+<td style="text-align:left;">
+13:27:10
+</td>
+<td style="text-align:right;">
+674085
+</td>
+<td style="text-align:right;">
+6042903
+</td>
+<td style="text-align:left;">
+Topley rail crossing
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:left;">
+UB-122 to 132
+</td>
+<td style="text-align:left;">
+13:27:43
+</td>
+<td style="text-align:right;">
+674810
+</td>
+<td style="text-align:right;">
+6042145
+</td>
+<td style="text-align:left;">
+Field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:left;">
+UB-133 to 142
+</td>
+<td style="text-align:left;">
+13:28:26
+</td>
+<td style="text-align:right;">
+675972
+</td>
+<td style="text-align:right;">
+6042137
+</td>
+<td style="text-align:left;">
+Floodplain loss to rail
+</td>
+<td style="text-align:left;">
+Floodplain
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:left;">
+UB-143 to 144
+</td>
+<td style="text-align:left;">
+13:28:54
+</td>
+<td style="text-align:right;">
+676499
+</td>
+<td style="text-align:right;">
+6041543
+</td>
+<td style="text-align:left;">
+Floodplain loss to rail
+</td>
+<td style="text-align:left;">
+Floodplain
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:left;">
+UB-145 to 153
+</td>
+<td style="text-align:left;">
+13:29:34
+</td>
+<td style="text-align:right;">
+677448
+</td>
+<td style="text-align:right;">
+6040835
+</td>
+<td style="text-align:left;">
+Floodplain loss to rail
+</td>
+<td style="text-align:left;">
+Floodplain
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:left;">
+UB-154 to 164
+</td>
+<td style="text-align:left;">
+13:30:40
+</td>
+<td style="text-align:right;">
+677958
+</td>
+<td style="text-align:right;">
+6038866
+</td>
+<td style="text-align:left;">
+New rail double track
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:left;">
+UB-165 to 169
+</td>
+<td style="text-align:left;">
+13:31:51
+</td>
+<td style="text-align:right;">
+679597
+</td>
+<td style="text-align:right;">
+6037220
+</td>
+<td style="text-align:left;">
+Rail crossing
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+UB-170 to 174
+</td>
+<td style="text-align:left;">
+13:32:21
+</td>
+<td style="text-align:right;">
+680465
+</td>
+<td style="text-align:right;">
+6036862
+</td>
+<td style="text-align:left;">
+Hay fields
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:left;">
+UB-175
+</td>
+<td style="text-align:left;">
+13:33:21
+</td>
+<td style="text-align:right;">
+681046
+</td>
+<td style="text-align:right;">
+6035306
+</td>
+<td style="text-align:left;">
+Clearcut
+</td>
+<td style="text-align:left;">
+Forestry
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:left;">
+UB-176 to 182
+</td>
+<td style="text-align:left;">
+13:34:12
+</td>
+<td style="text-align:right;">
+680961
+</td>
+<td style="text-align:right;">
+6033872
+</td>
+<td style="text-align:left;">
+Intact section
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:left;">
+UB-183 to 194
+</td>
+<td style="text-align:left;">
+13:34:47
+</td>
+<td style="text-align:right;">
+681638
+</td>
+<td style="text-align:right;">
+6032905
+</td>
+<td style="text-align:left;">
+Forestdale road
+</td>
+<td style="text-align:left;">
+Forestry
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:left;">
+UB-195 to 199
+</td>
+<td style="text-align:left;">
+13:35:40
+</td>
+<td style="text-align:right;">
+683201
+</td>
+<td style="text-align:right;">
+6032161
+</td>
+<td style="text-align:left;">
+Straumbold farm downstream
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:left;">
+UB-200 to 211
+</td>
+<td style="text-align:left;">
+13:37:05
+</td>
+<td style="text-align:right;">
+685413
+</td>
+<td style="text-align:right;">
+6030472
+</td>
+<td style="text-align:left;">
+Bulkley Lake outlet
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:left;">
+UB-212 to 223
+</td>
+<td style="text-align:left;">
+13:38:29
+</td>
+<td style="text-align:right;">
+686021
+</td>
+<td style="text-align:right;">
+6029364
+</td>
+<td style="text-align:left;">
+Hay field to maxan
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:left;">
+UB-224 to 227
+</td>
+<td style="text-align:left;">
+13:40:26
+</td>
+<td style="text-align:right;">
+683888
+</td>
+<td style="text-align:right;">
+6026908
+</td>
+<td style="text-align:left;">
+maxan cutblock
+</td>
+<td style="text-align:left;">
+Forestry
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:left;">
+UB-228 to 231
+</td>
+<td style="text-align:left;">
+13:41:16
+</td>
+<td style="text-align:right;">
+683875
+</td>
+<td style="text-align:right;">
+6025320
+</td>
+<td style="text-align:left;">
+maxan cutblock
+</td>
+<td style="text-align:left;">
+Forestry
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:left;">
+UB-233
+</td>
+<td style="text-align:left;">
+13:42:53
+</td>
+<td style="text-align:right;">
+686279
+</td>
+<td style="text-align:right;">
+6024057
+</td>
+<td style="text-align:left;">
+road crossing
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:left;">
+UB-234 to 236
+</td>
+<td style="text-align:left;">
+13:44:41
+</td>
+<td style="text-align:right;">
+687177
+</td>
+<td style="text-align:right;">
+6023224
+</td>
+<td style="text-align:left;">
+Maxan lake
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:left;">
+UB-237 to 241
+</td>
+<td style="text-align:left;">
+13:45:09
+</td>
+<td style="text-align:right;">
+686813
+</td>
+<td style="text-align:right;">
+6022650
+</td>
+<td style="text-align:left;">
+Foxy creek cutblock
+</td>
+<td style="text-align:left;">
+Forestry
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:left;">
+UB-242 to 245
+</td>
+<td style="text-align:left;">
+13:47:37
+</td>
+<td style="text-align:right;">
+686860
+</td>
+<td style="text-align:right;">
+6022124
+</td>
+<td style="text-align:left;">
+Foxy creek cutblock
+</td>
+<td style="text-align:left;">
+Forestry
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:left;">
+UB-239 to 256
+</td>
+<td style="text-align:left;">
+13:48:44
+</td>
+<td style="text-align:right;">
+686992
+</td>
+<td style="text-align:right;">
+6023133
+</td>
+<td style="text-align:left;">
+foxy/maxan confluence
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:left;">
+UB-257
+</td>
+<td style="text-align:left;">
+13:49:59
+</td>
+<td style="text-align:right;">
+686614
+</td>
+<td style="text-align:right;">
+6023770
+</td>
+<td style="text-align:left;">
+road crossing
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:left;">
+UB-258
+</td>
+<td style="text-align:left;">
+13:50:32
+</td>
+<td style="text-align:right;">
+686210
+</td>
+<td style="text-align:right;">
+6024130
+</td>
+<td style="text-align:left;">
+hay field to creek
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:left;">
+UB-259 to 261
+</td>
+<td style="text-align:left;">
+13:51:59
+</td>
+<td style="text-align:right;">
+685466
+</td>
+<td style="text-align:right;">
+6024649
+</td>
+<td style="text-align:left;">
+maxan beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:left;">
+UB-262 to 264
+</td>
+<td style="text-align:left;">
+13:53:09
+</td>
+<td style="text-align:right;">
+685237
+</td>
+<td style="text-align:right;">
+6024844
+</td>
+<td style="text-align:left;">
+field to river-log jam
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:left;">
+UB-265 to 270
+</td>
+<td style="text-align:left;">
+13:54:18
+</td>
+<td style="text-align:right;">
+684348
+</td>
+<td style="text-align:right;">
+6024997
+</td>
+<td style="text-align:left;">
+Beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:left;">
+UB-271 to 274
+</td>
+<td style="text-align:left;">
+13:56:04
+</td>
+<td style="text-align:right;">
+683932
+</td>
+<td style="text-align:right;">
+6026032
+</td>
+<td style="text-align:left;">
+beaver dam/breach
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:left;">
+UB-275 to 282
+</td>
+<td style="text-align:left;">
+13:57:42
+</td>
+<td style="text-align:right;">
+683762
+</td>
+<td style="text-align:right;">
+6026942
+</td>
+<td style="text-align:left;">
+land slide
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:left;">
+UB-283 to 285
+</td>
+<td style="text-align:left;">
+13:59:09
+</td>
+<td style="text-align:right;">
+683917
+</td>
+<td style="text-align:right;">
+6027487
+</td>
+<td style="text-align:left;">
+hay field / jam
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:left;">
+UB-286 to 290
+</td>
+<td style="text-align:left;">
+13:59:45
+</td>
+<td style="text-align:right;">
+684190
+</td>
+<td style="text-align:right;">
+6027906
+</td>
+<td style="text-align:left;">
+Beaver activity
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+UB-291 to 299
+</td>
+<td style="text-align:left;">
+14:00:19
+</td>
+<td style="text-align:right;">
+684354
+</td>
+<td style="text-align:right;">
+6028189
+</td>
+<td style="text-align:left;">
+Hay field
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:left;">
+UB-300 to 304
+</td>
+<td style="text-align:left;">
+14:01:09
+</td>
+<td style="text-align:right;">
+684890
+</td>
+<td style="text-align:right;">
+6028667
+</td>
+<td style="text-align:left;">
+Beaver activity
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:left;">
+UB-305 to 307
+</td>
+<td style="text-align:left;">
+14:01:28
+</td>
+<td style="text-align:right;">
+685106
+</td>
+<td style="text-align:right;">
+6028665
+</td>
+<td style="text-align:left;">
+Beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+UB-308 to 314
+</td>
+<td style="text-align:left;">
+14:02:05
+</td>
+<td style="text-align:right;">
+685428
+</td>
+<td style="text-align:right;">
+6028712
+</td>
+<td style="text-align:left;">
+Beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:left;">
+UB-315 to 321
+</td>
+<td style="text-align:left;">
+14:02:27
+</td>
+<td style="text-align:right;">
+685549
+</td>
+<td style="text-align:right;">
+6028826
+</td>
+<td style="text-align:left;">
+derelict bridge
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:left;">
+UB-322 to 324
+</td>
+<td style="text-align:left;">
+14:03:09
+</td>
+<td style="text-align:right;">
+685814
+</td>
+<td style="text-align:right;">
+6029114
+</td>
+<td style="text-align:left;">
+Beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:left;">
+UB-325 to 327
+</td>
+<td style="text-align:left;">
+14:03:35
+</td>
+<td style="text-align:right;">
+685789
+</td>
+<td style="text-align:right;">
+6029396
+</td>
+<td style="text-align:left;">
+Hay field to maxan
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:left;">
+UB-328 to 334
+</td>
+<td style="text-align:left;">
+14:03:53
+</td>
+<td style="text-align:right;">
+686037
+</td>
+<td style="text-align:right;">
+6029429
+</td>
+<td style="text-align:left;">
+Hay field to maxan
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:left;">
+UB-335 to 338
+</td>
+<td style="text-align:left;">
+14:04:27
+</td>
+<td style="text-align:right;">
+686479
+</td>
+<td style="text-align:right;">
+6029579
+</td>
+<td style="text-align:left;">
+Maxan Lake outlet
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:left;">
+UB-339 to 341
+</td>
+<td style="text-align:left;">
+14:05:35
+</td>
+<td style="text-align:right;">
+686187
+</td>
+<td style="text-align:right;">
+6030211
+</td>
+<td style="text-align:left;">
+Bulkley Lake outlet
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:left;">
+UB-342 to 356
+</td>
+<td style="text-align:left;">
+14:06:06
+</td>
+<td style="text-align:right;">
+685785
+</td>
+<td style="text-align:right;">
+6030439
+</td>
+<td style="text-align:left;">
+Strombould’s rail/road crossings
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:left;">
+UB-357 to 362
+</td>
+<td style="text-align:left;">
+14:06:37
+</td>
+<td style="text-align:right;">
+685310
+</td>
+<td style="text-align:right;">
+6030510
+</td>
+<td style="text-align:left;">
+rip-rap
+</td>
+<td style="text-align:left;">
+Rip-rap
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+UB-363 to 365
+</td>
+<td style="text-align:left;">
+14:07:18
+</td>
+<td style="text-align:right;">
+685110
+</td>
+<td style="text-align:right;">
+6030621
+</td>
+<td style="text-align:left;">
+Field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+UB-366 to 369
+</td>
+<td style="text-align:left;">
+14:07:47
+</td>
+<td style="text-align:right;">
+684926
+</td>
+<td style="text-align:right;">
+6031060
+</td>
+<td style="text-align:left;">
+rip-rap
+</td>
+<td style="text-align:left;">
+Rip-rap
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+UB-370 to 372
+</td>
+<td style="text-align:left;">
+14:08:57
+</td>
+<td style="text-align:right;">
+684495
+</td>
+<td style="text-align:right;">
+6031282
+</td>
+<td style="text-align:left;">
+Field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:left;">
+UB-373 to 383
+</td>
+<td style="text-align:left;">
+14:09:47
+</td>
+<td style="text-align:right;">
+684008
+</td>
+<td style="text-align:right;">
+6031695
+</td>
+<td style="text-align:left;">
+Beaver dam/field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:left;">
+UB-384 to 388
+</td>
+<td style="text-align:left;">
+14:10:33
+</td>
+<td style="text-align:right;">
+683685
+</td>
+<td style="text-align:right;">
+6032076
+</td>
+<td style="text-align:left;">
+bridge/hay field
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:left;">
+UB-389 to 395
+</td>
+<td style="text-align:left;">
+14:11:22
+</td>
+<td style="text-align:right;">
+683002
+</td>
+<td style="text-align:right;">
+6032245
+</td>
+<td style="text-align:left;">
+rail bridge
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+102
+</td>
+<td style="text-align:left;">
+UB-396 to 402
+</td>
+<td style="text-align:left;">
+14:12:12
+</td>
+<td style="text-align:right;">
+682505
+</td>
+<td style="text-align:right;">
+6032418
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:left;">
+UB-403 to 405
+</td>
+<td style="text-align:left;">
+14:12:57
+</td>
+<td style="text-align:right;">
+682091
+</td>
+<td style="text-align:right;">
+6032534
+</td>
+<td style="text-align:left;">
+bridge crossing
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+UB-406 to 410
+</td>
+<td style="text-align:left;">
+14:13:36
+</td>
+<td style="text-align:right;">
+681888
+</td>
+<td style="text-align:right;">
+6032762
+</td>
+<td style="text-align:left;">
+bridge crossing
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:left;">
+UB-411 to 412
+</td>
+<td style="text-align:left;">
+14:14:31
+</td>
+<td style="text-align:right;">
+681419
+</td>
+<td style="text-align:right;">
+6033019
+</td>
+<td style="text-align:left;">
+beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+106
+</td>
+<td style="text-align:left;">
+UB-413 to 415
+</td>
+<td style="text-align:left;">
+14:15:02
+</td>
+<td style="text-align:right;">
+681137
+</td>
+<td style="text-align:right;">
+6033505
+</td>
+<td style="text-align:left;">
+beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:left;">
+UB-416
+</td>
+<td style="text-align:left;">
+14:15:19
+</td>
+<td style="text-align:right;">
+681166
+</td>
+<td style="text-align:right;">
+6033765
+</td>
+<td style="text-align:left;">
+beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+UB-417
+</td>
+<td style="text-align:left;">
+14:16:11
+</td>
+<td style="text-align:right;">
+680743
+</td>
+<td style="text-align:right;">
+6034552
+</td>
+<td style="text-align:left;">
+beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:left;">
+UB-418
+</td>
+<td style="text-align:left;">
+14:16:37
+</td>
+<td style="text-align:right;">
+680933
+</td>
+<td style="text-align:right;">
+6034871
+</td>
+<td style="text-align:left;">
+beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:left;">
+UB-419 to 424
+</td>
+<td style="text-align:left;">
+14:17:26
+</td>
+<td style="text-align:right;">
+681055
+</td>
+<td style="text-align:right;">
+6035312
+</td>
+<td style="text-align:left;">
+beaver dam/rail bridge
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+111
+</td>
+<td style="text-align:left;">
+UB-425
+</td>
+<td style="text-align:left;">
+14:18:15
+</td>
+<td style="text-align:right;">
+681362
+</td>
+<td style="text-align:right;">
+6035812
+</td>
+<td style="text-align:left;">
+Hayfield/power line
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+113
+</td>
+<td style="text-align:left;">
+UB-428 to 430
+</td>
+<td style="text-align:left;">
+14:19:08
+</td>
+<td style="text-align:right;">
+680861
+</td>
+<td style="text-align:right;">
+6036661
+</td>
+<td style="text-align:left;">
+hay field to creek
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+114
+</td>
+<td style="text-align:left;">
+UB-431 to 434
+</td>
+<td style="text-align:left;">
+14:19:51
+</td>
+<td style="text-align:right;">
+680310
+</td>
+<td style="text-align:right;">
+6037029
+</td>
+<td style="text-align:left;">
+bridge
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+115
+</td>
+<td style="text-align:left;">
+UB-435 to 440
+</td>
+<td style="text-align:left;">
+14:20:20
+</td>
+<td style="text-align:right;">
+679974
+</td>
+<td style="text-align:right;">
+6037284
+</td>
+<td style="text-align:left;">
+beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+116
+</td>
+<td style="text-align:left;">
+UB-441 to 444
+</td>
+<td style="text-align:left;">
+14:20:49
+</td>
+<td style="text-align:right;">
+679961
+</td>
+<td style="text-align:right;">
+6037252
+</td>
+<td style="text-align:left;">
+bridge and new track
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+117
+</td>
+<td style="text-align:left;">
+UB-445
+</td>
+<td style="text-align:left;">
+14:21:22
+</td>
+<td style="text-align:right;">
+679540
+</td>
+<td style="text-align:right;">
+6037279
+</td>
+<td style="text-align:left;">
+Beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+118
+</td>
+<td style="text-align:left;">
+UB-446 to 448
+</td>
+<td style="text-align:left;">
+14:21:51
+</td>
+<td style="text-align:right;">
+679148
+</td>
+<td style="text-align:right;">
+6037507
+</td>
+<td style="text-align:left;">
+Beaver dam/rail to river
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+119
+</td>
+<td style="text-align:left;">
+UB-449 to 453
+</td>
+<td style="text-align:left;">
+14:22:17
+</td>
+<td style="text-align:right;">
+679010
+</td>
+<td style="text-align:right;">
+6037815
+</td>
+<td style="text-align:left;">
+Beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:left;">
+UB-454 to 455
+</td>
+<td style="text-align:left;">
+14:22:39
+</td>
+<td style="text-align:right;">
+678774
+</td>
+<td style="text-align:right;">
+6038004
+</td>
+<td style="text-align:left;">
+Beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:left;">
+UB-456 to 459
+</td>
+<td style="text-align:left;">
+14:23:20
+</td>
+<td style="text-align:right;">
+678295
+</td>
+<td style="text-align:right;">
+6038283
+</td>
+<td style="text-align:left;">
+Bulkley falls
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+122
+</td>
+<td style="text-align:left;">
+UB-460 to 462
+</td>
+<td style="text-align:left;">
+14:24:01
+</td>
+<td style="text-align:right;">
+678222
+</td>
+<td style="text-align:right;">
+6038509
+</td>
+<td style="text-align:left;">
+Beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:left;">
+UB-463 to 464
+</td>
+<td style="text-align:left;">
+14:24:19
+</td>
+<td style="text-align:right;">
+678184
+</td>
+<td style="text-align:right;">
+6038767
+</td>
+<td style="text-align:left;">
+Log jam
+</td>
+<td style="text-align:left;">
+Log jam
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+124
+</td>
+<td style="text-align:left;">
+UB-465 to 466
+</td>
+<td style="text-align:left;">
+14:24:37
+</td>
+<td style="text-align:right;">
+678104
+</td>
+<td style="text-align:right;">
+6039025
+</td>
+<td style="text-align:left;">
+Beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+125
+</td>
+<td style="text-align:left;">
+UB-467
+</td>
+<td style="text-align:left;">
+14:25:23
+</td>
+<td style="text-align:right;">
+677952
+</td>
+<td style="text-align:right;">
+6039499
+</td>
+<td style="text-align:left;">
+Hay field
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+126
+</td>
+<td style="text-align:left;">
+UB-468 to 471
+</td>
+<td style="text-align:left;">
+14:25:44
+</td>
+<td style="text-align:right;">
+677719
+</td>
+<td style="text-align:right;">
+6039669
+</td>
+<td style="text-align:left;">
+Beaver dam/Spawners
+</td>
+<td style="text-align:left;">
+Spawning
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+127
+</td>
+<td style="text-align:left;">
+UB-472
+</td>
+<td style="text-align:left;">
+14:26:26
+</td>
+<td style="text-align:right;">
+677666
+</td>
+<td style="text-align:right;">
+6039852
+</td>
+<td style="text-align:left;">
+Beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+128
+</td>
+<td style="text-align:left;">
+UB-473 to 475
+</td>
+<td style="text-align:left;">
+14:26:38
+</td>
+<td style="text-align:right;">
+677550
+</td>
+<td style="text-align:right;">
+6039878
+</td>
+<td style="text-align:left;">
+Beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:left;">
+UB-476 to 479
+</td>
+<td style="text-align:left;">
+14:27:09
+</td>
+<td style="text-align:right;">
+677763
+</td>
+<td style="text-align:right;">
+6040152
+</td>
+<td style="text-align:left;">
+Rail crossing
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:left;">
+UB-480 to 486
+</td>
+<td style="text-align:left;">
+14:27:39
+</td>
+<td style="text-align:right;">
+677719
+</td>
+<td style="text-align:right;">
+6040526
+</td>
+<td style="text-align:left;">
+rip-rap/beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:left;">
+UB-487 to 488
+</td>
+<td style="text-align:left;">
+14:28:17
+</td>
+<td style="text-align:right;">
+677614
+</td>
+<td style="text-align:right;">
+6040916
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+132
+</td>
+<td style="text-align:left;">
+UB-489 to 492
+</td>
+<td style="text-align:left;">
+14:28:33
+</td>
+<td style="text-align:right;">
+677292
+</td>
+<td style="text-align:right;">
+6040997
+</td>
+<td style="text-align:left;">
+Rail crossing
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+133
+</td>
+<td style="text-align:left;">
+UB-493
+</td>
+<td style="text-align:left;">
+14:29:02
+</td>
+<td style="text-align:right;">
+676911
+</td>
+<td style="text-align:right;">
+6041236
+</td>
+<td style="text-align:left;">
+beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:left;">
+UB-494 to 496
+</td>
+<td style="text-align:left;">
+14:29:13
+</td>
+<td style="text-align:right;">
+676801
+</td>
+<td style="text-align:right;">
+6041386
+</td>
+<td style="text-align:left;">
+rip-rap/beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:left;">
+UB-497 to 501
+</td>
+<td style="text-align:left;">
+14:29:40
+</td>
+<td style="text-align:right;">
+676547
+</td>
+<td style="text-align:right;">
+6041728
+</td>
+<td style="text-align:left;">
+rail to river
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+136
+</td>
+<td style="text-align:left;">
+UB-502 to 507
+</td>
+<td style="text-align:left;">
+14:30:04
+</td>
+<td style="text-align:right;">
+676358
+</td>
+<td style="text-align:right;">
+6042030
+</td>
+<td style="text-align:left;">
+rail to river
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:left;">
+UB-508 to 509
+</td>
+<td style="text-align:left;">
+14:30:43
+</td>
+<td style="text-align:right;">
+675666
+</td>
+<td style="text-align:right;">
+6041986
+</td>
+<td style="text-align:left;">
+Spawning salmon
+</td>
+<td style="text-align:left;">
+Spawning
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+138
+</td>
+<td style="text-align:left;">
+UB-510 to 511
+</td>
+<td style="text-align:left;">
+14:31:12
+</td>
+<td style="text-align:right;">
+675177
+</td>
+<td style="text-align:right;">
+6042050
+</td>
+<td style="text-align:left;">
+field to river/spawners
+</td>
+<td style="text-align:left;">
+Spawning
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:left;">
+UB-512
+</td>
+<td style="text-align:left;">
+14:31:35
+</td>
+<td style="text-align:right;">
+674850
+</td>
+<td style="text-align:right;">
+6042113
+</td>
+<td style="text-align:left;">
+cattle farm to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+140
+</td>
+<td style="text-align:left;">
+UB-513 to 515
+</td>
+<td style="text-align:left;">
+14:32:10
+</td>
+<td style="text-align:right;">
+674572
+</td>
+<td style="text-align:right;">
+6042590
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:left;">
+UB-516 to 522
+</td>
+<td style="text-align:left;">
+14:32:21
+</td>
+<td style="text-align:right;">
+674492
+</td>
+<td style="text-align:right;">
+6042716
+</td>
+<td style="text-align:left;">
+Topley crossing
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+142
+</td>
+<td style="text-align:left;">
+UB-523
+</td>
+<td style="text-align:left;">
+14:33:36
+</td>
+<td style="text-align:right;">
+673931
+</td>
+<td style="text-align:right;">
+6043020
+</td>
+<td style="text-align:left;">
+rail to river
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+143
+</td>
+<td style="text-align:left;">
+UB-524 to 526
+</td>
+<td style="text-align:left;">
+14:33:48
+</td>
+<td style="text-align:right;">
+673672
+</td>
+<td style="text-align:right;">
+6043081
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+144
+</td>
+<td style="text-align:left;">
+UB-527 to 532b
+</td>
+<td style="text-align:left;">
+14:34:13
+</td>
+<td style="text-align:right;">
+673142
+</td>
+<td style="text-align:right;">
+6043205
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:left;">
+UB-533 to 534
+</td>
+<td style="text-align:left;">
+14:35:18
+</td>
+<td style="text-align:right;">
+671960
+</td>
+<td style="text-align:right;">
+6043267
+</td>
+<td style="text-align:left;">
+ploughed field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+146
+</td>
+<td style="text-align:left;">
+UB-535 to 536
+</td>
+<td style="text-align:left;">
+14:36:48
+</td>
+<td style="text-align:right;">
+672014
+</td>
+<td style="text-align:right;">
+6043155
+</td>
+<td style="text-align:left;">
+Richfield confluence
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+147
+</td>
+<td style="text-align:left;">
+UB-537 to 538
+</td>
+<td style="text-align:left;">
+14:37:06
+</td>
+<td style="text-align:right;">
+672098
+</td>
+<td style="text-align:right;">
+6043368
+</td>
+<td style="text-align:left;">
+rail bridge/richfield
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+148
+</td>
+<td style="text-align:left;">
+UB 539
+</td>
+<td style="text-align:left;">
+14:37:27
+</td>
+<td style="text-align:right;">
+672217
+</td>
+<td style="text-align:right;">
+6043636
+</td>
+<td style="text-align:left;">
+Homested on river bank
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+149
+</td>
+<td style="text-align:left;">
+UB-539a
+</td>
+<td style="text-align:left;">
+14:37:43
+</td>
+<td style="text-align:right;">
+672332
+</td>
+<td style="text-align:right;">
+6043861
+</td>
+<td style="text-align:left;">
+Richfield village
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:left;">
+UB-540 to 545
+</td>
+<td style="text-align:left;">
+14:38:01
+</td>
+<td style="text-align:right;">
+672459
+</td>
+<td style="text-align:right;">
+6044122
+</td>
+<td style="text-align:left;">
+Culvert on Richfield creek
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+151
+</td>
+<td style="text-align:left;">
+UB-546 to 548
+</td>
+<td style="text-align:left;">
+14:40:55
+</td>
+<td style="text-align:right;">
+670206
+</td>
+<td style="text-align:right;">
+6043943
+</td>
+<td style="text-align:left;">
+rail bridge
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+152
+</td>
+<td style="text-align:left;">
+UB-549 to 555
+</td>
+<td style="text-align:left;">
+14:41:20
+</td>
+<td style="text-align:right;">
+670218
+</td>
+<td style="text-align:right;">
+6044233
+</td>
+<td style="text-align:left;">
+Johnny-David confluence/field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+153
+</td>
+<td style="text-align:left;">
+UB-556 to 558
+</td>
+<td style="text-align:left;">
+14:42:01
+</td>
+<td style="text-align:right;">
+670260
+</td>
+<td style="text-align:right;">
+6044784
+</td>
+<td style="text-align:left;">
+Johnny_David Hwy culvert
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+154
+</td>
+<td style="text-align:left;">
+UB-559 to 561
+</td>
+<td style="text-align:left;">
+14:43:22
+</td>
+<td style="text-align:right;">
+669614
+</td>
+<td style="text-align:right;">
+6044178
+</td>
+<td style="text-align:left;">
+Log jam on Bulkley
+</td>
+<td style="text-align:left;">
+Log jam
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+156
+</td>
+<td style="text-align:left;">
+UB-564 to 566
+</td>
+<td style="text-align:left;">
+14:44:09
+</td>
+<td style="text-align:right;">
+668935
+</td>
+<td style="text-align:right;">
+6043858
+</td>
+<td style="text-align:left;">
+rip-rap and rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:left;">
+UB-567 to 568
+</td>
+<td style="text-align:left;">
+14:44:38
+</td>
+<td style="text-align:right;">
+668718
+</td>
+<td style="text-align:right;">
+6044141
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:left;">
+UB-569 to 570
+</td>
+<td style="text-align:left;">
+14:45:13
+</td>
+<td style="text-align:right;">
+668132
+</td>
+<td style="text-align:right;">
+6044225
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+159
+</td>
+<td style="text-align:left;">
+UB-571 to 576
+</td>
+<td style="text-align:left;">
+14:45:35
+</td>
+<td style="text-align:right;">
+667876
+</td>
+<td style="text-align:right;">
+6044164
+</td>
+<td style="text-align:left;">
+rail bridge/spawners
+</td>
+<td style="text-align:left;">
+Spawning
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:left;">
+UB-577 to 580
+</td>
+<td style="text-align:left;">
+14:46:02
+</td>
+<td style="text-align:right;">
+667599
+</td>
+<td style="text-align:right;">
+6043901
+</td>
+<td style="text-align:left;">
+rail to river
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:left;">
+UB-581 to 584
+</td>
+<td style="text-align:left;">
+14:46:46
+</td>
+<td style="text-align:right;">
+666827
+</td>
+<td style="text-align:right;">
+6043710
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+162
+</td>
+<td style="text-align:left;">
+UB-585 to 586
+</td>
+<td style="text-align:left;">
+14:47:04
+</td>
+<td style="text-align:right;">
+666637
+</td>
+<td style="text-align:right;">
+6044012
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+163
+</td>
+<td style="text-align:left;">
+UB-587 to 588
+</td>
+<td style="text-align:left;">
+14:47:58
+</td>
+<td style="text-align:right;">
+665701
+</td>
+<td style="text-align:right;">
+6043914
+</td>
+<td style="text-align:left;">
+Byman Ck rail bridge
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+14:48:29
+</td>
+<td style="text-align:right;">
+665847
+</td>
+<td style="text-align:right;">
+6044090
+</td>
+<td style="text-align:left;">
+Byman Ck Hwy bridge?
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+165
+</td>
+<td style="text-align:left;">
+UB-589 to 595
+</td>
+<td style="text-align:left;">
+14:49:12
+</td>
+<td style="text-align:right;">
+666717
+</td>
+<td style="text-align:right;">
+6044190
+</td>
+<td style="text-align:left;">
+Byman Ck Hwy culvert
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+166
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+14:50:41
+</td>
+<td style="text-align:right;">
+665631
+</td>
+<td style="text-align:right;">
+6043933
+</td>
+<td style="text-align:left;">
+Perow Ck?
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+167
+</td>
+<td style="text-align:left;">
+UB-596 to 597
+</td>
+<td style="text-align:left;">
+14:50:56
+</td>
+<td style="text-align:right;">
+665378
+</td>
+<td style="text-align:right;">
+6043809
+</td>
+<td style="text-align:left;">
+Byman/Perow Ck confluence
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+168
+</td>
+<td style="text-align:left;">
+UB-598 to 600
+</td>
+<td style="text-align:left;">
+14:51:14
+</td>
+<td style="text-align:right;">
+665013
+</td>
+<td style="text-align:right;">
+6043738
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+169
+</td>
+<td style="text-align:left;">
+UB-601 to 608
+</td>
+<td style="text-align:left;">
+14:51:49
+</td>
+<td style="text-align:right;">
+664394
+</td>
+<td style="text-align:right;">
+6043652
+</td>
+<td style="text-align:left;">
+McQuarrie Ck rail bridge
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:left;">
+UB-609 to 610
+</td>
+<td style="text-align:left;">
+14:52:45
+</td>
+<td style="text-align:right;">
+663942
+</td>
+<td style="text-align:right;">
+6043256
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+171
+</td>
+<td style="text-align:left;">
+UB-611 to 612
+</td>
+<td style="text-align:left;">
+14:53:44
+</td>
+<td style="text-align:right;">
+663396
+</td>
+<td style="text-align:right;">
+6042264
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+172
+</td>
+<td style="text-align:left;">
+UB-613 to 616
+</td>
+<td style="text-align:left;">
+14:54:40
+</td>
+<td style="text-align:right;">
+662962
+</td>
+<td style="text-align:right;">
+6041236
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+173
+</td>
+<td style="text-align:left;">
+UB-617 to 623
+</td>
+<td style="text-align:left;">
+14:55:17
+</td>
+<td style="text-align:right;">
+662763
+</td>
+<td style="text-align:right;">
+6040601
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:left;">
+UB-624 to 625
+</td>
+<td style="text-align:left;">
+14:55:41
+</td>
+<td style="text-align:right;">
+662902
+</td>
+<td style="text-align:right;">
+6040258
+</td>
+<td style="text-align:left;">
+Log jam
+</td>
+<td style="text-align:left;">
+Log jam
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:left;">
+UB-626 to 627
+</td>
+<td style="text-align:left;">
+14:56:10
+</td>
+<td style="text-align:right;">
+663203
+</td>
+<td style="text-align:right;">
+6039849
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+176
+</td>
+<td style="text-align:left;">
+UB-628 to 630
+</td>
+<td style="text-align:left;">
+14:56:39
+</td>
+<td style="text-align:right;">
+662888
+</td>
+<td style="text-align:right;">
+6039572
+</td>
+<td style="text-align:left;">
+cattle on river bank
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+177
+</td>
+<td style="text-align:left;">
+UB-631
+</td>
+<td style="text-align:left;">
+14:57:27
+</td>
+<td style="text-align:right;">
+662554
+</td>
+<td style="text-align:right;">
+6038924
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+178
+</td>
+<td style="text-align:left;">
+UB-632
+</td>
+<td style="text-align:left;">
+14:58:08
+</td>
+<td style="text-align:right;">
+661935
+</td>
+<td style="text-align:right;">
+6038530
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+179
+</td>
+<td style="text-align:left;">
+UB-633
+</td>
+<td style="text-align:left;">
+14:58:24
+</td>
+<td style="text-align:right;">
+661750
+</td>
+<td style="text-align:right;">
+6038638
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+180
+</td>
+<td style="text-align:left;">
+UB-634 to 639
+</td>
+<td style="text-align:left;">
+14:59:00
+</td>
+<td style="text-align:right;">
+661181
+</td>
+<td style="text-align:right;">
+6038563
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+181
+</td>
+<td style="text-align:left;">
+UB-640 to 642
+</td>
+<td style="text-align:left;">
+14:59:26
+</td>
+<td style="text-align:right;">
+661220
+</td>
+<td style="text-align:right;">
+6038243
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+182
+</td>
+<td style="text-align:left;">
+UB-643 to 645 [UB-645b]
+</td>
+<td style="text-align:left;">
+15:00:28
+</td>
+<td style="text-align:right;">
+661095
+</td>
+<td style="text-align:right;">
+6037670
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+183
+</td>
+<td style="text-align:left;">
+UB-646 to 649
+</td>
+<td style="text-align:left;">
+15:00:46
+</td>
+<td style="text-align:right;">
+660929
+</td>
+<td style="text-align:right;">
+6037901
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+184
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+15:01:16
+</td>
+<td style="text-align:right;">
+660629
+</td>
+<td style="text-align:right;">
+6037716
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+185
+</td>
+<td style="text-align:left;">
+UB-650 to 651
+</td>
+<td style="text-align:left;">
+15:01:28
+</td>
+<td style="text-align:right;">
+660804
+</td>
+<td style="text-align:right;">
+6037542
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+186
+</td>
+<td style="text-align:left;">
+UB-652 to 653
+</td>
+<td style="text-align:left;">
+15:02:22
+</td>
+<td style="text-align:right;">
+660186
+</td>
+<td style="text-align:right;">
+6037094
+</td>
+<td style="text-align:left;">
+field to river/new felling
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+187
+</td>
+<td style="text-align:left;">
+UB-654
+</td>
+<td style="text-align:left;">
+15:02:38
+</td>
+<td style="text-align:right;">
+659934
+</td>
+<td style="text-align:right;">
+6037048
+</td>
+<td style="text-align:left;">
+Log jam
+</td>
+<td style="text-align:left;">
+Log jam
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+188
+</td>
+<td style="text-align:left;">
+UB-655
+</td>
+<td style="text-align:left;">
+15:02:51
+</td>
+<td style="text-align:right;">
+660025
+</td>
+<td style="text-align:right;">
+6036894
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+189
+</td>
+<td style="text-align:left;">
+UB-656 to 659
+</td>
+<td style="text-align:left;">
+15:03:12
+</td>
+<td style="text-align:right;">
+659727
+</td>
+<td style="text-align:right;">
+6036905
+</td>
+<td style="text-align:left;">
+Beaver dam
+</td>
+<td style="text-align:left;">
+Beaver
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+190
+</td>
+<td style="text-align:left;">
+UB-660 to 662
+</td>
+<td style="text-align:left;">
+15:03:34
+</td>
+<td style="text-align:right;">
+659600
+</td>
+<td style="text-align:right;">
+6036720
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+191
+</td>
+<td style="text-align:left;">
+UB-663
+</td>
+<td style="text-align:left;">
+15:04:04
+</td>
+<td style="text-align:right;">
+659158
+</td>
+<td style="text-align:right;">
+6036486
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+192
+</td>
+<td style="text-align:left;">
+UB-664 to 667
+</td>
+<td style="text-align:left;">
+15:04:16
+</td>
+<td style="text-align:right;">
+658950
+</td>
+<td style="text-align:right;">
+6036296
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+193
+</td>
+<td style="text-align:left;">
+UB-668
+</td>
+<td style="text-align:left;">
+15:04:59
+</td>
+<td style="text-align:right;">
+658767
+</td>
+<td style="text-align:right;">
+6036267
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+194
+</td>
+<td style="text-align:left;">
+UB-669 to 671
+</td>
+<td style="text-align:left;">
+15:05:12
+</td>
+<td style="text-align:right;">
+658629
+</td>
+<td style="text-align:right;">
+6036169
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+195
+</td>
+<td style="text-align:left;">
+UB-672
+</td>
+<td style="text-align:left;">
+15:05:53
+</td>
+<td style="text-align:right;">
+658302
+</td>
+<td style="text-align:right;">
+6035960
+</td>
+<td style="text-align:left;">
+field to river/new felling
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+196
+</td>
+<td style="text-align:left;">
+UB-673
+</td>
+<td style="text-align:left;">
+15:06:18
+</td>
+<td style="text-align:right;">
+658300
+</td>
+<td style="text-align:right;">
+6035785
+</td>
+<td style="text-align:left;">
+Bridge crossing
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+198
+</td>
+<td style="text-align:left;">
+UB-675 to 677
+</td>
+<td style="text-align:left;">
+15:08:06
+</td>
+<td style="text-align:right;">
+656590
+</td>
+<td style="text-align:right;">
+6035193
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+199
+</td>
+<td style="text-align:left;">
+UB-678 to 683
+</td>
+<td style="text-align:left;">
+15:08:50
+</td>
+<td style="text-align:right;">
+656233
+</td>
+<td style="text-align:right;">
+6034772
+</td>
+<td style="text-align:left;">
+Rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:left;">
+UB-684 to 687
+</td>
+<td style="text-align:left;">
+15:09:29
+</td>
+<td style="text-align:right;">
+655751
+</td>
+<td style="text-align:right;">
+6034399
+</td>
+<td style="text-align:left;">
+Log jam/rail impediment
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+201
+</td>
+<td style="text-align:left;">
+UB-688
+</td>
+<td style="text-align:left;">
+15:10:26
+</td>
+<td style="text-align:right;">
+655269
+</td>
+<td style="text-align:right;">
+6033756
+</td>
+<td style="text-align:left;">
+Log jam
+</td>
+<td style="text-align:left;">
+Log jam
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+202
+</td>
+<td style="text-align:left;">
+UB-689
+</td>
+<td style="text-align:left;">
+15:10:55
+</td>
+<td style="text-align:right;">
+655385
+</td>
+<td style="text-align:right;">
+6033514
+</td>
+<td style="text-align:left;">
+Log jam
+</td>
+<td style="text-align:left;">
+Log jam
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+203
+</td>
+<td style="text-align:left;">
+UB-690 to 692
+</td>
+<td style="text-align:left;">
+15:12:26
+</td>
+<td style="text-align:right;">
+654578
+</td>
+<td style="text-align:right;">
+6032198
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+204
+</td>
+<td style="text-align:left;">
+UB-693 to 694
+</td>
+<td style="text-align:left;">
+15:12:46
+</td>
+<td style="text-align:right;">
+654145
+</td>
+<td style="text-align:right;">
+6032016
+</td>
+<td style="text-align:left;">
+field to river
+</td>
+<td style="text-align:left;">
+Agriculture
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+205
+</td>
+<td style="text-align:left;">
+UB-695 to 698
+</td>
+<td style="text-align:left;">
+15:13:08
+</td>
+<td style="text-align:right;">
+653873
+</td>
+<td style="text-align:right;">
+6031629
+</td>
+<td style="text-align:left;">
+cows to river/salmon/road impediment
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+206
+</td>
+<td style="text-align:left;">
+UB-699 to 704
+</td>
+<td style="text-align:left;">
+15:13:29
+</td>
+<td style="text-align:right;">
+653536
+</td>
+<td style="text-align:right;">
+6031438
+</td>
+<td style="text-align:left;">
+bridge, road impediment
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+207
+</td>
+<td style="text-align:left;">
+UB-705 to 706
+</td>
+<td style="text-align:left;">
+15:14:10
+</td>
+<td style="text-align:right;">
+653033
+</td>
+<td style="text-align:right;">
+6031247
+</td>
+<td style="text-align:left;">
+Houston bridge
+</td>
+<td style="text-align:left;">
+Stream Crossing
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+208
+</td>
+<td style="text-align:left;">
+UB-707 to 708
+</td>
+<td style="text-align:left;">
+15:14:47
+</td>
+<td style="text-align:right;">
+652529
+</td>
+<td style="text-align:right;">
+6031048
+</td>
+<td style="text-align:left;">
+Houston rip-rap
+</td>
+<td style="text-align:left;">
+Rip-rap
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+209
+</td>
+<td style="text-align:left;">
+UB-709 to 712
+</td>
+<td style="text-align:left;">
+15:15:32
+</td>
+<td style="text-align:right;">
+651559
+</td>
+<td style="text-align:right;">
+6030710
+</td>
+<td style="text-align:left;">
+Houston rip-rap
+</td>
+<td style="text-align:left;">
+Rip-rap
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+210
+</td>
+<td style="text-align:left;">
+UB-713 to 715
+</td>
+<td style="text-align:left;">
+15:15:58
+</td>
+<td style="text-align:right;">
+651100
+</td>
+<td style="text-align:right;">
+6030372
+</td>
+<td style="text-align:left;">
+Houston settling ponds
+</td>
+<td style="text-align:left;">
+Other
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+211
+</td>
+<td style="text-align:left;">
+UB-716
+</td>
+<td style="text-align:left;">
+15:16:14
+</td>
+<td style="text-align:right;">
+651063
+</td>
+<td style="text-align:right;">
+6030024
+</td>
+<td style="text-align:left;">
+Westland rip-rap
+</td>
+<td style="text-align:left;">
+Rip-rap
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+212
+</td>
+<td style="text-align:left;">
+UB-717 to 719
+</td>
+<td style="text-align:left;">
+15:16:47
+</td>
+<td style="text-align:right;">
+650701
+</td>
+<td style="text-align:right;">
+6029641
+</td>
+<td style="text-align:left;">
+rail rip-rap
+</td>
+<td style="text-align:left;">
+Railway
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="ncfdc1998midbulkleydetailed---mid-bulkley-detailed-fish-habitatriparianchannel-assessment-for-watershed-restoration" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> <span class="citation">NCFDC (1998)</span> - Mid-Bulkley Detailed Fish Habitat/Riparian/Channel Assessment for Watershed Restoration<a href="results.html#ncfdc1998midbulkleydetailed---mid-bulkley-detailed-fish-habitatriparianchannel-assessment-for-watershed-restoration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="citation">NCFDC (1998)</span> utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Summarized details of this prioritization work and prescription locations and details extracted from the pdf and included in the <code>ncfdc_1998_prescriptions.csv</code> file located and viewable <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions.csv">here</a>. A summary of prioritization for sub-basins in the region are included in Table <a href="results.html#tab:tab-ncfdc-1998-priority">4.4</a> with detailed prioritization information in Table <a href="results.html#tab:tab-ncfdc-1998-pres">4.6</a> and details of individual prescriptions presented in Table <a href="results.html#tab:tab-ncfdc-1998-priority-detailed">4.5</a> and stored <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/inputs_extracted/ncfdc_1998_prescriptions.csv">here</a>. The prescription dataset has also been converted to a spatial file and added to the <code>restoration_wedzin_kwa</code> shared GIS project through the <code>sites_restoration.gpkg</code> file (layer name - <code>ncfdc_1998_prescriptions</code>).</p>
+<p><br></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="results.html#cb44-1" tabindex="-1"></a>ncfdc_1998_71a <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="results.html#cb44-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.&quot;</span>,</span>
+<span id="cb44-3"><a href="results.html#cb44-3" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:tab-ncfdc-1998-priority">Table 4.4: </span>Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.
 </caption>
 <thead>
 <tr>
@@ -1194,17 +5366,1528 @@ Bulkley
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="results.html#cb43-1" tabindex="-1"></a>ncfdc_1998 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb43-2"><a href="results.html#cb43-2" tabindex="-1"></a>  <span class="st">&quot;data/ncfdc_1998_prescriptions_hand_bomb.csv&quot;</span></span>
-<span id="cb43-3"><a href="results.html#cb43-3" tabindex="-1"></a>) </span>
-<span id="cb43-4"><a href="results.html#cb43-4" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="results.html#cb43-5" tabindex="-1"></a>ncfdc_1998 <span class="sc">%&gt;%</span> </span>
-<span id="cb43-6"><a href="results.html#cb43-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sub_basin<span class="sc">:</span>technical_references) <span class="sc">%&gt;%</span> </span>
-<span id="cb43-7"><a href="results.html#cb43-7" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="results.html#cb45-1" tabindex="-1"></a><span class="co"># read in from the path using row 4 as teh header</span></span>
+<span id="cb45-2"><a href="results.html#cb45-2" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="results.html#cb45-3" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;~/Library/CloudStorage/OneDrive-Personal/Projects/2024-069-ow-wedzin-kwa-restoration/data/ncfdc_1998/Mid Bulkley Detailed FHAP_CAP_RAP/Appendix/AppH.xls&quot;</span></span>
+<span id="cb45-4"><a href="results.html#cb45-4" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="results.html#cb45-5" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="results.html#cb45-6" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="results.html#cb45-7" tabindex="-1"></a>path_file <span class="ot">&lt;-</span> <span class="st">&quot;data/inputs_extracted/ncfdc_1998_73_app_h.csv&quot;</span></span>
+<span id="cb45-8"><a href="results.html#cb45-8" tabindex="-1"></a></span>
+<span id="cb45-9"><a href="results.html#cb45-9" tabindex="-1"></a><span class="co"># read in the data, clean and burn to csv</span></span>
+<span id="cb45-10"><a href="results.html#cb45-10" tabindex="-1"></a>readxl<span class="sc">::</span><span class="fu">read_excel</span>(path, <span class="at">skip =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb45-11"><a href="results.html#cb45-11" tabindex="-1"></a>  <span class="co"># fill down for System and Sub-basin columns</span></span>
+<span id="cb45-12"><a href="results.html#cb45-12" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">fill</span>(System, <span class="st">`</span><span class="at">Sub-Basin</span><span class="st">`</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb45-13"><a href="results.html#cb45-13" tabindex="-1"></a>  <span class="co"># save as csv to data/inputs_extracted/ncfdc_1998_73_app_h.csv</span></span>
+<span id="cb45-14"><a href="results.html#cb45-14" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(path_file)</span></code></pre></div>
+<p><br></p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="results.html#cb46-1" tabindex="-1"></a><span class="co"># read the file back in and present as table</span></span>
+<span id="cb46-2"><a href="results.html#cb46-2" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="results.html#cb46-3" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Table 73 from digital Appendix H of the NCFDC (1998) report (not included in pdf). Decision matrix to prioritize resches for restoration based on watershed position, fisheries value, synergistic (downstream impact) value, the nature of impacts&quot;</span></span>
+<span id="cb46-4"><a href="results.html#cb46-4" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="results.html#cb46-5" tabindex="-1"></a>path_file <span class="ot">&lt;-</span> <span class="st">&quot;data/inputs_extracted/ncfdc_1998_73_app_h.csv&quot;</span></span>
+<span id="cb46-6"><a href="results.html#cb46-6" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="results.html#cb46-7" tabindex="-1"></a></span>
+<span id="cb46-8"><a href="results.html#cb46-8" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(path_file) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-9"><a href="results.html#cb46-9" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> my_caption)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-ncfdc-1998-pres">Table 4.4: </span>Summary of NCFDC (1998) prescriptions for the Neexdzii Kwah area.
+<span id="tab:tab-ncfdc-1998-priority-detailed">Table 4.5: </span>Table 73 from digital Appendix H of the NCFDC (1998) report (not included in pdf). Decision matrix to prioritize resches for restoration based on watershed position, fisheries value, synergistic (downstream impact) value, the nature of impacts
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+System
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Sub-Basin
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Reach
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Position
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Weight…5
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Fish Value
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Weight…7
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Synergistic Value
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Weight…9
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Land-Use Problems
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Physical Problems
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Biological Problems
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Comments
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Current State
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Weight…15
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Ownership
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Weight…17
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Total Weight
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Priority
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Richfield
+</td>
+<td style="text-align:left;">
+Richfield
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Poorly installed culverts, channelizing, compacted floodplain soils, lost riparian and floodplain function through complete or partial removal of key features
+</td>
+<td style="text-align:left;">
+Aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of complexity
+</td>
+<td style="text-align:left;">
+Stressful to lethal summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure
+</td>
+<td style="text-align:left;">
+Poorly functioning
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Richfield
+</td>
+<td style="text-align:left;">
+Richfield
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Alteration of riparian forest, grazing in floodplain and upslope areas.
+</td>
+<td style="text-align:left;">
+Slope instability, minor loss of understory riparian vegetation
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure
+</td>
+<td style="text-align:left;">
+Functioning
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Byman
+</td>
+<td style="text-align:left;">
+Byman
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Diversions, channelizing, compacted floodplain soils, lost riparian and floodplain function through complete or partial removal of key features
+</td>
+<td style="text-align:left;">
+Slope instability and sediment delivery, aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of habitat complexity
+</td>
+<td style="text-align:left;">
+Stressful to lethal summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+McQuarrie
+</td>
+<td style="text-align:left;">
+McQuarrie
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Channelizing, compacted floodplain soils, lost riparian and floodplain function through complete or partial removal of key features
+</td>
+<td style="text-align:left;">
+Slope instability and sediment delivery, aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of habitat complexity
+</td>
+<td style="text-align:left;">
+Stressful to lethal summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure
+</td>
+<td style="text-align:left;">
+Poorly functioning
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+McQuarrie
+</td>
+<td style="text-align:left;">
+McQuarrie
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Mid-Elevation
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Poorly installed culvert, upslope road delivering sediments to channel and altering surface/groundwater flows
+</td>
+<td style="text-align:left;">
+Aggradation, surface and matrix sediment infiltration of substrate
+</td>
+<td style="text-align:left;">
+Damage to spawning and rearing habitat due to sediment infiltration of substrate matrix, possible upstream barrier at FSR culvert
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Crown
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Poorly installed culverts, compacted floodplain soils, lost riparian and floodplain functions through complete or partial removal of key features
+</td>
+<td style="text-align:left;">
+Aggradation causing braiding and subsurface flow problems, bank erosion, high temperatures, surface and matrix sediment infiltration of substrate, poor pool frequency, poor LWD function, loss of habitat complexity
+</td>
+<td style="text-align:left;">
+Stressful to lethal summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat, no presence of species historically present in reach.
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure, upstream impacts dominantly responsible for problems in this reach
+</td>
+<td style="text-align:left;">
+Poorly functioning
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Diversions, poorly installed culverts, compacted floodplain soils, lost riparian and floodplain functions through complete or partial removal of key features, upslope land-use, road runoff and fill-slope erosion
+</td>
+<td style="text-align:left;">
+Slope instability and sediment delivery, aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of habitat complexity
+</td>
+<td style="text-align:left;">
+Stressful summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat, no upstream access through FSR culvert
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private/ Crown
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Aitken
+</td>
+<td style="text-align:left;">
+Aitken
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Past agriculture and forestry, isolated areas of soil compaction and riparian modification due to low intensity cattle grazing
+</td>
+<td style="text-align:left;">
+Aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of habitat complexity
+</td>
+<td style="text-align:left;">
+Stressful summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure both from this reach and upstream
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Aitken
+</td>
+<td style="text-align:left;">
+Aitken
+</td>
+<td style="text-align:left;">
+3A
+</td>
+<td style="text-align:left;">
+Mid-Elevation
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Logging to streambanks, on floodplain, and in upslope areas, roads in riparian zone, water diversions and withdrawls, upstream land-use, lost riparian and floodplain functions through complete or partial removal of key features
+</td>
+<td style="text-align:left;">
+Aggradation, bank erosion, lateral instability, surface and matrix sediments infiltrating substrate, slope instability, low stream shading
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat in isolated areas
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure from upstream
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Diversion and channelizing, compaction of floodplain soils, drainage simplification, water withdrawls, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems
+</td>
+<td style="text-align:left;">
+Aggradation, bank erosion, surface and matrix sediments infiltrating substrate, poor pool frequency, poor LWD function, loss of complexity, altered hydrology
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat, very low densities of some species reported to be historically abundant
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure from upstream land-use, upstream impacts are escalating all impacts in this reach
+</td>
+<td style="text-align:left;">
+Poorly functioning
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Private/ Municipal
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Compacted floodplain soils, lost riparian and floodplain function through complete or partial removal of key features, upstream land-use problems related to hydrology and sediment delivery
+</td>
+<td style="text-align:left;">
+Aggradation, bank erosion, surface and matrix sediments infiltrating substrate, poor pool frequency, poor LWD function, loss of complexity, altered hydrology, loss of log jams at geomorphic notch points
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat, very low densities of some species reported to be historically abundant
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure, upstream impacts are escalating all impacts in this reach
+</td>
+<td style="text-align:left;">
+Poorly functioning
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Mid-Elevation
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Channelizing, isolated areas of compacted floodplain soils and altered riparian forest, roads in the upslope and riparian zone, upstream land-use problems related to hydrology and sediment delivery
+</td>
+<td style="text-align:left;">
+Aggradation, bank erosion, surface and matrix sediments infiltrating substrate, poor LWD function, loss of complexity, altered hydrology, loss of log jams at geomorphic notch points downstream
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Upstream impacts are dominantly responsible for impacts in this reach
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+Mid-Elevation
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:right;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:right;">
+–
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+Mid-Elevation
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Compaction of floodplain soils, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems, road in the riparian zone altering drainage and delivering sediment
+</td>
+<td style="text-align:left;">
+Low pool frequency, lack of functional LWD and extensive riparian disturbance (poor stream shading, temporal gap in LWD recruitment, bank stability) related to the Swiss Fire
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Sediment delivery from tributaries in the Swiss Fire area must also be considered.
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private/ Crown
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+Headwater
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Road in riparian zone at many points altering drainage and delivering sediment to channel, lost riparian and floodplain functions through complete or partial removal of key features in isolated areas, upstream land-use problems related to cumulative altered basin hydrology
+</td>
+<td style="text-align:left;">
+Aggradation, bank erosion, avulsions, surface and matrix sediments infiltrating substrate, altered hydrology
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Perched and undersized culvert and harvested riparian zone below FSR crossing on unnamed tributary at upper end of reach causing major channel disturbance and sediment delivery donwstream.
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Crown
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Klo
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Headwater
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Upstream land-use problems related to altered hydrology and sediment delivery
+</td>
+<td style="text-align:left;">
+Extreme channel disturbance, abundant surface sediments and embedded substrate affecting spawning habitat, loss of log jams at geomorphic control points and their sediment storage function, and a low habitat complexity
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Upstreamland-use is dominantly responsible for impacts in this reach
+</td>
+<td style="text-align:left;">
+Poorly functioning
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Crown
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Klo
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Headwater
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Logging and logging roads in upslope areas, upstream land-use problems related to altered hydrology and sediment delivery
+</td>
+<td style="text-align:left;">
+Channel disturbance, abundant surface sediments and embedded substrate affecting spawning habitat, loss of log jams at geomorphic control points and their sediment storage function, and a low habitat complexity and pool frequency
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Upstream land-use is dominantly responsible for impacts in this reach
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Crown
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Dungate
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Compacted floodplain soils, lost riparian and floodplain function through complete or partial removal of key features, possible upstream land-use problems related to sediment delivery
+</td>
+<td style="text-align:left;">
+Avulsion, multiple channels, abundant surface sediments and embedded susbtrate affecting spawning habitat, aggradation in lower 250 metres. Poor LWD function and pool frequency in upper 650 metres.
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure
+</td>
+<td style="text-align:left;">
+Poorly functioning
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Dungate
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Alteration of riparian forest, grazing in floodplain and upslope areas. Possible upstream land-use problems related to sediment delivery.
+</td>
+<td style="text-align:left;">
+Sediment wedges and poor pool frequency likely related to upstream sediment delivery
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure
+</td>
+<td style="text-align:left;">
+Functioning
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulkley River
+</td>
+<td style="text-align:left;">
+Bulkley River
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Mainstem
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Diversion and channelizing, compaction of floodplain soils, drainage simplification, water withdrawls, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems related to hydrology and sediment delivery, upslope roads altering surface and groundwater drainage
+</td>
+<td style="text-align:left;">
+Slope instability, aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of complexity
+</td>
+<td style="text-align:left;">
+Stressful summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure and municipal sewage inputs from upstream
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulkley River
+</td>
+<td style="text-align:left;">
+Bulkley River
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Mainstem
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Diversion and channelizing, compaction of floodplain soils, drainage simplification in the vicinity of Houston, water withdrawls, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems related to hydrology and sediment delivery
+</td>
+<td style="text-align:left;">
+Aggradation, bank erosion, spawning gravel smothering, substrate embedding and loss of microhabitat for juvenile fish and certain invertebrate species, high sediment load and possibly altered runoff regime on channel pattern and geometry due to upstream land-use impacts
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure inputs upstream and in the reach
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bulkley River
+</td>
+<td style="text-align:left;">
+Bulkley River
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Mainstem
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Diversion and channelizing, compaction of floodplain soils, water withdrawls, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems related to hydrology and sediment delivery
+</td>
+<td style="text-align:left;">
+Aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of complexity
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure inputs upstream and in the reach
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Emerson
+</td>
+<td style="text-align:left;">
+Emerson
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Channelizing, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems related to sediment delivery, upslope road altering surface and groundwater drainage patterns
+</td>
+<td style="text-align:left;">
+Aggradation, bank erosion, surface and matrix sediments, and poor pool frequency, poor LWD function, loss of complexity within and below channelized section.
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Upstream sediment input related to a large debis flow in reach 3. Very high value bull trout stream for adult recruitment to the Mid-Bulkley
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private/ Crown
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Dockrill
+</td>
+<td style="text-align:left;">
+Dockrill
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Channelizing, , diversions, removal of key riparian and floodplain features by forest harvesting
+</td>
+<td style="text-align:left;">
+Bank erosion and lateral movement
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+High sediment load due to glacier in headwaters, very low temperatures and high gradient/water velocities
+</td>
+<td style="text-align:left;">
+Functioning
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Private/ Crown
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Low
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><br></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="results.html#cb47-1" tabindex="-1"></a>ncfdc_1998 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb47-2"><a href="results.html#cb47-2" tabindex="-1"></a>  <span class="st">&quot;data/ncfdc_1998_prescriptions_hand_bomb.csv&quot;</span></span>
+<span id="cb47-3"><a href="results.html#cb47-3" tabindex="-1"></a>) </span>
+<span id="cb47-4"><a href="results.html#cb47-4" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="results.html#cb47-5" tabindex="-1"></a>ncfdc_1998 <span class="sc">%&gt;%</span> </span>
+<span id="cb47-6"><a href="results.html#cb47-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sub_basin<span class="sc">:</span>technical_references) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-7"><a href="results.html#cb47-7" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.&quot;</span>)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:tab-ncfdc-1998-pres">Table 4.6: </span>Summary of NCFDC (1998) prescriptions for the Neexdzii Kwah area.
 </caption>
 <thead>
 <tr>
@@ -2686,78 +8369,78 @@ To stabilize and revegetate the slopes by altering drainage patterns from theroa
 </div>
 <div id="parameter-ranking-to-select-future-restoration-sites-1" class="section level3 hasAnchor" number="4.3.5">
 <h3><span class="header-section-number">4.3.5</span> Parameter Ranking to Select Future Restoration Sites<a href="results.html#parameter-ranking-to-select-future-restoration-sites-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the <code>restoration_site_priority_parameters.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv">here</a> is included in Table <a href="results.html#tab:tab-gis-params">4.5</a>.</p>
+<p>A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the <code>restoration_site_priority_parameters.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv">here</a> is included in Table <a href="results.html#tab:tab-gis-params">4.7</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="results.html#cb44-1" tabindex="-1"></a><span class="co"># load the data</span></span>
-<span id="cb44-2"><a href="results.html#cb44-2" tabindex="-1"></a>gis_params_raw_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb44-3"><a href="results.html#cb44-3" tabindex="-1"></a>  <span class="st">&quot;data/inputs_raw/restoration_site_priority_parameters_raw.csv&quot;</span></span>
-<span id="cb44-4"><a href="results.html#cb44-4" tabindex="-1"></a>) </span>
-<span id="cb44-5"><a href="results.html#cb44-5" tabindex="-1"></a></span>
-<span id="cb44-6"><a href="results.html#cb44-6" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="results.html#cb44-7" tabindex="-1"></a>gis_params_raw_to_update <span class="ot">&lt;-</span> gis_params_raw_all <span class="sc">%&gt;%</span> </span>
-<span id="cb44-8"><a href="results.html#cb44-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(source_schema_table) <span class="sc">&amp;</span> </span>
-<span id="cb44-9"><a href="results.html#cb44-9" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">is.na</span>(source_column_name) <span class="sc">&amp;</span></span>
-<span id="cb44-10"><a href="results.html#cb44-10" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-11"><a href="results.html#cb44-11" tabindex="-1"></a>  <span class="co"># we know that whse_forest_tenure.ften_range_poly_carto_vw is problematic so lets remove</span></span>
-<span id="cb44-12"><a href="results.html#cb44-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>))</span>
-<span id="cb44-13"><a href="results.html#cb44-13" tabindex="-1"></a></span>
-<span id="cb44-14"><a href="results.html#cb44-14" tabindex="-1"></a></span>
-<span id="cb44-15"><a href="results.html#cb44-15" tabindex="-1"></a><span class="co"># grab the details about the source_schema_table as source_schema_table_details and then the </span></span>
-<span id="cb44-16"><a href="results.html#cb44-16" tabindex="-1"></a><span class="co"># source_column_name as source_column_name_details</span></span>
-<span id="cb44-17"><a href="results.html#cb44-17" tabindex="-1"></a>gis_param_details_prep_schtab <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
-<span id="cb44-18"><a href="results.html#cb44-18" tabindex="-1"></a>  </span>
-<span id="cb44-19"><a href="results.html#cb44-19" tabindex="-1"></a>  gis_params_raw_to_update,</span>
-<span id="cb44-20"><a href="results.html#cb44-20" tabindex="-1"></a>  </span>
-<span id="cb44-21"><a href="results.html#cb44-21" tabindex="-1"></a>  rfp<span class="sc">::</span><span class="fu">rfp_meta_bcd_xref</span>(),</span>
-<span id="cb44-22"><a href="results.html#cb44-22" tabindex="-1"></a>  </span>
-<span id="cb44-23"><a href="results.html#cb44-23" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>)</span>
-<span id="cb44-24"><a href="results.html#cb44-24" tabindex="-1"></a>)</span>
-<span id="cb44-25"><a href="results.html#cb44-25" tabindex="-1"></a>  </span>
-<span id="cb44-26"><a href="results.html#cb44-26" tabindex="-1"></a></span>
-<span id="cb44-27"><a href="results.html#cb44-27" tabindex="-1"></a><span class="co"># grab the column details</span></span>
-<span id="cb44-28"><a href="results.html#cb44-28" tabindex="-1"></a>params_cols_des <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2_df</span>(gis_param_details_prep_schtab<span class="sc">$</span>source_schema_table, gis_param_details_prep_schtab<span class="sc">$</span>source_column_name, rfp<span class="sc">::</span>rfp_meta_bcd_xref_col_comments)</span>
-<span id="cb44-29"><a href="results.html#cb44-29" tabindex="-1"></a></span>
-<span id="cb44-30"><a href="results.html#cb44-30" tabindex="-1"></a><span class="co"># left_join the column details to the gis_param_details_prep_schtab</span></span>
-<span id="cb44-31"><a href="results.html#cb44-31" tabindex="-1"></a>gis_param_details_prep <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
-<span id="cb44-32"><a href="results.html#cb44-32" tabindex="-1"></a>  gis_param_details_prep_schtab,</span>
-<span id="cb44-33"><a href="results.html#cb44-33" tabindex="-1"></a>  params_cols_des,</span>
-<span id="cb44-34"><a href="results.html#cb44-34" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>, <span class="st">&quot;source_column_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;col_name&quot;</span>)</span>
-<span id="cb44-35"><a href="results.html#cb44-35" tabindex="-1"></a>)</span>
-<span id="cb44-36"><a href="results.html#cb44-36" tabindex="-1"></a></span>
-<span id="cb44-37"><a href="results.html#cb44-37" tabindex="-1"></a><span class="co"># need to add back all the layers filtered out above - this should not be repeated but will do for now</span></span>
-<span id="cb44-38"><a href="results.html#cb44-38" tabindex="-1"></a>gis_params_raw_all_updated <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb44-39"><a href="results.html#cb44-39" tabindex="-1"></a>  gis_params_raw_all <span class="sc">%&gt;%</span> </span>
-<span id="cb44-40"><a href="results.html#cb44-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">is.na</span>(source_schema_table) <span class="sc">|</span> </span>
-<span id="cb44-41"><a href="results.html#cb44-41" tabindex="-1"></a>                    <span class="fu">is.na</span>(source_column_name) <span class="sc">|</span></span>
-<span id="cb44-42"><a href="results.html#cb44-42" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">|</span></span>
-<span id="cb44-43"><a href="results.html#cb44-43" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>)),</span>
-<span id="cb44-44"><a href="results.html#cb44-44" tabindex="-1"></a>  gis_param_details_prep</span>
-<span id="cb44-45"><a href="results.html#cb44-45" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-46"><a href="results.html#cb44-46" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">url_browser =</span> <span class="fu">case_when</span>(</span>
-<span id="cb44-47"><a href="results.html#cb44-47" tabindex="-1"></a>    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">~</span> <span class="st">&quot;https://smnorris.github.io/bcfishpass/06_data_dictionary.html&quot;</span>,</span>
-<span id="cb44-48"><a href="results.html#cb44-48" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> url_browser)</span>
-<span id="cb44-49"><a href="results.html#cb44-49" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-50"><a href="results.html#cb44-50" tabindex="-1"></a>  <span class="fu">arrange</span>(source_schema_table, source_column_name, column_name_raw)</span>
-<span id="cb44-51"><a href="results.html#cb44-51" tabindex="-1"></a></span>
-<span id="cb44-52"><a href="results.html#cb44-52" tabindex="-1"></a><span class="co"># this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag</span></span>
-<span id="cb44-53"><a href="results.html#cb44-53" tabindex="-1"></a>gis_params_raw_all_updated <span class="sc">%&gt;%</span> </span>
-<span id="cb44-54"><a href="results.html#cb44-54" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="results.html#cb45-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb45-2"><a href="results.html#cb45-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb45-3"><a href="results.html#cb45-3" tabindex="-1"></a>    source_schema_table, </span>
-<span id="cb45-4"><a href="results.html#cb45-4" tabindex="-1"></a>                source_column_name,</span>
-<span id="cb45-5"><a href="results.html#cb45-5" tabindex="-1"></a>    column_name_raw,</span>
-<span id="cb45-6"><a href="results.html#cb45-6" tabindex="-1"></a>    user_input,</span>
-<span id="cb45-7"><a href="results.html#cb45-7" tabindex="-1"></a>    url_browser,</span>
-<span id="cb45-8"><a href="results.html#cb45-8" tabindex="-1"></a>    <span class="co"># description_table = description,</span></span>
-<span id="cb45-9"><a href="results.html#cb45-9" tabindex="-1"></a>    col_comments</span>
-<span id="cb45-10"><a href="results.html#cb45-10" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb45-11"><a href="results.html#cb45-11" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;GIS parameters used to rank future restoration sites.&quot;</span>,</span>
-<span id="cb45-12"><a href="results.html#cb45-12" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="results.html#cb48-1" tabindex="-1"></a><span class="co"># load the data</span></span>
+<span id="cb48-2"><a href="results.html#cb48-2" tabindex="-1"></a>gis_params_raw_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb48-3"><a href="results.html#cb48-3" tabindex="-1"></a>  <span class="st">&quot;data/inputs_raw/restoration_site_priority_parameters_raw.csv&quot;</span></span>
+<span id="cb48-4"><a href="results.html#cb48-4" tabindex="-1"></a>) </span>
+<span id="cb48-5"><a href="results.html#cb48-5" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="results.html#cb48-6" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="results.html#cb48-7" tabindex="-1"></a>gis_params_raw_to_update <span class="ot">&lt;-</span> gis_params_raw_all <span class="sc">%&gt;%</span> </span>
+<span id="cb48-8"><a href="results.html#cb48-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(source_schema_table) <span class="sc">&amp;</span> </span>
+<span id="cb48-9"><a href="results.html#cb48-9" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">is.na</span>(source_column_name) <span class="sc">&amp;</span></span>
+<span id="cb48-10"><a href="results.html#cb48-10" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-11"><a href="results.html#cb48-11" tabindex="-1"></a>  <span class="co"># we know that whse_forest_tenure.ften_range_poly_carto_vw is problematic so lets remove</span></span>
+<span id="cb48-12"><a href="results.html#cb48-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>))</span>
+<span id="cb48-13"><a href="results.html#cb48-13" tabindex="-1"></a></span>
+<span id="cb48-14"><a href="results.html#cb48-14" tabindex="-1"></a></span>
+<span id="cb48-15"><a href="results.html#cb48-15" tabindex="-1"></a><span class="co"># grab the details about the source_schema_table as source_schema_table_details and then the </span></span>
+<span id="cb48-16"><a href="results.html#cb48-16" tabindex="-1"></a><span class="co"># source_column_name as source_column_name_details</span></span>
+<span id="cb48-17"><a href="results.html#cb48-17" tabindex="-1"></a>gis_param_details_prep_schtab <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb48-18"><a href="results.html#cb48-18" tabindex="-1"></a>  </span>
+<span id="cb48-19"><a href="results.html#cb48-19" tabindex="-1"></a>  gis_params_raw_to_update,</span>
+<span id="cb48-20"><a href="results.html#cb48-20" tabindex="-1"></a>  </span>
+<span id="cb48-21"><a href="results.html#cb48-21" tabindex="-1"></a>  rfp<span class="sc">::</span><span class="fu">rfp_meta_bcd_xref</span>(),</span>
+<span id="cb48-22"><a href="results.html#cb48-22" tabindex="-1"></a>  </span>
+<span id="cb48-23"><a href="results.html#cb48-23" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>)</span>
+<span id="cb48-24"><a href="results.html#cb48-24" tabindex="-1"></a>)</span>
+<span id="cb48-25"><a href="results.html#cb48-25" tabindex="-1"></a>  </span>
+<span id="cb48-26"><a href="results.html#cb48-26" tabindex="-1"></a></span>
+<span id="cb48-27"><a href="results.html#cb48-27" tabindex="-1"></a><span class="co"># grab the column details</span></span>
+<span id="cb48-28"><a href="results.html#cb48-28" tabindex="-1"></a>params_cols_des <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2_df</span>(gis_param_details_prep_schtab<span class="sc">$</span>source_schema_table, gis_param_details_prep_schtab<span class="sc">$</span>source_column_name, rfp<span class="sc">::</span>rfp_meta_bcd_xref_col_comments)</span>
+<span id="cb48-29"><a href="results.html#cb48-29" tabindex="-1"></a></span>
+<span id="cb48-30"><a href="results.html#cb48-30" tabindex="-1"></a><span class="co"># left_join the column details to the gis_param_details_prep_schtab</span></span>
+<span id="cb48-31"><a href="results.html#cb48-31" tabindex="-1"></a>gis_param_details_prep <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb48-32"><a href="results.html#cb48-32" tabindex="-1"></a>  gis_param_details_prep_schtab,</span>
+<span id="cb48-33"><a href="results.html#cb48-33" tabindex="-1"></a>  params_cols_des,</span>
+<span id="cb48-34"><a href="results.html#cb48-34" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>, <span class="st">&quot;source_column_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;col_name&quot;</span>)</span>
+<span id="cb48-35"><a href="results.html#cb48-35" tabindex="-1"></a>)</span>
+<span id="cb48-36"><a href="results.html#cb48-36" tabindex="-1"></a></span>
+<span id="cb48-37"><a href="results.html#cb48-37" tabindex="-1"></a><span class="co"># need to add back all the layers filtered out above - this should not be repeated but will do for now</span></span>
+<span id="cb48-38"><a href="results.html#cb48-38" tabindex="-1"></a>gis_params_raw_all_updated <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb48-39"><a href="results.html#cb48-39" tabindex="-1"></a>  gis_params_raw_all <span class="sc">%&gt;%</span> </span>
+<span id="cb48-40"><a href="results.html#cb48-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">is.na</span>(source_schema_table) <span class="sc">|</span> </span>
+<span id="cb48-41"><a href="results.html#cb48-41" tabindex="-1"></a>                    <span class="fu">is.na</span>(source_column_name) <span class="sc">|</span></span>
+<span id="cb48-42"><a href="results.html#cb48-42" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">|</span></span>
+<span id="cb48-43"><a href="results.html#cb48-43" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>)),</span>
+<span id="cb48-44"><a href="results.html#cb48-44" tabindex="-1"></a>  gis_param_details_prep</span>
+<span id="cb48-45"><a href="results.html#cb48-45" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-46"><a href="results.html#cb48-46" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">url_browser =</span> <span class="fu">case_when</span>(</span>
+<span id="cb48-47"><a href="results.html#cb48-47" tabindex="-1"></a>    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">~</span> <span class="st">&quot;https://smnorris.github.io/bcfishpass/06_data_dictionary.html&quot;</span>,</span>
+<span id="cb48-48"><a href="results.html#cb48-48" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> url_browser)</span>
+<span id="cb48-49"><a href="results.html#cb48-49" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-50"><a href="results.html#cb48-50" tabindex="-1"></a>  <span class="fu">arrange</span>(source_schema_table, source_column_name, column_name_raw)</span>
+<span id="cb48-51"><a href="results.html#cb48-51" tabindex="-1"></a></span>
+<span id="cb48-52"><a href="results.html#cb48-52" tabindex="-1"></a><span class="co"># this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag</span></span>
+<span id="cb48-53"><a href="results.html#cb48-53" tabindex="-1"></a>gis_params_raw_all_updated <span class="sc">%&gt;%</span> </span>
+<span id="cb48-54"><a href="results.html#cb48-54" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="results.html#cb49-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb49-2"><a href="results.html#cb49-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb49-3"><a href="results.html#cb49-3" tabindex="-1"></a>    source_schema_table, </span>
+<span id="cb49-4"><a href="results.html#cb49-4" tabindex="-1"></a>                source_column_name,</span>
+<span id="cb49-5"><a href="results.html#cb49-5" tabindex="-1"></a>    column_name_raw,</span>
+<span id="cb49-6"><a href="results.html#cb49-6" tabindex="-1"></a>    user_input,</span>
+<span id="cb49-7"><a href="results.html#cb49-7" tabindex="-1"></a>    url_browser,</span>
+<span id="cb49-8"><a href="results.html#cb49-8" tabindex="-1"></a>    <span class="co"># description_table = description,</span></span>
+<span id="cb49-9"><a href="results.html#cb49-9" tabindex="-1"></a>    col_comments</span>
+<span id="cb49-10"><a href="results.html#cb49-10" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb49-11"><a href="results.html#cb49-11" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;GIS parameters used to rank future restoration sites.&quot;</span>,</span>
+<span id="cb49-12"><a href="results.html#cb49-12" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-gis-params">Table 4.5: </span>GIS parameters used to rank future restoration sites.
+<span id="tab:tab-gis-params">Table 4.7: </span>GIS parameters used to rank future restoration sites.
 </caption>
 <thead>
 <tr>

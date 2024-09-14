@@ -16,7 +16,9 @@ tab:kable-resources
 tab:tab-memos
 tab:tab-rfp-tracking
 tab:tab-sites-restoration-gpkg-tracking
+tab:tab-price-2014-waypoints
 tab:tab-ncfdc-1998-priority
+tab:tab-ncfdc-1998-priority-detailed
 tab:tab-ncfdc-1998-pres
 tab:tab-gis-params
 introduction
@@ -48,7 +50,7 @@ issue-and-discussion-tracking
 tables-and-figures
 data-sourceing-from-skeena-salmon-data-centre
 documentation-of-workflows
-past-restoration-initiative-identification
+historic-information-regarding-impacts-and-restoration-initiatives
 future-restoration-site-selection
 fish-passage
 local-knowledge-for-riparian-area-and-erosion-protection-site-selection
@@ -58,8 +60,9 @@ parameter-ranking-to-select-future-restoration-sites
 results
 collaborative-gis-environment-1
 methodology
-past-restoration-initiative-identification-1
-works-in-progress
+historic-information-regarding-impacts-and-restoration-initiatives-1
+price2014upperbulkleya---upper-bulkley-floodplain-habitat-modifications-physical-barriers-and-sites-of-potential-importance-to-salmonids
+ncfdc1998midbulkleydetailed---mid-bulkley-detailed-fish-habitatriparianchannel-assessment-for-watershed-restoration
 future-restoration-site-selection-1
 fish-passage-1
 local-knowledge-for-riparian-area-and-erosion-protection-site-selection-1
