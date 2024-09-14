@@ -1,0 +1,176 @@
+Number,Photo Series,Time,Easting,Northing,Notes,Theme
+34,UB-1 to 5,12:17:24,651142,6029782,Helicopter hanger,Other
+35,UB-6,12:17:35,651145,6029783,Above hanger,Other
+36,UB-7 to 11,13:13:51,655753,6034037,Upstream floodplain,Floodplain
+37,UB-12 to 25,13:14:15,656263,6034756,Floodplain/railway,Floodplain
+38,UB-26 to 40,13:14:36,656802,6035246,Disconnected floodplain,Floodplain
+39,UB-41 to 56,13:16:07,659412,6036188,Riparian loss - Field to river,Agriculture
+40,UB-57 to 58,13:16:43,660202,6036794,Forest removal - slash piles,Forestry
+41,UB-59 to 64,13:17:16,660839,6037624,Disconnected floodplain,Floodplain
+42,UB-65 to 74,13:17:51,661597,6038300,Cattle farm,Agriculture
+43,UB-75 to 81,13:19:00,662959,6039601,Hay field,Agriculture
+44,UB-82 to 88,13:19:37,662892,6040706,Floodplain loss to Hwy/rail,Floodplain
+45,UB-89 to 91,13:20:36,663515,6042344,Backchannel cutoff,Other
+46,UB-92 to 93,13:21:19,664256,6043397,Hay field,Agriculture
+47,UB-94 to 103,13:22:29,666027,6043735,Hay field,Agriculture
+48,UB-104 to 106,13:23:10,667123,6043706,Floodplain loss to rail,Floodplain
+49,UB-107,13:24:06,668607,6043932,Rail impediment at Oxbows,Railway
+50,UB-107,13:24:52,669825,6044009,Rail crossing,Stream Crossing
+51,UB-108,13:25:17,670482,6043704,Floodplain loss to rail,Floodplain
+52,UB-109 to 120,13:26:15,672259,6043155,"Backchannel cutoff by rail, field to river",Railway
+53,UB-121,13:27:10,674085,6042903,Topley rail crossing,Stream Crossing
+54,UB-122 to 132,13:27:43,674810,6042145,Field to river,Agriculture
+55,UB-133 to 142,13:28:26,675972,6042137,Floodplain loss to rail,Floodplain
+56,UB-143 to 144,13:28:54,676499,6041543,Floodplain loss to rail,Floodplain
+57,UB-145 to 153,13:29:34,677448,6040835,Floodplain loss to rail,Floodplain
+58,UB-154 to 164,13:30:40,677958,6038866,New rail double track,Railway
+59,UB-165 to 169,13:31:51,679597,6037220,Rail crossing,Stream Crossing
+60,UB-170 to 174,13:32:21,680465,6036862,Hay fields,Agriculture
+61,UB-175,13:33:21,681046,6035306,Clearcut,Forestry
+62,UB-176 to 182,13:34:12,680961,6033872,Intact section,Other
+63,UB-183 to 194,13:34:47,681638,6032905,Forestdale road,Forestry
+64,UB-195 to 199,13:35:40,683201,6032161,Straumbold farm downstream,Other
+65,UB-200 to 211,13:37:05,685413,6030472,Bulkley Lake outlet,Other
+66,UB-212 to 223,13:38:29,686021,6029364,Hay field to maxan,Agriculture
+67,UB-224 to 227,13:40:26,683888,6026908,maxan cutblock,Forestry
+68,UB-228 to 231,13:41:16,683875,6025320,maxan cutblock,Forestry
+70,UB-233,13:42:53,686279,6024057,road crossing,Stream Crossing
+71,UB-234 to 236,13:44:41,687177,6023224,Maxan lake,Other
+72,UB-237 to 241,13:45:09,686813,6022650,Foxy creek cutblock,Forestry
+73,UB-242 to 245,13:47:37,686860,6022124,Foxy creek cutblock,Forestry
+74,UB-239 to 256,13:48:44,686992,6023133,foxy/maxan confluence,Other
+75,UB-257,13:49:59,686614,6023770,road crossing,Stream Crossing
+76,UB-258,13:50:32,686210,6024130,hay field to creek,Agriculture
+77,UB-259 to 261,13:51:59,685466,6024649,maxan beaver dam,Beaver
+78,UB-262 to 264,13:53:09,685237,6024844,field to river-log jam,Agriculture
+79,UB-265 to 270,13:54:18,684348,6024997,Beaver dam,Beaver
+80,UB-271 to 274,13:56:04,683932,6026032,beaver dam/breach,Beaver
+81,UB-275 to 282,13:57:42,683762,6026942,land slide,Other
+82,UB-283 to 285,13:59:09,683917,6027487,hay field / jam,Agriculture
+83,UB-286 to 290,13:59:45,684190,6027906,Beaver activity,Beaver
+84,UB-291 to 299,14:00:19,684354,6028189,Hay field,Agriculture
+85,UB-300 to 304,14:01:09,684890,6028667,Beaver activity,Beaver
+86,UB-305 to 307,14:01:28,685106,6028665,Beaver dam,Beaver
+87,UB-308 to 314,14:02:05,685428,6028712,Beaver dam,Beaver
+88,UB-315 to 321,14:02:27,685549,6028826,derelict bridge,Stream Crossing
+89,UB-322 to 324,14:03:09,685814,6029114,Beaver dam,Beaver
+90,UB-325 to 327,14:03:35,685789,6029396,Hay field to maxan,Agriculture
+91,UB-328 to 334,14:03:53,686037,6029429,Hay field to maxan,Agriculture
+92,UB-335 to 338,14:04:27,686479,6029579,Maxan Lake outlet,Other
+93,UB-339 to 341,14:05:35,686187,6030211,Bulkley Lake outlet,Other
+94,UB-342 to 356,14:06:06,685785,6030439,Strombould's rail/road crossings,Stream Crossing
+95,UB-357 to 362,14:06:37,685310,6030510,rip-rap,Rip-rap
+96,UB-363 to 365,14:07:18,685110,6030621,Field to river,Agriculture
+97,UB-366 to 369,14:07:47,684926,6031060,rip-rap,Rip-rap
+98,UB-370 to 372,14:08:57,684495,6031282,Field to river,Agriculture
+99,UB-373 to 383,14:09:47,684008,6031695,Beaver dam/field to river,Agriculture
+100,UB-384 to 388,14:10:33,683685,6032076,bridge/hay field,Stream Crossing
+101,UB-389 to 395,14:11:22,683002,6032245,rail bridge,Stream Crossing
+102,UB-396 to 402,14:12:12,682505,6032418,Rail impediment,Railway
+103,UB-403 to 405,14:12:57,682091,6032534,bridge crossing,Stream Crossing
+104,UB-406 to 410,14:13:36,681888,6032762,bridge crossing,Stream Crossing
+105,UB-411 to 412,14:14:31,681419,6033019,beaver dam,Beaver
+106,UB-413 to 415,14:15:02,681137,6033505,beaver dam,Beaver
+107,UB-416,14:15:19,681166,6033765,beaver dam,Beaver
+108,UB-417,14:16:11,680743,6034552,beaver dam,Beaver
+109,UB-418,14:16:37,680933,6034871,beaver dam,Beaver
+110,UB-419 to 424,14:17:26,681055,6035312,beaver dam/rail bridge,Stream Crossing
+111,UB-425,14:18:15,681362,6035812,Hayfield/power line,Agriculture
+113,UB-428 to 430,14:19:08,680861,6036661,hay field to creek,Agriculture
+114,UB-431 to 434,14:19:51,680310,6037029,bridge,Stream Crossing
+115,UB-435 to 440,14:20:20,679974,6037284,beaver dam,Beaver
+116,UB-441 to 444,14:20:49,679961,6037252,bridge and new track,Stream Crossing
+117,UB-445,14:21:22,679540,6037279,Beaver dam,Beaver
+118,UB-446 to 448,14:21:51,679148,6037507,Beaver dam/rail to river,Railway
+119,UB-449 to 453,14:22:17,679010,6037815,Beaver dam,Beaver
+120,UB-454 to 455,14:22:39,678774,6038004,Beaver dam,Beaver
+121,UB-456 to 459,14:23:20,678295,6038283,Bulkley falls,Other
+122,UB-460 to 462,14:24:01,678222,6038509,Beaver dam,Beaver
+123,UB-463 to 464,14:24:19,678184,6038767,Log jam,Log jam
+124,UB-465 to 466,14:24:37,678104,6039025,Beaver dam,Beaver
+125,UB-467,14:25:23,677952,6039499,Hay field,Agriculture
+126,UB-468 to 471,14:25:44,677719,6039669,Beaver dam/Spawners,Spawning
+127,UB-472,14:26:26,677666,6039852,Beaver dam,Beaver
+128,UB-473 to 475,14:26:38,677550,6039878,Beaver dam,Beaver
+129,UB-476 to 479,14:27:09,677763,6040152,Rail crossing,Stream Crossing
+130,UB-480 to 486,14:27:39,677719,6040526,rip-rap/beaver dam,Beaver
+131,UB-487 to 488,14:28:17,677614,6040916,field to river,Agriculture
+132,UB-489 to 492,14:28:33,677292,6040997,Rail crossing,Stream Crossing
+133,UB-493,14:29:02,676911,6041236,beaver dam,Beaver
+134,UB-494 to 496,14:29:13,676801,6041386,rip-rap/beaver dam,Beaver
+135,UB-497 to 501,14:29:40,676547,6041728,rail to river,Railway
+136,UB-502 to 507,14:30:04,676358,6042030,rail to river,Railway
+137,UB-508 to 509,14:30:43,675666,6041986,Spawning salmon,Spawning
+138,UB-510 to 511,14:31:12,675177,6042050,field to river/spawners,Spawning
+139,UB-512,14:31:35,674850,6042113,cattle farm to river,Agriculture
+140,UB-513 to 515,14:32:10,674572,6042590,field to river,Agriculture
+141,UB-516 to 522,14:32:21,674492,6042716,Topley crossing,Stream Crossing
+142,UB-523,14:33:36,673931,6043020,rail to river,Railway
+143,UB-524 to 526,14:33:48,673672,6043081,field to river,Agriculture
+144,UB-527 to 532b,14:34:13,673142,6043205,Rail impediment,Railway
+145,UB-533 to 534,14:35:18,671960,6043267,ploughed field to river,Agriculture
+146,UB-535 to 536,14:36:48,672014,6043155,Richfield confluence,Other
+147,UB-537 to 538,14:37:06,672098,6043368,rail bridge/richfield,Stream Crossing
+148,UB 539,14:37:27,672217,6043636,Homested on river bank,Other
+149,UB-539a,14:37:43,672332,6043861,Richfield village,Other
+150,UB-540 to 545,14:38:01,672459,6044122,Culvert on Richfield creek,Stream Crossing
+151,UB-546 to 548,14:40:55,670206,6043943,rail bridge,Stream Crossing
+152,UB-549 to 555,14:41:20,670218,6044233,Johnny-David confluence/field to river,Agriculture
+153,UB-556 to 558,14:42:01,670260,6044784,Johnny_David Hwy culvert,Stream Crossing
+154,UB-559 to 561,14:43:22,669614,6044178,Log jam on Bulkley,Log jam
+156,UB-564 to 566,14:44:09,668935,6043858,rip-rap and rail impediment,Railway
+157,UB-567 to 568,14:44:38,668718,6044141,field to river,Agriculture
+158,UB-569 to 570,14:45:13,668132,6044225,field to river,Agriculture
+159,UB-571 to 576,14:45:35,667876,6044164,rail bridge/spawners,Spawning
+160,UB-577 to 580,14:46:02,667599,6043901,rail to river,Railway
+161,UB-581 to 584,14:46:46,666827,6043710,field to river,Agriculture
+162,UB-585 to 586,14:47:04,666637,6044012,field to river,Agriculture
+163,UB-587 to 588,14:47:58,665701,6043914,Byman Ck rail bridge,Stream Crossing
+164,,14:48:29,665847,6044090,Byman Ck Hwy bridge?,Stream Crossing
+165,UB-589 to 595,14:49:12,666717,6044190,Byman Ck Hwy culvert,Stream Crossing
+166,,14:50:41,665631,6043933,Perow Ck?,Other
+167,UB-596 to 597,14:50:56,665378,6043809,Byman/Perow Ck confluence,Other
+168,UB-598 to 600,14:51:14,665013,6043738,field to river,Agriculture
+169,UB-601 to 608,14:51:49,664394,6043652,McQuarrie Ck rail bridge,Stream Crossing
+170,UB-609 to 610,14:52:45,663942,6043256,Rail impediment,Railway
+171,UB-611 to 612,14:53:44,663396,6042264,Rail impediment,Railway
+172,UB-613 to 616,14:54:40,662962,6041236,Rail impediment,Railway
+173,UB-617 to 623,14:55:17,662763,6040601,field to river,Agriculture
+174,UB-624 to 625,14:55:41,662902,6040258,Log jam,Log jam
+175,UB-626 to 627,14:56:10,663203,6039849,field to river,Agriculture
+176,UB-628 to 630,14:56:39,662888,6039572,cattle on river bank,Agriculture
+177,UB-631,14:57:27,662554,6038924,field to river,Agriculture
+178,UB-632,14:58:08,661935,6038530,field to river,Agriculture
+179,UB-633,14:58:24,661750,6038638,field to river,Agriculture
+180,UB-634 to 639,14:59:00,661181,6038563,Rail impediment,Railway
+181,UB-640 to 642,14:59:26,661220,6038243,field to river,Agriculture
+182,UB-643 to 645 [UB-645b],15:00:28,661095,6037670,field to river,Agriculture
+183,UB-646 to 649,15:00:46,660929,6037901,Rail impediment,Railway
+184,,15:01:16,660629,6037716,Rail impediment,Railway
+185,UB-650 to 651,15:01:28,660804,6037542,field to river,Agriculture
+186,UB-652 to 653,15:02:22,660186,6037094,field to river/new felling,Agriculture
+187,UB-654,15:02:38,659934,6037048,Log jam,Log jam
+188,UB-655,15:02:51,660025,6036894,field to river,Agriculture
+189,UB-656 to 659,15:03:12,659727,6036905,Beaver dam,Beaver
+190,UB-660 to 662,15:03:34,659600,6036720,Rail impediment,Railway
+191,UB-663,15:04:04,659158,6036486,Rail impediment,Railway
+192,UB-664 to 667,15:04:16,658950,6036296,field to river,Agriculture
+193,UB-668,15:04:59,658767,6036267,Rail impediment,Railway
+194,UB-669 to 671,15:05:12,658629,6036169,Rail impediment,Railway
+195,UB-672,15:05:53,658302,6035960,field to river/new felling,Agriculture
+196,UB-673,15:06:18,658300,6035785,Bridge crossing,Stream Crossing
+198,UB-675 to 677,15:08:06,656590,6035193,Rail impediment,Railway
+199,UB-678 to 683,15:08:50,656233,6034772,Rail impediment,Railway
+200,UB-684 to 687,15:09:29,655751,6034399,Log jam/rail impediment,Railway
+201,UB-688,15:10:26,655269,6033756,Log jam,Log jam
+202,UB-689,15:10:55,655385,6033514,Log jam,Log jam
+203,UB-690 to 692,15:12:26,654578,6032198,field to river,Agriculture
+204,UB-693 to 694,15:12:46,654145,6032016,field to river,Agriculture
+205,UB-695 to 698,15:13:08,653873,6031629,cows to river/salmon/road impediment,Other
+206,UB-699 to 704,15:13:29,653536,6031438,"bridge, road impediment",Stream Crossing
+207,UB-705 to 706,15:14:10,653033,6031247,Houston bridge,Stream Crossing
+208,UB-707 to 708,15:14:47,652529,6031048,Houston rip-rap,Rip-rap
+209,UB-709 to 712,15:15:32,651559,6030710,Houston rip-rap,Rip-rap
+210,UB-713 to 715,15:15:58,651100,6030372,Houston settling ponds,Other
+211,UB-716,15:16:14,651063,6030024,Westland rip-rap,Rip-rap
+212,UB-717 to 719,15:16:47,650701,6029641,rail rip-rap,Railway

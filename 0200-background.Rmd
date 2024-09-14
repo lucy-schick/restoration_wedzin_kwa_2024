@@ -42,7 +42,7 @@ knitr::include_graphics("fig/hydrology_stats_08EE003.png")
 
 Buck Creek is a 5th order stream which enters Neexdzii Kwah just upstream of the Wedzin Kwa / Neexdzii Kwah (Morice/Bulkley) confluence adjacent to Houston.  The watershed drains an area of `r fwapgr::fwa_watershed_at_measure(360886221) %>% mutate(area_km2 = round(area_ha/100, 1)) %>% pull(area_km2)` km^2^. Buck Creek is one of the main tributaries to the Neexdzii Kwah and has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08EE013")$LTMAD,1)` m^3^/s at station 08EE013 located near the Houston Medical Centre approximately 1 km upstream of the mouth [@westcott2022UpperBulkley]. Flows from Buck Creek account for just under 1/3 of the total flows in Neexdzii Kwah. The hydrograph for Buck Creek shows a similar pattern to Neexdzii Kwah with peak flows in May - June (Figures \@ref(fig:hydrograph2) and \@ref(fig:hydrology-stats2)).
 
-```{r, hydrograph-create-02, eval=TRUE}
+```{r, hydrograph-create-02, eval=F}
 lfpr_create_hydrograph("08EE013")
 ```
 
@@ -160,6 +160,7 @@ Traditional fishing areas located within the Neexdzii Kwah as documented by @wil
 
 
 ```{r hist-sites-extract, eval=FALSE}
+# amazingly tabulizer is now not working with the new version of R.  We use tabulapdf now! (see Price 2014 extraction)
 # Extract historical fishing sites
 path <- "/Users/airvine/zotero/storage/8SUN8SYA/Wilson and Rabnett - 2007 - Fish Passage Assessment of.pdf"
 
@@ -204,7 +205,7 @@ readr::read_csv('data/trad_fish_sites_wilson_rabnett2007FishPassage.csv') %>%
 #### Salmon Stock Assessment Data
 
 Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
-through the [Open Government Portal](https://open.canada.ca/en) with results presented in Table \@ref(tab-dfo-sad-tr-neexdzii). A brief memo on the data extraction process is available in the [memos directory](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos).
+through the [Open Government Portal](https://open.canada.ca/en) with results presented in Table \@ref(tab:tab-dfo-sad-tr-neexdzii). A brief memo on the data extraction process is available in the [memos directory](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos).
 
 
 ```{r tab-dfo-sad-tr-neexdzii}
@@ -272,7 +273,7 @@ Detailed reviews of Morice River watershed fisheries can be found in @bustardCon
 #### Salmon Stock Assessment Data
 
 Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6)
-through the [Open Government Portal](https://open.canada.ca/en) with results presented in Table \@ref(tab-dfo-sad-tr-morice). A brief memo on the data extraction process is available in the [memos directory](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos).
+through the [Open Government Portal](https://open.canada.ca/en) with results presented in Table \@ref(tab:tab-dfo-sad-tr-morice). A brief memo on the data extraction process is available in the [memos directory](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos).
 
 ```{r tab-dfo-sad-tr-morice}
 
@@ -317,7 +318,7 @@ Fish species recorded in the greater Bulkley River and Morice River watershed gr
 <!-- `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("<br><br><br><br>")` -->
 
 ```{r fiss-species-table}
-fiss_species_table <- readr::read_csv('data/extracted_inputs/fiss_species_table.csv')
+fiss_species_table <- readr::read_csv('data/inputs_extracted/fiss_species_table.csv')
 
 fiss_species_table %>% 
   fpr::fpr_kable(caption_text = 'Fish species recorded in the Bulkley River and Morice River watershed groups.', 

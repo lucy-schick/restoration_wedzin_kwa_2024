@@ -46,7 +46,7 @@ rfp_tracking_prep %>%
 
 ```
 
-## Past Restoration Initiative Identification
+## Historic Information Regarding Impacts and Restoration Initiatives
 
 Information amalgamated from past restoration initiatives has been added to the `restoration_wedzin_kwa` project in spatial formats through the `sites_restoration.gpkg` with details of source document locations, geometry type, description of the source document amalgamated, etc. documented in the `sites_restoration_gpkg_tracking.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/sites_restoration_gpkg_tracking.csv) with results presented in Table \@ref(tab:tab-sites-restoration-gpkg-tracking).  
 
@@ -60,8 +60,132 @@ readr::read_csv(
 
 <br>
 
-### Works in Progress
-@ncfdc1998MidBulkleyDetailed utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Unfortunately, the digital deliverables could not be recovered.  Their work persists in pdf format however with summarized details of  their prioritization work and prescription locations and details extracted from the pdf and included in the `ncfdc_1998_prescriptions.csv` file located and viewable [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions.csv).  The prioritization table for sub-basins in the region are included in Table \@ref(tab:tab-ncfdc-1998-priority) with details of individual prescriptions presented in Table \@ref(tab:tab-ncfdc-1998-pres). Next steps for this dataset include conversion of the csv to a spatial file and added to the `restoration_wedzin_kwa` project through the `sites_restoration.gpkg`.
+### @price2014UpperBulkleya - Upper Bulkley floodplain habitat: modifications, physical barriers, and sites of  potential importance to salmonids
+
+@price2014UpperBulkleya documented human-induced modifications to floodplain habitat and river channelization, investigated potential barriers to fish migration, and assessed areas of upwelling groundwater in the Upper Bulkley mainstem having potential importance to salmonids.  The coordinates of points of interest were extracted from a pdf version of the report and are included in the `price_2014_waypoints.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/inputs_extracted/price_2014_waypoints.csv) and were added to the `sites_restoration.gpkg` (layer name = price_2014). Individual waypoint information is also presented in Table \@ref(tab:tab-price-2014-waypoints).
+
+
+
+```{r extract-price2014, eval = F}
+path <- "/Users/airvine/zotero/storage/7JCL42Y3/price_2014_upper_bulkley_floodplain_habitat_-_modifications,_physical_barriers,_and_sites.pdf"
+
+# name our csv we are creating
+path_file <- "data/inputs_extracted/price_2014_waypoints.csv"
+
+# define page to extract table
+page <- 32
+
+
+# #if you wanted to define the area to extract would run with this the first time
+# tabulapdf::locate_areas(path, pages = page)
+
+
+# to get.... 
+# tab_area = list(c(151.17224,  87.13111, 715.14139,604.27249 ))
+# but....looks like it will guess correct with no help so let's do that
+tabulapdf::extract_tables(path,
+                                  pages = page,
+                                  # method = "lattice",
+                                  # output = c("tibble"),
+                                  # guess = FALSE,
+                                  # area = tab_area
+                                  ) |> 
+  purrr::pluck(1) |> 
+  # need to make the first row be the names due to muti-line header
+  janitor::row_to_names(1) |> 
+  # now let's burn it to a csv so we can correct the types
+  readr::write_csv(path_file)
+
+# read it back in to get the types right
+tab1 <- readr::read_csv(path_file)
+
+# now let's define the rest of the pages to extract from
+page <- 33:36
+
+
+# build a function to pull them all out at the same time 
+extract_tables_multi <- function(page){
+  tabulapdf::extract_tables(path,
+                                  pages = page,
+                                  ) |> 
+  purrr::pluck(1) |> 
+    # use the names from the header table
+  purrr::set_names(nm = names(tab1))
+}
+
+# run our function 
+tabs_extra <- page |> 
+  purrr::map_df(
+    extract_tables_multi
+  )
+
+# join our og table to our multi-page output but fix a type 
+tab <- dplyr::bind_rows(
+  tab1 |> dplyr::mutate(number = as.numeric(number)),
+  tabs_extra 
+) |> 
+  # clean the names for the report
+  purrr::set_names(nm = stringr::str_to_title(names(tab1))) |> 
+  # add a theme
+dplyr::mutate(Theme = dplyr::case_when(
+  stringr::str_detect(Notes, stringr::regex("spawning|Spawners", ignore_case = TRUE)) ~ "Spawning",
+  stringr::str_detect(Notes, stringr::regex("culvert|bridge|crossing", ignore_case = TRUE)) ~ "Stream Crossing",
+    stringr::str_detect(Notes, stringr::regex("richfield", ignore_case = TRUE)) ~ "Other", 
+    stringr::str_detect(Notes, stringr::regex("floodplain", ignore_case = TRUE)) ~ "Floodplain",
+    stringr::str_detect(Notes, stringr::regex("rail", ignore_case = TRUE)) ~ "Railway",
+    stringr::str_detect(Notes, stringr::regex("field|cattle", ignore_case = TRUE)) ~ "Agriculture",
+    stringr::str_detect(Notes, stringr::regex("beaver", ignore_case = TRUE)) ~ "Beaver",
+    stringr::str_detect(Notes, stringr::regex("forest|clearcut|cutblock", ignore_case = TRUE)) ~ "Forestry",
+    stringr::str_detect(Notes, stringr::regex("rip-rap", ignore_case = TRUE)) ~ "Rip-rap",
+    stringr::str_detect(Notes, stringr::regex("Log jam", ignore_case = TRUE)) ~ "Log jam",
+    
+    TRUE ~ "Other" # Default to Other if no other conditions are met
+  )) |> 
+
+  #there is an issue at row 182... so fix by appending UB-643 to 645 [UB- to the beginning of the photo series column
+  dplyr::mutate(`Photo Series` = dplyr::case_when(
+    Number == 182 ~ paste0("UB-643 to 645 [UB-", `Photo Series`),
+    TRUE ~ `Photo Series`
+  )) |> 
+  # remove rows without a Number
+  dplyr::filter(!is.na(Number)) 
+
+# burn over our csv so we can put as table in report
+tab |> 
+  readr::write_csv(path_file, na = '')
+
+# create a spatial file and save to the shared project
+tab |> 
+  janitor::clean_names() |> 
+  # convert the time to character to preserve as gpkg won't accept
+    dplyr::mutate(time = as.character(time)) |>
+  dplyr::filter(!is.na(easting)) |>
+    sf::st_as_sf(coords = c("easting", "northing"), crs = 26909) |>
+    sf::st_transform(3005) |>
+  # put time after number and put notes as last column
+  dplyr::select(number, time, theme, everything()) |>
+  
+    sf::st_write(
+      dsn = "~/Projects/gis/restoration_wedzin_kwa/sites_restoration.gpkg",
+      layer = 'price_2014',
+      delete_layer = TRUE
+    )
+
+
+```
+
+```{r tab-price-2014-waypoints}
+# read in the price 2014 data
+price_2014 <- read_csv("data/inputs_extracted/price_2014_waypoints.csv")
+
+# present as table
+price_2014 %>% 
+  fpr::fpr_kable(caption_text = "Summary of Price (2014) waypoints for the Upper Bulkley floodplain including locations of river channelization, potential barriers to fish migration, and assessed areas of upwelling groundwater having potential importance to salmonids.")
+```
+
+### @ncfdc1998MidBulkleyDetailed - Mid-Bulkley Detailed Fish Habitat/Riparian/Channel Assessment for Watershed Restoration
+
+@ncfdc1998MidBulkleyDetailed utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Summarized details of this prioritization work and prescription locations and details extracted from the pdf and included in the `ncfdc_1998_prescriptions.csv` file located and viewable [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions.csv).  A summary of prioritization for sub-basins in the region are included in Table \@ref(tab:tab-ncfdc-1998-priority) with detailed prioritization information in Table \@ref(tab:tab-ncfdc-1998-pres) and details of individual prescriptions presented in Table \@ref(tab:tab-ncfdc-1998-priority-detailed) and stored [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/inputs_extracted/ncfdc_1998_prescriptions.csv). The prescription dataset has also been converted to a spatial file and added to the `restoration_wedzin_kwa` shared GIS project through the `sites_restoration.gpkg` file (layer name - `ncfdc_1998_prescriptions`).
 
 <br>
 
@@ -75,6 +199,39 @@ ncfdc_1998_71a %>%
 
 <br>
 
+```{r tab-ncfdc-1998-priority-detailed-prep, eval = F}
+# read in from the path using row 4 as teh header
+
+path <- "~/Library/CloudStorage/OneDrive-Personal/Projects/2024-069-ow-wedzin-kwa-restoration/data/ncfdc_1998/Mid Bulkley Detailed FHAP_CAP_RAP/Appendix/AppH.xls"
+
+
+
+path_file <- "data/inputs_extracted/ncfdc_1998_73_app_h.csv"
+
+# read in the data, clean and burn to csv
+readxl::read_excel(path, skip = 3) |> 
+  # fill down for System and Sub-basin columns
+  tidyr::fill(System, `Sub-Basin`) |> 
+  # save as csv to data/inputs_extracted/ncfdc_1998_73_app_h.csv
+  readr::write_csv(path_file)
+
+```
+<br>
+
+```{r tab-ncfdc-1998-priority-detailed}
+# read the file back in and present as table
+
+my_caption <- "Table 73 from digital Appendix H of the NCFDC (1998) report (not included in pdf). Decision matrix to prioritize resches for restoration based on watershed position, fisheries value, synergistic (downstream impact) value, the nature of impacts"
+
+path_file <- "data/inputs_extracted/ncfdc_1998_73_app_h.csv"
+
+
+readr::read_csv(path_file) %>% 
+  fpr::fpr_kable(caption_text = my_caption)
+
+```
+<br>
+
 ```{r tab-ncfdc-1998-pres}
 ncfdc_1998 <- readr::read_csv(
   "data/ncfdc_1998_prescriptions_hand_bomb.csv"
@@ -84,6 +241,7 @@ ncfdc_1998 %>%
   dplyr::select(sub_basin:technical_references) %>% 
   fpr::fpr_kable(caption_text = "Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.")
 ```
+
 
 ## Future Restoration Site Selection
 
