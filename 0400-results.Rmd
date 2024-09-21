@@ -218,15 +218,19 @@ readxl::read_excel(path, skip = 3) |>
 ```
 <br>
 
-```{r tab-ncfdc-1998-priority-detailed}
+```{r tab-ncfdc-1998-priority-detailed, results="asis", echo=FALSE}
 # read the file back in and present as table
 
-my_caption <- "Table 73 from digital Appendix H of the NCFDC (1998) report (not included in pdf). Decision matrix to prioritize resches for restoration based on watershed position, fisheries value, synergistic (downstream impact) value, the nature of impacts"
+my_caption <- "Table 73 from digital Appendix H of the NCFDC (1998) report (not included in pdf). Decision matrix to prioritize resches for restoration based on watershed position, fisheries value, synergistic (downstream impact) value, the nature of impacts (sorted descending by total weight)"
 
 path_file <- "data/inputs_extracted/ncfdc_1998_73_app_h.csv"
 
+# my_tab_caption()
 
-readr::read_csv(path_file) %>% 
+
+readr::read_csv(path_file) |> 
+  dplyr::arrange(desc(`Total Weight`)) |>
+  # my_dt_table(page_length = 5)
   fpr::fpr_kable(caption_text = my_caption)
 
 ```
