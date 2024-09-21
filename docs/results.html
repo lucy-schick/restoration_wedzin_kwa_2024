@@ -221,7 +221,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>5</b> Recommendations</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="report-change-log.html"><a href="report-change-log.html"><i class="fa fa-check"></i>Report Change Log</a></li>
+<li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024" target="blank">Scripts and Data</a></li>
@@ -5381,19 +5381,10 @@ Bulkley
 <span id="cb45-13"><a href="results.html#cb45-13" tabindex="-1"></a>  <span class="co"># save as csv to data/inputs_extracted/ncfdc_1998_73_app_h.csv</span></span>
 <span id="cb45-14"><a href="results.html#cb45-14" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(path_file)</span></code></pre></div>
 <p><br></p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="results.html#cb46-1" tabindex="-1"></a><span class="co"># read the file back in and present as table</span></span>
-<span id="cb46-2"><a href="results.html#cb46-2" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="results.html#cb46-3" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Table 73 from digital Appendix H of the NCFDC (1998) report (not included in pdf). Decision matrix to prioritize resches for restoration based on watershed position, fisheries value, synergistic (downstream impact) value, the nature of impacts&quot;</span></span>
-<span id="cb46-4"><a href="results.html#cb46-4" tabindex="-1"></a></span>
-<span id="cb46-5"><a href="results.html#cb46-5" tabindex="-1"></a>path_file <span class="ot">&lt;-</span> <span class="st">&quot;data/inputs_extracted/ncfdc_1998_73_app_h.csv&quot;</span></span>
-<span id="cb46-6"><a href="results.html#cb46-6" tabindex="-1"></a></span>
-<span id="cb46-7"><a href="results.html#cb46-7" tabindex="-1"></a></span>
-<span id="cb46-8"><a href="results.html#cb46-8" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(path_file) <span class="sc">%&gt;%</span> </span>
-<span id="cb46-9"><a href="results.html#cb46-9" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> my_caption)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-ncfdc-1998-priority-detailed">Table 4.5: </span>Table 73 from digital Appendix H of the NCFDC (1998) report (not included in pdf). Decision matrix to prioritize resches for restoration based on watershed position, fisheries value, synergistic (downstream impact) value, the nature of impacts
+<span id="tab:tab-ncfdc-1998-priority-detailed">Table 4.5: </span>Table 73 from digital Appendix H of the NCFDC (1998) report (not included in pdf). Decision matrix to prioritize resches for restoration based on watershed position, fisheries value, synergistic (downstream impact) value, the nature of impacts (sorted descending by total weight)
 </caption>
 <thead>
 <tr>
@@ -5459,137 +5450,25 @@ Priority
 <tbody>
 <tr>
 <td style="text-align:left;">
-Richfield
+Buck
 </td>
 <td style="text-align:left;">
-Richfield
+Buck
 </td>
 <td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-Fan
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Very high
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-High
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Poorly installed culverts, channelizing, compacted floodplain soils, lost riparian and floodplain function through complete or partial removal of key features
-</td>
-<td style="text-align:left;">
-Aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of complexity
-</td>
-<td style="text-align:left;">
-Stressful to lethal summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat
-</td>
-<td style="text-align:left;">
-Eutrophication and BOD problems related to cattle manure
-</td>
-<td style="text-align:left;">
-Poorly functioning
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Private
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
 11
 </td>
 <td style="text-align:left;">
-High
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Richfield
-</td>
-<td style="text-align:left;">
-Richfield
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-Fan
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-High
+Headwater
 </td>
 <td style="text-align:right;">
 3
-</td>
-<td style="text-align:left;">
-High
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Alteration of riparian forest, grazing in floodplain and upslope areas.
-</td>
-<td style="text-align:left;">
-Slope instability, minor loss of understory riparian vegetation
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Eutrophication and BOD problems related to cattle manure
-</td>
-<td style="text-align:left;">
-Functioning
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Private
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-9
 </td>
 <td style="text-align:left;">
 Moderate
 </td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Byman
-</td>
-<td style="text-align:left;">
-Byman
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-Fan
-</td>
 <td style="text-align:right;">
-1
+2
 </td>
 <td style="text-align:left;">
 Very High
@@ -5598,22 +5477,16 @@ Very High
 4
 </td>
 <td style="text-align:left;">
-High
-</td>
-<td style="text-align:right;">
-3
+Road in riparian zone at many points altering drainage and delivering sediment to channel, lost riparian and floodplain functions through complete or partial removal of key features in isolated areas, upstream land-use problems related to cumulative altered basin hydrology
 </td>
 <td style="text-align:left;">
-Diversions, channelizing, compacted floodplain soils, lost riparian and floodplain function through complete or partial removal of key features
+Aggradation, bank erosion, avulsions, surface and matrix sediments infiltrating substrate, altered hydrology
 </td>
 <td style="text-align:left;">
-Slope instability and sediment delivery, aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of habitat complexity
+–
 </td>
 <td style="text-align:left;">
-Stressful to lethal summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat
-</td>
-<td style="text-align:left;">
-Eutrophication and BOD problems related to cattle manure
+Perched and undersized culvert and harvested riparian zone below FSR crossing on unnamed tributary at upper end of reach causing major channel disturbance and sediment delivery donwstream.
 </td>
 <td style="text-align:left;">
 Functioning-at-risk
@@ -5622,33 +5495,39 @@ Functioning-at-risk
 3
 </td>
 <td style="text-align:left;">
-Private
+Crown
 </td>
 <td style="text-align:right;">
-1
+3
 </td>
 <td style="text-align:right;">
-12
+15
 </td>
 <td style="text-align:left;">
-High
+Very High
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-McQuarrie
+Buck
 </td>
 <td style="text-align:left;">
-McQuarrie
+Klo
 </td>
 <td style="text-align:left;">
-1
+2
 </td>
 <td style="text-align:left;">
-Fan
+Headwater
 </td>
 <td style="text-align:right;">
-1
+3
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+<td style="text-align:right;">
+2
 </td>
 <td style="text-align:left;">
 Very High
@@ -5657,40 +5536,34 @@ Very High
 4
 </td>
 <td style="text-align:left;">
-High
+Logging and logging roads in upslope areas, upstream land-use problems related to altered hydrology and sediment delivery
+</td>
+<td style="text-align:left;">
+Channel disturbance, abundant surface sediments and embedded substrate affecting spawning habitat, loss of log jams at geomorphic control points and their sediment storage function, and a low habitat complexity and pool frequency
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Upstream land-use is dominantly responsible for impacts in this reach
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
 </td>
 <td style="text-align:right;">
 3
 </td>
 <td style="text-align:left;">
-Channelizing, compacted floodplain soils, lost riparian and floodplain function through complete or partial removal of key features
-</td>
-<td style="text-align:left;">
-Slope instability and sediment delivery, aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of habitat complexity
-</td>
-<td style="text-align:left;">
-Stressful to lethal summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat
-</td>
-<td style="text-align:left;">
-Eutrophication and BOD problems related to cattle manure
-</td>
-<td style="text-align:left;">
-Poorly functioning
+Crown
 </td>
 <td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Private
+3
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-11
+15
 </td>
 <td style="text-align:left;">
-High
+Very High
 </td>
 </tr>
 <tr>
@@ -5760,65 +5633,6 @@ Barren
 Barren
 </td>
 <td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-Fan
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Very high
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-High
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Poorly installed culverts, compacted floodplain soils, lost riparian and floodplain functions through complete or partial removal of key features
-</td>
-<td style="text-align:left;">
-Aggradation causing braiding and subsurface flow problems, bank erosion, high temperatures, surface and matrix sediment infiltration of substrate, poor pool frequency, poor LWD function, loss of habitat complexity
-</td>
-<td style="text-align:left;">
-Stressful to lethal summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat, no presence of species historically present in reach.
-</td>
-<td style="text-align:left;">
-Eutrophication and BOD problems related to cattle manure, upstream impacts dominantly responsible for problems in this reach
-</td>
-<td style="text-align:left;">
-Poorly functioning
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Private
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-11
-</td>
-<td style="text-align:left;">
-High
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Barren
-</td>
-<td style="text-align:left;">
-Barren
-</td>
-<td style="text-align:left;">
 2
 </td>
 <td style="text-align:left;">
@@ -5868,6 +5682,419 @@ Private/ Crown
 </td>
 <td style="text-align:left;">
 Very High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Klo
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Headwater
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Moderate
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Upstream land-use problems related to altered hydrology and sediment delivery
+</td>
+<td style="text-align:left;">
+Extreme channel disturbance, abundant surface sediments and embedded substrate affecting spawning habitat, loss of log jams at geomorphic control points and their sediment storage function, and a low habitat complexity
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Upstreamland-use is dominantly responsible for impacts in this reach
+</td>
+<td style="text-align:left;">
+Poorly functioning
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Crown
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Byman
+</td>
+<td style="text-align:left;">
+Byman
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Diversions, channelizing, compacted floodplain soils, lost riparian and floodplain function through complete or partial removal of key features
+</td>
+<td style="text-align:left;">
+Slope instability and sediment delivery, aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of habitat complexity
+</td>
+<td style="text-align:left;">
+Stressful to lethal summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Mid-Elevation
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Channelizing, isolated areas of compacted floodplain soils and altered riparian forest, roads in the upslope and riparian zone, upstream land-use problems related to hydrology and sediment delivery
+</td>
+<td style="text-align:left;">
+Aggradation, bank erosion, surface and matrix sediments infiltrating substrate, poor LWD function, loss of complexity, altered hydrology, loss of log jams at geomorphic notch points downstream
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Upstream impacts are dominantly responsible for impacts in this reach
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+Buck
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+Mid-Elevation
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Compaction of floodplain soils, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems, road in the riparian zone altering drainage and delivering sediment
+</td>
+<td style="text-align:left;">
+Low pool frequency, lack of functional LWD and extensive riparian disturbance (poor stream shading, temporal gap in LWD recruitment, bank stability) related to the Swiss Fire
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Sediment delivery from tributaries in the Swiss Fire area must also be considered.
+</td>
+<td style="text-align:left;">
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private/ Crown
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Richfield
+</td>
+<td style="text-align:left;">
+Richfield
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Poorly installed culverts, channelizing, compacted floodplain soils, lost riparian and floodplain function through complete or partial removal of key features
+</td>
+<td style="text-align:left;">
+Aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of complexity
+</td>
+<td style="text-align:left;">
+Stressful to lethal summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure
+</td>
+<td style="text-align:left;">
+Poorly functioning
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+McQuarrie
+</td>
+<td style="text-align:left;">
+McQuarrie
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very High
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Channelizing, compacted floodplain soils, lost riparian and floodplain function through complete or partial removal of key features
+</td>
+<td style="text-align:left;">
+Slope instability and sediment delivery, aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of habitat complexity
+</td>
+<td style="text-align:left;">
+Stressful to lethal summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure
+</td>
+<td style="text-align:left;">
+Poorly functioning
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:left;">
+Barren
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Poorly installed culverts, compacted floodplain soils, lost riparian and floodplain functions through complete or partial removal of key features
+</td>
+<td style="text-align:left;">
+Aggradation causing braiding and subsurface flow problems, bank erosion, high temperatures, surface and matrix sediment infiltration of substrate, poor pool frequency, poor LWD function, loss of habitat complexity
+</td>
+<td style="text-align:left;">
+Stressful to lethal summer temperatures to salmon and rainbow/steelhead, damage to and loss of critical salmonid spawning and rearing habitat, no presence of species historically present in reach.
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure, upstream impacts dominantly responsible for problems in this reach
+</td>
+<td style="text-align:left;">
+Poorly functioning
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+High
 </td>
 </tr>
 <tr>
@@ -5993,7 +6220,66 @@ High
 Buck
 </td>
 <td style="text-align:left;">
-Buck
+Dungate
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Fan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Compacted floodplain soils, lost riparian and floodplain function through complete or partial removal of key features, possible upstream land-use problems related to sediment delivery
+</td>
+<td style="text-align:left;">
+Avulsion, multiple channels, abundant surface sediments and embedded susbtrate affecting spawning habitat, aggradation in lower 250 metres. Poor LWD function and pool frequency in upper 650 metres.
+</td>
+<td style="text-align:left;">
+Damage to and loss of critical salmonid spawning and rearing habitat
+</td>
+<td style="text-align:left;">
+Eutrophication and BOD problems related to cattle manure
+</td>
+<td style="text-align:left;">
+Poorly functioning
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Emerson
+</td>
+<td style="text-align:left;">
+Emerson
 </td>
 <td style="text-align:left;">
 1
@@ -6017,34 +6303,34 @@ Low
 1
 </td>
 <td style="text-align:left;">
-Diversion and channelizing, compaction of floodplain soils, drainage simplification, water withdrawls, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems
+Channelizing, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems related to sediment delivery, upslope road altering surface and groundwater drainage patterns
 </td>
 <td style="text-align:left;">
-Aggradation, bank erosion, surface and matrix sediments infiltrating substrate, poor pool frequency, poor LWD function, loss of complexity, altered hydrology
+Aggradation, bank erosion, surface and matrix sediments, and poor pool frequency, poor LWD function, loss of complexity within and below channelized section.
 </td>
 <td style="text-align:left;">
-Damage to and loss of critical salmonid spawning and rearing habitat, very low densities of some species reported to be historically abundant
+Damage to and loss of critical salmonid spawning and rearing habitat
 </td>
 <td style="text-align:left;">
-Eutrophication and BOD problems related to cattle manure from upstream land-use, upstream impacts are escalating all impacts in this reach
+Upstream sediment input related to a large debis flow in reach 3. Very high value bull trout stream for adult recruitment to the Mid-Bulkley
 </td>
 <td style="text-align:left;">
-Poorly functioning
+Functioning-at-risk
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Private/ Crown
 </td>
 <td style="text-align:right;">
 2
 </td>
-<td style="text-align:left;">
-Private/ Municipal
-</td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-9
+11
 </td>
 <td style="text-align:left;">
-Moderate
+High
 </td>
 </tr>
 <tr>
@@ -6108,43 +6394,43 @@ Moderate
 </tr>
 <tr>
 <td style="text-align:left;">
-Buck
+Bulkley River
 </td>
 <td style="text-align:left;">
-Buck
+Bulkley River
 </td>
 <td style="text-align:left;">
-4
+3
 </td>
 <td style="text-align:left;">
-Mid-Elevation
+Mainstem
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Very high
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Moderate
 </td>
 <td style="text-align:right;">
 2
 </td>
 <td style="text-align:left;">
-High
-</td>
-<td style="text-align:right;">
-3
+Diversion and channelizing, compaction of floodplain soils, water withdrawls, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems related to hydrology and sediment delivery
 </td>
 <td style="text-align:left;">
-High
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Channelizing, isolated areas of compacted floodplain soils and altered riparian forest, roads in the upslope and riparian zone, upstream land-use problems related to hydrology and sediment delivery
-</td>
-<td style="text-align:left;">
-Aggradation, bank erosion, surface and matrix sediments infiltrating substrate, poor LWD function, loss of complexity, altered hydrology, loss of log jams at geomorphic notch points downstream
+Aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of complexity
 </td>
 <td style="text-align:left;">
 Damage to and loss of critical salmonid spawning and rearing habitat
 </td>
 <td style="text-align:left;">
-Upstream impacts are dominantly responsible for impacts in this reach
+Eutrophication and BOD problems related to cattle manure inputs upstream and in the reach
 </td>
 <td style="text-align:left;">
 Functioning-at-risk
@@ -6159,86 +6445,27 @@ Private
 1
 </td>
 <td style="text-align:right;">
-12
+10
 </td>
 <td style="text-align:left;">
-High
+Moderate
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Buck
+Richfield
 </td>
 <td style="text-align:left;">
-Buck
+Richfield
 </td>
 <td style="text-align:left;">
-5
-</td>
-<td style="text-align:left;">
-Mid-Elevation
-</td>
-<td style="text-align:right;">
 2
 </td>
 <td style="text-align:left;">
-High
+Fan
 </td>
 <td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-High
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:right;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:right;">
-–
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-–
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Buck
-</td>
-<td style="text-align:left;">
-Buck
-</td>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:left;">
-Mid-Elevation
-</td>
-<td style="text-align:right;">
-2
+1
 </td>
 <td style="text-align:left;">
 High
@@ -6253,219 +6480,42 @@ High
 3
 </td>
 <td style="text-align:left;">
-Compaction of floodplain soils, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems, road in the riparian zone altering drainage and delivering sediment
+Alteration of riparian forest, grazing in floodplain and upslope areas.
 </td>
 <td style="text-align:left;">
-Low pool frequency, lack of functional LWD and extensive riparian disturbance (poor stream shading, temporal gap in LWD recruitment, bank stability) related to the Swiss Fire
+Slope instability, minor loss of understory riparian vegetation
 </td>
 <td style="text-align:left;">
-Damage to and loss of critical salmonid spawning and rearing habitat
+–
 </td>
 <td style="text-align:left;">
-Sediment delivery from tributaries in the Swiss Fire area must also be considered.
+Eutrophication and BOD problems related to cattle manure
 </td>
 <td style="text-align:left;">
-Functioning-at-risk
+Functioning
 </td>
 <td style="text-align:right;">
-3
+1
 </td>
 <td style="text-align:left;">
-Private/ Crown
+Private
 </td>
 <td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
-12
-</td>
-<td style="text-align:left;">
-High
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Buck
-</td>
-<td style="text-align:left;">
-Buck
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-Headwater
-</td>
-<td style="text-align:right;">
-3
+9
 </td>
 <td style="text-align:left;">
 Moderate
 </td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Very High
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-Road in riparian zone at many points altering drainage and delivering sediment to channel, lost riparian and floodplain functions through complete or partial removal of key features in isolated areas, upstream land-use problems related to cumulative altered basin hydrology
-</td>
-<td style="text-align:left;">
-Aggradation, bank erosion, avulsions, surface and matrix sediments infiltrating substrate, altered hydrology
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Perched and undersized culvert and harvested riparian zone below FSR crossing on unnamed tributary at upper end of reach causing major channel disturbance and sediment delivery donwstream.
-</td>
-<td style="text-align:left;">
-Functioning-at-risk
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Crown
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-15
-</td>
-<td style="text-align:left;">
-Very High
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
 Buck
 </td>
 <td style="text-align:left;">
-Klo
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-Headwater
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Moderate
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-High
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Upstream land-use problems related to altered hydrology and sediment delivery
-</td>
-<td style="text-align:left;">
-Extreme channel disturbance, abundant surface sediments and embedded substrate affecting spawning habitat, loss of log jams at geomorphic control points and their sediment storage function, and a low habitat complexity
-</td>
-<td style="text-align:left;">
-Damage to and loss of critical salmonid spawning and rearing habitat
-</td>
-<td style="text-align:left;">
-Upstreamland-use is dominantly responsible for impacts in this reach
-</td>
-<td style="text-align:left;">
-Poorly functioning
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Crown
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-13
-</td>
-<td style="text-align:left;">
-Very High
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 Buck
-</td>
-<td style="text-align:left;">
-Klo
-</td>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
-Headwater
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Moderate
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Very High
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-Logging and logging roads in upslope areas, upstream land-use problems related to altered hydrology and sediment delivery
-</td>
-<td style="text-align:left;">
-Channel disturbance, abundant surface sediments and embedded substrate affecting spawning habitat, loss of log jams at geomorphic control points and their sediment storage function, and a low habitat complexity and pool frequency
-</td>
-<td style="text-align:left;">
-Damage to and loss of critical salmonid spawning and rearing habitat
-</td>
-<td style="text-align:left;">
-Upstream land-use is dominantly responsible for impacts in this reach
-</td>
-<td style="text-align:left;">
-Functioning-at-risk
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Crown
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-15
-</td>
-<td style="text-align:left;">
-Very High
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Buck
-</td>
-<td style="text-align:left;">
-Dungate
 </td>
 <td style="text-align:left;">
 1
@@ -6483,22 +6533,22 @@ Very high
 4
 </td>
 <td style="text-align:left;">
-High
+Low
 </td>
 <td style="text-align:right;">
-3
+1
 </td>
 <td style="text-align:left;">
-Compacted floodplain soils, lost riparian and floodplain function through complete or partial removal of key features, possible upstream land-use problems related to sediment delivery
+Diversion and channelizing, compaction of floodplain soils, drainage simplification, water withdrawls, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems
 </td>
 <td style="text-align:left;">
-Avulsion, multiple channels, abundant surface sediments and embedded susbtrate affecting spawning habitat, aggradation in lower 250 metres. Poor LWD function and pool frequency in upper 650 metres.
+Aggradation, bank erosion, surface and matrix sediments infiltrating substrate, poor pool frequency, poor LWD function, loss of complexity, altered hydrology
 </td>
 <td style="text-align:left;">
-Damage to and loss of critical salmonid spawning and rearing habitat
+Damage to and loss of critical salmonid spawning and rearing habitat, very low densities of some species reported to be historically abundant
 </td>
 <td style="text-align:left;">
-Eutrophication and BOD problems related to cattle manure
+Eutrophication and BOD problems related to cattle manure from upstream land-use, upstream impacts are escalating all impacts in this reach
 </td>
 <td style="text-align:left;">
 Poorly functioning
@@ -6507,16 +6557,16 @@ Poorly functioning
 2
 </td>
 <td style="text-align:left;">
-Private
+Private/ Municipal
 </td>
 <td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
-11
+9
 </td>
 <td style="text-align:left;">
-High
+Moderate
 </td>
 </tr>
 <tr>
@@ -6698,120 +6748,61 @@ Moderate
 </tr>
 <tr>
 <td style="text-align:left;">
-Bulkley River
+Buck
 </td>
 <td style="text-align:left;">
-Bulkley River
+Buck
 </td>
 <td style="text-align:left;">
-3
+5
 </td>
 <td style="text-align:left;">
-Mainstem
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Very high
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Moderate
+Mid-Elevation
 </td>
 <td style="text-align:right;">
 2
-</td>
-<td style="text-align:left;">
-Diversion and channelizing, compaction of floodplain soils, water withdrawls, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems related to hydrology and sediment delivery
-</td>
-<td style="text-align:left;">
-Aggradation, bank erosion, high temperatures, surface and matrix sediments, poor pool frequency, poor LWD function, loss of complexity
-</td>
-<td style="text-align:left;">
-Damage to and loss of critical salmonid spawning and rearing habitat
-</td>
-<td style="text-align:left;">
-Eutrophication and BOD problems related to cattle manure inputs upstream and in the reach
-</td>
-<td style="text-align:left;">
-Functioning-at-risk
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Private
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-Moderate
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Emerson
-</td>
-<td style="text-align:left;">
-Emerson
-</td>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-Fan
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Very high
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-Low
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Channelizing, lost riparian and floodplain functions through complete or partial removal of key features, upstream land-use problems related to sediment delivery, upslope road altering surface and groundwater drainage patterns
-</td>
-<td style="text-align:left;">
-Aggradation, bank erosion, surface and matrix sediments, and poor pool frequency, poor LWD function, loss of complexity within and below channelized section.
-</td>
-<td style="text-align:left;">
-Damage to and loss of critical salmonid spawning and rearing habitat
-</td>
-<td style="text-align:left;">
-Upstream sediment input related to a large debis flow in reach 3. Very high value bull trout stream for adult recruitment to the Mid-Bulkley
-</td>
-<td style="text-align:left;">
-Functioning-at-risk
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Private/ Crown
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-11
 </td>
 <td style="text-align:left;">
 High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:right;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:right;">
+–
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+–
 </td>
 </tr>
 <tr>
@@ -6877,13 +6868,13 @@ Low
 </table>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="results.html#cb47-1" tabindex="-1"></a>ncfdc_1998 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb47-2"><a href="results.html#cb47-2" tabindex="-1"></a>  <span class="st">&quot;data/ncfdc_1998_prescriptions_hand_bomb.csv&quot;</span></span>
-<span id="cb47-3"><a href="results.html#cb47-3" tabindex="-1"></a>) </span>
-<span id="cb47-4"><a href="results.html#cb47-4" tabindex="-1"></a></span>
-<span id="cb47-5"><a href="results.html#cb47-5" tabindex="-1"></a>ncfdc_1998 <span class="sc">%&gt;%</span> </span>
-<span id="cb47-6"><a href="results.html#cb47-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sub_basin<span class="sc">:</span>technical_references) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-7"><a href="results.html#cb47-7" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="results.html#cb46-1" tabindex="-1"></a>ncfdc_1998 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb46-2"><a href="results.html#cb46-2" tabindex="-1"></a>  <span class="st">&quot;data/ncfdc_1998_prescriptions_hand_bomb.csv&quot;</span></span>
+<span id="cb46-3"><a href="results.html#cb46-3" tabindex="-1"></a>) </span>
+<span id="cb46-4"><a href="results.html#cb46-4" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="results.html#cb46-5" tabindex="-1"></a>ncfdc_1998 <span class="sc">%&gt;%</span> </span>
+<span id="cb46-6"><a href="results.html#cb46-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sub_basin<span class="sc">:</span>technical_references) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-7"><a href="results.html#cb46-7" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -8371,72 +8362,72 @@ To stabilize and revegetate the slopes by altering drainage patterns from theroa
 <h3><span class="header-section-number">4.3.5</span> Parameter Ranking to Select Future Restoration Sites<a href="results.html#parameter-ranking-to-select-future-restoration-sites-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the <code>restoration_site_priority_parameters.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv">here</a> is included in Table <a href="results.html#tab:tab-gis-params">4.7</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="results.html#cb48-1" tabindex="-1"></a><span class="co"># load the data</span></span>
-<span id="cb48-2"><a href="results.html#cb48-2" tabindex="-1"></a>gis_params_raw_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb48-3"><a href="results.html#cb48-3" tabindex="-1"></a>  <span class="st">&quot;data/inputs_raw/restoration_site_priority_parameters_raw.csv&quot;</span></span>
-<span id="cb48-4"><a href="results.html#cb48-4" tabindex="-1"></a>) </span>
-<span id="cb48-5"><a href="results.html#cb48-5" tabindex="-1"></a></span>
-<span id="cb48-6"><a href="results.html#cb48-6" tabindex="-1"></a></span>
-<span id="cb48-7"><a href="results.html#cb48-7" tabindex="-1"></a>gis_params_raw_to_update <span class="ot">&lt;-</span> gis_params_raw_all <span class="sc">%&gt;%</span> </span>
-<span id="cb48-8"><a href="results.html#cb48-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(source_schema_table) <span class="sc">&amp;</span> </span>
-<span id="cb48-9"><a href="results.html#cb48-9" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">is.na</span>(source_column_name) <span class="sc">&amp;</span></span>
-<span id="cb48-10"><a href="results.html#cb48-10" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb48-11"><a href="results.html#cb48-11" tabindex="-1"></a>  <span class="co"># we know that whse_forest_tenure.ften_range_poly_carto_vw is problematic so lets remove</span></span>
-<span id="cb48-12"><a href="results.html#cb48-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>))</span>
-<span id="cb48-13"><a href="results.html#cb48-13" tabindex="-1"></a></span>
-<span id="cb48-14"><a href="results.html#cb48-14" tabindex="-1"></a></span>
-<span id="cb48-15"><a href="results.html#cb48-15" tabindex="-1"></a><span class="co"># grab the details about the source_schema_table as source_schema_table_details and then the </span></span>
-<span id="cb48-16"><a href="results.html#cb48-16" tabindex="-1"></a><span class="co"># source_column_name as source_column_name_details</span></span>
-<span id="cb48-17"><a href="results.html#cb48-17" tabindex="-1"></a>gis_param_details_prep_schtab <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
-<span id="cb48-18"><a href="results.html#cb48-18" tabindex="-1"></a>  </span>
-<span id="cb48-19"><a href="results.html#cb48-19" tabindex="-1"></a>  gis_params_raw_to_update,</span>
-<span id="cb48-20"><a href="results.html#cb48-20" tabindex="-1"></a>  </span>
-<span id="cb48-21"><a href="results.html#cb48-21" tabindex="-1"></a>  rfp<span class="sc">::</span><span class="fu">rfp_meta_bcd_xref</span>(),</span>
-<span id="cb48-22"><a href="results.html#cb48-22" tabindex="-1"></a>  </span>
-<span id="cb48-23"><a href="results.html#cb48-23" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>)</span>
-<span id="cb48-24"><a href="results.html#cb48-24" tabindex="-1"></a>)</span>
-<span id="cb48-25"><a href="results.html#cb48-25" tabindex="-1"></a>  </span>
-<span id="cb48-26"><a href="results.html#cb48-26" tabindex="-1"></a></span>
-<span id="cb48-27"><a href="results.html#cb48-27" tabindex="-1"></a><span class="co"># grab the column details</span></span>
-<span id="cb48-28"><a href="results.html#cb48-28" tabindex="-1"></a>params_cols_des <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2_df</span>(gis_param_details_prep_schtab<span class="sc">$</span>source_schema_table, gis_param_details_prep_schtab<span class="sc">$</span>source_column_name, rfp<span class="sc">::</span>rfp_meta_bcd_xref_col_comments)</span>
-<span id="cb48-29"><a href="results.html#cb48-29" tabindex="-1"></a></span>
-<span id="cb48-30"><a href="results.html#cb48-30" tabindex="-1"></a><span class="co"># left_join the column details to the gis_param_details_prep_schtab</span></span>
-<span id="cb48-31"><a href="results.html#cb48-31" tabindex="-1"></a>gis_param_details_prep <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
-<span id="cb48-32"><a href="results.html#cb48-32" tabindex="-1"></a>  gis_param_details_prep_schtab,</span>
-<span id="cb48-33"><a href="results.html#cb48-33" tabindex="-1"></a>  params_cols_des,</span>
-<span id="cb48-34"><a href="results.html#cb48-34" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>, <span class="st">&quot;source_column_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;col_name&quot;</span>)</span>
-<span id="cb48-35"><a href="results.html#cb48-35" tabindex="-1"></a>)</span>
-<span id="cb48-36"><a href="results.html#cb48-36" tabindex="-1"></a></span>
-<span id="cb48-37"><a href="results.html#cb48-37" tabindex="-1"></a><span class="co"># need to add back all the layers filtered out above - this should not be repeated but will do for now</span></span>
-<span id="cb48-38"><a href="results.html#cb48-38" tabindex="-1"></a>gis_params_raw_all_updated <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb48-39"><a href="results.html#cb48-39" tabindex="-1"></a>  gis_params_raw_all <span class="sc">%&gt;%</span> </span>
-<span id="cb48-40"><a href="results.html#cb48-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">is.na</span>(source_schema_table) <span class="sc">|</span> </span>
-<span id="cb48-41"><a href="results.html#cb48-41" tabindex="-1"></a>                    <span class="fu">is.na</span>(source_column_name) <span class="sc">|</span></span>
-<span id="cb48-42"><a href="results.html#cb48-42" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">|</span></span>
-<span id="cb48-43"><a href="results.html#cb48-43" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>)),</span>
-<span id="cb48-44"><a href="results.html#cb48-44" tabindex="-1"></a>  gis_param_details_prep</span>
-<span id="cb48-45"><a href="results.html#cb48-45" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb48-46"><a href="results.html#cb48-46" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">url_browser =</span> <span class="fu">case_when</span>(</span>
-<span id="cb48-47"><a href="results.html#cb48-47" tabindex="-1"></a>    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">~</span> <span class="st">&quot;https://smnorris.github.io/bcfishpass/06_data_dictionary.html&quot;</span>,</span>
-<span id="cb48-48"><a href="results.html#cb48-48" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> url_browser)</span>
-<span id="cb48-49"><a href="results.html#cb48-49" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb48-50"><a href="results.html#cb48-50" tabindex="-1"></a>  <span class="fu">arrange</span>(source_schema_table, source_column_name, column_name_raw)</span>
-<span id="cb48-51"><a href="results.html#cb48-51" tabindex="-1"></a></span>
-<span id="cb48-52"><a href="results.html#cb48-52" tabindex="-1"></a><span class="co"># this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag</span></span>
-<span id="cb48-53"><a href="results.html#cb48-53" tabindex="-1"></a>gis_params_raw_all_updated <span class="sc">%&gt;%</span> </span>
-<span id="cb48-54"><a href="results.html#cb48-54" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="results.html#cb49-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb49-2"><a href="results.html#cb49-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb49-3"><a href="results.html#cb49-3" tabindex="-1"></a>    source_schema_table, </span>
-<span id="cb49-4"><a href="results.html#cb49-4" tabindex="-1"></a>                source_column_name,</span>
-<span id="cb49-5"><a href="results.html#cb49-5" tabindex="-1"></a>    column_name_raw,</span>
-<span id="cb49-6"><a href="results.html#cb49-6" tabindex="-1"></a>    user_input,</span>
-<span id="cb49-7"><a href="results.html#cb49-7" tabindex="-1"></a>    url_browser,</span>
-<span id="cb49-8"><a href="results.html#cb49-8" tabindex="-1"></a>    <span class="co"># description_table = description,</span></span>
-<span id="cb49-9"><a href="results.html#cb49-9" tabindex="-1"></a>    col_comments</span>
-<span id="cb49-10"><a href="results.html#cb49-10" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb49-11"><a href="results.html#cb49-11" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;GIS parameters used to rank future restoration sites.&quot;</span>,</span>
-<span id="cb49-12"><a href="results.html#cb49-12" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="results.html#cb47-1" tabindex="-1"></a><span class="co"># load the data</span></span>
+<span id="cb47-2"><a href="results.html#cb47-2" tabindex="-1"></a>gis_params_raw_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb47-3"><a href="results.html#cb47-3" tabindex="-1"></a>  <span class="st">&quot;data/inputs_raw/restoration_site_priority_parameters_raw.csv&quot;</span></span>
+<span id="cb47-4"><a href="results.html#cb47-4" tabindex="-1"></a>) </span>
+<span id="cb47-5"><a href="results.html#cb47-5" tabindex="-1"></a></span>
+<span id="cb47-6"><a href="results.html#cb47-6" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="results.html#cb47-7" tabindex="-1"></a>gis_params_raw_to_update <span class="ot">&lt;-</span> gis_params_raw_all <span class="sc">%&gt;%</span> </span>
+<span id="cb47-8"><a href="results.html#cb47-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(source_schema_table) <span class="sc">&amp;</span> </span>
+<span id="cb47-9"><a href="results.html#cb47-9" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">is.na</span>(source_column_name) <span class="sc">&amp;</span></span>
+<span id="cb47-10"><a href="results.html#cb47-10" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-11"><a href="results.html#cb47-11" tabindex="-1"></a>  <span class="co"># we know that whse_forest_tenure.ften_range_poly_carto_vw is problematic so lets remove</span></span>
+<span id="cb47-12"><a href="results.html#cb47-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>))</span>
+<span id="cb47-13"><a href="results.html#cb47-13" tabindex="-1"></a></span>
+<span id="cb47-14"><a href="results.html#cb47-14" tabindex="-1"></a></span>
+<span id="cb47-15"><a href="results.html#cb47-15" tabindex="-1"></a><span class="co"># grab the details about the source_schema_table as source_schema_table_details and then the </span></span>
+<span id="cb47-16"><a href="results.html#cb47-16" tabindex="-1"></a><span class="co"># source_column_name as source_column_name_details</span></span>
+<span id="cb47-17"><a href="results.html#cb47-17" tabindex="-1"></a>gis_param_details_prep_schtab <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb47-18"><a href="results.html#cb47-18" tabindex="-1"></a>  </span>
+<span id="cb47-19"><a href="results.html#cb47-19" tabindex="-1"></a>  gis_params_raw_to_update,</span>
+<span id="cb47-20"><a href="results.html#cb47-20" tabindex="-1"></a>  </span>
+<span id="cb47-21"><a href="results.html#cb47-21" tabindex="-1"></a>  rfp<span class="sc">::</span><span class="fu">rfp_meta_bcd_xref</span>(),</span>
+<span id="cb47-22"><a href="results.html#cb47-22" tabindex="-1"></a>  </span>
+<span id="cb47-23"><a href="results.html#cb47-23" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>)</span>
+<span id="cb47-24"><a href="results.html#cb47-24" tabindex="-1"></a>)</span>
+<span id="cb47-25"><a href="results.html#cb47-25" tabindex="-1"></a>  </span>
+<span id="cb47-26"><a href="results.html#cb47-26" tabindex="-1"></a></span>
+<span id="cb47-27"><a href="results.html#cb47-27" tabindex="-1"></a><span class="co"># grab the column details</span></span>
+<span id="cb47-28"><a href="results.html#cb47-28" tabindex="-1"></a>params_cols_des <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2_df</span>(gis_param_details_prep_schtab<span class="sc">$</span>source_schema_table, gis_param_details_prep_schtab<span class="sc">$</span>source_column_name, rfp<span class="sc">::</span>rfp_meta_bcd_xref_col_comments)</span>
+<span id="cb47-29"><a href="results.html#cb47-29" tabindex="-1"></a></span>
+<span id="cb47-30"><a href="results.html#cb47-30" tabindex="-1"></a><span class="co"># left_join the column details to the gis_param_details_prep_schtab</span></span>
+<span id="cb47-31"><a href="results.html#cb47-31" tabindex="-1"></a>gis_param_details_prep <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb47-32"><a href="results.html#cb47-32" tabindex="-1"></a>  gis_param_details_prep_schtab,</span>
+<span id="cb47-33"><a href="results.html#cb47-33" tabindex="-1"></a>  params_cols_des,</span>
+<span id="cb47-34"><a href="results.html#cb47-34" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>, <span class="st">&quot;source_column_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;col_name&quot;</span>)</span>
+<span id="cb47-35"><a href="results.html#cb47-35" tabindex="-1"></a>)</span>
+<span id="cb47-36"><a href="results.html#cb47-36" tabindex="-1"></a></span>
+<span id="cb47-37"><a href="results.html#cb47-37" tabindex="-1"></a><span class="co"># need to add back all the layers filtered out above - this should not be repeated but will do for now</span></span>
+<span id="cb47-38"><a href="results.html#cb47-38" tabindex="-1"></a>gis_params_raw_all_updated <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb47-39"><a href="results.html#cb47-39" tabindex="-1"></a>  gis_params_raw_all <span class="sc">%&gt;%</span> </span>
+<span id="cb47-40"><a href="results.html#cb47-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">is.na</span>(source_schema_table) <span class="sc">|</span> </span>
+<span id="cb47-41"><a href="results.html#cb47-41" tabindex="-1"></a>                    <span class="fu">is.na</span>(source_column_name) <span class="sc">|</span></span>
+<span id="cb47-42"><a href="results.html#cb47-42" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">|</span></span>
+<span id="cb47-43"><a href="results.html#cb47-43" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>)),</span>
+<span id="cb47-44"><a href="results.html#cb47-44" tabindex="-1"></a>  gis_param_details_prep</span>
+<span id="cb47-45"><a href="results.html#cb47-45" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-46"><a href="results.html#cb47-46" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">url_browser =</span> <span class="fu">case_when</span>(</span>
+<span id="cb47-47"><a href="results.html#cb47-47" tabindex="-1"></a>    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">~</span> <span class="st">&quot;https://smnorris.github.io/bcfishpass/06_data_dictionary.html&quot;</span>,</span>
+<span id="cb47-48"><a href="results.html#cb47-48" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> url_browser)</span>
+<span id="cb47-49"><a href="results.html#cb47-49" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-50"><a href="results.html#cb47-50" tabindex="-1"></a>  <span class="fu">arrange</span>(source_schema_table, source_column_name, column_name_raw)</span>
+<span id="cb47-51"><a href="results.html#cb47-51" tabindex="-1"></a></span>
+<span id="cb47-52"><a href="results.html#cb47-52" tabindex="-1"></a><span class="co"># this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag</span></span>
+<span id="cb47-53"><a href="results.html#cb47-53" tabindex="-1"></a>gis_params_raw_all_updated <span class="sc">%&gt;%</span> </span>
+<span id="cb47-54"><a href="results.html#cb47-54" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="results.html#cb48-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-2"><a href="results.html#cb48-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb48-3"><a href="results.html#cb48-3" tabindex="-1"></a>    source_schema_table, </span>
+<span id="cb48-4"><a href="results.html#cb48-4" tabindex="-1"></a>                source_column_name,</span>
+<span id="cb48-5"><a href="results.html#cb48-5" tabindex="-1"></a>    column_name_raw,</span>
+<span id="cb48-6"><a href="results.html#cb48-6" tabindex="-1"></a>    user_input,</span>
+<span id="cb48-7"><a href="results.html#cb48-7" tabindex="-1"></a>    url_browser,</span>
+<span id="cb48-8"><a href="results.html#cb48-8" tabindex="-1"></a>    <span class="co"># description_table = description,</span></span>
+<span id="cb48-9"><a href="results.html#cb48-9" tabindex="-1"></a>    col_comments</span>
+<span id="cb48-10"><a href="results.html#cb48-10" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-11"><a href="results.html#cb48-11" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;GIS parameters used to rank future restoration sites.&quot;</span>,</span>
+<span id="cb48-12"><a href="results.html#cb48-12" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
