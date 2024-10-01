@@ -1,57 +1,0 @@
-sub_basin,project_priority,reach,impact_prescription_site,riparian_prescription_polygon_id,cost_estimate,assessment_survey_design_required,comments
-Richfield,1,1,3,RIC11,N/A,no,
-,2,1,-,RIC008/009,N/A,no,
-,3,1,2,-,N/A,no,"Upstream ofhighway only"
-,4,1,1,RIC007,N/A,yes,
-,5,1,-,"RIC002, 004",N/A,no,
-,6,1,2,-,N/A,no,"Downstreamof highway"
-,,,,,,,
-Byman,1,1,2,BYM008 to 020,N/A,no,"Passiveriparianrestorationwork only"
-,2,1,1,"BYM015, 017",N/A,yes,"Slopestabilizationpart ofprescriptions"
-,3,1,2,BYM008 to 020,N/A,yes,"Active riparianrestoration ifrequired"
-,4,1,1,-,N/A,yes,"Active in-streamrestoration"
-,,,,,,,
-McQuarrie,1,3,1,MCQ19,$73 000,yes,
-,2,1,-,MCQ001/002,N/A,no,
-,3,1,-,MCQ003 to 005,N/A,no,
-,4,3,-,MCQ015,$5 200,yes,"After roadworkcompletedunder MOFWRP funding"
-,5,1,-,MCQ009,N/A,no,
-,6,1,1,MCQ008,N/A,no,
-,7,1,2,-,N/A,yes,
-,,,,,,,
-Barren,1,2,-,BAR018 to 023,$29 000,no,"Land tenureunknown"
-,2,4,4,BAR017,$49 800,yes,"Land tenureunknown"
-,3,2,3,-,N/A,no,
-,4,2,2,BAR008,N/A,no,
-,5,1,1,BAR003,N/A,yes,
-,,,,,,,
-Aitken,1,3A,1,AIT025,N/A,no,"All work tooccur afterhydrologicassessment"
-,2,3A,2 and 3,"AIT029, 030 to 033,035",N/A,no,
-,3,3A,4,AIT037,N/A,no,
-,,,,,,,
-Buck,1,11B,1,UB008,$29 350,yes,"All works tooccur afterbasin-widehydrologicass't"
-,2,11B,-,UB001 to 007,$21 000,yes,
-,3,Klo 2,1,KLO021 and 022,N/A,yes,
-,4,6,,"BUC172, 199, 207, 228",N/A,no,
-,5,6,-,"BUC169, 177, 185,192, 194",N/A,no,
-,6,5,-,BUC139 and 157,N/A,no,
-Buck,7,5,-,"BUC090, 098-100,108/109, 112/113, 125,143/144",N/A,no,
-,8,4,1,-,N/A,no,
-,9,4,-,"BUC064/065, 078, 087",N/A,yes,"Land tenureunknown,may needSP"
-,10,2,-,"BUC023, 042/043, 045,048/049, 055",N/A,no,
-,11,"Dungate 1",-,DUN001 to 003a,N/A,no,
-,12,2,1,-,N/A,no,"If activerestorationrequired"
-,13,1,2,BUC010 to 012,N/A,yes,"If activerestorationrequired"
-,14,1,1,"BUC004, 006/007",N/A,yes,"If activerestorationrequired"
-,,,,,,,
-Emerson,1,1,2,EME006/007,N/A,no,"Land tenureunknown.To becarried outafterupstreamsedimentsourcemitigated."
-,2,1,-,EME005,N/A,yes,"Land tenureunknown."
-,3,1,1,EME001/002,N/A,yes,"Land tenureunknown."
-,,,,,,,
-Bulkley,1,3,,"BUL262, 267, 268",N/A,no,
-,2,2,3,,N/A,yes,
-,3,1/2/3,,"All rip-rap plantingprescriptions",N/A,no,
-,4,2,2,"All bank stabilizationprescriptions",N/A,no,
-,5,2,1,BUL063,N/A,yes,"Avulsionreset afterupstreambankstabilized"
-,6,1,1,BUL029 and 032,N/A,yes,
-,7,1,,"All bank stabilizationprescriptions",N/A,no,
