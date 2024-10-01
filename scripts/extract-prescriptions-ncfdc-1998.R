@@ -135,7 +135,7 @@ data <- purrr::map_df(prescriptions_list_clean, ~ {
 # Separate the UTM coordinates. We will leave the UTM info in the location description because in some cases it contains
 # more than one set of UTM coordinates, but since we are only extracting the first set, we need to leave the others somewhere
 extract_utms <- data |>
-  tidyr::separate_wider_delim(cols = utm, delim = ".", names = c('utm_zone', 'utm_easting', 'utm_northing'))
+  tidyr::separate_wider_delim(cols = utm, delim = ".", names = c('utm_zone', 'utm_northing','utm_easting'))
 
 # Final cleaning
 cleaned_data <- extract_utms %>%
@@ -151,18 +151,59 @@ cleaned_data <- extract_utms %>%
 
  # Write the tibble to a CSV file
   cleaned_data %>%
-  readr::write_csv("data/ncfdc_1998_prescriptions.csv")
+  readr::write_csv("data/inputs_extracted/ncfdc_1998_prescriptions_cleaned.csv")
 
 ################################################################################################################
 #--------------------------------------------------Hand Bomb---------------------------------------------------
 ################################################################################################################
 
-  # hand bombed some UTMs as per https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/issues/48
 
-prescriptions_raw <- readr::read_csv("data/ncfdc_1998_prescriptions_hand_bomb.csv")
+  # ok so what has happened is that the coordinates were input backwards in the orignial pdf extraction so that has been
+  # now fixed
+# hand bombed some UTMs as per https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/issues/48
+
+prescriptions_hb <- readr::read_csv("data/ncfdc_1998_prescriptions_hand_bomb.csv")
+
+
+# so now we join the hand bombed columns to the raw data
+
+################################################################################################################
+#-------------------------------------------THIS SECTION SHOULD NOT BE REPEATED---------------------------------------------------
+################################################################################################################
+# read teh prescriptions back in to get the types right
+prescriptions_raw <- readr::read_csv("data/inputs_extracted/ncfdc_1998_prescriptions_cleaned.csv")
+
+prescriptions_fix_raw <- dplyr::left_join(
+  prescriptions_raw,
+  prescriptions_hb |> dplyr::select(sub_basin:related_riparian_prescription, utm_easting2 = utm_easting, utm_northing2 = utm_northing),
+
+  by = c("sub_basin", "creek", "reach",
+           "prescription_number", "related_riparian_prescription")
+)
+
+
+# view it to try to unravel
+test <- prescriptions_fix_raw |>
+  dplyr::select(sub_basin:related_riparian_prescription, contains("utm"))
+
+prescriptions_fix <- prescriptions_fix_raw |>
+  dplyr::mutate(utm_easting = dplyr::case_when(is.na(utm_easting) ~ utm_easting2, TRUE ~ utm_easting),
+                utm_northing = dplyr::case_when(is.na(utm_northing) ~ utm_northing2, TRUE ~ utm_northing)) |>
+  dplyr::select(-utm_easting2, -utm_northing2)
+
+# reburn to the hand bomb file
+prescriptions_fix %>%
+  readr::write_csv("data/ncfdc_1998_prescriptions_hand_bomb.csv", na = '')
+
+################################################################################################################
+#--------------------------------------------------dont repeat above---------------------------------------------------
+################################################################################################################
+
+
+# if we want to reburn then just read in the readr::read_csv("data/ncfdc_1998_prescriptions_hand_bomb.csv")
 
 # make a unique id for each prescription and make spatial file
-  prescriptions <- prescriptions_raw |>
+prescriptions_fix |>
     dplyr::mutate(id = stringr::str_to_lower(
       stringr::str_c(creek, reach, prescription_number, sep = "_")
     )) |>
@@ -172,7 +213,7 @@ prescriptions_raw <- readr::read_csv("data/ncfdc_1998_prescriptions_hand_bomb.cs
     sf::st_as_sf(coords = c("utm_easting", "utm_northing"), crs = 26909) |>
     sf::st_transform(3005) |>
     sf::st_write(
-      dsn = "~/Projects/gis/restoration_wedzin_kwa/sites_restoration.gpkg",
+      dsn = "~/Projects/gis/restoration_wedzin_kwa/sites_restoration.gpkg", #sites_restoration
       layer = 'ncfdc_1998_prescriptions',
       delete_layer = TRUE
     )
