@@ -1,0 +1,21 @@
+
+
+# **Attachment 1 - Riparian Prescription Example** {-}
+
+Figure \@ref(fig:model-riparian-caption) is based on an evolving prescription template based on issues related to [riparian buffer size](https://github.com/NewGraphEnvironment/restoration_framework/issues/2) and [riparian planting specifications](https://github.com/NewGraphEnvironment/restoration_framework/issues/27).
+
+```{r model-riparian}
+model_url <- '<iframe src="https://sketchfab.com/models/7d5b8b148c5447a9a0410fed205aff1f/embed" scrolling="no" title="20241015_dogwoodmulchirrigation" width="100%" height="600" frameBorder ="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen;xr-spatial-tracking"></iframe>'
+
+knitr::asis_output(model_url)
+```
+
+```{r model-riparian-caption, fig.cap= my_caption, out.width = "0.01%"}
+my_photo = 'fig/pixel.png'
+
+my_caption = paste0('3D model showing example of implemented prescription following 2 growing seasons.  Prescription incorporates 1m spacing of red-osier dogwood cuttings havested while dormant and soaked for 48hrs, sod removal, soil amendment (bone meal), installation of biodegradable weed competition barrier (cardboard), 8 inches of non-acidic mulch (fir and maple) and automated drip irrigation running for 30 minutes every second day during growing season.')
+
+knitr::include_graphics(my_photo, dpi = NA)
+
+```
+
