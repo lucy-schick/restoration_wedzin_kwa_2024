@@ -2,6 +2,8 @@
 
 ### Development {-}
 
+  - add riparian restoration prescription example as per https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/issues/73
+
 
 ### restoration_wedzin_kwa_2024 DRAFT 0.0.7 (20240814) {-}
 

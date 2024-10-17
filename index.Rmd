@@ -14,7 +14,7 @@ author: |
 
 date: |
  |
- | DRAFT Version 0.0.7 `r format(Sys.Date(), "%Y-%m-%d")`
+ | DRAFT Version 0.0.8 `r format(Sys.Date(), "%Y-%m-%d")`
 toc-title: Table of Contents
 site: bookdown::bookdown_site
 output: 
@@ -24,7 +24,7 @@ output:
 params:
   repo_url: 'https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/'
   report_url: 'https://newgraphenvironment.github.io/restoration_wedzin_kwa_2024'
-  update_packages: FALSE
+  update_packages: TRUE
 nocite: |
   @gaboury_smith2016DevelopmentAquatic
 documentclass: book

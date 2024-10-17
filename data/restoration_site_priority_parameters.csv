@@ -125,3 +125,4 @@ NA,NA,site_name,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 NA,NA,stream_local_name,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 NA,NA,traditional_fishing_site,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 NA,NA,traditional_knowledge_rank,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+,,riparian_floodplain_width_m,NA,NA,NA,NA,TRUE,NA,NA,NA,NA,NA,NA,NA,NA,NA,1 point per meter to maximum of 100 points.

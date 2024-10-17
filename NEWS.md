@@ -1,6 +1,17 @@
 # Development
 
 
+# restoration_wedzin_kwa_2024 DRAFT 0.0.8 (20241017)
+
+  - add riparian restoration prescription example as per https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/issues/73
+  - add field survey summary to results
+  - add water quality info to recommendations
+  - add hwy and rail armoring to recommendations
+  - add beaver info to recommendations
+  - adde ducational programs to recommendations
+  - resort Table 4.7 (params for prioritization).  Add width of buffer
+
+
 # restoration_wedzin_kwa_2024 DRAFT 0.0.7 (20240814)
 
   - add detailed prioritization table for Mid-Bulkley Detailed Fish Habitat/Riparian/Channel Assessment for Watershed Restoration.” Nadina Community Futures Development Corporation (NCFDC) 1998.
