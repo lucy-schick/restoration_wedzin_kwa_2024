@@ -1,5 +1,27 @@
 # Results
 
+## Field Review
+
+In the field in September and early October 2024 we were able to survey approximately 12 km of Bulkley and Buck mainstem along with 1.5 km of Johnny David and Richfield. Within those areas and elsewhere we reviewed:
+
+-    14 past prescription sites from @ncfdc1998MidBulkleyDetailed
+
+-   6 prescription locations from the Wet'suwet'en First Nation 2016 report (2 sites were mapped in high resolution with a drone),
+
+-   6 past Healthy Watersheds Initiative sites
+
+-   7 newly proposed sites including both Groot fencing locations, 3 sites on the Wilson property and 2 previously undocumented sites on Mients' property (3 sites were mapped in high resolution with a drone)
+
+-   3 erosion protection sites in the Fraser (on the Lower Chilako River) completed by Chelton VanGloven (2 sites were mapped in high resolution with a drone)
+
+At the time of writing - most of the raw information from this fieldwork was viewable within layers stored the shared QGIS project in the `Project Specific/Field Data/2024` group. Many of the photos from site visits documented in those layers are within the GIS project as well (in desktop QGIS project they are in the `ignore_mobile/photos` directory).
+
+A brief summary of result is below:
+
+-   A recurring theme we observed where prescriptions were drafted and/or where work has been completed or proposed was obvious impacts related to riparian/floodplain vegetation removal and damage to sensitive areas due to cattle trampling and cattle waste products.
+-   At past sites where investments have been made - there were insignificant widths set aside for riparian/floodplain vegetation restoration/recovery.
+-   The protection of road and rail infrastructure through streambank armoring is not adequately incorporating best practices for vegetating riprap, soft armouring where possible and establishing/restoring effective riparian buffers.
+
 ## Collaborative GIS Environment
 
 A summary of background information layers loaded to the `background_layers.gpkg` geopackage of the `restoration_wedzin_kwa` project at the time of writing are included in Table \@ref(tab:tab-rfp-tracking).
@@ -48,7 +70,7 @@ rfp_tracking_prep %>%
 
 ## Historic Information Regarding Impacts and Restoration Initiatives
 
-Information amalgamated from past restoration initiatives has been added to the `restoration_wedzin_kwa` project in spatial formats through the `sites_restoration.gpkg` with details of source document locations, geometry type, description of the source document amalgamated, etc. documented in the `sites_restoration_gpkg_tracking.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/sites_restoration_gpkg_tracking.csv) with results presented in Table \@ref(tab:tab-sites-restoration-gpkg-tracking).  
+Information amalgamated from past restoration initiatives has been added to the `restoration_wedzin_kwa` project in spatial formats through the `sites_restoration.gpkg` with details of source document locations, geometry type, description of the source document amalgamated, etc. documented in the `sites_restoration_gpkg_tracking.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/sites_restoration_gpkg_tracking.csv) with results presented in Table \@ref(tab:tab-sites-restoration-gpkg-tracking).
 
 ```{r tab-sites-restoration-gpkg-tracking}
 readr::read_csv(
@@ -57,14 +79,11 @@ readr::read_csv(
   fpr::fpr_kable(caption_text = "Summary of past restoration initiatives added to the `sites_restoration.gpkg` geopackage of the `restoration_wedzin_kwa` project. Work in progress.")
 ```
 
-
 <br>
 
-### @price2014UpperBulkleya - Upper Bulkley floodplain habitat: modifications, physical barriers, and sites of  potential importance to salmonids
+### @price2014UpperBulkleya - Upper Bulkley floodplain habitat: modifications, physical barriers, and sites of potential importance to salmonids
 
-@price2014UpperBulkleya documented human-induced modifications to floodplain habitat and river channelization, investigated potential barriers to fish migration, and assessed areas of upwelling groundwater in the Upper Bulkley mainstem having potential importance to salmonids.  The coordinates of points of interest were extracted from a pdf version of the report and are included in the `price_2014_waypoints.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/inputs_extracted/price_2014_waypoints.csv) and were added to the `sites_restoration.gpkg` (layer name = price_2014). Individual waypoint information is also presented in Table \@ref(tab:tab-price-2014-waypoints).
-
-
+@price2014UpperBulkleya documented human-induced modifications to floodplain habitat and river channelization, investigated potential barriers to fish migration, and assessed areas of upwelling groundwater in the Upper Bulkley mainstem having potential importance to salmonids. The coordinates of points of interest were extracted from a pdf version of the report and are included in the `price_2014_waypoints.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/inputs_extracted/price_2014_waypoints.csv) and were added to the `sites_restoration.gpkg` (layer name = price_2014). Individual waypoint information is also presented in Table \@ref(tab:tab-price-2014-waypoints).
 
 ```{r extract-price2014, eval = F}
 path <- "/Users/airvine/zotero/storage/7JCL42Y3/price_2014_upper_bulkley_floodplain_habitat_-_modifications,_physical_barriers,_and_sites.pdf"
@@ -185,7 +204,7 @@ price_2014 %>%
 
 ### @ncfdc1998MidBulkleyDetailed - Mid-Bulkley Detailed Fish Habitat/Riparian/Channel Assessment for Watershed Restoration
 
-@ncfdc1998MidBulkleyDetailed utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Summarized details of this prioritization work and prescription locations and details extracted from the pdf and included in the `ncfdc_1998_prescriptions.csv` file located and viewable [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions.csv).  A summary of prioritization for sub-basins in the region are included in Table \@ref(tab:tab-ncfdc-1998-priority) with detailed prioritization information in Table \@ref(tab:tab-ncfdc-1998-pres) and details of individual prescriptions presented in Table \@ref(tab:tab-ncfdc-1998-priority-detailed) and stored [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/inputs_extracted/ncfdc_1998_prescriptions.csv). The prescription dataset has also been converted to a spatial file and added to the `restoration_wedzin_kwa` shared GIS project through the `sites_restoration.gpkg` file (layer name - `ncfdc_1998_prescriptions`).
+@ncfdc1998MidBulkleyDetailed utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Summarized details of this prioritization work and prescription locations and details extracted from the pdf and included in the `ncfdc_1998_prescriptions.csv` file located and viewable [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions.csv). A summary of prioritization for sub-basins in the region are included in Table \@ref(tab:tab-ncfdc-1998-priority) with detailed prioritization information in Table \@ref(tab:tab-ncfdc-1998-pres) and details of individual prescriptions presented in Table \@ref(tab:tab-ncfdc-1998-priority-detailed) and stored [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/inputs_extracted/ncfdc_1998_prescriptions.csv). The prescription dataset has also been converted to a spatial file and added to the `restoration_wedzin_kwa` shared GIS project through the `sites_restoration.gpkg` file (layer name - `ncfdc_1998_prescriptions`).
 
 <br>
 
@@ -216,6 +235,7 @@ readxl::read_excel(path, skip = 3) |>
   readr::write_csv(path_file)
 
 ```
+
 <br>
 
 ```{r tab-ncfdc-1998-priority-detailed, results="asis", echo=FALSE}
@@ -234,6 +254,7 @@ readr::read_csv(path_file) |>
   fpr::fpr_kable(caption_text = my_caption)
 
 ```
+
 <br>
 
 ```{r tab-ncfdc-1998-pres}
@@ -246,31 +267,34 @@ ncfdc_1998 %>%
   fpr::fpr_kable(caption_text = "Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.")
 ```
 
+### @gaboury_smith2016DevelopmentAquatic - Development of Aquatic Restoration Designs and On-Farm Cattle Management Improvements within the Wet'suwet'en irst Nation Territory
 
 ## Future Restoration Site Selection
 
 ### Fish Passage
-High priority fish passage restoration opportunities in the Neexdzii Kwah watershed include mulitple culverts on Highway 16 such as Richfield Creek, Johnny David Creek, and Byman Creek along with crossings on private roads, secondary roads  and the railway such as Ailport Creek, Perow Creek, tributary to Buck Creek (PSCIS 197640) and Cesford Creek.  Details are presented in the following reports:
 
-  - [Bulkley Watershed Fish Passage Restoration Planning 2022](https://www.newgraphenvironment.com/fish_passage_bulkley_2022_reporting/)[@irvine2023BulkleyWatershed]
-  - [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2021](https://www.newgraphenvironment.com/fish_passage_skeena_2021_reporting/)[@irvine2022BulkleyRiver]
-  - [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2020](https://www.newgraphenvironment.com/fish_passage_bulkley_2020_reporting/)[@irvine2021BulkleyRiver]
-  
-  
-At the time of writing, lateral connectivity analysis had been run for areas of the Neexdzii Kwah and tributaries floodplains for railway only. The results of this analysis are included in the `lateral_habitat.tiff` layer in the `background_layers.gpkg` and are viewable in the `restoration_wedzin_kwa` project.  The results of this analysis and future analysis incorperating major roadways as well (currently under development) will be used to inform future restoration activities.
+High priority fish passage restoration opportunities in the Neexdzii Kwah watershed include mulitple culverts on Highway 16 such as Richfield Creek, Johnny David Creek, and Byman Creek along with crossings on private roads, secondary roads and the railway such as Ailport Creek, Perow Creek, tributary to Buck Creek (PSCIS 197640) and Cesford Creek. Details are presented in the following reports:
+
+-   [Bulkley Watershed Fish Passage Restoration Planning 2022](https://www.newgraphenvironment.com/fish_passage_bulkley_2022_reporting/)[@irvine2023BulkleyWatershed]
+-   [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2021](https://www.newgraphenvironment.com/fish_passage_skeena_2021_reporting/)[@irvine2022BulkleyRiver]
+-   [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2020](https://www.newgraphenvironment.com/fish_passage_bulkley_2020_reporting/)[@irvine2021BulkleyRiver]
+-   Development Of Aquatic Restoration Designs And On-Farm Cattle Management Improvements within the Wet’suwet’en First Nation Territory [@gaboury_smith2016DevelopmentAquatic]
+
+At the time of writing, lateral connectivity analysis had been run for areas of the Neexdzii Kwah and tributaries floodplains for railway only. The results of this analysis are included in the `lateral_habitat.tif` layer in the and viewable in the `restoration_wedzin_kwa` project. The results of this analysis and future analysis incorporating major roadways as well (currently under development) will be used to inform future restoration activities.
 
 ### Local Knowledge for Riparian Area and Erosion Protection Site Selection
-Sites proposed for riparian area and erosion protection activities in the next two fiscal years are located in the `sites_restoration.gpkg` and are viewable in the `restoration_wedzin_kwa` project.  These sites were selected based on local knowledge and landowner willingness to participate in restoration activities.
 
-
+Sites proposed for riparian area and erosion protection activities in the next two fiscal years are located in the `sites_restoration.gpkg` and are viewable in the `restoration_wedzin_kwa` project. These sites were selected based on local knowledge and landowner willingness to participate in restoration activities.
 
 ### Evaluation of Historic and Current Imagery
+
 This work is ongoing and will be added to the `restoration_wedzin_kwa` project in the future.
 
 ### Delineation of Areas of High Fisheries Values
+
 This work is ongoing and will be added to the `restoration_wedzin_kwa` project in the future.
 
-### Parameter Ranking to Select Future Restoration Sites 
+### Parameter Ranking to Select Future Restoration Sites
 
 A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the `restoration_site_priority_parameters.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv) is included in Table \@ref(tab:tab-gis-params).
 
@@ -345,10 +369,11 @@ read_csv("data/restoration_site_priority_parameters.csv") %>%
     url_browser,
     # description_table = description,
     col_comments
-    ) %>% 
+    ) |> 
+  dplyr::arrange(column_name_raw) |> 
+  dplyr::select(column_name_raw, source_column_name, everything()) |> 
   fpr::fpr_kable(caption_text = "GIS parameters used to rank future restoration sites.",
                  scroll = gitbook_on)
 
   
 ```
-
