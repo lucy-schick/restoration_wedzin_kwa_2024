@@ -360,19 +360,20 @@ gis_params_raw_all_updated %>%
 ```
 
 ```{r tab-gis-params, eval = TRUE}
-read_csv("data/restoration_site_priority_parameters.csv") %>% 
+read_csv("data/restoration_site_priority_parameters.csv") |> 
   dplyr::select(
     source_schema_table, 
                 source_column_name,
     column_name_raw,
     user_input,
+    type,
     url_browser,
     # description_table = description,
     col_comments
     ) |> 
   dplyr::arrange(column_name_raw) |> 
   dplyr::select(column_name_raw, source_column_name, everything()) |> 
-  fpr::fpr_kable(caption_text = "GIS parameters used to rank future restoration sites.",
+  fpr::fpr_kable(caption_text = "Proposed parameters used to document and rank future potential restoration/enhancement sites.",
                  scroll = gitbook_on)
 
   

@@ -8,7 +8,7 @@
   - add water quality info to recommendations
   - add hwy and rail armoring to recommendations
   - add beaver info to recommendations
-  - adde ducational programs to recommendations
+  - add educational programs to recommendations
   - resort Table 4.7 (params for prioritization).  Add width of buffer
 
 

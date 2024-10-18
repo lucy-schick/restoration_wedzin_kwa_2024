@@ -8440,24 +8440,25 @@ To stabilize and revegetate the slopes by altering drainage patterns from theroa
 <span id="cb47-52"><a href="results.html#cb47-52" tabindex="-1"></a><span class="co"># this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag</span></span>
 <span id="cb47-53"><a href="results.html#cb47-53" tabindex="-1"></a>gis_params_raw_all_updated <span class="sc">%&gt;%</span> </span>
 <span id="cb47-54"><a href="results.html#cb47-54" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="results.html#cb48-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="results.html#cb48-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb48-2"><a href="results.html#cb48-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
 <span id="cb48-3"><a href="results.html#cb48-3" tabindex="-1"></a>    source_schema_table, </span>
 <span id="cb48-4"><a href="results.html#cb48-4" tabindex="-1"></a>                source_column_name,</span>
 <span id="cb48-5"><a href="results.html#cb48-5" tabindex="-1"></a>    column_name_raw,</span>
 <span id="cb48-6"><a href="results.html#cb48-6" tabindex="-1"></a>    user_input,</span>
-<span id="cb48-7"><a href="results.html#cb48-7" tabindex="-1"></a>    url_browser,</span>
-<span id="cb48-8"><a href="results.html#cb48-8" tabindex="-1"></a>    <span class="co"># description_table = description,</span></span>
-<span id="cb48-9"><a href="results.html#cb48-9" tabindex="-1"></a>    col_comments</span>
-<span id="cb48-10"><a href="results.html#cb48-10" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="cb48-11"><a href="results.html#cb48-11" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(column_name_raw) <span class="sc">|&gt;</span> </span>
-<span id="cb48-12"><a href="results.html#cb48-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(column_name_raw, source_column_name, <span class="fu">everything</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb48-13"><a href="results.html#cb48-13" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;GIS parameters used to rank future restoration sites.&quot;</span>,</span>
-<span id="cb48-14"><a href="results.html#cb48-14" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
+<span id="cb48-7"><a href="results.html#cb48-7" tabindex="-1"></a>    type,</span>
+<span id="cb48-8"><a href="results.html#cb48-8" tabindex="-1"></a>    url_browser,</span>
+<span id="cb48-9"><a href="results.html#cb48-9" tabindex="-1"></a>    <span class="co"># description_table = description,</span></span>
+<span id="cb48-10"><a href="results.html#cb48-10" tabindex="-1"></a>    col_comments</span>
+<span id="cb48-11"><a href="results.html#cb48-11" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb48-12"><a href="results.html#cb48-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(column_name_raw) <span class="sc">|&gt;</span> </span>
+<span id="cb48-13"><a href="results.html#cb48-13" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(column_name_raw, source_column_name, <span class="fu">everything</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb48-14"><a href="results.html#cb48-14" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Proposed parameters used to document and rank future potential restoration/enhancement sites.&quot;</span>,</span>
+<span id="cb48-15"><a href="results.html#cb48-15" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-gis-params">Table 4.7: </span>GIS parameters used to rank future restoration sites.
+<span id="tab:tab-gis-params">Table 4.7: </span>Proposed parameters used to document and rank future potential restoration/enhancement sites.
 </caption>
 <thead>
 <tr>
@@ -8472,6 +8473,9 @@ source_schema_table
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 user_input
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+type
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 url_browser
@@ -8501,6 +8505,9 @@ TRUE
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8514,6 +8521,9 @@ accessibility_distance_from_population_centre
 </td>
 <td style="text-align:left;">
 TRUE
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -8541,10 +8551,16 @@ TRUE
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
 brat
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -8576,6 +8592,9 @@ bulkley_falls_above
 –
 </td>
 <td style="text-align:left;">
+boolean
+</td>
+<td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
@@ -8594,6 +8613,9 @@ citation_1
 </td>
 <td style="text-align:left;">
 TRUE
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -8621,6 +8643,9 @@ TRUE
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8634,6 +8659,9 @@ citation_3
 </td>
 <td style="text-align:left;">
 TRUE
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -8656,6 +8684,9 @@ bcfishpass.habitat_lateral
 –
 </td>
 <td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
 </td>
 <td style="text-align:left;">
@@ -8665,6 +8696,9 @@ bcfishpass.habitat_lateral
 <tr>
 <td style="text-align:left;">
 contact_access
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -8701,6 +8735,9 @@ contact_landowner
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8721,10 +8758,16 @@ TRUE
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
 historic_project_location
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -8761,6 +8804,9 @@ house_group
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8774,6 +8820,9 @@ issue_causal_factor_01
 </td>
 <td style="text-align:left;">
 TRUE
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -8801,6 +8850,9 @@ TRUE
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8814,6 +8866,9 @@ issue_causal_factor_03
 </td>
 <td style="text-align:left;">
 TRUE
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -8841,6 +8896,9 @@ TRUE
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8854,6 +8912,9 @@ issue_causal_factor_05
 </td>
 <td style="text-align:left;">
 TRUE
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -8881,6 +8942,9 @@ TRUE
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8894,6 +8958,9 @@ issue_name_02
 </td>
 <td style="text-align:left;">
 TRUE
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -8921,6 +8988,9 @@ TRUE
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8934,6 +9004,9 @@ issue_name_04
 </td>
 <td style="text-align:left;">
 TRUE
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -8961,10 +9034,16 @@ TRUE
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
 land_cover_existing
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -9001,10 +9080,16 @@ land_cover_potential
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
 lat
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -9041,10 +9126,16 @@ location_access_lat
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
 location_access_long
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -9081,6 +9172,9 @@ long
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9094,6 +9188,9 @@ bcfishpass.streams_vw
 </td>
 <td style="text-align:left;">
 TRUE
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9116,6 +9213,9 @@ bcfishpass.streams_vw
 TRUE
 </td>
 <td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
 </td>
 <td style="text-align:left;">
@@ -9134,6 +9234,9 @@ riparian_floodplain_width_m
 </td>
 <td style="text-align:left;">
 TRUE
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -9161,6 +9264,9 @@ TRUE
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9181,10 +9287,16 @@ TRUE
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
 traditional_fishing_site
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -9221,6 +9333,9 @@ TRUE
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9234,6 +9349,9 @@ bcfishpass.streams_vw
 </td>
 <td style="text-align:left;">
 TRUE
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9256,6 +9374,9 @@ bcfishpass.streams_vw
 TRUE
 </td>
 <td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
 </td>
 <td style="text-align:left;">
@@ -9276,6 +9397,9 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
 </td>
 <td style="text-align:left;">
@@ -9294,23 +9418,6 @@ bcfishpass.streams_vw
 </td>
 <td style="text-align:left;">
 –
-</td>
-<td style="text-align:left;">
-<a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
-</td>
-<td style="text-align:left;">
-–
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-known_rearing_bt
-</td>
-<td style="text-align:left;">
-bcfishpass.streams_vw
 </td>
 <td style="text-align:left;">
 –
@@ -9336,6 +9443,9 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
+boolean
+</td>
+<td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
 </td>
 <td style="text-align:left;">
@@ -9354,6 +9464,9 @@ bcfishpass.streams_vw
 </td>
 <td style="text-align:left;">
 –
+</td>
+<td style="text-align:left;">
+boolean
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9376,44 +9489,7 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
-<a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
-</td>
-<td style="text-align:left;">
-–
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-known_rearing_wct
-</td>
-<td style="text-align:left;">
-bcfishpass.streams_vw
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-<a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
-</td>
-<td style="text-align:left;">
-–
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-known_spawning_bt
-</td>
-<td style="text-align:left;">
-bcfishpass.streams_vw
-</td>
-<td style="text-align:left;">
-–
+boolean
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9436,6 +9512,9 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
+boolean
+</td>
+<td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
 </td>
 <td style="text-align:left;">
@@ -9454,6 +9533,9 @@ bcfishpass.streams_vw
 </td>
 <td style="text-align:left;">
 –
+</td>
+<td style="text-align:left;">
+boolean
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9476,24 +9558,7 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
-<a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
-</td>
-<td style="text-align:left;">
-–
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-known_spawning_pk
-</td>
-<td style="text-align:left;">
-bcfishpass.streams_vw
-</td>
-<td style="text-align:left;">
-–
+boolean
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9516,6 +9581,9 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
+boolean
+</td>
+<td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
 </td>
 <td style="text-align:left;">
@@ -9536,24 +9604,7 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
-<a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
-</td>
-<td style="text-align:left;">
-–
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-known_spawning_wct
-</td>
-<td style="text-align:left;">
-bcfishpass.streams_vw
-</td>
-<td style="text-align:left;">
-–
+boolean
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9576,24 +9627,7 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
-<a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
-</td>
-<td style="text-align:left;">
-–
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-model_rearing_bt
-</td>
-<td style="text-align:left;">
-bcfishpass.streams_vw
-</td>
-<td style="text-align:left;">
-–
+numeric
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9616,6 +9650,9 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
+boolean
+</td>
+<td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
 </td>
 <td style="text-align:left;">
@@ -9634,6 +9671,9 @@ bcfishpass.streams_vw
 </td>
 <td style="text-align:left;">
 –
+</td>
+<td style="text-align:left;">
+boolean
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9656,6 +9696,9 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
+boolean
+</td>
+<td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
 </td>
 <td style="text-align:left;">
@@ -9676,44 +9719,7 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
-<a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
-</td>
-<td style="text-align:left;">
-–
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-model_rearing_wct
-</td>
-<td style="text-align:left;">
-bcfishpass.streams_vw
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-<a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
-</td>
-<td style="text-align:left;">
-–
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-model_spawning_bt
-</td>
-<td style="text-align:left;">
-bcfishpass.streams_vw
-</td>
-<td style="text-align:left;">
-–
+boolean
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9736,24 +9742,7 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
-<a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
-</td>
-<td style="text-align:left;">
-–
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-model_spawning_cm
-</td>
-<td style="text-align:left;">
-bcfishpass.streams_vw
-</td>
-<td style="text-align:left;">
-–
+boolean
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9776,6 +9765,9 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
+boolean
+</td>
+<td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
 </td>
 <td style="text-align:left;">
@@ -9794,6 +9786,9 @@ bcfishpass.streams_vw
 </td>
 <td style="text-align:left;">
 –
+</td>
+<td style="text-align:left;">
+boolean
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9816,6 +9811,9 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
+boolean
+</td>
+<td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
 </td>
 <td style="text-align:left;">
@@ -9836,24 +9834,7 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
-<a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
-</td>
-<td style="text-align:left;">
-–
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-model_spawning_wct
-</td>
-<td style="text-align:left;">
-bcfishpass.streams_vw
-</td>
-<td style="text-align:left;">
-–
+boolean
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9876,6 +9857,9 @@ bcfishpass.streams_vw
 –
 </td>
 <td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
 </td>
 <td style="text-align:left;">
@@ -9894,6 +9878,9 @@ bcfishpass.streams_vw
 </td>
 <td style="text-align:left;">
 –
+</td>
+<td style="text-align:left;">
+integer
 </td>
 <td style="text-align:left;">
 <a href="https://smnorris.github.io/bcfishpass/06_data_dictionary.html" class="uri">https://smnorris.github.io/bcfishpass/06_data_dictionary.html</a>
@@ -9916,6 +9903,9 @@ whse_admin_boundaries.clab_indian_reserves
 –
 </td>
 <td style="text-align:left;">
+boolean
+</td>
+<td style="text-align:left;">
 <a href="https://catalogue.data.gov.bc.ca/dataset/8efe9193-80d2-4fdf-a18c-d531a94196ad" class="uri">https://catalogue.data.gov.bc.ca/dataset/8efe9193-80d2-4fdf-a18c-d531a94196ad</a>
 </td>
 <td style="text-align:left;">
@@ -9936,6 +9926,9 @@ whse_basemapping.fwa_wetlands_poly
 –
 </td>
 <td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
 <a href="https://catalogue.data.gov.bc.ca/dataset/93b413d8-1840-4770-9629-641d74bd1cc6" class="uri">https://catalogue.data.gov.bc.ca/dataset/93b413d8-1840-4770-9629-641d74bd1cc6</a>
 </td>
 <td style="text-align:left;">
@@ -9951,6 +9944,9 @@ owner_type
 </td>
 <td style="text-align:left;">
 whse_cadastre.pmbc_parcel_fabric_poly_svw
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -9981,6 +9977,9 @@ whse_forest_tenure.ften_range_poly_carto_vw
 <td style="text-align:left;">
 –
 </td>
+<td style="text-align:left;">
+–
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9991,6 +9990,9 @@ burn_severity_rating
 </td>
 <td style="text-align:left;">
 whse_forest_vegetation.veg_burn_severity_sp
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
@@ -10016,6 +10018,9 @@ whse_forest_vegetation.veg_burn_severity_sp
 –
 </td>
 <td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
 <a href="https://catalogue.data.gov.bc.ca/dataset/c58a54e5-76b7-4921-94a7-b5998484e697" class="uri">https://catalogue.data.gov.bc.ca/dataset/c58a54e5-76b7-4921-94a7-b5998484e697</a>
 </td>
 <td style="text-align:left;">
@@ -10036,6 +10041,9 @@ whse_tantalis.ta_park_ecores_pa_svw
 –
 </td>
 <td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
 <a href="https://catalogue.data.gov.bc.ca/dataset/1130248f-f1a3-4956-8b2e-38d29d3e4af7" class="uri">https://catalogue.data.gov.bc.ca/dataset/1130248f-f1a3-4956-8b2e-38d29d3e4af7</a>
 </td>
 <td style="text-align:left;">
@@ -10051,6 +10059,9 @@ gazetted_name
 </td>
 <td style="text-align:left;">
 whse_wildlife_management.wcp_fish_sensitive_ws_poly
+</td>
+<td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
 –
