@@ -4,6 +4,7 @@
 # restoration_wedzin_kwa_2024 DRAFT 0.0.9 (20241027)
   - interactive priority table for recomendations!
   - move appendix to before changelog
+  - increase width as per https://github.com/NewGraphEnvironment/mybookdown-template/issues/55
 
 # restoration_wedzin_kwa_2024 DRAFT 0.0.8 (20241017)
 
