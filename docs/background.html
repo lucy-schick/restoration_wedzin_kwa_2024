@@ -52,8 +52,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 <script type="text/javascript">
 
@@ -222,9 +220,9 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>5</b> Recommendations</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="attachment-1---riparian-prescription-example.html"><a href="attachment-1---riparian-prescription-example.html"><i class="fa fa-check"></i><strong>Attachment 1 - Riparian Prescription Example</strong></a></li>
 <li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
-<li class="chapter" data-level="" data-path="attachment-1---riparian-prescription-example.html"><a href="attachment-1---riparian-prescription-example.html"><i class="fa fa-check"></i><strong>Attachment 1 - Riparian Prescription Example</strong></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024" target="blank">Scripts and Data</a></li>
 
@@ -253,7 +251,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="background.html#cb6-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/OW_2024_bulk.png&quot;</span>)</span></code></pre></div>
 <div id="neexdzii-kwah-upper-bulkley-river" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Neexdzii Kwah (Upper Bulkley River)<a href="background.html#neexdzii-kwah-upper-bulkley-river" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The Neexdzii Kwah (Upper Bulkley River) is an 8th order stream that drains an area of 2320.3 km<sup>2</sup> in a generally northerly direction from Bulkley Lake on the Nechako Plateau to its confluence with the Widzin Kwah (Morice River) near Houston <span class="citation">(<span>“Widzin <span>Kwah Water Sustainability Project</span>”</span> n.d.)</span>. It has a mean annual discharge of 19.2 m<sup>3</sup>/s at station 08EE003 located near Houston. The hydrograph peaks around May - June during the spring freshet with additional peaks related to significant rain events (Figures <a href="background.html#fig:hydrograph1">2.1</a> and <a href="background.html#fig:hydrology-stats1">2.2</a>)<span class="citation">(Westcott 2022a)</span>. Highway 16 and the CN Railroad parallel the upper Bulkley River and pass through the towns of Topley and Houston.</p>
+<p>The Neexdzii Kwah (Upper Bulkley River) is an 8th order stream that drains an area of 2320.3 km<sup>2</sup> in a generally northerly direction from Bulkley Lake on the Nechako Plateau to its confluence with the Widzin Kwah (Morice River) near Houston <span class="citation">(<span>“Widzin <span>Kwah Water Sustainability Project</span>”</span> n.d.)</span>. It has a mean annual discharge of 19.2 m<sup>3</sup>/s at station 08EE003 located near Houston. The hydrograph peaks around May - June during the spring freshet with additional peaks related to significant rain events (Figures <a href="background.html#fig:hydrograph1">2.1</a> and <a href="background.html#fig:hydrology-stats1">2.2</a>)<span class="citation">(Westcott 2022)</span>. Highway 16 and the CN Railroad parallel the upper Bulkley River and pass through the towns of Topley and Houston.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="background.html#cb7-1" tabindex="-1"></a>hydat_stations <span class="ot">&lt;-</span> fpr<span class="sc">::</span><span class="fu">fpr_db_query</span>(<span class="at">query =</span> <span class="fu">lfpr_dbq_clip</span>(<span class="st">&#39;whse_environmental_monitoring.envcan_hydrometric_stn_sp&#39;</span>,</span>
 <span id="cb7-2"><a href="background.html#cb7-2" tabindex="-1"></a><span class="st">&#39;whse_basemapping.fwa_watershed_groups_poly&#39;</span>, <span class="st">&#39;watershed_group_code&#39;</span>, <span class="fu">c</span>(<span class="st">&quot;BULK&quot;</span>, <span class="st">&quot;MORR&quot;</span>)))</span>
 <span id="cb7-3"><a href="background.html#cb7-3" tabindex="-1"></a></span>
@@ -277,7 +275,7 @@ Figure 2.2: Bulkley River Near Houston (Station #08EE003 - Lat 54.39938 Lon -126
 </div>
 <div id="buck-creek" class="section level3 hasAnchor" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Buck Creek<a href="background.html#buck-creek" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Buck Creek is a 5th order stream which enters Neexdzii Kwah just upstream of the Wedzin Kwa / Neexdzii Kwah (Morice/Bulkley) confluence adjacent to Houston. The watershed drains an area of 566.8 km<sup>2</sup>. Buck Creek is one of the main tributaries to the Neexdzii Kwah and has a mean annual discharge of 4.5 m<sup>3</sup>/s at station 08EE013 located near the Houston Medical Centre approximately 1 km upstream of the mouth <span class="citation">(Westcott 2022a)</span>. Flows from Buck Creek account for just under 1/3 of the total flows in Neexdzii Kwah. The hydrograph for Buck Creek shows a similar pattern to Neexdzii Kwah with peak flows in May - June (Figures <a href="background.html#fig:hydrograph2">2.3</a> and <a href="background.html#fig:hydrology-stats2">2.4</a>).</p>
+<p>Buck Creek is a 5th order stream which enters Neexdzii Kwah just upstream of the Wedzin Kwa / Neexdzii Kwah (Morice/Bulkley) confluence adjacent to Houston. The watershed drains an area of 566.8 km<sup>2</sup>. Buck Creek is one of the main tributaries to the Neexdzii Kwah and has a mean annual discharge of 4.5 m<sup>3</sup>/s at station 08EE013 located near the Houston Medical Centre approximately 1 km upstream of the mouth <span class="citation">(Westcott 2022)</span>. Flows from Buck Creek account for just under 1/3 of the total flows in Neexdzii Kwah. The hydrograph for Buck Creek shows a similar pattern to Neexdzii Kwah with peak flows in May - June (Figures <a href="background.html#fig:hydrograph2">2.3</a> and <a href="background.html#fig:hydrology-stats2">2.4</a>).</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="background.html#cb11-1" tabindex="-1"></a><span class="fu">lfpr_create_hydrograph</span>(<span class="st">&quot;08EE013&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="background.html#cb12-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrograph_08EE013.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:hydrograph2"></span>
