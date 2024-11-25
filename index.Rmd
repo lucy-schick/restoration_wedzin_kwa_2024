@@ -26,7 +26,13 @@ params:
   report_url: 'https://newgraphenvironment.github.io/restoration_wedzin_kwa_2024'
   update_packages: FALSE
 nocite: |
-  @gaboury_smith2016DevelopmentAquatic
+  @gaboury_smith2016DevelopmentAquatic,
+  @westcott2022UpperBulkleya,
+  @skeenaknowledgetrustUBRWater,
+  @wlrs2024BritishColumbia,
+  @oliver2020Analysis2017,
+  @canada2008CanadianAquatic,
+  @moe2024BritishColumbia
 documentclass: book
 bibliography: [packages.bib, references.bib]
 biblio-style: apalike
