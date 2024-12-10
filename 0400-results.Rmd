@@ -257,23 +257,59 @@ readr::read_csv(path_file) |>
 
 <br>
 
-```{r tab-ncfdc-1998-pres}
+```{r tab-ncfdc-1998-pres, eval=TRUE}
 ncfdc_1998 <- readr::read_csv(
-  "data/ncfdc_1998_prescriptions_hand_bomb.csv"
+  "data/ncfdc_1998_prescriptions_hand_bomb.csv",
+  locale = readr::locale(encoding = "UTF-8")
 ) 
 
-ncfdc_1998 %>% 
+ncfdc_1998_cleaned <- ncfdc_1998 |>
+  dplyr::mutate(
+    dplyr::across(
+      dplyr::everything(),
+      ~ as.character(.) |> 
+        stringr::str_replace_all("[^[:alnum:][:space:].,]", "") |> # Retain alphanumeric, spaces, periods, and parentheses
+        stringr::str_replace_all("\\.", "\\\\.")    |> 
+        stringr::str_replace_all("\\,", "\\\\,") 
+    )
+  )
+
+ncfdc_1998_cleaned %>% 
   dplyr::select(sub_basin:technical_references) %>% 
-  fpr::fpr_kable(caption_text = "Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.")
+  knitr::kable(
+    booktabs = T, 
+    label = NA, 
+    caption = "Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area."
+    ) |> 
+  kableExtra::kable_styling(c("condensed", "responsive"),
+                              full_width = T,
+                              font_size = font_set) |> 
+  kableExtra::scroll_box(width = "100%", height = "500px")
+
+
+
+
+# below was throwing error
+# [WARNING] Div at Restoration_Neexdzii_Kwah_2024.knit.md line 8335 column 1 unclosed at Restoration_Neexdzii_Kwah_2024.knit.md line 9788 column 1, closing implicitly.
+# it was then not linking to TOC elements beyond Results!!
+  # fpr::fpr_kable(caption_text = "Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.")
+
+# this is the problem
+  # kableExtra::scroll_box(width = "100%", height = "500px")
+# https://chatgpt.com/c/674459e0-6c30-800c-8fe1-ad49e8b53979
 ```
 
 ### @gaboury_smith2016DevelopmentAquatic - Development of Aquatic Restoration Designs and On-Farm Cattle Management Improvements within the Wet'suwet'en irst Nation Territory
 
 ## Future Restoration Site Selection
 
+### Evaluation of Historic and Current Imagery
+
+This work is ongoing and will be added to the `restoration_wedzin_kwa` project in the future.
+
 ### Fish Passage
 
-High priority fish passage restoration opportunities in the Neexdzii Kwah watershed include mulitple culverts on Highway 16 such as Richfield Creek, Johnny David Creek, and Byman Creek along with crossings on private roads, secondary roads and the railway such as Ailport Creek, Perow Creek, tributary to Buck Creek (PSCIS 197640) and Cesford Creek. Details are presented in the following reports:
+High priority fish passage restoration opportunities in the Neexdzii Kwah watershed include mulitple culverts on Highway 16 such as Richfield Creek, Johnny David Creek, and Byman Creek along with crossings on private roads, secondary roads and the railway such as Ailport Creek, Perow Creek, tributary to Buck Creek (PSCIS 197640) and Cesford Creek. Some sites have had past work (Johnny Davide) and others are currently progressing through the design process (trib to Buck) with details presented in the following reports which are updated intermittently:
 
 -   [Bulkley Watershed Fish Passage Restoration Planning 2022](https://www.newgraphenvironment.com/fish_passage_bulkley_2022_reporting/)[@irvine2023BulkleyWatershed]
 -   [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2021](https://www.newgraphenvironment.com/fish_passage_skeena_2021_reporting/)[@irvine2022BulkleyRiver]
@@ -286,9 +322,6 @@ At the time of writing, lateral connectivity analysis had been run for areas of 
 
 Sites proposed for riparian area and erosion protection activities in the next two fiscal years are located in the `sites_restoration.gpkg` and are viewable in the `restoration_wedzin_kwa` project. These sites were selected based on local knowledge and landowner willingness to participate in restoration activities.
 
-### Evaluation of Historic and Current Imagery
-
-This work is ongoing and will be added to the `restoration_wedzin_kwa` project in the future.
 
 ### Delineation of Areas of High Fisheries Values
 
