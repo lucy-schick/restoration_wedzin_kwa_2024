@@ -15,8 +15,12 @@ knitr::include_graphics("fig/OW_2024_bulk.png")
 ```
 
 ### Neexdzii Kwah (Upper Bulkley River)
+```{r area-bulk, eval=FALSE}
+fwapgr::fwa_watershed_at_measure(360873822, 164920) %>% mutate(area_km2 = round(area_ha/100, 1)) %>% pull(area_km2)
+```
 
-The Neexdzii Kwah (Upper Bulkley River) is an 8th order stream that drains an area of `r fwapgr::fwa_watershed_at_measure(360873822, 164920) %>% mutate(area_km2 = round(area_ha/100, 1)) %>% pull(area_km2)` km^2^ in a generally northerly direction from Bulkley Lake on the Nechako Plateau to its confluence with the Widzin Kwah (Morice River) near Houston [@WidzinKwahWaterSustainabilityProject]. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08EE003")$LTMAD,1)` m^3^/s at station 08EE003 located near Houston. The hydrograph peaks around May - June during the spring freshet with additional peaks related to significant rain events (Figures \@ref(fig:hydrograph1) and \@ref(fig:hydrology-stats1))[@westcott2022UpperBulkley]. Highway 16 and the CN Railroad parallel the upper Bulkley River and pass through the towns of Topley and Houston.
+
+The Neexdzii Kwah (Upper Bulkley River) is an 8th order stream that drains an area of 2320km^2^ in a generally northerly direction from Bulkley Lake on the Nechako Plateau to its confluence with the Widzin Kwah (Morice River) near Houston [@WidzinKwahWaterSustainabilityProject]. It has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08EE003")$LTMAD,1)` m^3^/s at station 08EE003 located near Houston. The hydrograph peaks around May - June during the spring freshet with additional peaks related to significant rain events (Figures \@ref(fig:hydrograph1) and \@ref(fig:hydrology-stats1))[@westcott2022UpperBulkley]. Highway 16 and the CN Railroad parallel the upper Bulkley River and pass through the towns of Topley and Houston.
 
 ```{r, hydrometric-get-stations, eval= FALSE}
 hydat_stations <- fpr::fpr_db_query(query = lfpr_dbq_clip('whse_environmental_monitoring.envcan_hydrometric_stn_sp',
@@ -40,7 +44,12 @@ knitr::include_graphics("fig/hydrology_stats_08EE003.png")
 
 ### Buck Creek
 
-Buck Creek is a 5th order stream which enters Neexdzii Kwah just upstream of the Wedzin Kwa / Neexdzii Kwah (Morice/Bulkley) confluence adjacent to Houston.  The watershed drains an area of `r fwapgr::fwa_watershed_at_measure(360886221) %>% mutate(area_km2 = round(area_ha/100, 1)) %>% pull(area_km2)` km^2^. Buck Creek is one of the main tributaries to the Neexdzii Kwah and has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08EE013")$LTMAD,1)` m^3^/s at station 08EE013 located near the Houston Medical Centre approximately 1 km upstream of the mouth [@westcott2022UpperBulkley]. Flows from Buck Creek account for just under 1/3 of the total flows in Neexdzii Kwah. The hydrograph for Buck Creek shows a similar pattern to Neexdzii Kwah with peak flows in May - June (Figures \@ref(fig:hydrograph2) and \@ref(fig:hydrology-stats2)).
+```{r area-buck, eval = FALSE}
+fwapgr::fwa_watershed_at_measure(360886221) %>% mutate(area_km2 = round(area_ha/100, 1)) %>% pull(area_km2)
+```
+
+
+Buck Creek is a 5th order stream which enters Neexdzii Kwah just upstream of the Wedzin Kwa / Neexdzii Kwah (Morice/Bulkley) confluence adjacent to Houston.  The watershed drains an area of 567km^2^. Buck Creek is one of the main tributaries to the Neexdzii Kwah and has a mean annual discharge of `r round(fasstr::calc_longterm_mean(station_number = "08EE013")$LTMAD,1)` m^3^/s at station 08EE013 located near the Houston Medical Centre approximately 1 km upstream of the mouth [@westcott2022UpperBulkley]. Flows from Buck Creek account for just under 1/3 of the total flows in Neexdzii Kwah. The hydrograph for Buck Creek shows a similar pattern to Neexdzii Kwah with peak flows in May - June (Figures \@ref(fig:hydrograph2) and \@ref(fig:hydrology-stats2)).
 
 ```{r, hydrograph-create-02, eval=F}
 lfpr_create_hydrograph("08EE013")
