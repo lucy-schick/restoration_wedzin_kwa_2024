@@ -2,6 +2,11 @@
 
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+### restoration_wedzin_kwa_2024 DRAFT 0.0.11 (2024-12-11) {-}
+
+- first build following use of fledge to dynamically update NEWS and Changelog
+
+
 ### restoration_wedzin_kwa_2024 DRAFT 0.0.10 (2024-12-11) {-}
 
 - link to blog and details for imagery as per #10 (rollback 1)

@@ -268,38 +268,38 @@ div.csl-indent {
 <div id="collaborative-gis-environment-1" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Collaborative GIS Environment<a href="results.html#collaborative-gis-environment-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A summary of background information layers loaded to the <code>background_layers.gpkg</code> geopackage of the <code>restoration_wedzin_kwa</code> project at the time of writing are included in Table <a href="results.html#tab:tab-rfp-tracking">4.1</a>.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="results.html#cb42-1" tabindex="-1"></a><span class="co"># first we will copy the doc from the Q project to this repo - the location of the Q project is outside of the repo!!</span></span>
-<span id="cb42-2"><a href="results.html#cb42-2" tabindex="-1"></a>q_path_stub <span class="ot">&lt;-</span> <span class="st">&quot;~/Projects/gis/restoration_wedzin_kwa/&quot;</span></span>
-<span id="cb42-3"><a href="results.html#cb42-3" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="results.html#cb42-4" tabindex="-1"></a>rfp_tracking_raw <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(<span class="fu">paste0</span>(q_path_stub, <span class="st">&quot;background_layers.gpkg&quot;</span>),</span>
-<span id="cb42-5"><a href="results.html#cb42-5" tabindex="-1"></a>            <span class="at">layer =</span> <span class="st">&quot;rfp_tracking&quot;</span>,</span>
-<span id="cb42-6"><a href="results.html#cb42-6" tabindex="-1"></a>            <span class="at">quite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb42-7"><a href="results.html#cb42-7" tabindex="-1"></a></span>
-<span id="cb42-8"><a href="results.html#cb42-8" tabindex="-1"></a><span class="co"># grab the metadata</span></span>
-<span id="cb42-9"><a href="results.html#cb42-9" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">rfp_meta_bcd_xref</span>()</span>
-<span id="cb42-10"><a href="results.html#cb42-10" tabindex="-1"></a></span>
-<span id="cb42-11"><a href="results.html#cb42-11" tabindex="-1"></a><span class="co"># remove the `_vw` from the end of content</span></span>
-<span id="cb42-12"><a href="results.html#cb42-12" tabindex="-1"></a>rfp_tracking_prep <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(</span>
-<span id="cb42-13"><a href="results.html#cb42-13" tabindex="-1"></a>  rfp_tracking_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb42-14"><a href="results.html#cb42-14" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(timestamp)) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-15"><a href="results.html#cb42-15" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">distinct</span>(content, <span class="at">.keep_all =</span> <span class="cn">FALSE</span>),</span>
-<span id="cb42-16"><a href="results.html#cb42-16" tabindex="-1"></a>  </span>
-<span id="cb42-17"><a href="results.html#cb42-17" tabindex="-1"></a>  md <span class="sc">%&gt;%</span> </span>
-<span id="cb42-18"><a href="results.html#cb42-18" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="at">content =</span> object_name, <span class="at">url =</span> url_browser, description),</span>
-<span id="cb42-19"><a href="results.html#cb42-19" tabindex="-1"></a>  </span>
-<span id="cb42-20"><a href="results.html#cb42-20" tabindex="-1"></a>  <span class="at">by =</span> <span class="st">&quot;content&quot;</span></span>
-<span id="cb42-21"><a href="results.html#cb42-21" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb42-22"><a href="results.html#cb42-22" tabindex="-1"></a>  <span class="fu">arrange</span>(content)</span>
-<span id="cb42-23"><a href="results.html#cb42-23" tabindex="-1"></a></span>
-<span id="cb42-24"><a href="results.html#cb42-24" tabindex="-1"></a>rfp_tracking_prep <span class="sc">%&gt;%</span> </span>
-<span id="cb42-25"><a href="results.html#cb42-25" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(<span class="st">&quot;data/rfp_tracking_prep.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="results.html#cb43-1" tabindex="-1"></a>rfp_tracking_prep <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb43-2"><a href="results.html#cb43-2" tabindex="-1"></a>  <span class="st">&quot;data/rfp_tracking_prep.csv&quot;</span></span>
-<span id="cb43-3"><a href="results.html#cb43-3" tabindex="-1"></a>)</span>
-<span id="cb43-4"><a href="results.html#cb43-4" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="results.html#cb43-5" tabindex="-1"></a>rfp_tracking_prep <span class="sc">%&gt;%</span> </span>
-<span id="cb43-6"><a href="results.html#cb43-6" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Layers loaded to collaborative GIS project.&quot;</span>,</span>
-<span id="cb43-7"><a href="results.html#cb43-7" tabindex="-1"></a>                 <span class="at">footnote_text =</span> <span class="st">&quot;Metadata information for bcfishpass and bcfishobs layers can be provided here in the future but  currently can usually be sourced from https://smnorris.github.io/bcfishpass/06_data_dictionary.html .&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="results.html#cb41-1" tabindex="-1"></a><span class="co"># first we will copy the doc from the Q project to this repo - the location of the Q project is outside of the repo!!</span></span>
+<span id="cb41-2"><a href="results.html#cb41-2" tabindex="-1"></a>q_path_stub <span class="ot">&lt;-</span> <span class="st">&quot;~/Projects/gis/restoration_wedzin_kwa/&quot;</span></span>
+<span id="cb41-3"><a href="results.html#cb41-3" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="results.html#cb41-4" tabindex="-1"></a>rfp_tracking_raw <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(<span class="fu">paste0</span>(q_path_stub, <span class="st">&quot;background_layers.gpkg&quot;</span>),</span>
+<span id="cb41-5"><a href="results.html#cb41-5" tabindex="-1"></a>            <span class="at">layer =</span> <span class="st">&quot;rfp_tracking&quot;</span>,</span>
+<span id="cb41-6"><a href="results.html#cb41-6" tabindex="-1"></a>            <span class="at">quite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-7"><a href="results.html#cb41-7" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="results.html#cb41-8" tabindex="-1"></a><span class="co"># grab the metadata</span></span>
+<span id="cb41-9"><a href="results.html#cb41-9" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">rfp_meta_bcd_xref</span>()</span>
+<span id="cb41-10"><a href="results.html#cb41-10" tabindex="-1"></a></span>
+<span id="cb41-11"><a href="results.html#cb41-11" tabindex="-1"></a><span class="co"># remove the `_vw` from the end of content</span></span>
+<span id="cb41-12"><a href="results.html#cb41-12" tabindex="-1"></a>rfp_tracking_prep <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(</span>
+<span id="cb41-13"><a href="results.html#cb41-13" tabindex="-1"></a>  rfp_tracking_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb41-14"><a href="results.html#cb41-14" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(timestamp)) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-15"><a href="results.html#cb41-15" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">distinct</span>(content, <span class="at">.keep_all =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb41-16"><a href="results.html#cb41-16" tabindex="-1"></a>  </span>
+<span id="cb41-17"><a href="results.html#cb41-17" tabindex="-1"></a>  md <span class="sc">%&gt;%</span> </span>
+<span id="cb41-18"><a href="results.html#cb41-18" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="at">content =</span> object_name, <span class="at">url =</span> url_browser, description),</span>
+<span id="cb41-19"><a href="results.html#cb41-19" tabindex="-1"></a>  </span>
+<span id="cb41-20"><a href="results.html#cb41-20" tabindex="-1"></a>  <span class="at">by =</span> <span class="st">&quot;content&quot;</span></span>
+<span id="cb41-21"><a href="results.html#cb41-21" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-22"><a href="results.html#cb41-22" tabindex="-1"></a>  <span class="fu">arrange</span>(content)</span>
+<span id="cb41-23"><a href="results.html#cb41-23" tabindex="-1"></a></span>
+<span id="cb41-24"><a href="results.html#cb41-24" tabindex="-1"></a>rfp_tracking_prep <span class="sc">%&gt;%</span> </span>
+<span id="cb41-25"><a href="results.html#cb41-25" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(<span class="st">&quot;data/rfp_tracking_prep.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="results.html#cb42-1" tabindex="-1"></a>rfp_tracking_prep <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb42-2"><a href="results.html#cb42-2" tabindex="-1"></a>  <span class="st">&quot;data/rfp_tracking_prep.csv&quot;</span></span>
+<span id="cb42-3"><a href="results.html#cb42-3" tabindex="-1"></a>)</span>
+<span id="cb42-4"><a href="results.html#cb42-4" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="results.html#cb42-5" tabindex="-1"></a>rfp_tracking_prep <span class="sc">%&gt;%</span> </span>
+<span id="cb42-6"><a href="results.html#cb42-6" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Layers loaded to collaborative GIS project.&quot;</span>,</span>
+<span id="cb42-7"><a href="results.html#cb42-7" tabindex="-1"></a>                 <span class="at">footnote_text =</span> <span class="st">&quot;Metadata information for bcfishpass and bcfishobs layers can be provided here in the future but  currently can usually be sourced from https://smnorris.github.io/bcfishpass/06_data_dictionary.html .&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
@@ -825,10 +825,10 @@ The dataset contains approved legal boundaries for fisheries sensitive watershed
 <div id="historic-information-regarding-impacts-and-restoration-initiatives-1" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Historic Information Regarding Impacts and Restoration Initiatives<a href="results.html#historic-information-regarding-impacts-and-restoration-initiatives-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Information amalgamated from past restoration initiatives has been added to the <code>restoration_wedzin_kwa</code> project in spatial formats through the <code>sites_restoration.gpkg</code> with details of source document locations, geometry type, description of the source document amalgamated, etc. documented in the <code>sites_restoration_gpkg_tracking.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/sites_restoration_gpkg_tracking.csv">here</a> with results presented in Table <a href="results.html#tab:tab-sites-restoration-gpkg-tracking">4.2</a>.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="results.html#cb44-1" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb44-2"><a href="results.html#cb44-2" tabindex="-1"></a>  <span class="st">&quot;data/sites_restoration_gpkg_tracking.csv&quot;</span></span>
-<span id="cb44-3"><a href="results.html#cb44-3" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-4"><a href="results.html#cb44-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Summary of past restoration initiatives added to the `sites_restoration.gpkg` geopackage of the `restoration_wedzin_kwa` project. Work in progress.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="results.html#cb43-1" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb43-2"><a href="results.html#cb43-2" tabindex="-1"></a>  <span class="st">&quot;data/sites_restoration_gpkg_tracking.csv&quot;</span></span>
+<span id="cb43-3"><a href="results.html#cb43-3" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-4"><a href="results.html#cb43-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Summary of past restoration initiatives added to the `sites_restoration.gpkg` geopackage of the `restoration_wedzin_kwa` project. Work in progress.&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -1020,115 +1020,115 @@ Provided by Wet’suwet’en First Nation in 2021. Includes all sites proposed b
 <div id="price2014upperbulkleya---upper-bulkley-floodplain-habitat-modifications-physical-barriers-and-sites-of-potential-importance-to-salmonids" class="section level3 hasAnchor" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> <span class="citation">Price (2014)</span> - Upper Bulkley floodplain habitat: modifications, physical barriers, and sites of potential importance to salmonids<a href="results.html#price2014upperbulkleya---upper-bulkley-floodplain-habitat-modifications-physical-barriers-and-sites-of-potential-importance-to-salmonids" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><span class="citation">Price (2014)</span> documented human-induced modifications to floodplain habitat and river channelization, investigated potential barriers to fish migration, and assessed areas of upwelling groundwater in the Upper Bulkley mainstem having potential importance to salmonids. The coordinates of points of interest were extracted from a pdf version of the report and are included in the <code>price_2014_waypoints.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/inputs_extracted/price_2014_waypoints.csv">here</a> and were added to the <code>sites_restoration.gpkg</code> (layer name = price_2014). Individual waypoint information is also presented in Table <a href="results.html#tab:tab-price-2014-waypoints">4.3</a>.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="results.html#cb45-1" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;/Users/airvine/zotero/storage/7JCL42Y3/price_2014_upper_bulkley_floodplain_habitat_-_modifications,_physical_barriers,_and_sites.pdf&quot;</span></span>
-<span id="cb45-2"><a href="results.html#cb45-2" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="results.html#cb45-3" tabindex="-1"></a><span class="co"># name our csv we are creating</span></span>
-<span id="cb45-4"><a href="results.html#cb45-4" tabindex="-1"></a>path_file <span class="ot">&lt;-</span> <span class="st">&quot;data/inputs_extracted/price_2014_waypoints.csv&quot;</span></span>
-<span id="cb45-5"><a href="results.html#cb45-5" tabindex="-1"></a></span>
-<span id="cb45-6"><a href="results.html#cb45-6" tabindex="-1"></a><span class="co"># define page to extract table</span></span>
-<span id="cb45-7"><a href="results.html#cb45-7" tabindex="-1"></a>page <span class="ot">&lt;-</span> <span class="dv">32</span></span>
-<span id="cb45-8"><a href="results.html#cb45-8" tabindex="-1"></a></span>
-<span id="cb45-9"><a href="results.html#cb45-9" tabindex="-1"></a></span>
-<span id="cb45-10"><a href="results.html#cb45-10" tabindex="-1"></a><span class="co"># #if you wanted to define the area to extract would run with this the first time</span></span>
-<span id="cb45-11"><a href="results.html#cb45-11" tabindex="-1"></a><span class="co"># tabulapdf::locate_areas(path, pages = page)</span></span>
-<span id="cb45-12"><a href="results.html#cb45-12" tabindex="-1"></a></span>
-<span id="cb45-13"><a href="results.html#cb45-13" tabindex="-1"></a></span>
-<span id="cb45-14"><a href="results.html#cb45-14" tabindex="-1"></a><span class="co"># to get.... </span></span>
-<span id="cb45-15"><a href="results.html#cb45-15" tabindex="-1"></a><span class="co"># tab_area = list(c(151.17224,  87.13111, 715.14139,604.27249 ))</span></span>
-<span id="cb45-16"><a href="results.html#cb45-16" tabindex="-1"></a><span class="co"># but....looks like it will guess correct with no help so let&#39;s do that</span></span>
-<span id="cb45-17"><a href="results.html#cb45-17" tabindex="-1"></a>tabulapdf<span class="sc">::</span><span class="fu">extract_tables</span>(path,</span>
-<span id="cb45-18"><a href="results.html#cb45-18" tabindex="-1"></a>                                  <span class="at">pages =</span> page,</span>
-<span id="cb45-19"><a href="results.html#cb45-19" tabindex="-1"></a>                                  <span class="co"># method = &quot;lattice&quot;,</span></span>
-<span id="cb45-20"><a href="results.html#cb45-20" tabindex="-1"></a>                                  <span class="co"># output = c(&quot;tibble&quot;),</span></span>
-<span id="cb45-21"><a href="results.html#cb45-21" tabindex="-1"></a>                                  <span class="co"># guess = FALSE,</span></span>
-<span id="cb45-22"><a href="results.html#cb45-22" tabindex="-1"></a>                                  <span class="co"># area = tab_area</span></span>
-<span id="cb45-23"><a href="results.html#cb45-23" tabindex="-1"></a>                                  ) <span class="sc">|&gt;</span> </span>
-<span id="cb45-24"><a href="results.html#cb45-24" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb45-25"><a href="results.html#cb45-25" tabindex="-1"></a>  <span class="co"># need to make the first row be the names due to muti-line header</span></span>
-<span id="cb45-26"><a href="results.html#cb45-26" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">row_to_names</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb45-27"><a href="results.html#cb45-27" tabindex="-1"></a>  <span class="co"># now let&#39;s burn it to a csv so we can correct the types</span></span>
-<span id="cb45-28"><a href="results.html#cb45-28" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(path_file)</span>
-<span id="cb45-29"><a href="results.html#cb45-29" tabindex="-1"></a></span>
-<span id="cb45-30"><a href="results.html#cb45-30" tabindex="-1"></a><span class="co"># read it back in to get the types right</span></span>
-<span id="cb45-31"><a href="results.html#cb45-31" tabindex="-1"></a>tab1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(path_file)</span>
-<span id="cb45-32"><a href="results.html#cb45-32" tabindex="-1"></a></span>
-<span id="cb45-33"><a href="results.html#cb45-33" tabindex="-1"></a><span class="co"># now let&#39;s define the rest of the pages to extract from</span></span>
-<span id="cb45-34"><a href="results.html#cb45-34" tabindex="-1"></a>page <span class="ot">&lt;-</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">36</span></span>
-<span id="cb45-35"><a href="results.html#cb45-35" tabindex="-1"></a></span>
-<span id="cb45-36"><a href="results.html#cb45-36" tabindex="-1"></a></span>
-<span id="cb45-37"><a href="results.html#cb45-37" tabindex="-1"></a><span class="co"># build a function to pull them all out at the same time </span></span>
-<span id="cb45-38"><a href="results.html#cb45-38" tabindex="-1"></a>extract_tables_multi <span class="ot">&lt;-</span> <span class="cf">function</span>(page){</span>
-<span id="cb45-39"><a href="results.html#cb45-39" tabindex="-1"></a>  tabulapdf<span class="sc">::</span><span class="fu">extract_tables</span>(path,</span>
-<span id="cb45-40"><a href="results.html#cb45-40" tabindex="-1"></a>                                  <span class="at">pages =</span> page,</span>
-<span id="cb45-41"><a href="results.html#cb45-41" tabindex="-1"></a>                                  ) <span class="sc">|&gt;</span> </span>
-<span id="cb45-42"><a href="results.html#cb45-42" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb45-43"><a href="results.html#cb45-43" tabindex="-1"></a>    <span class="co"># use the names from the header table</span></span>
-<span id="cb45-44"><a href="results.html#cb45-44" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="at">nm =</span> <span class="fu">names</span>(tab1))</span>
-<span id="cb45-45"><a href="results.html#cb45-45" tabindex="-1"></a>}</span>
-<span id="cb45-46"><a href="results.html#cb45-46" tabindex="-1"></a></span>
-<span id="cb45-47"><a href="results.html#cb45-47" tabindex="-1"></a><span class="co"># run our function </span></span>
-<span id="cb45-48"><a href="results.html#cb45-48" tabindex="-1"></a>tabs_extra <span class="ot">&lt;-</span> page <span class="sc">|&gt;</span> </span>
-<span id="cb45-49"><a href="results.html#cb45-49" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map_df</span>(</span>
-<span id="cb45-50"><a href="results.html#cb45-50" tabindex="-1"></a>    extract_tables_multi</span>
-<span id="cb45-51"><a href="results.html#cb45-51" tabindex="-1"></a>  )</span>
-<span id="cb45-52"><a href="results.html#cb45-52" tabindex="-1"></a></span>
-<span id="cb45-53"><a href="results.html#cb45-53" tabindex="-1"></a><span class="co"># join our og table to our multi-page output but fix a type </span></span>
-<span id="cb45-54"><a href="results.html#cb45-54" tabindex="-1"></a>tab <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(</span>
-<span id="cb45-55"><a href="results.html#cb45-55" tabindex="-1"></a>  tab1 <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">as.numeric</span>(number)),</span>
-<span id="cb45-56"><a href="results.html#cb45-56" tabindex="-1"></a>  tabs_extra </span>
-<span id="cb45-57"><a href="results.html#cb45-57" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
-<span id="cb45-58"><a href="results.html#cb45-58" tabindex="-1"></a>  <span class="co"># clean the names for the report</span></span>
-<span id="cb45-59"><a href="results.html#cb45-59" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="at">nm =</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(<span class="fu">names</span>(tab1))) <span class="sc">|&gt;</span> </span>
-<span id="cb45-60"><a href="results.html#cb45-60" tabindex="-1"></a>  <span class="co"># add a theme</span></span>
-<span id="cb45-61"><a href="results.html#cb45-61" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Theme =</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
-<span id="cb45-62"><a href="results.html#cb45-62" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;spawning|Spawners&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Spawning&quot;</span>,</span>
-<span id="cb45-63"><a href="results.html#cb45-63" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;culvert|bridge|crossing&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Stream Crossing&quot;</span>,</span>
-<span id="cb45-64"><a href="results.html#cb45-64" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;richfield&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Other&quot;</span>, </span>
-<span id="cb45-65"><a href="results.html#cb45-65" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;floodplain&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Floodplain&quot;</span>,</span>
-<span id="cb45-66"><a href="results.html#cb45-66" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;rail&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Railway&quot;</span>,</span>
-<span id="cb45-67"><a href="results.html#cb45-67" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;field|cattle&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Agriculture&quot;</span>,</span>
-<span id="cb45-68"><a href="results.html#cb45-68" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;beaver&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Beaver&quot;</span>,</span>
-<span id="cb45-69"><a href="results.html#cb45-69" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;forest|clearcut|cutblock&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Forestry&quot;</span>,</span>
-<span id="cb45-70"><a href="results.html#cb45-70" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;rip-rap&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Rip-rap&quot;</span>,</span>
-<span id="cb45-71"><a href="results.html#cb45-71" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;Log jam&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Log jam&quot;</span>,</span>
-<span id="cb45-72"><a href="results.html#cb45-72" tabindex="-1"></a>    </span>
-<span id="cb45-73"><a href="results.html#cb45-73" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Other&quot;</span> <span class="co"># Default to Other if no other conditions are met</span></span>
-<span id="cb45-74"><a href="results.html#cb45-74" tabindex="-1"></a>  )) <span class="sc">|&gt;</span> </span>
-<span id="cb45-75"><a href="results.html#cb45-75" tabindex="-1"></a></span>
-<span id="cb45-76"><a href="results.html#cb45-76" tabindex="-1"></a>  <span class="co">#there is an issue at row 182... so fix by appending UB-643 to 645 [UB- to the beginning of the photo series column</span></span>
-<span id="cb45-77"><a href="results.html#cb45-77" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="st">`</span><span class="at">Photo Series</span><span class="st">`</span> <span class="ot">=</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
-<span id="cb45-78"><a href="results.html#cb45-78" tabindex="-1"></a>    Number <span class="sc">==</span> <span class="dv">182</span> <span class="sc">~</span> <span class="fu">paste0</span>(<span class="st">&quot;UB-643 to 645 [UB-&quot;</span>, <span class="st">`</span><span class="at">Photo Series</span><span class="st">`</span>),</span>
-<span id="cb45-79"><a href="results.html#cb45-79" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">`</span><span class="at">Photo Series</span><span class="st">`</span></span>
-<span id="cb45-80"><a href="results.html#cb45-80" tabindex="-1"></a>  )) <span class="sc">|&gt;</span> </span>
-<span id="cb45-81"><a href="results.html#cb45-81" tabindex="-1"></a>  <span class="co"># remove rows without a Number</span></span>
-<span id="cb45-82"><a href="results.html#cb45-82" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Number)) </span>
-<span id="cb45-83"><a href="results.html#cb45-83" tabindex="-1"></a></span>
-<span id="cb45-84"><a href="results.html#cb45-84" tabindex="-1"></a><span class="co"># burn over our csv so we can put as table in report</span></span>
-<span id="cb45-85"><a href="results.html#cb45-85" tabindex="-1"></a>tab <span class="sc">|&gt;</span> </span>
-<span id="cb45-86"><a href="results.html#cb45-86" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(path_file, <span class="at">na =</span> <span class="st">&#39;&#39;</span>)</span>
-<span id="cb45-87"><a href="results.html#cb45-87" tabindex="-1"></a></span>
-<span id="cb45-88"><a href="results.html#cb45-88" tabindex="-1"></a><span class="co"># create a spatial file and save to the shared project</span></span>
-<span id="cb45-89"><a href="results.html#cb45-89" tabindex="-1"></a>tab <span class="sc">|&gt;</span> </span>
-<span id="cb45-90"><a href="results.html#cb45-90" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb45-91"><a href="results.html#cb45-91" tabindex="-1"></a>  <span class="co"># convert the time to character to preserve as gpkg won&#39;t accept</span></span>
-<span id="cb45-92"><a href="results.html#cb45-92" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">as.character</span>(time)) <span class="sc">|&gt;</span></span>
-<span id="cb45-93"><a href="results.html#cb45-93" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(easting)) <span class="sc">|&gt;</span></span>
-<span id="cb45-94"><a href="results.html#cb45-94" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;easting&quot;</span>, <span class="st">&quot;northing&quot;</span>), <span class="at">crs =</span> <span class="dv">26909</span>) <span class="sc">|&gt;</span></span>
-<span id="cb45-95"><a href="results.html#cb45-95" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_transform</span>(<span class="dv">3005</span>) <span class="sc">|&gt;</span></span>
-<span id="cb45-96"><a href="results.html#cb45-96" tabindex="-1"></a>  <span class="co"># put time after number and put notes as last column</span></span>
-<span id="cb45-97"><a href="results.html#cb45-97" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(number, time, theme, <span class="fu">everything</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb45-98"><a href="results.html#cb45-98" tabindex="-1"></a>  </span>
-<span id="cb45-99"><a href="results.html#cb45-99" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_write</span>(</span>
-<span id="cb45-100"><a href="results.html#cb45-100" tabindex="-1"></a>      <span class="at">dsn =</span> <span class="st">&quot;~/Projects/gis/restoration_wedzin_kwa/sites_restoration.gpkg&quot;</span>,</span>
-<span id="cb45-101"><a href="results.html#cb45-101" tabindex="-1"></a>      <span class="at">layer =</span> <span class="st">&#39;price_2014&#39;</span>,</span>
-<span id="cb45-102"><a href="results.html#cb45-102" tabindex="-1"></a>      <span class="at">delete_layer =</span> <span class="cn">TRUE</span></span>
-<span id="cb45-103"><a href="results.html#cb45-103" tabindex="-1"></a>    )</span></code></pre></div>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="results.html#cb46-1" tabindex="-1"></a><span class="co"># read in the price 2014 data</span></span>
-<span id="cb46-2"><a href="results.html#cb46-2" tabindex="-1"></a>price_2014 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/inputs_extracted/price_2014_waypoints.csv&quot;</span>)</span>
-<span id="cb46-3"><a href="results.html#cb46-3" tabindex="-1"></a></span>
-<span id="cb46-4"><a href="results.html#cb46-4" tabindex="-1"></a><span class="co"># present as table</span></span>
-<span id="cb46-5"><a href="results.html#cb46-5" tabindex="-1"></a>price_2014 <span class="sc">%&gt;%</span> </span>
-<span id="cb46-6"><a href="results.html#cb46-6" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Summary of Price (2014) waypoints for the Upper Bulkley floodplain including locations of river channelization, potential barriers to fish migration, and assessed areas of upwelling groundwater having potential importance to salmonids.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="results.html#cb44-1" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;/Users/airvine/zotero/storage/7JCL42Y3/price_2014_upper_bulkley_floodplain_habitat_-_modifications,_physical_barriers,_and_sites.pdf&quot;</span></span>
+<span id="cb44-2"><a href="results.html#cb44-2" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="results.html#cb44-3" tabindex="-1"></a><span class="co"># name our csv we are creating</span></span>
+<span id="cb44-4"><a href="results.html#cb44-4" tabindex="-1"></a>path_file <span class="ot">&lt;-</span> <span class="st">&quot;data/inputs_extracted/price_2014_waypoints.csv&quot;</span></span>
+<span id="cb44-5"><a href="results.html#cb44-5" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="results.html#cb44-6" tabindex="-1"></a><span class="co"># define page to extract table</span></span>
+<span id="cb44-7"><a href="results.html#cb44-7" tabindex="-1"></a>page <span class="ot">&lt;-</span> <span class="dv">32</span></span>
+<span id="cb44-8"><a href="results.html#cb44-8" tabindex="-1"></a></span>
+<span id="cb44-9"><a href="results.html#cb44-9" tabindex="-1"></a></span>
+<span id="cb44-10"><a href="results.html#cb44-10" tabindex="-1"></a><span class="co"># #if you wanted to define the area to extract would run with this the first time</span></span>
+<span id="cb44-11"><a href="results.html#cb44-11" tabindex="-1"></a><span class="co"># tabulapdf::locate_areas(path, pages = page)</span></span>
+<span id="cb44-12"><a href="results.html#cb44-12" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="results.html#cb44-13" tabindex="-1"></a></span>
+<span id="cb44-14"><a href="results.html#cb44-14" tabindex="-1"></a><span class="co"># to get.... </span></span>
+<span id="cb44-15"><a href="results.html#cb44-15" tabindex="-1"></a><span class="co"># tab_area = list(c(151.17224,  87.13111, 715.14139,604.27249 ))</span></span>
+<span id="cb44-16"><a href="results.html#cb44-16" tabindex="-1"></a><span class="co"># but....looks like it will guess correct with no help so let&#39;s do that</span></span>
+<span id="cb44-17"><a href="results.html#cb44-17" tabindex="-1"></a>tabulapdf<span class="sc">::</span><span class="fu">extract_tables</span>(path,</span>
+<span id="cb44-18"><a href="results.html#cb44-18" tabindex="-1"></a>                                  <span class="at">pages =</span> page,</span>
+<span id="cb44-19"><a href="results.html#cb44-19" tabindex="-1"></a>                                  <span class="co"># method = &quot;lattice&quot;,</span></span>
+<span id="cb44-20"><a href="results.html#cb44-20" tabindex="-1"></a>                                  <span class="co"># output = c(&quot;tibble&quot;),</span></span>
+<span id="cb44-21"><a href="results.html#cb44-21" tabindex="-1"></a>                                  <span class="co"># guess = FALSE,</span></span>
+<span id="cb44-22"><a href="results.html#cb44-22" tabindex="-1"></a>                                  <span class="co"># area = tab_area</span></span>
+<span id="cb44-23"><a href="results.html#cb44-23" tabindex="-1"></a>                                  ) <span class="sc">|&gt;</span> </span>
+<span id="cb44-24"><a href="results.html#cb44-24" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb44-25"><a href="results.html#cb44-25" tabindex="-1"></a>  <span class="co"># need to make the first row be the names due to muti-line header</span></span>
+<span id="cb44-26"><a href="results.html#cb44-26" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">row_to_names</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb44-27"><a href="results.html#cb44-27" tabindex="-1"></a>  <span class="co"># now let&#39;s burn it to a csv so we can correct the types</span></span>
+<span id="cb44-28"><a href="results.html#cb44-28" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(path_file)</span>
+<span id="cb44-29"><a href="results.html#cb44-29" tabindex="-1"></a></span>
+<span id="cb44-30"><a href="results.html#cb44-30" tabindex="-1"></a><span class="co"># read it back in to get the types right</span></span>
+<span id="cb44-31"><a href="results.html#cb44-31" tabindex="-1"></a>tab1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(path_file)</span>
+<span id="cb44-32"><a href="results.html#cb44-32" tabindex="-1"></a></span>
+<span id="cb44-33"><a href="results.html#cb44-33" tabindex="-1"></a><span class="co"># now let&#39;s define the rest of the pages to extract from</span></span>
+<span id="cb44-34"><a href="results.html#cb44-34" tabindex="-1"></a>page <span class="ot">&lt;-</span> <span class="dv">33</span><span class="sc">:</span><span class="dv">36</span></span>
+<span id="cb44-35"><a href="results.html#cb44-35" tabindex="-1"></a></span>
+<span id="cb44-36"><a href="results.html#cb44-36" tabindex="-1"></a></span>
+<span id="cb44-37"><a href="results.html#cb44-37" tabindex="-1"></a><span class="co"># build a function to pull them all out at the same time </span></span>
+<span id="cb44-38"><a href="results.html#cb44-38" tabindex="-1"></a>extract_tables_multi <span class="ot">&lt;-</span> <span class="cf">function</span>(page){</span>
+<span id="cb44-39"><a href="results.html#cb44-39" tabindex="-1"></a>  tabulapdf<span class="sc">::</span><span class="fu">extract_tables</span>(path,</span>
+<span id="cb44-40"><a href="results.html#cb44-40" tabindex="-1"></a>                                  <span class="at">pages =</span> page,</span>
+<span id="cb44-41"><a href="results.html#cb44-41" tabindex="-1"></a>                                  ) <span class="sc">|&gt;</span> </span>
+<span id="cb44-42"><a href="results.html#cb44-42" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb44-43"><a href="results.html#cb44-43" tabindex="-1"></a>    <span class="co"># use the names from the header table</span></span>
+<span id="cb44-44"><a href="results.html#cb44-44" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="at">nm =</span> <span class="fu">names</span>(tab1))</span>
+<span id="cb44-45"><a href="results.html#cb44-45" tabindex="-1"></a>}</span>
+<span id="cb44-46"><a href="results.html#cb44-46" tabindex="-1"></a></span>
+<span id="cb44-47"><a href="results.html#cb44-47" tabindex="-1"></a><span class="co"># run our function </span></span>
+<span id="cb44-48"><a href="results.html#cb44-48" tabindex="-1"></a>tabs_extra <span class="ot">&lt;-</span> page <span class="sc">|&gt;</span> </span>
+<span id="cb44-49"><a href="results.html#cb44-49" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">map_df</span>(</span>
+<span id="cb44-50"><a href="results.html#cb44-50" tabindex="-1"></a>    extract_tables_multi</span>
+<span id="cb44-51"><a href="results.html#cb44-51" tabindex="-1"></a>  )</span>
+<span id="cb44-52"><a href="results.html#cb44-52" tabindex="-1"></a></span>
+<span id="cb44-53"><a href="results.html#cb44-53" tabindex="-1"></a><span class="co"># join our og table to our multi-page output but fix a type </span></span>
+<span id="cb44-54"><a href="results.html#cb44-54" tabindex="-1"></a>tab <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(</span>
+<span id="cb44-55"><a href="results.html#cb44-55" tabindex="-1"></a>  tab1 <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">number =</span> <span class="fu">as.numeric</span>(number)),</span>
+<span id="cb44-56"><a href="results.html#cb44-56" tabindex="-1"></a>  tabs_extra </span>
+<span id="cb44-57"><a href="results.html#cb44-57" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb44-58"><a href="results.html#cb44-58" tabindex="-1"></a>  <span class="co"># clean the names for the report</span></span>
+<span id="cb44-59"><a href="results.html#cb44-59" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="at">nm =</span> stringr<span class="sc">::</span><span class="fu">str_to_title</span>(<span class="fu">names</span>(tab1))) <span class="sc">|&gt;</span> </span>
+<span id="cb44-60"><a href="results.html#cb44-60" tabindex="-1"></a>  <span class="co"># add a theme</span></span>
+<span id="cb44-61"><a href="results.html#cb44-61" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Theme =</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb44-62"><a href="results.html#cb44-62" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;spawning|Spawners&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Spawning&quot;</span>,</span>
+<span id="cb44-63"><a href="results.html#cb44-63" tabindex="-1"></a>  stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;culvert|bridge|crossing&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Stream Crossing&quot;</span>,</span>
+<span id="cb44-64"><a href="results.html#cb44-64" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;richfield&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Other&quot;</span>, </span>
+<span id="cb44-65"><a href="results.html#cb44-65" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;floodplain&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Floodplain&quot;</span>,</span>
+<span id="cb44-66"><a href="results.html#cb44-66" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;rail&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Railway&quot;</span>,</span>
+<span id="cb44-67"><a href="results.html#cb44-67" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;field|cattle&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Agriculture&quot;</span>,</span>
+<span id="cb44-68"><a href="results.html#cb44-68" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;beaver&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Beaver&quot;</span>,</span>
+<span id="cb44-69"><a href="results.html#cb44-69" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;forest|clearcut|cutblock&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Forestry&quot;</span>,</span>
+<span id="cb44-70"><a href="results.html#cb44-70" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;rip-rap&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Rip-rap&quot;</span>,</span>
+<span id="cb44-71"><a href="results.html#cb44-71" tabindex="-1"></a>    stringr<span class="sc">::</span><span class="fu">str_detect</span>(Notes, stringr<span class="sc">::</span><span class="fu">regex</span>(<span class="st">&quot;Log jam&quot;</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)) <span class="sc">~</span> <span class="st">&quot;Log jam&quot;</span>,</span>
+<span id="cb44-72"><a href="results.html#cb44-72" tabindex="-1"></a>    </span>
+<span id="cb44-73"><a href="results.html#cb44-73" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Other&quot;</span> <span class="co"># Default to Other if no other conditions are met</span></span>
+<span id="cb44-74"><a href="results.html#cb44-74" tabindex="-1"></a>  )) <span class="sc">|&gt;</span> </span>
+<span id="cb44-75"><a href="results.html#cb44-75" tabindex="-1"></a></span>
+<span id="cb44-76"><a href="results.html#cb44-76" tabindex="-1"></a>  <span class="co">#there is an issue at row 182... so fix by appending UB-643 to 645 [UB- to the beginning of the photo series column</span></span>
+<span id="cb44-77"><a href="results.html#cb44-77" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="st">`</span><span class="at">Photo Series</span><span class="st">`</span> <span class="ot">=</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb44-78"><a href="results.html#cb44-78" tabindex="-1"></a>    Number <span class="sc">==</span> <span class="dv">182</span> <span class="sc">~</span> <span class="fu">paste0</span>(<span class="st">&quot;UB-643 to 645 [UB-&quot;</span>, <span class="st">`</span><span class="at">Photo Series</span><span class="st">`</span>),</span>
+<span id="cb44-79"><a href="results.html#cb44-79" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">`</span><span class="at">Photo Series</span><span class="st">`</span></span>
+<span id="cb44-80"><a href="results.html#cb44-80" tabindex="-1"></a>  )) <span class="sc">|&gt;</span> </span>
+<span id="cb44-81"><a href="results.html#cb44-81" tabindex="-1"></a>  <span class="co"># remove rows without a Number</span></span>
+<span id="cb44-82"><a href="results.html#cb44-82" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Number)) </span>
+<span id="cb44-83"><a href="results.html#cb44-83" tabindex="-1"></a></span>
+<span id="cb44-84"><a href="results.html#cb44-84" tabindex="-1"></a><span class="co"># burn over our csv so we can put as table in report</span></span>
+<span id="cb44-85"><a href="results.html#cb44-85" tabindex="-1"></a>tab <span class="sc">|&gt;</span> </span>
+<span id="cb44-86"><a href="results.html#cb44-86" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(path_file, <span class="at">na =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb44-87"><a href="results.html#cb44-87" tabindex="-1"></a></span>
+<span id="cb44-88"><a href="results.html#cb44-88" tabindex="-1"></a><span class="co"># create a spatial file and save to the shared project</span></span>
+<span id="cb44-89"><a href="results.html#cb44-89" tabindex="-1"></a>tab <span class="sc">|&gt;</span> </span>
+<span id="cb44-90"><a href="results.html#cb44-90" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb44-91"><a href="results.html#cb44-91" tabindex="-1"></a>  <span class="co"># convert the time to character to preserve as gpkg won&#39;t accept</span></span>
+<span id="cb44-92"><a href="results.html#cb44-92" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">as.character</span>(time)) <span class="sc">|&gt;</span></span>
+<span id="cb44-93"><a href="results.html#cb44-93" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(easting)) <span class="sc">|&gt;</span></span>
+<span id="cb44-94"><a href="results.html#cb44-94" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">&quot;easting&quot;</span>, <span class="st">&quot;northing&quot;</span>), <span class="at">crs =</span> <span class="dv">26909</span>) <span class="sc">|&gt;</span></span>
+<span id="cb44-95"><a href="results.html#cb44-95" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_transform</span>(<span class="dv">3005</span>) <span class="sc">|&gt;</span></span>
+<span id="cb44-96"><a href="results.html#cb44-96" tabindex="-1"></a>  <span class="co"># put time after number and put notes as last column</span></span>
+<span id="cb44-97"><a href="results.html#cb44-97" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(number, time, theme, <span class="fu">everything</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb44-98"><a href="results.html#cb44-98" tabindex="-1"></a>  </span>
+<span id="cb44-99"><a href="results.html#cb44-99" tabindex="-1"></a>    sf<span class="sc">::</span><span class="fu">st_write</span>(</span>
+<span id="cb44-100"><a href="results.html#cb44-100" tabindex="-1"></a>      <span class="at">dsn =</span> <span class="st">&quot;~/Projects/gis/restoration_wedzin_kwa/sites_restoration.gpkg&quot;</span>,</span>
+<span id="cb44-101"><a href="results.html#cb44-101" tabindex="-1"></a>      <span class="at">layer =</span> <span class="st">&#39;price_2014&#39;</span>,</span>
+<span id="cb44-102"><a href="results.html#cb44-102" tabindex="-1"></a>      <span class="at">delete_layer =</span> <span class="cn">TRUE</span></span>
+<span id="cb44-103"><a href="results.html#cb44-103" tabindex="-1"></a>    )</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="results.html#cb45-1" tabindex="-1"></a><span class="co"># read in the price 2014 data</span></span>
+<span id="cb45-2"><a href="results.html#cb45-2" tabindex="-1"></a>price_2014 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/inputs_extracted/price_2014_waypoints.csv&quot;</span>)</span>
+<span id="cb45-3"><a href="results.html#cb45-3" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="results.html#cb45-4" tabindex="-1"></a><span class="co"># present as table</span></span>
+<span id="cb45-5"><a href="results.html#cb45-5" tabindex="-1"></a>price_2014 <span class="sc">%&gt;%</span> </span>
+<span id="cb45-6"><a href="results.html#cb45-6" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Summary of Price (2014) waypoints for the Upper Bulkley floodplain including locations of river channelization, potential barriers to fish migration, and assessed areas of upwelling groundwater having potential importance to salmonids.&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -5193,9 +5193,9 @@ Railway
 <h3><span class="header-section-number">4.3.2</span> <span class="citation">NCFDC (1998)</span> - Mid-Bulkley Detailed Fish Habitat/Riparian/Channel Assessment for Watershed Restoration<a href="results.html#ncfdc1998midbulkleydetailed---mid-bulkley-detailed-fish-habitatriparianchannel-assessment-for-watershed-restoration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><span class="citation">NCFDC (1998)</span> utilized detailed fish and fish habitat assessments to inform restoration planning in the Neexdzii Kwah with numerous detailed prescriptions included within their reporting and digital deliverables. Summarized details of this prioritization work and prescription locations and details extracted from the pdf and included in the <code>ncfdc_1998_prescriptions.csv</code> file located and viewable <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/ncfdc_1998_prescriptions.csv">here</a>. A summary of prioritization for sub-basins in the region are included in Table <a href="results.html#tab:tab-ncfdc-1998-priority">4.4</a> with detailed prioritization information in Table <a href="results.html#tab:tab-ncfdc-1998-pres">4.6</a> and details of individual prescriptions presented in Table <a href="results.html#tab:tab-ncfdc-1998-priority-detailed">4.5</a> and stored <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/inputs_extracted/ncfdc_1998_prescriptions.csv">here</a>. The prescription dataset has also been converted to a spatial file and added to the <code>restoration_wedzin_kwa</code> shared GIS project through the <code>sites_restoration.gpkg</code> file (layer name - <code>ncfdc_1998_prescriptions</code>).</p>
 <p><br></p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="results.html#cb47-1" tabindex="-1"></a>ncfdc_1998_71a <span class="sc">%&gt;%</span> </span>
-<span id="cb47-2"><a href="results.html#cb47-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.&quot;</span>,</span>
-<span id="cb47-3"><a href="results.html#cb47-3" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="results.html#cb46-1" tabindex="-1"></a>ncfdc_1998_71a <span class="sc">%&gt;%</span> </span>
+<span id="cb46-2"><a href="results.html#cb46-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.&quot;</span>,</span>
+<span id="cb46-3"><a href="results.html#cb46-3" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-ncfdc-1998-priority">Table 4.4: </span>Table 71a from the NCFDC (1998) report - summary of the prioritization of sub-basins in the Neexdzii Kwah region.
@@ -5386,20 +5386,20 @@ Bulkley
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="results.html#cb48-1" tabindex="-1"></a><span class="co"># read in from the path using row 4 as teh header</span></span>
-<span id="cb48-2"><a href="results.html#cb48-2" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="results.html#cb48-3" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;~/Library/CloudStorage/OneDrive-Personal/Projects/2024-069-ow-wedzin-kwa-restoration/data/ncfdc_1998/Mid Bulkley Detailed FHAP_CAP_RAP/Appendix/AppH.xls&quot;</span></span>
-<span id="cb48-4"><a href="results.html#cb48-4" tabindex="-1"></a></span>
-<span id="cb48-5"><a href="results.html#cb48-5" tabindex="-1"></a></span>
-<span id="cb48-6"><a href="results.html#cb48-6" tabindex="-1"></a></span>
-<span id="cb48-7"><a href="results.html#cb48-7" tabindex="-1"></a>path_file <span class="ot">&lt;-</span> <span class="st">&quot;data/inputs_extracted/ncfdc_1998_73_app_h.csv&quot;</span></span>
-<span id="cb48-8"><a href="results.html#cb48-8" tabindex="-1"></a></span>
-<span id="cb48-9"><a href="results.html#cb48-9" tabindex="-1"></a><span class="co"># read in the data, clean and burn to csv</span></span>
-<span id="cb48-10"><a href="results.html#cb48-10" tabindex="-1"></a>readxl<span class="sc">::</span><span class="fu">read_excel</span>(path, <span class="at">skip =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb48-11"><a href="results.html#cb48-11" tabindex="-1"></a>  <span class="co"># fill down for System and Sub-basin columns</span></span>
-<span id="cb48-12"><a href="results.html#cb48-12" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">fill</span>(System, <span class="st">`</span><span class="at">Sub-Basin</span><span class="st">`</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb48-13"><a href="results.html#cb48-13" tabindex="-1"></a>  <span class="co"># save as csv to data/inputs_extracted/ncfdc_1998_73_app_h.csv</span></span>
-<span id="cb48-14"><a href="results.html#cb48-14" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(path_file)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="results.html#cb47-1" tabindex="-1"></a><span class="co"># read in from the path using row 4 as teh header</span></span>
+<span id="cb47-2"><a href="results.html#cb47-2" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="results.html#cb47-3" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;~/Library/CloudStorage/OneDrive-Personal/Projects/2024-069-ow-wedzin-kwa-restoration/data/ncfdc_1998/Mid Bulkley Detailed FHAP_CAP_RAP/Appendix/AppH.xls&quot;</span></span>
+<span id="cb47-4"><a href="results.html#cb47-4" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="results.html#cb47-5" tabindex="-1"></a></span>
+<span id="cb47-6"><a href="results.html#cb47-6" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="results.html#cb47-7" tabindex="-1"></a>path_file <span class="ot">&lt;-</span> <span class="st">&quot;data/inputs_extracted/ncfdc_1998_73_app_h.csv&quot;</span></span>
+<span id="cb47-8"><a href="results.html#cb47-8" tabindex="-1"></a></span>
+<span id="cb47-9"><a href="results.html#cb47-9" tabindex="-1"></a><span class="co"># read in the data, clean and burn to csv</span></span>
+<span id="cb47-10"><a href="results.html#cb47-10" tabindex="-1"></a>readxl<span class="sc">::</span><span class="fu">read_excel</span>(path, <span class="at">skip =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb47-11"><a href="results.html#cb47-11" tabindex="-1"></a>  <span class="co"># fill down for System and Sub-basin columns</span></span>
+<span id="cb47-12"><a href="results.html#cb47-12" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">fill</span>(System, <span class="st">`</span><span class="at">Sub-Basin</span><span class="st">`</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb47-13"><a href="results.html#cb47-13" tabindex="-1"></a>  <span class="co"># save as csv to data/inputs_extracted/ncfdc_1998_73_app_h.csv</span></span>
+<span id="cb47-14"><a href="results.html#cb47-14" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(path_file)</span></code></pre></div>
 <p><br></p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
@@ -6888,33 +6888,33 @@ Low
 </table>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="results.html#cb49-1" tabindex="-1"></a>ncfdc_1998 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb49-2"><a href="results.html#cb49-2" tabindex="-1"></a>  <span class="st">&quot;data/ncfdc_1998_prescriptions_hand_bomb.csv&quot;</span>,</span>
-<span id="cb49-3"><a href="results.html#cb49-3" tabindex="-1"></a>  <span class="at">locale =</span> readr<span class="sc">::</span><span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
-<span id="cb49-4"><a href="results.html#cb49-4" tabindex="-1"></a>) </span>
-<span id="cb49-5"><a href="results.html#cb49-5" tabindex="-1"></a></span>
-<span id="cb49-6"><a href="results.html#cb49-6" tabindex="-1"></a>ncfdc_1998_cleaned <span class="ot">&lt;-</span> ncfdc_1998 <span class="sc">|&gt;</span></span>
-<span id="cb49-7"><a href="results.html#cb49-7" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb49-8"><a href="results.html#cb49-8" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">across</span>(</span>
-<span id="cb49-9"><a href="results.html#cb49-9" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">everything</span>(),</span>
-<span id="cb49-10"><a href="results.html#cb49-10" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">as.character</span>(.) <span class="sc">|&gt;</span> </span>
-<span id="cb49-11"><a href="results.html#cb49-11" tabindex="-1"></a>        stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(<span class="st">&quot;[^[:alnum:][:space:].,]&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="sc">|&gt;</span> <span class="co"># Retain alphanumeric, spaces, periods, and parentheses</span></span>
-<span id="cb49-12"><a href="results.html#cb49-12" tabindex="-1"></a>        stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.&quot;</span>, <span class="st">&quot;</span><span class="sc">\\\\</span><span class="st">.&quot;</span>)    <span class="sc">|&gt;</span> </span>
-<span id="cb49-13"><a href="results.html#cb49-13" tabindex="-1"></a>        stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">,&quot;</span>, <span class="st">&quot;</span><span class="sc">\\\\</span><span class="st">,&quot;</span>) </span>
-<span id="cb49-14"><a href="results.html#cb49-14" tabindex="-1"></a>    )</span>
-<span id="cb49-15"><a href="results.html#cb49-15" tabindex="-1"></a>  )</span>
-<span id="cb49-16"><a href="results.html#cb49-16" tabindex="-1"></a></span>
-<span id="cb49-17"><a href="results.html#cb49-17" tabindex="-1"></a>ncfdc_1998_cleaned <span class="sc">%&gt;%</span> </span>
-<span id="cb49-18"><a href="results.html#cb49-18" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sub_basin<span class="sc">:</span>technical_references) <span class="sc">%&gt;%</span> </span>
-<span id="cb49-19"><a href="results.html#cb49-19" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb49-20"><a href="results.html#cb49-20" tabindex="-1"></a>    <span class="at">booktabs =</span> T, </span>
-<span id="cb49-21"><a href="results.html#cb49-21" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>, </span>
-<span id="cb49-22"><a href="results.html#cb49-22" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.&quot;</span></span>
-<span id="cb49-23"><a href="results.html#cb49-23" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="cb49-24"><a href="results.html#cb49-24" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="fu">c</span>(<span class="st">&quot;condensed&quot;</span>, <span class="st">&quot;responsive&quot;</span>),</span>
-<span id="cb49-25"><a href="results.html#cb49-25" tabindex="-1"></a>                              <span class="at">full_width =</span> T,</span>
-<span id="cb49-26"><a href="results.html#cb49-26" tabindex="-1"></a>                              <span class="at">font_size =</span> font_set) <span class="sc">|&gt;</span> </span>
-<span id="cb49-27"><a href="results.html#cb49-27" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>, <span class="at">height =</span> <span class="st">&quot;500px&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="results.html#cb48-1" tabindex="-1"></a>ncfdc_1998 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb48-2"><a href="results.html#cb48-2" tabindex="-1"></a>  <span class="st">&quot;data/ncfdc_1998_prescriptions_hand_bomb.csv&quot;</span>,</span>
+<span id="cb48-3"><a href="results.html#cb48-3" tabindex="-1"></a>  <span class="at">locale =</span> readr<span class="sc">::</span><span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</span>
+<span id="cb48-4"><a href="results.html#cb48-4" tabindex="-1"></a>) </span>
+<span id="cb48-5"><a href="results.html#cb48-5" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="results.html#cb48-6" tabindex="-1"></a>ncfdc_1998_cleaned <span class="ot">&lt;-</span> ncfdc_1998 <span class="sc">|&gt;</span></span>
+<span id="cb48-7"><a href="results.html#cb48-7" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb48-8"><a href="results.html#cb48-8" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">across</span>(</span>
+<span id="cb48-9"><a href="results.html#cb48-9" tabindex="-1"></a>      dplyr<span class="sc">::</span><span class="fu">everything</span>(),</span>
+<span id="cb48-10"><a href="results.html#cb48-10" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">as.character</span>(.) <span class="sc">|&gt;</span> </span>
+<span id="cb48-11"><a href="results.html#cb48-11" tabindex="-1"></a>        stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(<span class="st">&quot;[^[:alnum:][:space:].,]&quot;</span>, <span class="st">&quot;&quot;</span>) <span class="sc">|&gt;</span> <span class="co"># Retain alphanumeric, spaces, periods, and parentheses</span></span>
+<span id="cb48-12"><a href="results.html#cb48-12" tabindex="-1"></a>        stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.&quot;</span>, <span class="st">&quot;</span><span class="sc">\\\\</span><span class="st">.&quot;</span>)    <span class="sc">|&gt;</span> </span>
+<span id="cb48-13"><a href="results.html#cb48-13" tabindex="-1"></a>        stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">,&quot;</span>, <span class="st">&quot;</span><span class="sc">\\\\</span><span class="st">,&quot;</span>) </span>
+<span id="cb48-14"><a href="results.html#cb48-14" tabindex="-1"></a>    )</span>
+<span id="cb48-15"><a href="results.html#cb48-15" tabindex="-1"></a>  )</span>
+<span id="cb48-16"><a href="results.html#cb48-16" tabindex="-1"></a></span>
+<span id="cb48-17"><a href="results.html#cb48-17" tabindex="-1"></a>ncfdc_1998_cleaned <span class="sc">%&gt;%</span> </span>
+<span id="cb48-18"><a href="results.html#cb48-18" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sub_basin<span class="sc">:</span>technical_references) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-19"><a href="results.html#cb48-19" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb48-20"><a href="results.html#cb48-20" tabindex="-1"></a>    <span class="at">booktabs =</span> T, </span>
+<span id="cb48-21"><a href="results.html#cb48-21" tabindex="-1"></a>    <span class="at">label =</span> <span class="cn">NA</span>, </span>
+<span id="cb48-22"><a href="results.html#cb48-22" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.&quot;</span></span>
+<span id="cb48-23"><a href="results.html#cb48-23" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb48-24"><a href="results.html#cb48-24" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="fu">c</span>(<span class="st">&quot;condensed&quot;</span>, <span class="st">&quot;responsive&quot;</span>),</span>
+<span id="cb48-25"><a href="results.html#cb48-25" tabindex="-1"></a>                              <span class="at">full_width =</span> T,</span>
+<span id="cb48-26"><a href="results.html#cb48-26" tabindex="-1"></a>                              <span class="at">font_size =</span> font_set) <span class="sc">|&gt;</span> </span>
+<span id="cb48-27"><a href="results.html#cb48-27" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>, <span class="at">height =</span> <span class="st">&quot;500px&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -8326,14 +8326,14 @@ Donat, 1995 Chatwin et al., 1994
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="results.html#cb50-1" tabindex="-1"></a><span class="co"># below was throwing error</span></span>
-<span id="cb50-2"><a href="results.html#cb50-2" tabindex="-1"></a><span class="co"># [</span><span class="al">WARNING</span><span class="co">] Div at Restoration_Neexdzii_Kwah_2024.knit.md line 8335 column 1 unclosed at Restoration_Neexdzii_Kwah_2024.knit.md line 9788 column 1, closing implicitly.</span></span>
-<span id="cb50-3"><a href="results.html#cb50-3" tabindex="-1"></a><span class="co"># it was then not linking to TOC elements beyond Results!!</span></span>
-<span id="cb50-4"><a href="results.html#cb50-4" tabindex="-1"></a>  <span class="co"># fpr::fpr_kable(caption_text = &quot;Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.&quot;)</span></span>
-<span id="cb50-5"><a href="results.html#cb50-5" tabindex="-1"></a></span>
-<span id="cb50-6"><a href="results.html#cb50-6" tabindex="-1"></a><span class="co"># this is the problem</span></span>
-<span id="cb50-7"><a href="results.html#cb50-7" tabindex="-1"></a>  <span class="co"># kableExtra::scroll_box(width = &quot;100%&quot;, height = &quot;500px&quot;)</span></span>
-<span id="cb50-8"><a href="results.html#cb50-8" tabindex="-1"></a><span class="co"># https://chatgpt.com/c/674459e0-6c30-800c-8fe1-ad49e8b53979</span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="results.html#cb49-1" tabindex="-1"></a><span class="co"># below was throwing error</span></span>
+<span id="cb49-2"><a href="results.html#cb49-2" tabindex="-1"></a><span class="co"># [</span><span class="al">WARNING</span><span class="co">] Div at Restoration_Neexdzii_Kwah_2024.knit.md line 8335 column 1 unclosed at Restoration_Neexdzii_Kwah_2024.knit.md line 9788 column 1, closing implicitly.</span></span>
+<span id="cb49-3"><a href="results.html#cb49-3" tabindex="-1"></a><span class="co"># it was then not linking to TOC elements beyond Results!!</span></span>
+<span id="cb49-4"><a href="results.html#cb49-4" tabindex="-1"></a>  <span class="co"># fpr::fpr_kable(caption_text = &quot;Summary of  NCFDC (1998) prescriptions for the Neexdzii Kwah area.&quot;)</span></span>
+<span id="cb49-5"><a href="results.html#cb49-5" tabindex="-1"></a></span>
+<span id="cb49-6"><a href="results.html#cb49-6" tabindex="-1"></a><span class="co"># this is the problem</span></span>
+<span id="cb49-7"><a href="results.html#cb49-7" tabindex="-1"></a>  <span class="co"># kableExtra::scroll_box(width = &quot;100%&quot;, height = &quot;500px&quot;)</span></span>
+<span id="cb49-8"><a href="results.html#cb49-8" tabindex="-1"></a><span class="co"># https://chatgpt.com/c/674459e0-6c30-800c-8fe1-ad49e8b53979</span></span></code></pre></div>
 </div>
 <div id="gaboury_smith2016developmentaquatic---development-of-aquatic-restoration-designs-and-on-farm-cattle-management-improvements-within-the-wetsuweten-irst-nation-territory" class="section level3 hasAnchor" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> <span class="citation">Gaboury and Smith (2016)</span> - Development of Aquatic Restoration Designs and On-Farm Cattle Management Improvements within the Wet’suwet’en irst Nation Territory<a href="results.html#gaboury_smith2016developmentaquatic---development-of-aquatic-restoration-designs-and-on-farm-cattle-management-improvements-within-the-wetsuweten-irst-nation-territory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -8368,75 +8368,75 @@ Donat, 1995 Chatwin et al., 1994
 <h3><span class="header-section-number">4.4.5</span> Parameter Ranking to Select Future Restoration Sites<a href="results.html#parameter-ranking-to-select-future-restoration-sites-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the <code>restoration_site_priority_parameters.csv</code> file located <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv">here</a> is included in Table <a href="results.html#tab:tab-gis-params">4.7</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="results.html#cb51-1" tabindex="-1"></a><span class="co"># load the data</span></span>
-<span id="cb51-2"><a href="results.html#cb51-2" tabindex="-1"></a>gis_params_raw_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb51-3"><a href="results.html#cb51-3" tabindex="-1"></a>  <span class="st">&quot;data/inputs_raw/restoration_site_priority_parameters_raw.csv&quot;</span></span>
-<span id="cb51-4"><a href="results.html#cb51-4" tabindex="-1"></a>) </span>
-<span id="cb51-5"><a href="results.html#cb51-5" tabindex="-1"></a></span>
-<span id="cb51-6"><a href="results.html#cb51-6" tabindex="-1"></a></span>
-<span id="cb51-7"><a href="results.html#cb51-7" tabindex="-1"></a>gis_params_raw_to_update <span class="ot">&lt;-</span> gis_params_raw_all <span class="sc">%&gt;%</span> </span>
-<span id="cb51-8"><a href="results.html#cb51-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(source_schema_table) <span class="sc">&amp;</span> </span>
-<span id="cb51-9"><a href="results.html#cb51-9" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">is.na</span>(source_column_name) <span class="sc">&amp;</span></span>
-<span id="cb51-10"><a href="results.html#cb51-10" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-11"><a href="results.html#cb51-11" tabindex="-1"></a>  <span class="co"># we know that whse_forest_tenure.ften_range_poly_carto_vw is problematic so lets remove</span></span>
-<span id="cb51-12"><a href="results.html#cb51-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>))</span>
-<span id="cb51-13"><a href="results.html#cb51-13" tabindex="-1"></a></span>
-<span id="cb51-14"><a href="results.html#cb51-14" tabindex="-1"></a></span>
-<span id="cb51-15"><a href="results.html#cb51-15" tabindex="-1"></a><span class="co"># grab the details about the source_schema_table as source_schema_table_details and then the </span></span>
-<span id="cb51-16"><a href="results.html#cb51-16" tabindex="-1"></a><span class="co"># source_column_name as source_column_name_details</span></span>
-<span id="cb51-17"><a href="results.html#cb51-17" tabindex="-1"></a>gis_param_details_prep_schtab <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
-<span id="cb51-18"><a href="results.html#cb51-18" tabindex="-1"></a>  </span>
-<span id="cb51-19"><a href="results.html#cb51-19" tabindex="-1"></a>  gis_params_raw_to_update,</span>
-<span id="cb51-20"><a href="results.html#cb51-20" tabindex="-1"></a>  </span>
-<span id="cb51-21"><a href="results.html#cb51-21" tabindex="-1"></a>  rfp<span class="sc">::</span><span class="fu">rfp_meta_bcd_xref</span>(),</span>
-<span id="cb51-22"><a href="results.html#cb51-22" tabindex="-1"></a>  </span>
-<span id="cb51-23"><a href="results.html#cb51-23" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>)</span>
-<span id="cb51-24"><a href="results.html#cb51-24" tabindex="-1"></a>)</span>
-<span id="cb51-25"><a href="results.html#cb51-25" tabindex="-1"></a>  </span>
-<span id="cb51-26"><a href="results.html#cb51-26" tabindex="-1"></a></span>
-<span id="cb51-27"><a href="results.html#cb51-27" tabindex="-1"></a><span class="co"># grab the column details</span></span>
-<span id="cb51-28"><a href="results.html#cb51-28" tabindex="-1"></a>params_cols_des <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2_df</span>(gis_param_details_prep_schtab<span class="sc">$</span>source_schema_table, gis_param_details_prep_schtab<span class="sc">$</span>source_column_name, rfp<span class="sc">::</span>rfp_meta_bcd_xref_col_comments)</span>
-<span id="cb51-29"><a href="results.html#cb51-29" tabindex="-1"></a></span>
-<span id="cb51-30"><a href="results.html#cb51-30" tabindex="-1"></a><span class="co"># left_join the column details to the gis_param_details_prep_schtab</span></span>
-<span id="cb51-31"><a href="results.html#cb51-31" tabindex="-1"></a>gis_param_details_prep <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
-<span id="cb51-32"><a href="results.html#cb51-32" tabindex="-1"></a>  gis_param_details_prep_schtab,</span>
-<span id="cb51-33"><a href="results.html#cb51-33" tabindex="-1"></a>  params_cols_des,</span>
-<span id="cb51-34"><a href="results.html#cb51-34" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>, <span class="st">&quot;source_column_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;col_name&quot;</span>)</span>
-<span id="cb51-35"><a href="results.html#cb51-35" tabindex="-1"></a>)</span>
-<span id="cb51-36"><a href="results.html#cb51-36" tabindex="-1"></a></span>
-<span id="cb51-37"><a href="results.html#cb51-37" tabindex="-1"></a><span class="co"># need to add back all the layers filtered out above - this should not be repeated but will do for now</span></span>
-<span id="cb51-38"><a href="results.html#cb51-38" tabindex="-1"></a>gis_params_raw_all_updated <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb51-39"><a href="results.html#cb51-39" tabindex="-1"></a>  gis_params_raw_all <span class="sc">%&gt;%</span> </span>
-<span id="cb51-40"><a href="results.html#cb51-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">is.na</span>(source_schema_table) <span class="sc">|</span> </span>
-<span id="cb51-41"><a href="results.html#cb51-41" tabindex="-1"></a>                    <span class="fu">is.na</span>(source_column_name) <span class="sc">|</span></span>
-<span id="cb51-42"><a href="results.html#cb51-42" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">|</span></span>
-<span id="cb51-43"><a href="results.html#cb51-43" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>)),</span>
-<span id="cb51-44"><a href="results.html#cb51-44" tabindex="-1"></a>  gis_param_details_prep</span>
-<span id="cb51-45"><a href="results.html#cb51-45" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-46"><a href="results.html#cb51-46" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">url_browser =</span> <span class="fu">case_when</span>(</span>
-<span id="cb51-47"><a href="results.html#cb51-47" tabindex="-1"></a>    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">~</span> <span class="st">&quot;https://smnorris.github.io/bcfishpass/06_data_dictionary.html&quot;</span>,</span>
-<span id="cb51-48"><a href="results.html#cb51-48" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> url_browser)</span>
-<span id="cb51-49"><a href="results.html#cb51-49" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-50"><a href="results.html#cb51-50" tabindex="-1"></a>  <span class="fu">arrange</span>(source_schema_table, source_column_name, column_name_raw)</span>
-<span id="cb51-51"><a href="results.html#cb51-51" tabindex="-1"></a></span>
-<span id="cb51-52"><a href="results.html#cb51-52" tabindex="-1"></a><span class="co"># this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag</span></span>
-<span id="cb51-53"><a href="results.html#cb51-53" tabindex="-1"></a>gis_params_raw_all_updated <span class="sc">%&gt;%</span> </span>
-<span id="cb51-54"><a href="results.html#cb51-54" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="results.html#cb52-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb52-2"><a href="results.html#cb52-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
-<span id="cb52-3"><a href="results.html#cb52-3" tabindex="-1"></a>    source_schema_table, </span>
-<span id="cb52-4"><a href="results.html#cb52-4" tabindex="-1"></a>                source_column_name,</span>
-<span id="cb52-5"><a href="results.html#cb52-5" tabindex="-1"></a>    column_name_raw,</span>
-<span id="cb52-6"><a href="results.html#cb52-6" tabindex="-1"></a>    user_input,</span>
-<span id="cb52-7"><a href="results.html#cb52-7" tabindex="-1"></a>    type,</span>
-<span id="cb52-8"><a href="results.html#cb52-8" tabindex="-1"></a>    url_browser,</span>
-<span id="cb52-9"><a href="results.html#cb52-9" tabindex="-1"></a>    <span class="co"># description_table = description,</span></span>
-<span id="cb52-10"><a href="results.html#cb52-10" tabindex="-1"></a>    col_comments</span>
-<span id="cb52-11"><a href="results.html#cb52-11" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="cb52-12"><a href="results.html#cb52-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(column_name_raw) <span class="sc">|&gt;</span> </span>
-<span id="cb52-13"><a href="results.html#cb52-13" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(column_name_raw, source_column_name, <span class="fu">everything</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb52-14"><a href="results.html#cb52-14" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Proposed parameters used to document and rank future potential restoration/enhancement sites.&quot;</span>,</span>
-<span id="cb52-15"><a href="results.html#cb52-15" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="results.html#cb50-1" tabindex="-1"></a><span class="co"># load the data</span></span>
+<span id="cb50-2"><a href="results.html#cb50-2" tabindex="-1"></a>gis_params_raw_all <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb50-3"><a href="results.html#cb50-3" tabindex="-1"></a>  <span class="st">&quot;data/inputs_raw/restoration_site_priority_parameters_raw.csv&quot;</span></span>
+<span id="cb50-4"><a href="results.html#cb50-4" tabindex="-1"></a>) </span>
+<span id="cb50-5"><a href="results.html#cb50-5" tabindex="-1"></a></span>
+<span id="cb50-6"><a href="results.html#cb50-6" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="results.html#cb50-7" tabindex="-1"></a>gis_params_raw_to_update <span class="ot">&lt;-</span> gis_params_raw_all <span class="sc">%&gt;%</span> </span>
+<span id="cb50-8"><a href="results.html#cb50-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(source_schema_table) <span class="sc">&amp;</span> </span>
+<span id="cb50-9"><a href="results.html#cb50-9" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">is.na</span>(source_column_name) <span class="sc">&amp;</span></span>
+<span id="cb50-10"><a href="results.html#cb50-10" tabindex="-1"></a>                  <span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-11"><a href="results.html#cb50-11" tabindex="-1"></a>  <span class="co"># we know that whse_forest_tenure.ften_range_poly_carto_vw is problematic so lets remove</span></span>
+<span id="cb50-12"><a href="results.html#cb50-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>))</span>
+<span id="cb50-13"><a href="results.html#cb50-13" tabindex="-1"></a></span>
+<span id="cb50-14"><a href="results.html#cb50-14" tabindex="-1"></a></span>
+<span id="cb50-15"><a href="results.html#cb50-15" tabindex="-1"></a><span class="co"># grab the details about the source_schema_table as source_schema_table_details and then the </span></span>
+<span id="cb50-16"><a href="results.html#cb50-16" tabindex="-1"></a><span class="co"># source_column_name as source_column_name_details</span></span>
+<span id="cb50-17"><a href="results.html#cb50-17" tabindex="-1"></a>gis_param_details_prep_schtab <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb50-18"><a href="results.html#cb50-18" tabindex="-1"></a>  </span>
+<span id="cb50-19"><a href="results.html#cb50-19" tabindex="-1"></a>  gis_params_raw_to_update,</span>
+<span id="cb50-20"><a href="results.html#cb50-20" tabindex="-1"></a>  </span>
+<span id="cb50-21"><a href="results.html#cb50-21" tabindex="-1"></a>  rfp<span class="sc">::</span><span class="fu">rfp_meta_bcd_xref</span>(),</span>
+<span id="cb50-22"><a href="results.html#cb50-22" tabindex="-1"></a>  </span>
+<span id="cb50-23"><a href="results.html#cb50-23" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>)</span>
+<span id="cb50-24"><a href="results.html#cb50-24" tabindex="-1"></a>)</span>
+<span id="cb50-25"><a href="results.html#cb50-25" tabindex="-1"></a>  </span>
+<span id="cb50-26"><a href="results.html#cb50-26" tabindex="-1"></a></span>
+<span id="cb50-27"><a href="results.html#cb50-27" tabindex="-1"></a><span class="co"># grab the column details</span></span>
+<span id="cb50-28"><a href="results.html#cb50-28" tabindex="-1"></a>params_cols_des <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2_df</span>(gis_param_details_prep_schtab<span class="sc">$</span>source_schema_table, gis_param_details_prep_schtab<span class="sc">$</span>source_column_name, rfp<span class="sc">::</span>rfp_meta_bcd_xref_col_comments)</span>
+<span id="cb50-29"><a href="results.html#cb50-29" tabindex="-1"></a></span>
+<span id="cb50-30"><a href="results.html#cb50-30" tabindex="-1"></a><span class="co"># left_join the column details to the gis_param_details_prep_schtab</span></span>
+<span id="cb50-31"><a href="results.html#cb50-31" tabindex="-1"></a>gis_param_details_prep <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb50-32"><a href="results.html#cb50-32" tabindex="-1"></a>  gis_param_details_prep_schtab,</span>
+<span id="cb50-33"><a href="results.html#cb50-33" tabindex="-1"></a>  params_cols_des,</span>
+<span id="cb50-34"><a href="results.html#cb50-34" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;source_schema_table&quot;</span> <span class="ot">=</span> <span class="st">&quot;object_name&quot;</span>, <span class="st">&quot;source_column_name&quot;</span> <span class="ot">=</span> <span class="st">&quot;col_name&quot;</span>)</span>
+<span id="cb50-35"><a href="results.html#cb50-35" tabindex="-1"></a>)</span>
+<span id="cb50-36"><a href="results.html#cb50-36" tabindex="-1"></a></span>
+<span id="cb50-37"><a href="results.html#cb50-37" tabindex="-1"></a><span class="co"># need to add back all the layers filtered out above - this should not be repeated but will do for now</span></span>
+<span id="cb50-38"><a href="results.html#cb50-38" tabindex="-1"></a>gis_params_raw_all_updated <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb50-39"><a href="results.html#cb50-39" tabindex="-1"></a>  gis_params_raw_all <span class="sc">%&gt;%</span> </span>
+<span id="cb50-40"><a href="results.html#cb50-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">is.na</span>(source_schema_table) <span class="sc">|</span> </span>
+<span id="cb50-41"><a href="results.html#cb50-41" tabindex="-1"></a>                    <span class="fu">is.na</span>(source_column_name) <span class="sc">|</span></span>
+<span id="cb50-42"><a href="results.html#cb50-42" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">|</span></span>
+<span id="cb50-43"><a href="results.html#cb50-43" tabindex="-1"></a>                    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;whse_forest_tenure.ften_range_poly_carto_vw&quot;</span>)),</span>
+<span id="cb50-44"><a href="results.html#cb50-44" tabindex="-1"></a>  gis_param_details_prep</span>
+<span id="cb50-45"><a href="results.html#cb50-45" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-46"><a href="results.html#cb50-46" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">url_browser =</span> <span class="fu">case_when</span>(</span>
+<span id="cb50-47"><a href="results.html#cb50-47" tabindex="-1"></a>    <span class="fu">str_detect</span>(source_schema_table, <span class="st">&quot;bcfishobs|bcfishpass&quot;</span>) <span class="sc">~</span> <span class="st">&quot;https://smnorris.github.io/bcfishpass/06_data_dictionary.html&quot;</span>,</span>
+<span id="cb50-48"><a href="results.html#cb50-48" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> url_browser)</span>
+<span id="cb50-49"><a href="results.html#cb50-49" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-50"><a href="results.html#cb50-50" tabindex="-1"></a>  <span class="fu">arrange</span>(source_schema_table, source_column_name, column_name_raw)</span>
+<span id="cb50-51"><a href="results.html#cb50-51" tabindex="-1"></a></span>
+<span id="cb50-52"><a href="results.html#cb50-52" tabindex="-1"></a><span class="co"># this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag</span></span>
+<span id="cb50-53"><a href="results.html#cb50-53" tabindex="-1"></a>gis_params_raw_all_updated <span class="sc">%&gt;%</span> </span>
+<span id="cb50-54"><a href="results.html#cb50-54" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="results.html#cb51-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/restoration_site_priority_parameters.csv&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb51-2"><a href="results.html#cb51-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb51-3"><a href="results.html#cb51-3" tabindex="-1"></a>    source_schema_table, </span>
+<span id="cb51-4"><a href="results.html#cb51-4" tabindex="-1"></a>                source_column_name,</span>
+<span id="cb51-5"><a href="results.html#cb51-5" tabindex="-1"></a>    column_name_raw,</span>
+<span id="cb51-6"><a href="results.html#cb51-6" tabindex="-1"></a>    user_input,</span>
+<span id="cb51-7"><a href="results.html#cb51-7" tabindex="-1"></a>    type,</span>
+<span id="cb51-8"><a href="results.html#cb51-8" tabindex="-1"></a>    url_browser,</span>
+<span id="cb51-9"><a href="results.html#cb51-9" tabindex="-1"></a>    <span class="co"># description_table = description,</span></span>
+<span id="cb51-10"><a href="results.html#cb51-10" tabindex="-1"></a>    col_comments</span>
+<span id="cb51-11"><a href="results.html#cb51-11" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb51-12"><a href="results.html#cb51-12" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(column_name_raw) <span class="sc">|&gt;</span> </span>
+<span id="cb51-13"><a href="results.html#cb51-13" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(column_name_raw, source_column_name, <span class="fu">everything</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb51-14"><a href="results.html#cb51-14" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Proposed parameters used to document and rank future potential restoration/enhancement sites.&quot;</span>,</span>
+<span id="cb51-15"><a href="results.html#cb51-15" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
