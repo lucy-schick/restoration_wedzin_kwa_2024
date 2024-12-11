@@ -304,8 +304,8 @@ ncfdc_1998_cleaned %>%
 ## Future Restoration Site Selection
 
 ### Evaluation of Historic and Current Imagery
+We developed a system as part of this project to identify the IDs of historic ortho photos for specific timeframes and areas within the Upper Bulkley watershed. This system is designed to be flexible, allowing adjustments to parameters such as input year and location, and it can be adapted for use in other regions across the province. The next step involves accessing these photos at the UBC library for physical scanning, which will enable georeferencing, amalgamation, and further analysis. Details on the system and the code we developed are outlined in a blog post [here](https://www.newgraphenvironment.com/new_graphiti/posts/2024-11-15-bcdata-ortho-historic/), with outputs available [here](https://github.com/NewGraphEnvironment/new_graphiti/tree/main/posts/2024-11-15-bcdata-ortho-historic/exports/).
 
-This work is ongoing and will be added to the `restoration_wedzin_kwa` project in the future.
 
 ### Fish Passage
 
