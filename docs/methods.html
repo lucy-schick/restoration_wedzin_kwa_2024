@@ -52,6 +52,8 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 <script type="text/javascript">
 
@@ -93,7 +95,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -258,15 +260,15 @@ div.csl-indent {
 </li>
 <li>Metadata for individual project spatial layers is kept in the <code>rfp_tracking</code> table within the <code>background_layers.gpkg</code> along with tables related to user supplied stream width/gradient inputs to <code>bcfishpass</code> to model potentially high value habitat that is accessible to fish species of interest.</li>
 </ul>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="methods.html#cb36-1" tabindex="-1"></a><span class="do">## QRis</span></span>
-<span id="cb36-2"><a href="methods.html#cb36-2" tabindex="-1"></a><span class="co"># [QGIS Riverscapes Studio](https://qris.riverscapes.net/) (QRis) is a free plugin for QGIS that helps you digitize your riverscape data. QRis is a great planning tool for helping users with spatial representation of riverscapes. </span></span>
-<span id="cb36-3"><a href="methods.html#cb36-3" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb36-4"><a href="methods.html#cb36-4" tabindex="-1"></a><span class="co"># QRis has two distinct types of features:</span></span>
-<span id="cb36-5"><a href="methods.html#cb36-5" tabindex="-1"></a><span class="co">#   </span></span>
-<span id="cb36-6"><a href="methods.html#cb36-6" tabindex="-1"></a><span class="co">#   * Static: These are features that are relatively permanent, such as the valley bottom.</span></span>
-<span id="cb36-7"><a href="methods.html#cb36-7" tabindex="-1"></a><span class="co">#   * Dynamic: These are features that change over time, such as the active channel.</span></span>
-<span id="cb36-8"><a href="methods.html#cb36-8" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb36-9"><a href="methods.html#cb36-9" tabindex="-1"></a><span class="co"># QRis will be a useful tool for digitizing the upper Wetzin&#39;kwa river and prioritizing restoration sites. To start using QRis, follow the instructions for [getting started](https://qris.riverscapes.net/getting-started/).</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="methods.html#cb39-1" tabindex="-1"></a><span class="do">## QRis</span></span>
+<span id="cb39-2"><a href="methods.html#cb39-2" tabindex="-1"></a><span class="co"># [QGIS Riverscapes Studio](https://qris.riverscapes.net/) (QRis) is a free plugin for QGIS that helps you digitize your riverscape data. QRis is a great planning tool for helping users with spatial representation of riverscapes. </span></span>
+<span id="cb39-3"><a href="methods.html#cb39-3" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb39-4"><a href="methods.html#cb39-4" tabindex="-1"></a><span class="co"># QRis has two distinct types of features:</span></span>
+<span id="cb39-5"><a href="methods.html#cb39-5" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb39-6"><a href="methods.html#cb39-6" tabindex="-1"></a><span class="co">#   * Static: These are features that are relatively permanent, such as the valley bottom.</span></span>
+<span id="cb39-7"><a href="methods.html#cb39-7" tabindex="-1"></a><span class="co">#   * Dynamic: These are features that change over time, such as the active channel.</span></span>
+<span id="cb39-8"><a href="methods.html#cb39-8" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb39-9"><a href="methods.html#cb39-9" tabindex="-1"></a><span class="co"># QRis will be a useful tool for digitizing the upper Wetzin&#39;kwa river and prioritizing restoration sites. To start using QRis, follow the instructions for [getting started](https://qris.riverscapes.net/getting-started/).</span></span></code></pre></div>
 </div>
 <div id="open-source---iterative-reporting" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Open Source - Iterative Reporting<a href="methods.html#open-source---iterative-reporting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -295,8 +297,8 @@ discussions are kept <a href="https://github.com/NewGraphEnvironment/restoration
 with new data as it becomes available often with the formatting for presentation to reader handled by the scripting. An example of this can be
 seen here in Table <a href="methods.html#tab:kable-resources">3.1</a> with the actual file served
 <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/data">here</a>:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="methods.html#cb37-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/aquatic_restoration_resources.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb37-2"><a href="methods.html#cb37-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Aquatic Restoration Resources.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="methods.html#cb40-1" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/aquatic_restoration_resources.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a href="methods.html#cb40-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Aquatic Restoration Resources.&quot;</span>)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -687,13 +689,13 @@ with the actual file served
 <div id="documentation-of-workflows" class="section level3 hasAnchor" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> Documentation of Workflows<a href="methods.html#documentation-of-workflows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Select workflows were documented in memo format to illustrate the process used for others and promote reproducibility/leverageing of Neexdzii Kwah. The memos are stored in the <code>memo</code> directory of the project <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos">here</a> and can be viewed in Table Table <a href="methods.html#tab:tab-memos">3.2</a> by downloading the <code>.html</code> documents to a local computer and opening in a web browser such as <code>Chrome</code> (usually a double click of the document will open it in the browser).</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="methods.html#cb38-1" tabindex="-1"></a><span class="do">## make a tibble of the list and display it as a fpr_kable</span></span>
-<span id="cb38-2"><a href="methods.html#cb38-2" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;memos&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-3"><a href="methods.html#cb38-3" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">memo_name =</span> .) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-4"><a href="methods.html#cb38-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Memos stored at https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos.&quot;</span>,</span>
-<span id="cb38-5"><a href="methods.html#cb38-5" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb38-6"><a href="methods.html#cb38-6" tabindex="-1"></a>                 <span class="at">scroll_box_height =</span> <span class="st">&quot;300px&quot;</span></span>
-<span id="cb38-7"><a href="methods.html#cb38-7" tabindex="-1"></a>                 )</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="methods.html#cb41-1" tabindex="-1"></a><span class="do">## make a tibble of the list and display it as a fpr_kable</span></span>
+<span id="cb41-2"><a href="methods.html#cb41-2" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;memos&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-3"><a href="methods.html#cb41-3" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">memo_name =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-4"><a href="methods.html#cb41-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Memos stored at https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos.&quot;</span>,</span>
+<span id="cb41-5"><a href="methods.html#cb41-5" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb41-6"><a href="methods.html#cb41-6" tabindex="-1"></a>                 <span class="at">scroll_box_height =</span> <span class="st">&quot;300px&quot;</span></span>
+<span id="cb41-7"><a href="methods.html#cb41-7" tabindex="-1"></a>                 )</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-memos">Table 3.2: </span>Memos stored at <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos" class="uri">https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos</a>.
@@ -731,8 +733,12 @@ track_sites_restoration.html
 </div>
 <div id="future-restoration-site-selection" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Future Restoration Site Selection<a href="methods.html#future-restoration-site-selection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="fish-passage" class="section level3 hasAnchor" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> Fish Passage<a href="methods.html#fish-passage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="evaluation-of-historic-and-current-imagery" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Evaluation of Historic and Current Imagery<a href="methods.html#evaluation-of-historic-and-current-imagery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Evaluation of historic and current imagery to understand and quantify watershed characteristics and morphological changes in the Neexdzii Kwah and its major tributaries over time and guide future restoration efforts. This will require that the study team acquire, georeference, archive and analyze historic imagery for the Neexdzii Kwah watershed and compare with an analysis of recent data to quantify historic changes in stream morphology resulting in loss of quantity and quality of water and fish habitat. Through this process we hope to highlight areas of historic dredging, realignment, and floodplain disconnections due to infrastructure that have degraded watershed health and fish habitat.</p>
+</div>
+<div id="fish-passage" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Fish Passage<a href="methods.html#fish-passage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>At the time of writing, extensive work related to fish passage restoration planning was underway in the Neexdzii Kwah watershed
 as well as other areas of the greater Skeena watershed. Methodology for this work is presented in <span class="citation">A. Irvine (2023)</span>,
 <span class="citation">Irvine (2022)</span> and <span class="citation">Irvine (2021)</span>. Although these references detail work related to linear connectivity
@@ -741,15 +747,11 @@ realted to disconnections due to the railway documented in <code>bcfishpass</cod
 The results of this analysis and future analysis incorporating major roadways as well (currently under development) will
 be added to the shared QGIS project and used to inform future restoration activity prioritization.</p>
 </div>
-<div id="local-knowledge-for-riparian-area-and-erosion-protection-site-selection" class="section level3 hasAnchor" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> Local Knowledge for Riparian Area and Erosion Protection Site Selection<a href="methods.html#local-knowledge-for-riparian-area-and-erosion-protection-site-selection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="local-knowledge-for-riparian-area-and-erosion-protection-site-selection" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Local Knowledge for Riparian Area and Erosion Protection Site Selection<a href="methods.html#local-knowledge-for-riparian-area-and-erosion-protection-site-selection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To facilitate project activities in the short term - the project team will select among some known areas of riparian
 removal and bank erosion where landowners are amenable to project activities including installation of cattle exclusion
 fencing and riparian planting in the next two fiscal years.</p>
-</div>
-<div id="evaluation-of-historic-and-current-imagery" class="section level3 hasAnchor" number="3.4.3">
-<h3><span class="header-section-number">3.4.3</span> Evaluation of Historic and Current Imagery<a href="methods.html#evaluation-of-historic-and-current-imagery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Evaluation of historic and current imagery to understand and quantify morphological changes in the Neexdzii Kwah and its major tributaries over time and guide future restoration efforts. This will require that the study team acquire, georeference, archive and analyze historic imagery for the Neexdzii Kwah watershed and compare with an analysis of recent LiDAR data to quantify historic changes in stream morphology resulting in loss of quantity and quality of water and fish habitat. Through this process we hope to highlight areas of historic dredging, realignment, and floodplain disconnections due to infrastructure that have degraded watershed health and fish habitat.</p>
 </div>
 <div id="delineation-of-areas-of-high-fisheries-values" class="section level3 hasAnchor" number="3.4.4">
 <h3><span class="header-section-number">3.4.4</span> Delineation of Areas of High Fisheries Values<a href="methods.html#delineation-of-areas-of-high-fisheries-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>

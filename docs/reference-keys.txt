@@ -53,9 +53,9 @@ data-sourceing-from-skeena-salmon-data-centre
 documentation-of-workflows
 historic-information-regarding-impacts-and-restoration-initiatives
 future-restoration-site-selection
+evaluation-of-historic-and-current-imagery
 fish-passage
 local-knowledge-for-riparian-area-and-erosion-protection-site-selection
-evaluation-of-historic-and-current-imagery
 delineation-of-areas-of-high-fisheries-values
 parameter-ranking-to-select-future-restoration-sites
 results
@@ -67,9 +67,9 @@ price2014upperbulkleya---upper-bulkley-floodplain-habitat-modifications-physical
 ncfdc1998midbulkleydetailed---mid-bulkley-detailed-fish-habitatriparianchannel-assessment-for-watershed-restoration
 gaboury_smith2016developmentaquatic---development-of-aquatic-restoration-designs-and-on-farm-cattle-management-improvements-within-the-wetsuweten-irst-nation-territory
 future-restoration-site-selection-1
+evaluation-of-historic-and-current-imagery-1
 fish-passage-1
 local-knowledge-for-riparian-area-and-erosion-protection-site-selection-1
-evaluation-of-historic-and-current-imagery-1
 delineation-of-areas-of-high-fisheries-values-1
 parameter-ranking-to-select-future-restoration-sites-1
 recommendations

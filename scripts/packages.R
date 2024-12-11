@@ -14,7 +14,8 @@ pkgs_cran <- c(
   'tidyhydat',
   'ggdark',
   'fishbc',
-  'DT'
+  'DT',
+  'desc'
 )
 
 pkgs_gh <- c(
