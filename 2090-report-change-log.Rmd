@@ -1,8 +1,13 @@
 # Changelog {-}
 
-### Development {-}
+<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
-  - add citations from recommendation table to references and print inline in the recomendations table
+### restoration_wedzin_kwa_2024 DRAFT 0.0.10 (2024-12-11) {-}
+
+- link to blog and details for imagery as per #10 (rollback 1)
+- remove regex (all brackets) and escape commas and periods to close #77 (rollback 3)
+- link verison dynamically to DESCRIPTION file as part of changelog update automation. Add references from Recommendations table. Rollback 1.
+- add citations from recommendation table to references and print inline in the recomendations table
 
 
 ### restoration_wedzin_kwa_2024 DRAFT 0.0.9 (20241027) {-}
