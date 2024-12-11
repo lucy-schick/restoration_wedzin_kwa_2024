@@ -1,5 +1,7 @@
 # Development
 
+  - add citations from recommendation table to references and print inline in the recomendations table
+
 
 # restoration_wedzin_kwa_2024 DRAFT 0.0.9 (20241027)
   - interactive priority table for recomendations!
