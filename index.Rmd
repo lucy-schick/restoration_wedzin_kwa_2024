@@ -14,7 +14,7 @@ author: |
 
 date: |
  |
- | DRAFT Version 0.0.9 `r format(Sys.Date(), "%Y-%m-%d")`
+ | DRAFT Version `r desc::desc_get_version()` `r format(Sys.Date(), "%Y-%m-%d")`
 toc-title: Table of Contents
 site: bookdown::bookdown_site
 output: 
@@ -27,12 +27,17 @@ params:
   update_packages: FALSE
 nocite: |
   @gaboury_smith2016DevelopmentAquatic,
-  @westcott2022UpperBulkleya,
-  @skeenaknowledgetrustUBRWater,
-  @wlrs2024BritishColumbia,
-  @oliver2020Analysis2017,
   @canada2008CanadianAquatic,
-  @moe2024BritishColumbia
+  @wlrs2024BritishColumbia,
+  @moe2024BritishColumbia,
+  @skeenaknowledgetrustUBRWater,
+  @westcott2022UpperBulkleya,
+  @price2014UpperBulkleya,
+  @oliver2020Analysis2017,
+  @ministryofforestsRiparianmanagement,
+  @johnston_slaney1996FishHabitat
+  
+  
 documentclass: book
 bibliography: [packages.bib, references.bib]
 biblio-style: apalike
@@ -93,6 +98,8 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 ```
+
+
 
 # Acknowledgement {.front-matter .unnumbered}
 
