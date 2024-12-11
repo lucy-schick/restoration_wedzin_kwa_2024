@@ -102,6 +102,9 @@ Historic information regarding impacts and restoration initiatives, prescription
 
 ## Future Restoration Site Selection
 
+### Evaluation of Historic and Current Imagery
+Evaluation of historic and current imagery to understand and quantify watershed characteristics and morphological changes in the Neexdzii Kwah and its major tributaries over time and guide future restoration efforts. This will require that the study team acquire, georeference, archive and analyze historic imagery for the Neexdzii Kwah watershed and compare with an analysis of recent data to quantify historic changes in stream morphology resulting in loss of quantity and quality of water and fish habitat.  Through this process we hope to highlight areas of historic dredging, realignment, and floodplain disconnections due to infrastructure that have degraded watershed health and fish habitat.
+
 ### Fish Passage
 At the time of writing, extensive work related to fish passage restoration planning was underway in the Neexdzii Kwah watershed
 as well as other areas of the greater Skeena watershed.  Methodology for this work is presented in @irvine2023BulkleyWatershed,
@@ -116,9 +119,6 @@ To facilitate project activities in the short term - the project team will selec
 removal and bank erosion where landowners are amenable to project activities including installation of cattle exclusion 
 fencing and riparian planting in the next two fiscal years.
 
-
-### Evaluation of Historic and Current Imagery
-Evaluation of historic and current imagery to understand and quantify morphological changes in the Neexdzii Kwah and its major tributaries over time and guide future restoration efforts. This will require that the study team acquire, georeference, archive and analyze historic imagery for the Neexdzii Kwah watershed and compare with an analysis of recent LiDAR data to quantify historic changes in stream morphology resulting in loss of quantity and quality of water and fish habitat.  Through this process we hope to highlight areas of historic dredging, realignment, and floodplain disconnections due to infrastructure that have degraded watershed health and fish habitat.
 
 
 ### Delineation of Areas of High Fisheries Values
