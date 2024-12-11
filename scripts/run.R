@@ -70,3 +70,4 @@ filename_html <- 'Restoration_Neexdzii_Kwah_2024'
   file.remove(paste0(filename_html, '.html'))
 
 }
+
