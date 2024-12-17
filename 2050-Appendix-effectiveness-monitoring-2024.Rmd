@@ -2,7 +2,7 @@
 
 # **Appendix 1 - Potential Restoration Site Review and Effectiveness Monitoring Data - 2024** {-}
 
-Table \@ref(tab:this-tab)
+Table \@ref(tab:tab-ree1-caption)
 
 
 
@@ -21,6 +21,12 @@ ree1_raw |>
     na = ""
   )
 ```
+
+```{r tab-ree1-caption, results="asis"}
+my_caption <- ("Draft partial summary of results from potential restoration site review and effectiveness monitoring data - 2024")
+my_tab_caption()
+```
+
 
 ```{r tab-ree1}
 
