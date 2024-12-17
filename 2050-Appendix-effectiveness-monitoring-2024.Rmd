@@ -1,0 +1,47 @@
+
+
+# **Appendix 1 - Potential Restoration Site Review and Effectiveness Monitoring Data - 2024** {-}
+
+Table \@ref(tab:this-tab)
+
+
+
+```{r ld-ree1, eval=gis_update}
+
+# grab the table from the QGIS project and burn to a csv then read in and present
+path <- "~/Projects/gis/restoration_wedzin_kwa/data_field/2024/form_monitoring_ree_20240923.gpkg"
+ree1_raw <- sf::st_read(
+  path
+)
+
+
+ree1_raw |> 
+  readr::write_csv(
+    file = "data/inputs_extracted/ree_2024_01.csv",
+    na = ""
+  )
+```
+
+```{r tab-ree1}
+
+ree1_raw <- readr::read_csv(
+  "data/inputs_extracted/ree_2024_01.csv"
+)
+
+ree1_raw |> 
+  sf::st_drop_geometry() |> 
+  dplyr::select(
+    # date_time_start,
+    site_name,
+    assessment_comment,
+    riparian_notes,
+    stability_notes,
+    revegetation_notes,
+    cover_notes,
+    uav_mapping = uav_flight
+  ) |> 
+  my_dt_table(cols_freeze_left = 0)
+  
+
+```
+
