@@ -1,0 +1,107 @@
+---
+title: "Process UAV Imagery"
+date: "Created: 2025-07-27 | Updated: `r format(Sys.Date(), '%Y-%m-%d')`"
+output: 
+  html_document:
+    code_folding: "hide"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, dpi=60, out.width = "100%")
+
+options(scipen=999)
+options(knitr.kable.NA = '--') #'--'
+options(knitr.kable.NAN = '--')
+```
+
+Here we process the imagery from Matt Sakals to get mosaics of the individual flights that are adjacent to each other.  We 
+chose 15cm resolution due do the current resolution and so that it is reasonable to retrieve via https from QGIS. 
+
+<br>
+
+Here is the resolution for `bulkley-mckilligan-barren`.
+
+```{r}
+dir_1 <- "/Volumes/backup_2022/backups/new_graph/uav_imagery/skeena/bulkley/2024/bulkley-mckilligan-barren"
+files_in <- fs::path(
+  dir_1,
+  c(
+    "fullres-0-0.tif", 
+    "fullres-0-1.tif", 
+    "fullres-1-0.tif", 
+    "fullres-1-1.tif"
+  )
+)
+
+files_in1 |> 
+  purrr::map(
+    ngr::ngr_spk_res
+  )
+
+```
+
+
+<br>
+
+Here is the resolution for `bulkley-byman-richfield`.
+```{r}
+files_in2 <- fs::path(
+  "/Volumes/backup_2022/backups/new_graph/uav_imagery/skeena/bulkley/2024/bulkley-byman-richfield",
+  c(
+    "Groot_Ortho_88mm_v3-0-0.tif",
+    "Groot_Ortho_88mm_v3-1-0.tif",
+    "Groot_Ortho_88mm_v3-2-0.tif"
+  )
+)
+
+files_in2 |> 
+  purrr::map(
+    ngr::ngr_spk_res
+  )
+
+```
+
+
+```{r}
+library(ngr)
+
+file_out <- "/Volumes/backup_2022/backups/new_graph/uav_imagery/skeena/bulkley/2024/bulkley-mckilligan-barren/ortho.tif"
+args <- ngr::ngr_spk_gdalwarp(
+  path_in = files_in1,
+  path_out = file_out,
+  t_srs = "EPSG:32609",
+  target_resolution = c(0.15, 0.15)
+)
+
+
+
+file_out2 <- "/Volumes/backup_2022/backups/new_graph/uav_imagery/skeena/bulkley/2024/bulkley-byman-richfield/ortho.tif"
+
+
+args2 <- ngr::ngr_spk_gdalwarp(
+  path_in = files_in2,
+  path_out = file_out2,
+  t_srs = "EPSG:32609",
+  target_resolution = c(0.15, 0.15)
+)
+
+args_list <- list(
+  args,
+  args2
+)
+
+args_list |> 
+  purrr::walk(
+  ~ processx::run(
+    command = "gdalwarp",
+    args = .x,
+    echo = TRUE
+  )
+)
+
+```
+
+
+We have processed all UAV imagery for the Skeena [here](https://github.com/NewGraphEnvironment/stac_uav_bc/tree/main/scripts)
+and loaded to s3 as a STAC compliant database.
+
