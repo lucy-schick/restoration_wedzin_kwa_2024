@@ -67,6 +67,40 @@ rfp_tracking_prep %>%
 
 
 ```
+### Drone Imagery
+Orthoimagery has been gathered for past monitoring of historic restoration sites as well as part of fish passage restoration planning efforts in the Neexdzii Kwah watershed. Data has been stored as Cloud Optimized Geotiffs on a cloud service provider (AWS) with select imagery linked to in the imagery collaborative GIS project. Additionally - a tile service has been set up to facilitate viewing of individual images (Table \@ref(tab:tab-uav-imagery-cap).  
+
+```{r tab-uav-imagery-cap, results="asis" }
+my_caption <- "Drone imagery download and viewer links."
+
+my_tab_caption(tip_text = " <b>NOTE: Links to viewer current may need to be manually altered in browser to begin with http vs https! This should resolved soon.</b>")
+```
+
+```{r tab-uav-imagery}
+
+# read in the csv created with "scripts/gis/uav_query_stac_aoi.qmd"
+
+
+uav_urls_raw <- readr::read_csv("data/inputs_extracted/uav_urls_raw.csv")
+
+
+# add links to the tile service and make all links pretty
+uav_urls <- uav_urls_raw |> 
+  dplyr::mutate(url_view = ngr::ngr_str_link_url(
+                  url_base = "http:/23cog.s3.amazonaws.com/viewer.html?cog=",
+                  url_resource = url_download, 
+                  url_resource_path = FALSE,
+                  anchor_text= "URL View"
+                  ),
+                url_download = ngr::ngr_str_link_url(url_base = url_download, anchor_text = "URL Download"))
+  
+uav_urls |> 
+  my_dt_table(cols_freeze_left = 0, escape = FALSE)
+
+
+```
+
+
 
 ## Historic Information Regarding Impacts and Restoration Initiatives
 

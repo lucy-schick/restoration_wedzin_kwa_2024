@@ -1,0 +1,78 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+We will use python for some of this so we will load a virtual env with pkgs-ld chunk packages.
+
+```{r env-activate}
+library(reticulate)
+reticulate::use_condaenv("titiler", required = TRUE)
+# reticulate::py_config()
+
+```
+
+```{python pkgs-ld}
+import json
+import pystac
+import csv
+from shapely.geometry import shape, Polygon
+```
+
+Get spatial representation of the Neexdzi Kwah watershed and burn to csv
+
+```{r aoi, eval = FALSE}
+
+# lets build a custom watersehed just for upstream of the confluence of Neexdzii Kwa and Wetzin Kwa
+# blueline key
+blk <- 360873822
+# downstream route measure
+drm <- 166030.4
+
+aoi_raw <- fwapgr::fwa_watershed_at_measure(blue_line_key = blk, 
+                                        downstream_route_measure = drm) |> 
+  sf::st_transform(4326) 
+
+# this file is actually extracted here 
+sf::st_write(aoi_raw, "data/inputs_extracted/aoi_raw.geojson", append = FALSE, delete_dsn = TRUE)
+
+```
+
+```{python query-s3-json}
+
+aoi="data/inputs_extracted/aoi_raw.geojson"
+
+# Load AOI polygon from GeoJSON file
+with open(aoi) as f:
+    aoi_geojson = json.load(f)
+
+# Assume the AOI GeoJSON contains a single Polygon or MultiPolygon feature
+aoi_polygon = shape(aoi_geojson["features"][0]["geometry"])
+
+# Load the STAC Collection
+collection = pystac.Collection.from_file("https://dev-imagery-uav-bc.s3.amazonaws.com/imagery_uav_bc.json")
+
+# Get all items in the collection
+items = collection.get_all_items()
+
+# Filter items based on intersection with AOI
+filtered_items = [item for item in items if shape(item.geometry).intersects(aoi_polygon)]
+
+# Capture URLs as an object
+urls = []
+
+# Save matching items to CSV
+csv_path = "data/inputs_extracted/uav_urls_raw.csv"
+with open(csv_path, mode='w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(["id_item", "url_download"])
+    for item in filtered_items:
+        for asset_key, asset in item.assets.items():
+            url_entry = {"Item ID": item.id, "url_download": asset.href}
+            urls.append(url_entry)
+            writer.writerow([item.id, asset.href])
+
+print(f"Saved matching items to {csv_path}")
+
+```
