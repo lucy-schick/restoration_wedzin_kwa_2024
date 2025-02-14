@@ -24,6 +24,7 @@ output:
 params:
   repo_url: 'https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/'
   report_url: 'https://newgraphenvironment.github.io/restoration_wedzin_kwa_2024'
+  update_bib: FALSE
   update_packages: FALSE
 nocite: |
   @gaboury_smith2016DevelopmentAquatic,
@@ -38,7 +39,7 @@ nocite: |
   
   
 documentclass: book
-bibliography: [packages.bib, references.bib]
+bibliography: "`r if (params$update_bib) { rbbt::bbt_write_bib('references.bib', overwrite = TRUE); 'references.bib' } else 'references.bib'`"
 biblio-style: apalike
 link-citations: no
 github-repo: NewGraphEnvironment/restoration_wedzin_kwa_2024
