@@ -111,7 +111,7 @@ command <- "conda"
 
 system_run <- function(args){
   result <- tryCatch({
-    run(
+    processx::run(
       command,
       args = args,
       echo = TRUE,            # Print the command output live
