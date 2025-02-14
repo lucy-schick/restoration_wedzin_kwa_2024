@@ -8,10 +8,12 @@ my_dt_table <-   function(dat,
                           page_length = 10,
                           col_align = 'dt-center', #'dt-right',
                           font_size = '11px',
-                          style_input = 'bootstrap'){
+                          style_input = 'bootstrap',
+                          ...){
 
   dat |>
     DT::datatable(
+      ...,
       # style = style_input,
       class = 'cell-border stripe', #'dark' '.table-dark',
       #https://stackoverflow.com/questions/36062493/r-and-dt-show-filter-option-on-specific-columns
@@ -69,16 +71,21 @@ my_news_to_appendix <- function(
 }
 
 #https://stackoverflow.com/questions/49819892/cross-referencing-dtdatatable-in-bookdown
-my_tab_caption <- function(caption_text = my_caption) {
+my_tab_caption <- function(
+    caption_text = my_caption,
+    tip_flag = TRUE,
+    tip_text = " <b>NOTE: To view all columns in the table - please click on one of the sort arrows within column headers before scrolling to the right.</b>") {
+  # requires results="asis" in chunk header and only works in rmarkdown and not quarto
+
   cat(
     "<table>",
     paste0(
       "<caption>",
       "(#tab:",
-      # this is the chunk name!!
       knitr::opts_current$get()$label,
       ")",
       caption_text,
+      if (tip_flag) tip_text,
       "</caption>"
     ),
     "</table>",
