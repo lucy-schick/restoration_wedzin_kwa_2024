@@ -15,6 +15,7 @@ fig:all-benefits
 tab:kable-resources
 tab:tab-memos
 tab:tab-rfp-tracking
+tab:tab-uav-imagery-cap
 tab:tab-sites-restoration-gpkg-tracking
 tab:tab-price-2014-waypoints
 tab:tab-ncfdc-1998-priority
@@ -63,6 +64,7 @@ results
 field-review
 collaborative-gis-environment-1
 methodology
+drone-imagery
 historic-information-regarding-impacts-and-restoration-initiatives-1
 price2014upperbulkleya---upper-bulkley-floodplain-habitat-modifications-physical-barriers-and-sites-of-potential-importance-to-salmonids
 ncfdc1998midbulkleydetailed---mid-bulkley-detailed-fish-habitatriparianchannel-assessment-for-watershed-restoration
