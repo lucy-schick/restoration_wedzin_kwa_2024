@@ -30,7 +30,7 @@ data_deets <- packages_all %>%
 # that takes a while to run so we will save so we don't need to repeat. gitignored....
 file_deets <- "data/skt/data_deets_20250217.rds"
 saveRDS(data_deets, file_deets)
-usethis::use_git_ignore(file_deets)
+usethis::use_git_ignore("data/skt/*")
 
 # went quickly through the 3000 datasets and made some notes of the strings we want to detect to filter it down
 # would have been smarter to go through the packages names but that can be done too.  Doesn't take that long and is
