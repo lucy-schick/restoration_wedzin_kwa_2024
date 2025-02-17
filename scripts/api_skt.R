@@ -28,7 +28,9 @@ data_deets <- packages_all %>%
   tidyr::separate(source, c("organization_name", "notes", "publication_yr", "author", "package_name"), sep = "===")
 
 # that takes a while to run so we will save so we don't need to repeat. gitignored....
-saveRDS(data_deets, "data/skt/data_deets.rds")
+file_deets <- "data/skt/data_deets_20250217.rds"
+saveRDS(data_deets, file_deets)
+usethis::use_git_ignore(file_deets)
 
 # went quickly through the 3000 datasets and made some notes of the strings we want to detect to filter it down
 # would have been smarter to go through the packages names but that can be done too.  Doesn't take that long and is
@@ -61,7 +63,8 @@ UB River Riparian Restoration Project Summary 2021
 Upper Bulkley River riparian restoration 2022
 Upper Bulkley River Watershed Water Temperature Monitoring Program 2016-21 Data Report
 Hourly Water Temperature by Site
-Wet'suwet'en"
+Wet'suwet'en
+Water Quality"
 
 # Split the text into a vector of strings
 dataset_filter <- strsplit(dataset_filter_raw, split = "\n")[[1]]
@@ -69,7 +72,7 @@ dataset_filter <- strsplit(dataset_filter_raw, split = "\n")[[1]]
 rm(dataset_filter_raw)
 
 # read iin the rds
-data_deets <- readRDS("data/skt/data_deets.rds")
+data_deets <- readRDS(file_deets)
 
 # filter packages with stringr to find the ones that contain any of the strings in text_filter
 dat_filtered <- data_deets %>%
@@ -133,3 +136,4 @@ fetch_package(package_nm= "upper-bulkley-restoration-sites")
 fetch_package(package_nm= "as-built-report-of-aquatic-restoration-2016")
 fetch_package(package_nm= "as-built-report-of-aquatic-restoration-2017")
 fetch_package(package_nm= "mid-bulkley-detailed-fish-habitat-riparian-channel-assessment-for-watershed-restoration")
+fetch_package(package_nm = "analysis-of-2017-water-quality-monitoring-upper-bulkley-river-watershed")
