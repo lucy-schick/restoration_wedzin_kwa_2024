@@ -132,6 +132,19 @@ knitr::include_graphics("fig/hydrology_stats_08ED002.png")
 ```
 
 
+## Water Quality
+Water quality in the Neexdzi Kwah watershed has been the focus of multiple key studies, including among others - @nijman1996Waterquality, @remington_donas2000Nutrientsalgae, @oliver2020Analysis2017 and @westcott2022UpperBulkleya. The background information and resulting recommendations contained within these reports are critical for informing watershed recovery actions, as water quality has the potential to be a limiting factor for fish and fish food. This detailed documentation can also be leveraged to serve as a baseline dataset in which to compare current and future conditions. The reader is encouraged to source information directly from the aforementioned reports as the following summary has been simplified greatly.
+
+<br>
+
+The technical report by @Nijman1996 assessed the water quality of the Bulkley River headwaters, focusing on the impacts of the Equity mine, using available data on waste discharges, water quality, streamflows, and water use. It also identified water uses requiring protection and recommended provisional water quality objectives for the headwaters and downstream sections.
+
+<br>
+
+@remington_donas2000Nutrientsalgae put together the analysis of a significant amount of technical data related water, sediment and periphyton samples collected from November 1997 to March 2000 by the Habitat Restoration and Salmonid Enhancement Program (Fisheries and Oceans Canada) and others. Nutrients monitored included total phosphorus (TP), soluble orthophosphorus (SRP), ammonia, nitrate, organic nitrogen and total dissolved nitrogen. Periphytic algae was measured at nine sites September 1999 by Remington Enviromnental.  Substrate composition and interstitial dissolved oxygen measurement was also conducted at three sites in the upper Bulkley River mainstem as well as one site within Maxan Creek. Reporting from the project noted that the Neexdzi Kwah watershed has easily erodible glacial-fluvial and glacial-lacustrine soils and unusually high soluble phosphorus concentrations compared to other Skeena watershed streams, making it particularly vulnerable to eutrophication from nitrogen loading linked to septic, agriculture and livestock. They recommended a long-term, cost-effective ecosystem health monitoring strategy, incorporating water quality, periphyton, and benthic invertebrate bioassessment. Monitoring nutrients and algae was highlighted as a key approach to track changes over time, assess restoration success, and identify long-term trends within the upper Bulkley River mainstem and major tributaries to better target remedial actions.
+
+
+
 ## Fisheries
 
 ### Neexdzii Kwah
