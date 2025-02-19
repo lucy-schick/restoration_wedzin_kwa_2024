@@ -275,7 +275,7 @@ readxl::read_excel(path, skip = 3) |>
 ```{r tab-ncfdc-1998-priority-detailed, results="asis", echo=FALSE}
 # read the file back in and present as table
 
-my_caption <- "Table 73 from digital Appendix H of the NCFDC (1998) report (not included in pdf). Decision matrix to prioritize resches for restoration based on watershed position, fisheries value, synergistic (downstream impact) value, the nature of impacts (sorted descending by total weight)"
+my_caption <- "Table 73 from digital Appendix H of the NCFDC (1998) report (not included in pdf). Decision matrix to prioritize reaches for restoration based on watershed position, fisheries value, synergistic (downstream impact) value, the nature of impacts (sorted descending by total weight)"
 
 path_file <- "data/inputs_extracted/ncfdc_1998_73_app_h.csv"
 
@@ -385,7 +385,7 @@ gis_params_raw_to_update <- gis_params_raw_all %>%
 
 # grab the details about the source_schema_table as source_schema_table_details and then the 
 # source_column_name as source_column_name_details
-gis_param_details_prep_schtab <- left_join(
+gis_param_details_prep_schtab <- dplyr::left_join(
   
   gis_params_raw_to_update,
   
@@ -396,33 +396,37 @@ gis_param_details_prep_schtab <- left_join(
   
 
 # grab the column details
-params_cols_des <- purrr::map2_df(gis_param_details_prep_schtab$source_schema_table, gis_param_details_prep_schtab$source_column_name, rfp::rfp_meta_bcd_xref_col_comments)
+params_cols_des <- purrr::map2_df(
+  gis_param_details_prep_schtab$source_schema_table, 
+  gis_param_details_prep_schtab$source_column_name, 
+  rfp::rfp_meta_bcd_xref_col_comments
+  )
 
 # left_join the column details to the gis_param_details_prep_schtab
-gis_param_details_prep <- left_join(
+gis_param_details_prep <- dplyr::left_join(
   gis_param_details_prep_schtab,
   params_cols_des,
   by = c("source_schema_table" = "object_name", "source_column_name" = "col_name")
 )
 
 # need to add back all the layers filtered out above - this should not be repeated but will do for now
-gis_params_raw_all_updated <- bind_rows(
+gis_params_raw_all_updated <- dplyr::bind_rows(
   gis_params_raw_all %>% 
     dplyr::filter(is.na(source_schema_table) | 
                     is.na(source_column_name) |
-                    str_detect(source_schema_table, "bcfishobs|bcfishpass") |
-                    str_detect(source_schema_table, "whse_forest_tenure.ften_range_poly_carto_vw")),
+                    stringr::str_detect(source_schema_table, "bcfishobs|bcfishpass") |
+                   stringr::str_detect(source_schema_table, "whse_forest_tenure.ften_range_poly_carto_vw")),
   gis_param_details_prep
 ) %>% 
   dplyr::mutate(url_browser = case_when(
-    str_detect(source_schema_table, "bcfishobs|bcfishpass") ~ "https://smnorris.github.io/bcfishpass/06_data_dictionary.html",
+    stringr::str_detect(source_schema_table, "bcfishobs|bcfishpass") ~ "https://smnorris.github.io/bcfishpass/06_data_dictionary.html",
     TRUE ~ url_browser)
   ) %>% 
-  arrange(source_schema_table, source_column_name, column_name_raw)
+ dplyr::arrange(source_schema_table, source_column_name, column_name_raw)
 
 # this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag
 gis_params_raw_all_updated %>% 
-  write_csv("data/restoration_site_priority_parameters.csv")
+  readr::write_csv("data/restoration_site_priority_parameters.csv")
 
 ```
 

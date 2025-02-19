@@ -31,10 +31,12 @@ widzin-kwah
 project-scope
 historic-and-ongoing-ecosystem-degradation
 project-objectives
+traditional-ecological-knowledge-tek
 background
 project-location
 neexdzii-kwah-upper-bulkley-river
 buck-creek
+water-quality
 fisheries
 neexdzii-kwah
 upper-bulkley-falls

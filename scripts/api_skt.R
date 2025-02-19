@@ -137,3 +137,19 @@ fetch_package(package_nm= "as-built-report-of-aquatic-restoration-2016")
 fetch_package(package_nm= "as-built-report-of-aquatic-restoration-2017")
 fetch_package(package_nm= "mid-bulkley-detailed-fish-habitat-riparian-channel-assessment-for-watershed-restoration")
 fetch_package(package_nm = "analysis-of-2017-water-quality-monitoring-upper-bulkley-river-watershed")
+grab_these <- c(
+  "water-quality-assessment-and-objectives-for-the-bulkley-river-headwaters",
+  "nutrients-and-algae-in-the-upper-bulkley-river-watershed",
+  "water-quality-in-bulkley-river-1997-land-use-activities-in-rural-watersheds",
+  "water-quality-sampling-for-the-2001-spring-runoff-in-the-bulkley-valley"
+)
+
+grab_these |>
+  purrr::walk(
+    fetch_package
+  )
+
+
+dat <- dat_filtered_list$`Water Quality` |>
+  dplyr::filter(package_name %in% grab_these) |>
+  dplyr::select(package_name, url)
