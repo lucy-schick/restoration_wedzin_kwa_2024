@@ -35,13 +35,13 @@ To collaboratively understand the outcomes of past restoration efforts in areas 
   
 <br>
 
-To collaboratively stop the drivers of watershed health degredation and set the stage for actions that can meaningfully improve watershed health - the following are required:
+To collaboratively stop the drivers of watershed health degradation and set the stage for actions that can meaningfully improve watershed health - the following are required:
 
   - identification of overlap between current and historically important fish habitat where riparian vegetation has been removed or degraded and where it may be most effective to restore or protect riparian vegetation to improve habitat values, water quality and quantity, 
   - identification of areas where stream channels/floodplain has been altered (ie. channel relocation/straightening, dredging, sediment blockages, etc.) and where it may be important to restore or protect channel morphology to improve fish habitat, water quality and quantity,
   - identification and details of potential barriers to fish passage and subsequent fish passage restoration options,
   - identification of landowners who are interested in participating in conservation and restoration - as well as monitoring and maintenance activities, 
-  - idenfification of parcels of land that coincide with potentially high value aquatic habitats or areas that have the potential to significantly impact high value aquatic habitats that are publically owned and can be accessed by all without restriction or permission, and
+  - identification of parcels of land that coincide with potentially high value aquatic habitats or areas that have the potential to significantly impact high value aquatic habitats that are publicly owned and can be accessed by all without restriction or permission, and
   - identification of potential funding sources for restoration activities and monitoring and maintenance activities that can help maintain stability for a comprehensive program that allows the resources and time necessary to conduct a robust restoration implementation and monitoring program with a scale suitable to address the magnitude of the issues at hand.
   
 
@@ -51,7 +51,7 @@ To collaboratively stop the drivers of watershed health degredation and set the 
 Physical actions indented to facilitate watershed health improvements can include but are not limited to:
 
   - rebuilding of riparian structure through cattle exclusion and planting/seeding/maintenance of native vegetation,
-  - reconnection of streams to their floodplains disconnected by stream channel incision, historic channel dredgeing, stream realignment, the CN Railway, Highway 16 and other linear transporation infrastructure,
+  - reconnection of streams to their floodplains disconnected by stream channel incision, historic channel dredgeing, stream realignment, the CN Railway, Highway 16 and other linear transportation infrastructure,
   - remediation of fish passage at potential barriers for migrating adult and juvenile salmon,
   - stabilization of streambanks to prevent erosion, sediment deposition and the loss of riparian vegetation, and
   - mimicking and promoting beaver activity on the landscape to encourage retention of water on the floodplains that will result in the slow release of surface water and recharging of groundwater.
@@ -61,5 +61,9 @@ Physical actions indented to facilitate watershed health improvements can includ
 Planning and physical actions may require a high degree of outreach and collaboration with interest holders and regulators while prioritizing process-based approaches to restoration which rely on assisting natural river corridor processes over time whenever possible.  Effectiveness monitoring and adaptive management will be important components of the work to ensure knowledge is gained through the restoration processes while being carried forward and shared widely to inform future investments. The purpose of this document is to outline watershed restoration initiatives which can be actionable in the future.
 
 
+### Traditional Ecological Knowledge (TEK)
+As we move forward with watershed recovery efforts, Traditional Ecological Knowledge (TEK) will play a crucial role for understanding and managing ecosystems in the Neexdzi Kwah watershed. Recognized by research such as @ignace2000TraditionalEcological and @casi2021TraditionalEcological, TEK is wisdom passed down through generations, highlighting sustainable ways to live in harmony with nature. Integrating this knowledge into this initiative will enrich scientific approaches and help ensure that recovery strategies developed are rooted in the history and culture of the local communities.
 
+<br>
 
+Recovery processes can take decades and even centuries and engaging actively with local communities will be key to successful outcomes.  It is hoped that activities related to this initiative can highlight the value of TEK while producing tangible benefits for local communities. Education will play a pivotal role to understand the importance of TEK - fostering a mutual respect that can lead to innovative solutions to environmental challenges. An inclusive approach will lead to recovery processes that are not only effective but also equitable, honoring the wisdom and rights of those who have been guardians of Neexdzi Kwah lands for millennia.
