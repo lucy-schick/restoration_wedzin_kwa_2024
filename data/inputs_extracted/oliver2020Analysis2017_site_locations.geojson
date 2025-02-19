@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "oliver2020Analysis2017_site_locations",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "site_id": "Buck Ck", "ems_id": "E219804", "site_description": "Buck Creek ~0.5 km u/s confluence with Upper Bulkley River in Houston", "drainage_area_km2": 467.0, "mean_elevation_min_max_m": "1,126 (678 – 1,541)" }, "geometry": { "type": "Point", "coordinates": [ -126.653999328613281, 54.402603149414062 ] } },
+{ "type": "Feature", "properties": { "site_id": "McQuarrie Ck Upper", "ems_id": "E307225", "site_description": "McQuarrie Creek, ~13 km u/s confluence with Upper Bulkley River", "drainage_area_km2": 82.0, "mean_elevation_min_max_m": "1,124 (914 – 1,551)" }, "geometry": { "type": "Point", "coordinates": [ -126.463859558105469, 54.514129638671875 ] } },
+{ "type": "Feature", "properties": { "site_id": "McQuarrie Ck Lower", "ems_id": "E307185", "site_description": "McQuarrie Creek ~0.1 km u/s confluence with Upper Bulkley River", "drainage_area_km2": 115.0, "mean_elevation_min_max_m": "1,091 (728 – 1,551)" }, "geometry": { "type": "Point", "coordinates": [ -126.579689025878906, 54.556163787841797 ] } },
+{ "type": "Feature", "properties": { "site_id": "UBR d/s Bulkley Lake", "ems_id": "E307186", "site_description": "Upper Bulkley River ~4.5 km d/s of Bulkley Lake", "drainage_area_km2": 588.0, "mean_elevation_min_max_m": "1,019 (743 – 1,573)" }, "geometry": { "type": "Point", "coordinates": [ -126.170669555664062, 54.403068542480469 ] } },
+{ "type": "Feature", "properties": { "site_id": "UBR North Road", "ems_id": "E307184", "site_description": "Upper Bulkley River at North Road ~90 km d/s of Upper Bulkley Lake, and ~6.5 km d/s of Buck Creek confluence", "drainage_area_km2": 2315.0, "mean_elevation_min_max_m": "1,106 (612 – 1,573)" }, "geometry": { "type": "Point", "coordinates": [ -126.718177795410156, 54.398639678955078 ] } },
+{ "type": "Feature", "properties": { "site_id": "Unnamed Spring", "ems_id": null, "site_description": "Groundwater spring adjacent to Richfield Creek above confluence with Upper Bulkley River (Coordinates are a rough estimate included to allow spatial representation of site; should be revised based on actual field data.)", "drainage_area_km2": null, "mean_elevation_min_max_m": null }, "geometry": { "type": "Point", "coordinates": [ -126.3407, 54.5078 ] } }
+]
+}

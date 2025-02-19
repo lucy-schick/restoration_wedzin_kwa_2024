@@ -1,0 +1,7 @@
+Site ID,EMS ID,Site Description,Latitude (N),Longitude (W),Drainage Area (km²),Mean Elevation (Min – Max) (m)
+Buck Ck,E219804,Buck Creek ~0.5 km u/s confluence with Upper Bulkley River in Houston,54°24'09.3672,126°39'14.3951,467,"1,126 (678 – 1,541)"
+McQuarrie Ck Upper,E307225,"McQuarrie Creek, ~13 km u/s confluence with Upper Bulkley River",54°30'50.8716,126°27'49.9062,82,"1,124 (914 – 1,551)"
+McQuarrie Ck Lower,E307185,McQuarrie Creek ~0.1 km u/s confluence with Upper Bulkley River,54°33'22.1940,126°34'46.8687,115,"1,091 (728 – 1,551)"
+UBR d/s Bulkley Lake,E307186,Upper Bulkley River ~4.5 km d/s of Bulkley Lake,54°24'11.0484,126°10'14.4142,588,"1,019 (743 – 1,573)"
+UBR North Road,E307184,"Upper Bulkley River at North Road ~90 km d/s of Upper Bulkley Lake, and ~6.5 km d/s of Buck Creek confluence",54°23'55.1076,126°43'05.4474,2315,"1,106 (612 – 1,573)"
+Unnamed Spring,NA,Groundwater spring adjacent to Richfield Creek above confluence with Upper Bulkley River,NA,NA,NA,NA
