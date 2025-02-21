@@ -24,7 +24,7 @@ output:
 params:
   repo_url: 'https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/'
   report_url: 'https://newgraphenvironment.github.io/restoration_wedzin_kwa_2024'
-  update_bib: FALSE
+  update_bib: TRUE
   update_packages: FALSE
 nocite: |
   @gaboury_smith2016DevelopmentAquatic,
