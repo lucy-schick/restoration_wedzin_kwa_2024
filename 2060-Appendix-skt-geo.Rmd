@@ -1,0 +1,89 @@
+
+
+# **Appendix 2 - Skeena Knowledge Trust - Data Available for Download ** {-}
+
+
+A filtered subset of project packages (reports and associated files) available on SKT are listed in Table \@ref(tab:tab-skt-pkgs-cap). The table was created using [`/scripts/api_skt.R`](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/scripts/api_skt.R). Custom `R` function `fetch_package` can be used to download packages and is detailed in  [`/scripts/functions.R`](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/scripts/functions.R)
+
+```{r tab-skt-pkgs-cap, results="asis"}
+my_caption <- ("Skeena Knowledge Trust - Packages Available for Download")
+my_tab_caption()
+```
+
+
+```{r tab-skt-pkgs}
+
+path_skt_pkgs <- "data/skt/data_deets_20250217.rds"
+# read iin the rds
+skt_pkgs <- readRDS(path_skt_pkgs)
+
+dataset_filter_raw <- "Old Growth Geospatial Data
+Old Growth
+Legal Old Growth
+Air Photo
+Photo BC*
+name Data Files - Description - Zipped folder containing all the data files used for analysis
+name - R Scripts - Description - Zipped folder containing the R-scripts used for data analysis
+Riparian
+Riparian and In-Stream Assessment of the Bulkley River System
+Restoration
+Floodplain mapping
+Ecological Function
+Habitat Report Cards: Upper Bulkley CU
+Habitat Report Cards: Upper Skeena CU
+Conservation Unit snapshots: Upper Skeena
+Conservation Unit snapshots: Upper Bulkley
+Annual Knowledge Plan
+Mature and Old Forests
+Tier 1 Fish and Fish Habitat Assessment
+SSAF State of the Value Report
+Integrated Watershed Restoration Plan
+Upper Bulkley and Morice Water and Salmon Sustainability Views
+Upper Bulkley Fish and Aquatic Review Summary of Data
+Combined Upper Bulkley Air Photos
+UB River Riparian Restoration Project Summary 2021
+Upper Bulkley River riparian restoration 2022
+Upper Bulkley River Watershed Water Temperature Monitoring Program 2016-21 Data Report
+Hourly Water Temperature by Site
+Wet'suwet'en
+Water Quality"
+
+# Split the text into a vector of strings
+dataset_filter <- strsplit(dataset_filter_raw, split = "\n")[[1]]
+
+
+# filter packages with stringr to find the ones that contain any of the strings in text_filter
+skt_pkgs_filtered <- skt_pkgs %>%
+  dplyr::filter(sapply(name, function(x) any(str_detect(x, dataset_filter))))
+
+skt_pkgs_filtered |> 
+  dplyr::select(package_name, description, everything()) |> 
+  my_dt_table( cols_freeze_left = 1, page_length = 5)
+
+```
+
+<br>
+
+Table \@ref(tab:tab-skt-geo-cap) represents spatial data available form the SKT geoserver and was created using [`/scripts/gis/skt/skt_geoserver_info.R`](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/scripts/gis/skt/skt_geoserver_info.R). Data
+can be downloaded using [`skt_geoserver_dl.R`](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/scripts/gis/skt/skt_geoserver_dl.R) (will be converted to function following further testing).
+
+
+```{r tab-skt-geo-cap, results="asis"}
+my_caption <- ("Skeena Knowledge Trust - GIS Data Available for Query and Download")
+my_tab_caption()
+```
+
+
+```{r tab-skt-geo}
+
+skt_geo <- readr::read_csv(
+  "data/inputs_extracted/skt_geoserver_info.csv"
+)
+
+skt_geo |> 
+  dplyr::select(-layer_name_raw) |> 
+  my_dt_table( cols_freeze_left = 1, page_length = 5)
+
+```
+
+

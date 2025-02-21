@@ -132,6 +132,9 @@ knitr::include_graphics("fig/hydrology_stats_08ED002.png")
 ```
 
 
+## Skeena Knowledge Trust
+[The Skeena Knowledge Trust (SKT)](https://www.skeenatrust.ca/about/) serves as a centralized repository for data and information related to salmon and salmon habitat within the Skeena River watershed. To support informed decision-making, SKT provides access to a wide range of reports, datasets, and spatial information through its online platform. A summary of the available project packages and geospatial data can be found in Appendix 2, which provides an overview of key resources and their relevance to salmon conservation and habitat management in the region.
+
 ## Water Quality
 Water quality in the Neexdzi Kwah watershed has been the focus of multiple key studies, including among others - @nijman1996Waterquality, @remington_donas2000Nutrientsalgae, @oliver2020Analysis2017 and @westcott2022UpperBulkleya. The background information and resulting recommendations contained within these reports are critical for informing watershed recovery actions, as water quality has the potential to be a limiting factor for fish and fish food. This detailed documentation can also be leveraged to serve as a baseline dataset in which to compare current and future conditions. The reader is encouraged to source information directly from the aforementioned reports as the following summary has been simplified greatly.
 
