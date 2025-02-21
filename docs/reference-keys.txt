@@ -23,6 +23,8 @@ tab:tab-ncfdc-1998-priority-detailed
 tab:tab-ncfdc-1998-pres
 tab:tab-gis-params-cap
 tab:tab-ree1-caption
+tab:tab-skt-pkgs-cap
+tab:tab-skt-geo-cap
 fig:model-riparian-caption
 introduction
 wetsuweten
@@ -36,6 +38,7 @@ background
 project-location
 neexdzii-kwah-upper-bulkley-river
 buck-creek
+skeena-knowledge-trust
 water-quality
 fisheries
 neexdzii-kwah
