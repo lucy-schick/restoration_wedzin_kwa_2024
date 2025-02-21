@@ -137,7 +137,7 @@ Water quality in the Neexdzi Kwah watershed has been the focus of multiple key s
 
 <br>
 
-The technical report by @Nijman1996 assessed the water quality of the Bulkley River headwaters, focusing on the impacts of the Equity mine, using available data on waste discharges, water quality, streamflows, and water use. It also identified water uses requiring protection and recommended provisional water quality objectives for the headwaters and downstream sections.
+The technical report by @nijman1996Waterquality assessed the water quality of the Bulkley River headwaters, focusing on the impacts of the Equity mine, using available data on waste discharges, water quality, streamflows, and water use. It also identified water uses requiring protection and recommended provisional water quality objectives for the headwaters and downstream sections.
 
 <br>
 
