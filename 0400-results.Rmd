@@ -363,7 +363,7 @@ This work is ongoing and will be added to the `restoration_wedzin_kwa` project i
 
 ### Parameter Ranking to Select Future Restoration Sites
 
-A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the `restoration_site_priority_parameters.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv) is included in Table \@ref(tab:tab-gis-params).
+A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the `restoration_site_priority_parameters.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv) is included in Table \@ref(tab:tab-gis-params-cap).
 
 <br>
 
@@ -379,8 +379,8 @@ gis_params_raw_to_update <- gis_params_raw_all %>%
   dplyr::filter(!is.na(source_schema_table) & 
                   !is.na(source_column_name) &
                   !str_detect(source_schema_table, "bcfishobs|bcfishpass")) %>% 
-  # we know that whse_forest_tenure.ften_range_poly_carto_vw is problematic so lets remove
-  dplyr::filter(!str_detect(source_schema_table, "whse_forest_tenure.ften_range_poly_carto_vw"))
+  # we know that tenures and the land ownership layers are problematic so lets remove
+  dplyr::filter(!str_detect(source_schema_table, "whse_forest_tenure.ften_range_poly_carto_vw|whse_cadastre.pmbc_parcel_fabric_poly_svw"))
 
 
 # grab the details about the source_schema_table as source_schema_table_details and then the 
@@ -415,14 +415,15 @@ gis_params_raw_all_updated <- dplyr::bind_rows(
     dplyr::filter(is.na(source_schema_table) | 
                     is.na(source_column_name) |
                     stringr::str_detect(source_schema_table, "bcfishobs|bcfishpass") |
-                   stringr::str_detect(source_schema_table, "whse_forest_tenure.ften_range_poly_carto_vw")),
+                    # not accessible via bcdata 
+                    stringr::str_detect(source_schema_table, "whse_forest_tenure.ften_range_poly_carto_vw|whse_cadastre.pmbc_parcel_fabric_poly_svw")),
   gis_param_details_prep
 ) %>% 
   dplyr::mutate(url_browser = case_when(
     stringr::str_detect(source_schema_table, "bcfishobs|bcfishpass") ~ "https://smnorris.github.io/bcfishpass/06_data_dictionary.html",
     TRUE ~ url_browser)
   ) %>% 
- dplyr::arrange(source_schema_table, source_column_name, column_name_raw)
+  dplyr::arrange(source_schema_table, source_column_name, column_name_raw)
 
 # this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag
 gis_params_raw_all_updated %>% 
@@ -430,22 +431,33 @@ gis_params_raw_all_updated %>%
 
 ```
 
-```{r tab-gis-params, eval = TRUE}
-read_csv("data/restoration_site_priority_parameters.csv") |> 
+```{r gis-params, eval = TRUE}
+tab_gis_params_raw <- read_csv("data/restoration_site_priority_parameters.csv") |> 
   dplyr::select(
     source_schema_table, 
-                source_column_name,
+    source_column_name,
     column_name_raw,
     user_input,
     type,
     url_browser,
     # description_table = description,
     col_comments
-    ) |> 
+  ) |> 
   dplyr::arrange(column_name_raw) |> 
-  dplyr::select(column_name_raw, source_column_name, everything()) |> 
-  fpr::fpr_kable(caption_text = "Proposed parameters used to document and rank future potential restoration/enhancement sites.",
-                 scroll = gitbook_on)
+  dplyr::select(column_name_raw, source_column_name, everything())
 
-  
 ```
+
+```{r tab-gis-params-cap, results="asis"}
+caption_text = "WORK IN PROGRESS!! Proposed parameters used to document and rank future potential restoration/enhancement sites."
+
+my_tab_caption()
+```
+
+```{r tab-gis-params}
+
+tab_gis_params_raw |> 
+  my_dt_table(cols_freeze_left = 0, escape = FALSE)
+
+```
+

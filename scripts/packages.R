@@ -6,7 +6,7 @@ pkgs_cran <- c(
   'bookdown',
   'rmarkdown',
   'pagedown',
-  'readwritesqlite',
+  # 'readwritesqlite',
   'RPostgres',
   'sf',
   'tidyhydat',
@@ -15,12 +15,14 @@ pkgs_cran <- c(
   'ggdark',
   'fishbc',
   'DT',
-  'desc'
+  'desc',
+  'kableExtra'
 )
 
 pkgs_gh <- c(
   "newgraphenvironment/fpr",
-  "haozhu233/kableExtra@a9c509a"
+  # "haozhu233/kableExtra@a9c509a",
+  "poissonconsulting/readwritesqlite"
 )
 
 pkgs_all <- c(pkgs_cran,
