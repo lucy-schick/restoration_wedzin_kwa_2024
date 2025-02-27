@@ -42,6 +42,8 @@ sf::st_write(aoi_raw, "data/inputs_extracted/aoi_raw.geojson", append = FALSE, d
 ```{python query-s3-json}
 
 aoi="data/inputs_extracted/aoi_raw.geojson"
+url_collection="https://dev-imagery-uav-bc.s3.amazonaws.com/imagery_uav_bc.json"
+path_csv = "data/inputs_extracted/uav_urls_raw.csv"
 
 # Load AOI polygon from GeoJSON file
 with open(aoi) as f:
@@ -51,7 +53,7 @@ with open(aoi) as f:
 aoi_polygon = shape(aoi_geojson["features"][0]["geometry"])
 
 # Load the STAC Collection
-collection = pystac.Collection.from_file("https://dev-imagery-uav-bc.s3.amazonaws.com/imagery_uav_bc.json")
+collection = pystac.Collection.from_file(url_collection)
 
 # Get all items in the collection
 items = collection.get_all_items()
@@ -63,8 +65,8 @@ filtered_items = [item for item in items if shape(item.geometry).intersects(aoi_
 urls = []
 
 # Save matching items to CSV
-csv_path = "data/inputs_extracted/uav_urls_raw.csv"
-with open(csv_path, mode='w', newline='') as file:
+
+with open(path_csv, mode='w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(["id_item", "url_download"])
     for item in filtered_items:
@@ -73,6 +75,6 @@ with open(csv_path, mode='w', newline='') as file:
             urls.append(url_entry)
             writer.writerow([item.id, asset.href])
 
-print(f"Saved matching items to {csv_path}")
+print(f"Saved matching items to {path_csv}")
 
 ```
