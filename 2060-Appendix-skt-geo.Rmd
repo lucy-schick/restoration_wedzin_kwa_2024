@@ -67,8 +67,9 @@ skt_pkgs_filtered <- purrr::map(
   dplyr::bind_rows(.id = "group")
 
 skt_pkgs_filtered |> 
+  dplyr::mutate(url = ngr::ngr_str_link_url(url_base = url, anchor_text = url)) |> 
   dplyr::select(group, package_name, description, everything()) |> 
-  my_dt_table( cols_freeze_left = 1, page_length = 5)
+  my_dt_table( cols_freeze_left = 1, page_length = 5, escape = FALSE)
 
 ```
 
