@@ -57,8 +57,7 @@ discussions are kept [here](https://github.com/NewGraphEnvironment/restoration_w
 
 
 ### Tables and Figures
-There are many tables within this document that can take a long time to format.  Within this document the tables have been imported often as simple csv files or pages of an excel workbook and pulled into the project using scripts. This allows others to access the data and use it in their own projects.  These tables can also then be easily updated
-with new data as it becomes available often with the formatting for presentation to reader handled by the scripting. 
+There are many tables within this document that can take a long time to format.  Within this document the tables have been imported often as simple csv files or pages of an excel workbook and pulled into the project using scripts. This allows others to access the data and use it in their own projects.  These tables can also then be easily updated with new data as it becomes available often with the formatting for presentation to reader handled by the scripting. Any figures used in the reporting are saved in the project [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/fig/) and can be leveraged by others.  
 
 ```{r kable-resources, eval = FALSE}
 # An example of this can be
@@ -69,12 +68,7 @@ read_csv("data/aquatic_restoration_resources.csv") %>%
   fpr::fpr_kable(caption_text = "Aquatic Restoration Resources.")
 ```
 
-<br>
- 
-Any figures used in the reporting are saved in the project and can be used by anyone else in their work to tell there own
-story and help their teams achieve their goals.  An example of this can be seen here Table \@ref(tab:kable-resources)
-with the actual file served
-[here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/fig/collaboration.jpg).
+
 
 ### Data Sourceing from Skeena Salmon Data Centre
 Whenever possible we have attempted to tie into existing data govenment infrastructure in the Skeena region by downloading data directly from the [Skeena Salmon Data Centre](https://data.skeenasalmon.info/) using the application programming interface to their [CKAN](https://ckan.org/features/api) database. To facilitate and simlify this process we developed a function to download data from the CKAN database and load it into local versions of the project repository. This `fetch_package` function is kept in the `scripts/functions.R` file of the project and can be used to download entire "packages" of data from the Skeena Salmon Data Centre.
