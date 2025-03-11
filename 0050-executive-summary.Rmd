@@ -1,0 +1,27 @@
+# Executive Summary {-}
+
+```{r ld-exec}
+# read in the exec summary
+exec_summary_raw <- readr::read_csv(
+  "data/inputs_raw/executive_summary.csv"
+) 
+
+exec_summary <- exec_summary_raw |> 
+  # remove the row with the R packages
+  dplyr::filter(resource != "Custom R Packages and code repositories") |> 
+  purrr::set_names(nm = stringr::str_to_title(names(exec_summary_raw)))
+```
+
+```{r tab-exec-sum-cap, results="asis"}
+my_caption <- "Neexdzi Kwa Restoration Planning Resources."
+my_tab_caption()
+```
+
+```{r tab-exec-sum}
+exec_summary |> 
+  dplyr::mutate(Url = ngr::ngr_str_link_url(url_base = Url, anchor_text = Url)) |> 
+  my_dt_table( cols_freeze_left = 1, page_length = 13, escape = FALSE)
+
+```
+
+
