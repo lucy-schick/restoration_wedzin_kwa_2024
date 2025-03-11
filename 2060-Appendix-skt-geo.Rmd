@@ -53,11 +53,21 @@ dataset_filter <- strsplit(dataset_filter_raw, split = "\n")[[1]]
 
 
 # filter packages with stringr to find the ones that contain any of the strings in text_filter
-skt_pkgs_filtered <- skt_pkgs %>%
-  dplyr::filter(sapply(name, function(x) any(str_detect(x, dataset_filter))))
+# skt_pkgs_filtered <- skt_pkgs |> 
+#   dplyr::filter(sapply(name, function(x) any(stringr::str_detect(x, dataset_filter))))
+
+# group by why it was filtered
+skt_pkgs_filtered <- purrr::map(
+  dataset_filter, 
+  ~skt_pkgs |>  dplyr::filter(stringr::str_detect(name, .x))
+) |> 
+  purrr::set_names(dataset_filter) |> 
+  # remove empty list items
+  purrr::discard(~nrow(.x) == 0) |> 
+  dplyr::bind_rows(.id = "group")
 
 skt_pkgs_filtered |> 
-  dplyr::select(package_name, description, everything()) |> 
+  dplyr::select(group, package_name, description, everything()) |> 
   my_dt_table( cols_freeze_left = 1, page_length = 5)
 
 ```
@@ -67,6 +77,9 @@ skt_pkgs_filtered |>
 Table \@ref(tab:tab-skt-geo-cap) represents spatial data available form the SKT geoserver and was created using [`/scripts/gis/skt/skt_geoserver_info.R`](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/scripts/gis/skt/skt_geoserver_info.R). Data
 can be downloaded using [`skt_geoserver_dl.R`](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/scripts/gis/skt/skt_geoserver_dl.R) (will be converted to function following further testing).
 
+```{r skt-geo-update, eval = params$update_gis}
+source("scripts/gis/skt/skt_geoserver_info.R")
+```
 
 ```{r tab-skt-geo-cap, results="asis"}
 my_caption <- ("Skeena Knowledge Trust - GIS Data Available for Query and Download")
