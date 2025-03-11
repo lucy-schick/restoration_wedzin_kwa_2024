@@ -58,12 +58,12 @@ discussions are kept [here](https://github.com/NewGraphEnvironment/restoration_w
 
 ### Tables and Figures
 There are many tables within this document that can take a long time to format.  Within this document the tables have been imported often as simple csv files or pages of an excel workbook and pulled into the project using scripts. This allows others to access the data and use it in their own projects.  These tables can also then be easily updated
-with new data as it becomes available often with the formatting for presentation to reader handled by the scripting. An example of this can be
-seen here in Table \@ref(tab:kable-resources) with the actual file served
-[here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/data):
+with new data as it becomes available often with the formatting for presentation to reader handled by the scripting. 
 
-```{r kable-resources}
-
+```{r kable-resources, eval = FALSE}
+# An example of this can be
+# seen here in Table \@ref(tab:kable-resources) with the actual file served
+# [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/data):
 
 read_csv("data/aquatic_restoration_resources.csv") %>%
   fpr::fpr_kable(caption_text = "Aquatic Restoration Resources.")
