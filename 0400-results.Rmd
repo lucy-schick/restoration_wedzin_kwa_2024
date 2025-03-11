@@ -26,7 +26,7 @@ A brief summary of result is below:
 
 A summary of background information layers loaded to the `background_layers.gpkg` geopackage of the `restoration_wedzin_kwa` project at the time of writing are included in Table \@ref(tab:tab-rfp-tracking).
 
-```{r rfp-tracking-copy, eval = gis_update}
+```{r rfp-tracking-copy, eval = params$update_gis}
 # first we will copy the doc from the Q project to this repo - the location of the Q project is outside of the repo!!
 q_path_stub <- "~/Projects/gis/restoration_wedzin_kwa/"
 
@@ -367,7 +367,7 @@ A summary of an initial draft of GIS and user input parameters used to rank futu
 
 <br>
 
-```{r gis-params-update_meta, eval = gis_update}
+```{r gis-params-update_meta, eval = params$update_gis}
 
 # load the data
 gis_params_raw_all <- readr::read_csv(
