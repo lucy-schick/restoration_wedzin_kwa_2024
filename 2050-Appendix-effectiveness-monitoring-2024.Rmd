@@ -6,7 +6,7 @@ Table \@ref(tab:tab-ree1-caption)
 
 
 
-```{r ld-ree1, eval=gis_update}
+```{r ld-ree1, eval=param$update_gis}
 
 # grab the table from the QGIS project and burn to a csv then read in and present
 path <- "~/Projects/gis/restoration_wedzin_kwa/data_field/2024/form_monitoring_ree_20240923.gpkg"

@@ -26,6 +26,7 @@ params:
   report_url: 'https://newgraphenvironment.github.io/restoration_wedzin_kwa_2024'
   update_bib: TRUE
   update_packages: FALSE
+  update_gis: FALSE
 nocite: |
   @gaboury_smith2016DevelopmentAquatic,
   @canada2008CanadianAquatic,
