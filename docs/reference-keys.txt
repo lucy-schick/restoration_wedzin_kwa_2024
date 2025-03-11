@@ -1,3 +1,4 @@
+tab:tab-exec-sum-cap
 fig:hydrograph1
 fig:hydrology-stats1
 fig:hydrograph2
@@ -12,7 +13,6 @@ fig:deer-creek-action
 fig:SEM-stages
 fig:SEM-hab-benifits
 fig:all-benefits
-tab:kable-resources
 tab:tab-memos
 tab:tab-rfp-tracking
 tab:tab-uav-imagery-cap
