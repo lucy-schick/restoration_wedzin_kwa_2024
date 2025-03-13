@@ -432,18 +432,18 @@ gis_params_raw_all_updated %>%
 ```
 
 ```{r gis-params, eval = TRUE}
-tab_gis_params_raw <- read_csv("data/restoration_site_priority_parameters.csv") |> 
-  dplyr::select(
-    source_schema_table, 
-    source_column_name,
-    column_name_raw,
-    user_input,
-    type,
-    url_browser,
-    # description_table = description,
-    col_comments
-  ) |> 
-  dplyr::arrange(column_name_raw) |> 
+tab_gis_params_raw <- readr::read_csv("data/restoration_site_priority_parameters.csv") |> 
+  # dplyr::select(
+  #   source_schema_table, 
+  #   source_column_name,
+  #   column_name_raw,
+  #   user_input,
+  #   type,
+  #   url_browser,
+  #   # description_table = description,
+  #   col_comments
+  # ) |> 
+  dplyr::arrange(user_input, group, group_sub, column_name_raw) |> 
   dplyr::select(column_name_raw, source_column_name, everything())
 
 ```
