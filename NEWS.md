@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# restoration_wedzin_kwa_2024 DRAFT 0.0.11.9001 (2025-04-03)
+
+- add climate anolalies methods as per https://github.com/NewGraphEnvironment/restoration_framework/issues/25
+
+
 # restoration_wedzin_kwa_2024 DRAFT 0.0.11.9000 (2025-04-03)
 
 - initial commit of executive summary with links to project resources
