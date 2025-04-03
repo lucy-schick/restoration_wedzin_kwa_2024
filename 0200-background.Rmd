@@ -134,7 +134,7 @@ knitr::include_graphics("fig/hydrology_stats_08ED002.png")
 
 ### Climate Anomalies
 
-To provide regional climate context, we used a custom fork of the [BC Climate Anomaly App](https://www.bcclimateanomaly.ca) to generate precipitation, mean temperature, and soil moisture anomaly plots for the study area [@bcgovernment2024BCclimate]. This version of the app - located [here](https://github.com/NewGraphEnvironment/bc_climate_anomaly/tree/newgraph) allows for custom polygon inputs, enabling localized summaries served through the app locally.
+To provide regional climate context, we used a custom fork of the [BC Climate Anomaly App](https://www.bcclimateanomaly.ca) to generate precipitation, mean temperature, and soil moisture anomaly plots for the study area [@bcgovernment2024BCclimate]. This version of the app - located [here](https://github.com/NewGraphEnvironment/bc_climate_anomaly/tree/newgraph) allows for custom spatial inputs, enabling localized summaries served through the app locally.
 
 <br>
 
