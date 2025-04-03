@@ -1,0 +1,16 @@
+# **Appendix 1 - Climate Anamoly Data** {-}
+
+
+```{r setup-app-climate-anomaly}
+knitr::opts_chunk$set(fig.path = "fig/app-climate-anomaly/", dev = "png")
+```
+
+```{r plot-climate-anomaly, echo=FALSE, results='asis'}
+files <- fs::dir_ls("data/inputs_raw/climate_anomaly", glob = "*.png")
+# purrr::map(files, knitr::include_graphics)
+for (f in files) {
+  cat("![](", f, ")\n\n")
+}
+```
+
+
