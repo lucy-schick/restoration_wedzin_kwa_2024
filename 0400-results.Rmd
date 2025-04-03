@@ -457,7 +457,11 @@ my_tab_caption()
 ```{r tab-gis-params}
 
 tab_gis_params_raw |> 
-  my_dt_table(cols_freeze_left = 0, escape = FALSE)
+  dplyr::mutate(
+    url_browser = ngr::ngr_str_link_url(url_browser, anchor_text = url_browser),
+    url_download = ngr::ngr_str_link_url(url_download, anchor_text = url_download)
+  ) |> 
+  my_dt_table(cols_freeze_left = 2, escape = FALSE)
 
 ```
 
