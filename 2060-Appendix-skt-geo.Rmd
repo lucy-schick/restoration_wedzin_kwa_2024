@@ -1,6 +1,6 @@
 
 
-# **Appendix 2 - Skeena Knowledge Trust - Data Available for Download ** {-}
+# **Appendix 3 - Skeena Knowledge Trust - Data Available for Download ** {-}
 
 
 A filtered subset of project packages (reports and associated files) available on SKT are listed in Table \@ref(tab:tab-skt-pkgs-cap). The table was created using [`/scripts/api_skt.R`](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/scripts/api_skt.R). Custom `R` function `fetch_package` can be used to download packages and is detailed in  [`/scripts/functions.R`](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/scripts/functions.R)

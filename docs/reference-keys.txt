@@ -5,7 +5,6 @@ fig:hydrograph2
 fig:hydrology-stats2
 tab:tab-hist-sites
 tab:tab-dfo-sad-tr-neexdzii
-tab:tab-dfo-sad-tr-morice
 tab:fiss-species-table
 tab:tab-rest-princ-pb
 fig:deer-creek-plan
@@ -38,6 +37,7 @@ background
 project-location
 neexdzii-kwah-upper-bulkley-river
 buck-creek
+climate-anomalies
 skeena-knowledge-trust
 water-quality
 fisheries
@@ -45,8 +45,6 @@ neexdzii-kwah
 upper-bulkley-falls
 traditional-fishing-sites-within-the-neexdzii-kwah
 salmon-stock-assessment-data
-morice-river
-salmon-stock-assessment-data-1
 fish-species
 restoration-philosophy
 process-based-restoration

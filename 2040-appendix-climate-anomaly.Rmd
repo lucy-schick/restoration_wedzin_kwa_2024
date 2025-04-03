@@ -1,4 +1,4 @@
-# **Appendix 1 - Climate Anamoly Data** {-}
+# **Appendix 1 - Climate Anamoly Data** {-#app-climate-anomaly}
 
 
 ```{r setup-app-climate-anomaly}

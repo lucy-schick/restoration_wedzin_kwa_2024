@@ -181,7 +181,7 @@ sites_all_prep5 <- dplyr::bind_cols(
   sites_all_prep4 |>
     dplyr::mutate(geometry_fwa = geometry)
 )  |> dplyr::mutate(
-  falls_upstream = purrr::map_chr(
+  falls_downstream = purrr::map_chr(
     stringr::str_split(localcode_ltree, "\\."),
     ~ .x[3]
     # 830486 is from falls_bulkley
@@ -299,15 +299,34 @@ sites_all_prep8 <- sites_all_prep7 |>
     source:site_name_proposed,
     gnis_name,
     name_wet_house:clan_english,
-    falls_upstream:owner_type,
+    falls_downstream:owner_type,
     client_name = array_to_string,
     dplyr::everything()
   )
 
-# burn to data_secure for now
+# # burn to data_secure for now
 sites_all_prep8 |>
   sf::st_write(
-  "/Users/airvine/Projects/gis/data_secure/wetsuweten_treaty_society/sites_prioritized.geojson"
+  "/Users/airvine/Projects/gis/data_secure/wetsuweten_treaty_society/sites_prioritized.geojson",
+  delete_dsn = TRUE,
+  append = FALSE
+)
+
+# let's take a crack at adding some scoring
+sites_ranked_prep1 <- dplyr::left_join(
+  sites_all_prep8 |>
+    dplyr::select(
+      source:site_name_proposed,
+                  gnis_name,
+      owner_type
+      ),
+  csv_prior |>
+    dplyr::select(
+      owner_type,
+      dplyr::contains("weight")
+      ),
+  by = c("owner_type"),
+  na_matches = "never"
 )
 
 
