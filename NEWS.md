@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# restoration_wedzin_kwa_2024 DRAFT 0.0.11.9000 (2025-04-03)
+
+- initial commit of executive summary with links to project resources
+- begin to amalgamate 2024 site review and routine effectiveness evaluation monitoring into Appendix of report
+
+
 # restoration_wedzin_kwa_2024 DRAFT 0.0.11 (2024-12-11)
 
 - first build following use of fledge to dynamically update NEWS and Changelog
