@@ -1,3 +1,5 @@
+source('scripts/functions.R')
+
 # aoi <- sf::st_read()
 #
 # # grab all the railways
@@ -341,7 +343,6 @@ t <- priority_params |>
 
 # get column name
 c_name <- t |>
-  # pivot longer to get the weights in one column
   dplyr::pull(column_name_raw)
 
 t2 <- t |>
@@ -388,3 +389,35 @@ t3 <- dplyr::left_join(
   ),
   na_matches = "never"
 )
+
+################################################################################################################
+#--------------------------------------------------priority_scorer_numeric---------------------------------------------------
+################################################################################################################
+# example of running the function on 1 column
+out1 <- priority_scorer_numeric(
+  dat_values = sites_all_prep8,
+  dat_ranks = priority_params,
+  col_rank = "bulkley_falls_downstream"
+)
+
+cols_rank <- c(
+  "bulkley_falls_downstream",
+  "floodplain_ind"
+)
+
+# try passing a list of col_rank
+out2 <- purrr::map(
+  cols_rank,
+  ~ priority_scorer_numeric(
+    dat_values = sites_all_prep8,
+    dat_ranks = priority_params,
+    col_rank = .x
+  )
+)
+
+out3 <- purrr::reduce(out2, dplyr::inner_join, by = "idx")
+
+out4 <- out3 |>
+  dplyr::mutate(
+    total_score = rowSums(dplyr::across(dplyr::matches("score")), na.rm = TRUE)
+  )
