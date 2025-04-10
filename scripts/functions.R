@@ -292,12 +292,6 @@ priority_scorer_numeric <- function(dat_values, dat_ranks, col_filter = "column_
   # join to the output
   dat_out_prep <- dplyr::left_join(
     dat_values |>
-      # You need all_of() to tell dplyr: "Use the value of this string as the column name."
-      dplyr::select(
-        source:gnis_name,
-        # dplyr::all_of(col_idx),
-        dplyr::all_of(col_rank),
-      )  |>
       dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) |>
       sf::st_drop_geometry(),
     dat_ranks2 |>
@@ -318,8 +312,14 @@ priority_scorer_numeric <- function(dat_values, dat_ranks, col_filter = "column_
 
   dat_out <- dat_out_prep |>
     dplyr::select(
+      # You need all_of() to tell dplyr: "Use the value of this string as the column name."
       dplyr::all_of(col_idx),
       dplyr::contains("score")
+    ) |>
+    # convert the score back to numeric so we can add it up later
+    dplyr::mutate(
+      dplyr::across(
+        dplyr::matches("score"), as.numeric)
     )
 
   dat_out
