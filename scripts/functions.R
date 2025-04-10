@@ -303,6 +303,11 @@ priority_scorer_numeric <- function(dat_values, dat_ranks, col_filter = "column_
   chk::chk_string(col_rank)
   chk::chk_string(col_idx)
 
+  # Ensure idx column exists and assign if not
+  if (!col_idx %in% names(dat_values)) {
+    dat_values <- dplyr::mutate(dat_values, !!col_idx := dplyr::row_number())
+  }
+
   # Prepare ranking row
   dat_ranks_row <- dplyr::filter(dat_ranks, .data[[col_filter]] == col_rank) |>
     dplyr::select(dplyr::contains("weight"), -dplyr::contains("notes")) |>
@@ -329,11 +334,6 @@ priority_scorer_numeric <- function(dat_values, dat_ranks, col_filter = "column_
     by = rlang::set_names(paste0(col_rank, "_value"), col_rank),
     na_matches = "never"
   )
-
-  # Ensure idx column exists
-  if (!col_idx %in% names(dat_out_prep)) {
-    dat_out_prep <- dplyr::mutate(dat_out_prep, !!col_idx := dplyr::row_number())
-  }
 
   # Select and convert scores to numeric
   dat_out <- dat_out_prep |>
@@ -363,6 +363,11 @@ priority_scorer_string <- function(dat_values, dat_ranks, col_filter = "column_n
   chk::chk_string(col_filter)
   chk::chk_string(col_rank)
   chk::chk_string(col_idx)
+
+  # Ensure idx column exists and assign if not
+  if (!col_idx %in% names(dat_values)) {
+    dat_values <- dplyr::mutate(dat_values, !!col_idx := dplyr::row_number())
+  }
 
   # Prepare ranking row
   dat_ranks_row <- dplyr::filter(dat_ranks, .data[[col_filter]] == col_rank) |>
@@ -406,11 +411,6 @@ priority_scorer_string <- function(dat_values, dat_ranks, col_filter = "column_n
     }
   ) |>
     sf::st_drop_geometry()
-
-  # Ensure idx column exists
-  if (!col_idx %in% names(dat_out_prep)) {
-    dat_out_prep <- dplyr::mutate(dat_out_prep, !!col_idx := dplyr::row_number())
-  }
 
   # Select and convert scores to numeric
   dat_out <- dat_out_prep |>
