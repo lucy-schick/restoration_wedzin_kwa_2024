@@ -180,13 +180,18 @@ sites_all_prep5 <- dplyr::bind_cols(
   sites_all_prep3,
   sites_all_prep4 |>
     dplyr::mutate(geometry_fwa = geometry)
-)  |> dplyr::mutate(
-  falls_downstream = purrr::map_chr(
-    stringr::str_split(localcode_ltree, "\\."),
-    ~ .x[3]
-    # 830486 is from falls_bulkley
-  ) |> as.integer() > 830486
-)
+) |>
+  dplyr::mutate(
+    # grabs the third element of the split string
+    bulkley_falls_downstream = (
+      purrr::map_chr(
+        stringr::str_split(localcode_ltree, "\\."),
+        ~ .x[3]
+      ) |>
+        as.integer() > 830486
+    ) |>
+      as.integer()
+  )
   # ###################!!!!!   figure this out !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#########################################
   # strangly there is a bluelinekey that doesn't seem to match with anything in our project or db... need to figure that out
   # dplyr::filter(is.na(falls_upstream))
@@ -210,7 +215,7 @@ sites_all_prep6 <- sites_all_prep5 |>
 #----------------------------------------automate queries via csv---------------------------------------------------
 ################################################################################################################
 
-csv_prior <- readr::read_csv("data/inputs_raw/restoration_site_priority_parameters_raw.csv")
+priority_params <- readr::read_csv("data/inputs_raw/restoration_site_priority_parameters_raw.csv")
 
 path_background_layers <- "/Users/airvine/Projects/gis/restoration_wedzin_kwa/background_layers.gpkg"
 
@@ -256,7 +261,7 @@ sites_all_prep7 <- ngr::ngr_spk_join(
 #
 # # now that we know this works lets try doing a list of polygons and column names
 # names_poly_col <- dplyr::left_join(
-#   csv_prior,
+#   priority_params,
 #   layer_info,
 #   by = c("source_schema_table" = "name")
 # )
@@ -272,7 +277,7 @@ poly_join_names <- c(
 )
 
 # now filter the csv input to get those rows
-poly_join <- csv_prior |>
+poly_join <- priority_params |>
   dplyr::filter(
     source_schema_table %in% poly_join_names
   )
@@ -281,7 +286,7 @@ poly_join <- csv_prior |>
 sites_all_prep7 <- sites_all_prep6
 
 for (i in seq_len(nrow(poly_join))) {
-  joined <- ngr_spk_join(
+  joined <- ngr::ngr_spk_join(
     target_tbl = sites_all_prep7,
     mask_tbl = poly_join$source_schema_table[i],
     mask_col_return = poly_join$source_column_name[i],
@@ -299,8 +304,8 @@ sites_all_prep8 <- sites_all_prep7 |>
     source:site_name_proposed,
     gnis_name,
     name_wet_house:clan_english,
-    falls_downstream:owner_type,
-    client_name = array_to_string,
+    bulkley_falls_downstream:owner_type,
+    client_name,
     dplyr::everything()
   )
 
@@ -314,22 +319,72 @@ sites_all_prep8 |>
 
 # let's take a crack at adding some scoring
 sites_ranked_prep1 <- dplyr::left_join(
-  sites_all_prep8 |>
+  sites_all_prep8,
+  priority_params |>
     dplyr::select(
-      source:site_name_proposed,
-                  gnis_name,
-      owner_type
-      ),
-  csv_prior |>
-    dplyr::select(
-      owner_type,
+      column_name_raw,
       dplyr::contains("weight")
       ),
-  by = c("owner_type"),
+  by = c("column_name_raw"),
   na_matches = "never"
 )
 
 
+# start simple with upstream/downstream falls
 
+t <- priority_params |>
+  dplyr::filter(column_name_raw == "bulkley_falls_downstream") |>
+  dplyr::select(
+    column_name_raw,
+    dplyr::contains("weight")
+  )
 
+# get column name
+c_name <- t |>
+  # pivot longer to get the weights in one column
+  dplyr::pull(column_name_raw)
 
+t2 <- t |>
+  # pivot longer to get the weights in one column
+  dplyr::select(-column_name_raw, -dplyr::contains("notes")) |>
+  dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) |>
+  tidyr::pivot_longer(
+  cols = dplyr::everything(),
+  names_to = "name",
+  values_to = "value"
+) |>
+  # remove the word weight_ from the name
+  dplyr::mutate(
+    name = stringr::str_remove(name, "weight_")
+  ) |>
+  # separate off the category (ie. value vs score vs notes)
+  tidyr::separate(name, into = c("category", "level"), sep = "_(?=[^_]+$)") |>
+  # pivot them wider so we can get the score when the value is matched.
+  tidyr::pivot_wider(
+    names_from = category,
+    values_from = value
+  ) |>
+  # rename the columns to have c_name prepended
+  dplyr::rename_with(
+    ~ paste0(c_name, "_", .x),
+    -level
+  )
+
+# join to the output
+t3 <- dplyr::left_join(
+  sites_all_prep8 |>
+    dplyr::select(
+      source:gnis_name,
+      bulkley_falls_downstream
+    )  |>
+    dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) |>
+    sf::st_drop_geometry(),
+  t2 |>
+    dplyr::select(-level),
+  # in order to evaluate the dynamic names we need rlang
+  by = rlang::set_names(
+    paste0(c_name, "_", "value"),
+    c_name
+  ),
+  na_matches = "never"
+)

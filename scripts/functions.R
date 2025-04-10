@@ -251,20 +251,4 @@ ldfo_sad_plot_line <- function(dat, region, col_y, col_facet, col_group, col_gro
 }
 
 
-# write the contents of the NEWS.md file to a RMD file that will be included as an appendix
-news_to_appendix <- function(
-    md_name = "NEWS.md",
-    rmd_name = "2090-report-change-log.Rmd",
-    appendix_title = "# Report Change Log") {
 
-  # Read and modify the contents of the markdown file
-  news_md <- readLines(md_name)
-  news_md <- stringr::str_replace(news_md, "^#", "###") |>
-    stringr::str_replace_all("(^(### .*?$))", "\\1 {-}")
-
-  # Write the title, a blank line, and the modified contents to the Rmd file
-  writeLines(
-    c(paste0(appendix_title, " {-}"), "", news_md),
-    rmd_name
-  )
-}
