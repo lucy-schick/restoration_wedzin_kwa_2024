@@ -252,75 +252,177 @@ ldfo_sad_plot_line <- function(dat, region, col_y, col_facet, col_group, col_gro
 
 
 
-#' Priority Scoring Function when the values to be scored are numeric
+#' #' Priority Scoring Function when the values to be scored are numeric
+#' priority_scorer_numeric <- function(dat_values, dat_ranks, col_filter = "column_name_raw", col_rank, col_idx = "idx"){
+#'
+#'   # make 1 row dataframe by filtering on the variable from the column that holds variable names (ex. bulkley_falls_downstream)
+#'   dat_ranks_row <- dat_ranks |>
+#'     dplyr::filter(.data[[col_filter]] == col_rank) |>
+#'     dplyr::select(
+#'       dplyr::contains("weight"),
+#'       -dplyr::contains("notes"),
+#'     )   |>
+#'     # deal with future type issues
+#'     dplyr::mutate(dplyr::across(dplyr::everything(), as.character))
+#'
+#'   dat_ranks2 <- dat_ranks_row |>
+#'     # pivot longer to get the weights in one column
+#'     tidyr::pivot_longer(
+#'       cols = dplyr::everything(),
+#'       names_to = "name",
+#'       values_to = "value"
+#'     ) |>
+#'     # remove the word weight_ from the name
+#'     dplyr::mutate(
+#'       name = stringr::str_remove(name, "weight_")
+#'     ) |>
+#'     # separate off the category (ie. value vs score vs notes)
+#'     tidyr::separate(name, into = c("category", "level"), sep = "_(?=[^_]+$)") |>
+#'     # pivot them wider so we can get the score when the value is matched.
+#'     tidyr::pivot_wider(
+#'       names_from = category,
+#'       values_from = value
+#'     ) |>
+#'     # rename the columns to have col_rank prepended
+#'     dplyr::rename_with(
+#'       ~ paste0(col_rank, "_", .x),
+#'       -level
+#'     )
+#'
+#'   # join to the output
+#'   dat_out_prep <- dplyr::left_join(
+#'     dat_values |>
+#'       dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) |>
+#'       sf::st_drop_geometry(),
+#'     dat_ranks2 |>
+#'       dplyr::select(-level),
+#'     # in order to evaluate the dynamic names we need rlang
+#'     by = rlang::set_names(
+#'       paste0(col_rank, "_", "value"),
+#'       col_rank
+#'     ),
+#'     na_matches = "never"
+#'   )
+#'
+#'   # assign idx column as rownumber if it doesn't exist
+#'   if(!col_idx %in% names(dat_out_prep)){
+#'     dat_out_prep <- dat_out_prep |>
+#'       dplyr::mutate(!!col_idx := dplyr::row_number())
+#'   }
+#'
+#'   dat_out <- dat_out_prep |>
+#'     dplyr::select(
+#'       # You need all_of() to tell dplyr: "Use the value of this string as the column name."
+#'       dplyr::all_of(col_idx),
+#'       dplyr::contains("score")
+#'     ) |>
+#'     # convert the score back to numeric so we can add it up later
+#'     dplyr::mutate(
+#'       dplyr::across(
+#'         dplyr::matches("score"), as.numeric)
+#'     )
+#'
+#'   dat_out
+#' }
+
+################################################################################################################
+#--------------------------------------------------title---------------------------------------------------
+#############################################################################################
+
+#' Priority Scoring for Numeric Values
+#'
+#' Applies priority scoring to a dataset based on numeric values and corresponding rank weights.
+#'
+#' This function joins a data frame of values to be scored with a data frame of ranking weights.
+#' It matches values dynamically by category, extracts scores, and prepares an output with numeric
+#' scores suitable for downstream summarization.
+#'
+#' @param dat_values [data.frame] A data frame containing the numeric values to be scored. The name of the column
+#' that contains the numeric scores must align with `col_rank` param.
+#' @param dat_ranks [data.frame] A data frame containing the ranking weights and categories. Contains the columns
+#' "weight_value_low" "weight_value_mod" "weight_value_high" "weight_score_low" "weight_score_mod" "weight_score_high"
+#' @param col_filter [character] A single string specifying the column in `dat_ranks` used to filter for the scoring category. Default is `'column_name_raw'`.
+#' @param col_rank [character] A single string specifying the ranking category to use for scoring. This string must
+#' match the name of the column from `dat_values` that contains the numeric value that will recieve its coinciding score.  Must also match
+#' the name of a parameter found in the `col_filter` column of `dat_ranks` (ex. a `weight_value_low
+#' for `bulkley_falls_downstream` is 1 and and if that value of 1 is present in the `bulkley_falls_downstream` column of `dat_values`
+#' then it will be joined with a cooinciding `weight_score_low` of 0 - from the `dat_ranks` dataframe)
+#' @param col_idx [character] Optional. A single string specifying the column name to use as an identifier in the output.
+#' If the column does not exist, row numbers will be used. Default is `'idx'`.
+#'
+#' @returns A [tibble][tibble::tibble] containing the identifier column and numeric score columns.
+#' If `col_idx` does not exist in `dat_values`, it is created as row numbers. All score columns are converted to numeric.
+#'
+#' @details
+#' The function works by:
+#' 1. Filtering `dat_ranks` for the desired ranking category.
+#' 2. Reshaping and cleaning the ranking data.
+#' 3. Joining `dat_values` with the cleaned ranks based on the dynamic value category.
+#' 4. Extracting and converting score columns to numeric.
+#'
+#' Note: Input validation is performed using [chk::chk_*()] functions.
+#'
+#' @seealso
+#' [dplyr::filter()], [dplyr::left_join()], [tidyr::pivot_longer()], [tidyr::pivot_wider()], [stringr::str_remove()]
+#'
+#' @importFrom dplyr filter select mutate across left_join contains rename_with all_of row_number matches
+#' @importFrom tidyr pivot_longer separate pivot_wider
+#' @importFrom stringr str_remove
+#' @importFrom sf st_drop_geometry
+#' @importFrom rlang .data set_names
+#' @export
 priority_scorer_numeric <- function(dat_values, dat_ranks, col_filter = "column_name_raw", col_rank, col_idx = "idx"){
 
-  # make 1 row dataframe by filtering on the variable from the column that holds variable names (ex. bulkley_falls_downstream)
-  dat_ranks_row <- dat_ranks |>
-    dplyr::filter(.data[[col_filter]] == col_rank) |>
-    dplyr::select(
-      dplyr::contains("weight"),
-      -dplyr::contains("notes"),
-    )   |>
-    # deal with future type issues
+  # Validate inputs
+  chk::chk_data(dat_values)
+  chk::chk_data(dat_ranks)
+  chk::chk_string(col_filter)
+  chk::chk_string(col_rank)
+  chk::chk_string(col_idx)
+
+  # Prepare ranking row
+  dat_ranks_row <- dplyr::filter(dat_ranks, .data[[col_filter]] == col_rank) |>
+    dplyr::select(dplyr::contains("weight"), -dplyr::contains("notes")) |>
     dplyr::mutate(dplyr::across(dplyr::everything(), as.character))
 
+  # Reshape ranking data
   dat_ranks2 <- dat_ranks_row |>
-    # pivot longer to get the weights in one column
     tidyr::pivot_longer(
       cols = dplyr::everything(),
       names_to = "name",
       values_to = "value"
     ) |>
-    # remove the word weight_ from the name
-    dplyr::mutate(
-      name = stringr::str_remove(name, "weight_")
-    ) |>
+    dplyr::mutate(name = stringr::str_remove(name, "weight_")) |>
     # separate off the category (ie. value vs score vs notes)
     tidyr::separate(name, into = c("category", "level"), sep = "_(?=[^_]+$)") |>
-    # pivot them wider so we can get the score when the value is matched.
-    tidyr::pivot_wider(
-      names_from = category,
-      values_from = value
-    ) |>
-    # rename the columns to have col_rank prepended
-    dplyr::rename_with(
-      ~ paste0(col_rank, "_", .x),
-      -level
-    )
+    tidyr::pivot_wider(names_from = category, values_from = value) |>
+    dplyr::rename_with(~ paste0(col_rank, "_", .x), -level)
 
-  # join to the output
+  # Join data
   dat_out_prep <- dplyr::left_join(
-    dat_values |>
-      dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) |>
+    dplyr::mutate(dat_values, dplyr::across(dplyr::everything(), as.character)) |>
       sf::st_drop_geometry(),
-    dat_ranks2 |>
-      dplyr::select(-level),
-    # in order to evaluate the dynamic names we need rlang
-    by = rlang::set_names(
-      paste0(col_rank, "_", "value"),
-      col_rank
-    ),
+    dplyr::select(dat_ranks2, -level),
+    by = rlang::set_names(paste0(col_rank, "_value"), col_rank),
     na_matches = "never"
   )
 
-  # assign idx column as rownumber if it doesn't exist
-  if(!col_idx %in% names(dat_out_prep)){
-    dat_out_prep <- dat_out_prep |>
-      dplyr::mutate(!!col_idx := dplyr::row_number())
+  # Ensure idx column exists
+  if (!col_idx %in% names(dat_out_prep)) {
+    dat_out_prep <- dplyr::mutate(dat_out_prep, !!col_idx := dplyr::row_number())
   }
 
+  # Select and convert scores to numeric
   dat_out <- dat_out_prep |>
     dplyr::select(
       # You need all_of() to tell dplyr: "Use the value of this string as the column name."
       dplyr::all_of(col_idx),
       dplyr::contains("score")
-    ) |>
+      ) |>
     # convert the score back to numeric so we can add it up later
-    dplyr::mutate(
-      dplyr::across(
-        dplyr::matches("score"), as.numeric)
-    )
+    dplyr::mutate(dplyr::across(dplyr::matches("score"), as.numeric))
 
   dat_out
 }
+
+
