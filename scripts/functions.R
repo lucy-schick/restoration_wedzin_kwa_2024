@@ -252,3 +252,75 @@ ldfo_sad_plot_line <- function(dat, region, col_y, col_facet, col_group, col_gro
 
 
 
+#' Priority Scoring Function when the values to be scored are numeric
+priority_scorer_numeric <- function(dat_values, dat_ranks, col_filter = "column_name_raw", col_rank, col_idx = "idx"){
+
+  # make 1 row dataframe by filtering on the variable from the column that holds variable names (ex. bulkley_falls_downstream)
+  dat_ranks_row <- dat_ranks |>
+    dplyr::filter(.data[[col_filter]] == col_rank) |>
+    dplyr::select(
+      dplyr::contains("weight"),
+      -dplyr::contains("notes"),
+    )   |>
+    # deal with future type issues
+    dplyr::mutate(dplyr::across(dplyr::everything(), as.character))
+
+  dat_ranks2 <- dat_ranks_row |>
+    # pivot longer to get the weights in one column
+    tidyr::pivot_longer(
+      cols = dplyr::everything(),
+      names_to = "name",
+      values_to = "value"
+    ) |>
+    # remove the word weight_ from the name
+    dplyr::mutate(
+      name = stringr::str_remove(name, "weight_")
+    ) |>
+    # separate off the category (ie. value vs score vs notes)
+    tidyr::separate(name, into = c("category", "level"), sep = "_(?=[^_]+$)") |>
+    # pivot them wider so we can get the score when the value is matched.
+    tidyr::pivot_wider(
+      names_from = category,
+      values_from = value
+    ) |>
+    # rename the columns to have col_rank prepended
+    dplyr::rename_with(
+      ~ paste0(col_rank, "_", .x),
+      -level
+    )
+
+  # join to the output
+  dat_out_prep <- dplyr::left_join(
+    dat_values |>
+      # You need all_of() to tell dplyr: "Use the value of this string as the column name."
+      dplyr::select(
+        source:gnis_name,
+        # dplyr::all_of(col_idx),
+        dplyr::all_of(col_rank),
+      )  |>
+      dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) |>
+      sf::st_drop_geometry(),
+    dat_ranks2 |>
+      dplyr::select(-level),
+    # in order to evaluate the dynamic names we need rlang
+    by = rlang::set_names(
+      paste0(col_rank, "_", "value"),
+      col_rank
+    ),
+    na_matches = "never"
+  )
+
+  # assign idx column as rownumber if it doesn't exist
+  if(!col_idx %in% names(dat_out_prep)){
+    dat_out_prep <- dat_out_prep |>
+      dplyr::mutate(!!col_idx := dplyr::row_number())
+  }
+
+  dat_out <- dat_out_prep |>
+    dplyr::select(
+      dplyr::all_of(col_idx),
+      dplyr::contains("score")
+    )
+
+  dat_out
+}
