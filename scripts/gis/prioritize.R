@@ -319,77 +319,6 @@ sites_all_prep8 |>
   append = FALSE
 )
 
-# let's take a crack at adding some scoring
-sites_ranked_prep1 <- dplyr::left_join(
-  sites_all_prep8,
-  priority_params |>
-    dplyr::select(
-      column_name_raw,
-      dplyr::contains("weight")
-      ),
-  by = c("column_name_raw"),
-  na_matches = "never"
-)
-
-
-# start simple with upstream/downstream falls
-
-t <- priority_params |>
-  dplyr::filter(column_name_raw == "bulkley_falls_downstream") |>
-  dplyr::select(
-    column_name_raw,
-    dplyr::contains("weight")
-  )
-
-# get column name
-c_name <- t |>
-  dplyr::pull(column_name_raw)
-
-t2 <- t |>
-  # pivot longer to get the weights in one column
-  dplyr::select(-column_name_raw, -dplyr::contains("notes")) |>
-  dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) |>
-  tidyr::pivot_longer(
-  cols = dplyr::everything(),
-  names_to = "name",
-  values_to = "value"
-) |>
-  # remove the word weight_ from the name
-  dplyr::mutate(
-    name = stringr::str_remove(name, "weight_")
-  ) |>
-  # separate off the category (ie. value vs score vs notes)
-  tidyr::separate(name, into = c("category", "level"), sep = "_(?=[^_]+$)") |>
-  # pivot them wider so we can get the score when the value is matched.
-  tidyr::pivot_wider(
-    names_from = category,
-    values_from = value
-  ) |>
-  # rename the columns to have c_name prepended
-  dplyr::rename_with(
-    ~ paste0(c_name, "_", .x),
-    -level
-  )
-
-# join to the output
-t3 <- dplyr::left_join(
-  sites_all_prep8 |>
-    dplyr::select(
-      source:gnis_name,
-      bulkley_falls_downstream
-    )  |>
-    dplyr::mutate(dplyr::across(dplyr::everything(), as.character)) |>
-    sf::st_drop_geometry(),
-  t2 |>
-    dplyr::select(-level),
-  # in order to evaluate the dynamic names we need rlang
-  by = rlang::set_names(
-    paste0(c_name, "_", "value"),
-    c_name
-  ),
-  na_matches = "never"
-)
-
 ################################################################################################################
 #--------------------------------------------------priority_scorer_numeric---------------------------------------------------
 ################################################################################################################
@@ -421,3 +350,13 @@ out4 <- out3 |>
   dplyr::mutate(
     total_score = rowSums(dplyr::across(dplyr::matches("score")), na.rm = TRUE)
   )
+
+################################################################################################################
+#--------------------------------------------------priority_scorer_string--------------------------------------------------
+################################################################################################################
+out1 <- priority_scorer_string(
+  dat_values = sites_all_prep8,
+  dat_ranks = priority_params,
+  col_rank = "owner_type",
+  col_filter = "source_column_name"
+)

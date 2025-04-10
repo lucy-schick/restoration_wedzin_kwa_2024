@@ -349,3 +349,78 @@ priority_scorer_numeric <- function(dat_values, dat_ranks, col_filter = "column_
 }
 
 
+################################################################################################################
+#--------------------------------------------------priority_scorer_string---------------------------------------------------
+################################################################################################################
+
+# this one needs to detect if the string we have for our result matches one of the strings in one of the columns of the
+# weights_value_{*} columns. If it does, then we need to get the score from the corresponding weight_score_{*} column
+priority_scorer_string <- function(dat_values, dat_ranks, col_filter = "column_name_raw", col_rank, col_idx = "idx"){
+
+  # Validate inputs
+  chk::chk_data(dat_values)
+  chk::chk_data(dat_ranks)
+  chk::chk_string(col_filter)
+  chk::chk_string(col_rank)
+  chk::chk_string(col_idx)
+
+  # Prepare ranking row
+  dat_ranks_row <- dplyr::filter(dat_ranks, .data[[col_filter]] == col_rank) |>
+    dplyr::select(dplyr::contains("weight"), -dplyr::contains("notes")) |>
+    dplyr::mutate(dplyr::across(dplyr::everything(), as.character))
+
+  # Reshape ranking data
+  dat_ranks2 <- dat_ranks_row |>
+    tidyr::pivot_longer(
+      cols = dplyr::everything(),
+      names_to = "name",
+      values_to = "value"
+    ) |>
+    dplyr::mutate(name = stringr::str_remove(name, "weight_")) |>
+    # separate off the category (ie. value vs score vs notes)
+    tidyr::separate(name, into = c("category", "level"), sep = "_(?=[^_]+$)") |>
+    tidyr::pivot_wider(names_from = category, values_from = value) |>
+    dplyr::rename_with(~ paste0(col_rank, "_", .x), -level)
+
+  # so only this section differs from the numeric version. can prob join the two with if statement
+  # this bit searches for our strings to see if they are present in the weight_value_{*} columns
+  # then replaces the multiple strings with just the matched on so we can join
+  dat_out_prep <- purrr::map_dfr(
+    seq_len(nrow(dat_values)),
+    function(i) {
+      value <- dat_values[[i, col_rank]]
+
+      match_row <- dat_ranks2 |>
+        dplyr::filter(
+          stringr::str_detect(
+            .data[[paste0(col_rank, "_value")]],
+            value
+          )
+        )
+
+      dplyr::bind_cols(
+        dat_values[i, ],
+        match_row |>
+          dplyr::select(paste0(col_rank, "_score"))
+      )
+    }
+  ) |>
+    sf::st_drop_geometry()
+
+  # Ensure idx column exists
+  if (!col_idx %in% names(dat_out_prep)) {
+    dat_out_prep <- dplyr::mutate(dat_out_prep, !!col_idx := dplyr::row_number())
+  }
+
+  # Select and convert scores to numeric
+  dat_out <- dat_out_prep |>
+    dplyr::select(
+      # You need all_of() to tell dplyr: "Use the value of this string as the column name."
+      dplyr::all_of(col_idx),
+      dplyr::contains("score")
+    ) |>
+    # convert the score back to numeric so we can add it up later
+    dplyr::mutate(dplyr::across(dplyr::matches("score"), as.numeric))
+
+  dat_out
+}
