@@ -9,6 +9,13 @@ rsconnect
 
 */~$*
 data/skt/*
+# exception
+!data/skt/ssaf-state-of-the-values-report-for-fish-and-fish-habitat-2020-data/ssaf_esi_t1_watershed_datadict_2020-11-17.xlsx
+
+
+
+
 temp/*
 .DS_Store
 data/gis/skt
+data/gis/skt/esi_sows
