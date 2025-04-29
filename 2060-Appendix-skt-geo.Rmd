@@ -6,7 +6,7 @@
 A filtered subset of project packages (reports and associated files) available on SKT are listed in Table \@ref(tab:tab-skt-pkgs-cap). The table was created using [`/scripts/api_skt.R`](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/scripts/api_skt.R). Custom `R` function `fetch_package` can be used to download packages and is detailed in  [`/scripts/functions.R`](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/scripts/functions.R)
 
 ```{r tab-skt-pkgs-cap, results="asis"}
-my_caption <- ("Skeena Knowledge Trust - Packages Available for Download")
+my_caption <- ("Skeena Knowledge Trust - Filtered Subset of Packages Available for Download. Click the 'Show/Hide Code' button at the top right to see the filter terms used.")
 my_tab_caption()
 ```
 
@@ -95,7 +95,7 @@ skt_geo <- readr::read_csv(
 )
 
 skt_geo |> 
-  dplyr::select(-layer_name_raw) |> 
+  # dplyr::select(-layer_name_raw) |> 
   my_dt_table( cols_freeze_left = 1, page_length = 5)
 
 ```
