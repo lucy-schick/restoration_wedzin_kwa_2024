@@ -1,0 +1,46 @@
+
+
+# **Appendix 4 – State of the Value – Fish and Fish Habitat** {-#app-esi}
+
+
+Summary tables of indicators and spatial output field descriptions from @skeenasustainabilityassessmentforum2021Skeenasustainability 
+are included in Tables \@ref(tab:tab-skt-pkgs-cap). 
+
+```{r tab-esi-indicators-cap, results="asis"}
+my_caption <- ("SSAF State of the Value Report for Fish and Fish Habitat - indicator summaries.")
+my_tab_caption()
+```
+
+
+```{r tab-esi-indicators}
+path_esi <- "data/skt/ssaf-state-of-the-values-report-for-fish-and-fish-habitat-2020-data/ssaf_esi_t1_watershed_datadict_2020-11-17.xlsx"
+  
+readxl::read_excel(
+  path = path_esi,
+  sheet = "Indicator Summary"
+) |> 
+  dplyr::select(`Field Name`, dplyr::everything()) |> 
+  my_dt_table(cols_freeze_left = 2, page_length = 5, escape = TRUE)
+
+```
+
+<br>
+
+```{r tab-esi-fields-cap, results="asis"}
+my_caption <- ("SSAF State of the Value Report for Fish and Fish Habitat - field descriptions")
+my_tab_caption(tip_flag = FALSE)
+```
+
+
+```{r tab-esi-fields}
+
+readxl::read_excel(
+  path = path_esi,
+  sheet = "Output Field Descriptions"
+) |> 
+  dplyr::select(`Field Name`:`Relevant Indicator`) |> 
+  my_dt_table(cols_freeze_left = 2, page_length = 5, escape = TRUE)
+
+```
+
+
