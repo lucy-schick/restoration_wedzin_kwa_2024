@@ -113,6 +113,8 @@ sites_all_prep <- dplyr::bind_rows(
   dplyr::select(dplyr::where(~!all(is.na(.x)))) |>
   dplyr::select(
     source, site_id, id, site_name, dplyr::contains("name"), dplyr::everything()
+  ) |> dplyr::mutate(
+    idx = dplyr::row_number()
   )
 
 
@@ -126,8 +128,7 @@ wet_house <- sf::st_read(
   sf::st_transform(crs = 3005)
 
 
-# since ngr::ngr_dbqs_filter_predicate should work for most our layers (or hopefully all) we will
-# burn to the project gpkg
+# ngr::ngr_dbqs_filter_predicate wont work without spatialite extension (idea was to do everythingin the gpkg) so...
 
 # lets get this info in R pure for now
 sites_all_prep2 <- sf::st_join(
@@ -139,7 +140,6 @@ sites_all_prep2 <- sf::st_join(
 
 
 #bulkley falls----------------------------------------------------------------------------------------------------
-# although we may move to freshwater atlas - for now we make a polygon for upstream of the falls for a simple join
 # grab the point from the gpkg layer
 falls_bulk_raw <- sf::st_read(
   "/Users/airvine/Projects/gis/restoration_wedzin_kwa/sites_restoration.gpkg",
@@ -155,7 +155,10 @@ falls_bulk_fwa <- fwapgr::fwa_index_point(
   y = falls_bulk_raw$lat
 )
 
-# get the upstream polygon
+# get the pieces of the localcode_ltree
+falls_bulk_fwa_parts <- stringr::str_split(falls_bulk_fwa$localcode_ltree, "\\.")[[1]]
+
+# not doing this but we could get the upstream polygon
 # falls_bulk_wshd <- fwapgr::fwa_watershed_at_measure(
 #   blue_line_key = falls_bulk$blue_line_key,
 #   downstream_route_measure = falls_bulk$downstream_route_measure
@@ -167,7 +170,7 @@ falls_bulk_fwa <- fwapgr::fwa_index_point(
 # rather than generate another polygon - just use the freshwater atlas to determine if we are upstream of the falls
 
 
-# fwa details for each site----------------------------------------------------------------------------------------------------
+# fwa details ---------------------------------------------------------------------------------------------------
 sites_all_prep3 <- sites_all_prep2 |>
   fpr::fpr_sp_assign_latlong()
 
@@ -178,24 +181,54 @@ sites_all_prep4 <- purrr::map2(
 ) |>
   dplyr::bind_rows()
 
+# sites_all_prep5 <- dplyr::bind_cols(
+#   sites_all_prep3,
+#   sites_all_prep4 |>
+#     dplyr::mutate(geometry_fwa = geometry)
+# ) |>
+#   dplyr::mutate(
+#     # grabs the third element of the split string
+#     bulkley_falls_downstream = (
+#       purrr::map_chr(
+#         stringr::str_split(localcode_ltree, "\\."),
+#         ~ .x[3]
+#       ) |>
+#         as.integer() > 830486
+#     ) |>
+#       as.integer()
+#   )
+
 sites_all_prep5 <- dplyr::bind_cols(
   sites_all_prep3,
   sites_all_prep4 |>
     dplyr::mutate(geometry_fwa = geometry)
 ) |>
   dplyr::mutate(
-    # grabs the third element of the split string
-    bulkley_falls_downstream = (
-      purrr::map_chr(
-        stringr::str_split(localcode_ltree, "\\."),
-        ~ .x[3]
-      ) |>
-        as.integer() > 830486
-    ) |>
-      as.integer()
+    # split localcode_ltree into parts, check for downstream of falls
+    bulkley_falls_downstream = purrr::map_int(
+      stringr::str_split(localcode_ltree, "\\."),
+      ~ {
+        # case 1: less than 3 parts → upstream (0)
+        if (length(.x) < 3) {
+          0
+          # case 2: first two parts don't match falls code → upstream (0)
+        } else if (!all(.x[1:2] == falls_bulk_fwa_parts[1:2])) {
+          0
+          # case 3: first two parts match, compare third part numerically
+        } else {
+          # falls_bulk_fwa_parts[3] is actually the segment the falls lands on so
+          # if a site were to fall on the segment or on a trib that empties into this segment our result
+          # would be wrong.  If we want to be accurate we would feed it the segment above which is localcode xxx.xxxxxxxx.830486
+          as.integer(.x[3]) > as.integer(falls_bulk_fwa_parts[3]) |>
+            as.integer()
+        }
+      }
+    )
   )
-  # ###################!!!!!   figure this out !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!#########################################
-  # strangly there is a bluelinekey that doesn't seem to match with anything in our project or db... need to figure that out
+
+# ###################!!!!!  fwa mismatches - need manual intervention !!!!!!#########################################
+  # strangely there is a bluelinekey that doesn't seem to match with anything in our project or db... need to figure that out
+# also - sometimes we have a closer match that is not actually the stream in question (ex. small intermittent trib next to Richfield)
   # dplyr::filter(is.na(falls_upstream))
 
 
@@ -213,10 +246,11 @@ sites_all_prep6 <- sites_all_prep5 |>
     )$habitat_lateral
   )
 
-################################################################################################################
-#----------------------------------------automate queries via csv---------------------------------------------------
-################################################################################################################
-
+#----------------------------------------polygon queries via csv---------------------------------------------------
+## Issues to note----------------------------------------------------------------------------------------------------
+# there are gaps in the polygons for things like land ownership.  For example if the site is pinned to the stream
+# the area below the high water mark is not included in the polygon.  But the ownership on other side may be private
+# making access and works depend on the owner.
 priority_params <- readr::read_csv("data/inputs_raw/restoration_site_priority_parameters_raw.csv")
 
 path_background_layers <- "/Users/airvine/Projects/gis/restoration_wedzin_kwa/background_layers.gpkg"
@@ -238,29 +272,25 @@ path_background_layers <- "/Users/airvine/Projects/gis/restoration_wedzin_kwa/ba
 
 
 # test the function
-sites_all_prep7 <- ngr::ngr_spk_join(
-  target_tbl = sites_all_prep6,
-  mask_tbl = "whse_cadastre.pmbc_parcel_fabric_poly_svw",
-  target_col_return = "*",
-  mask_col_return = "owner_type",
-  mask_col_filter = NULL,
-  mask_col_filter_values = NULL,
-  mask_col_filter_values_negate = FALSE,
-  join_fun = sf::st_intersects,
-  path_gpkg = path_background_layers,
-  mask_rm = TRUE
-)
-
-# layer_info_raw <- as.data.frame(sf::st_layers(path_background_layers))
-#   # dplyr::select(-crs) |>
-#   # dplyr::mutate(geomtype = as.character(geomtype))
-#
-# layer_info <- tibble::tibble(
-#   name = layer_info_raw$name,
-#   geomtype = as.character(layer_info_raw$geomtype)
+# sites_all_prep7 <- ngr::ngr_spk_join(
+#   target_tbl = sites_all_prep6,
+#   mask_tbl = "whse_cadastre.pmbc_parcel_fabric_poly_svw",
+#   target_col_return = "*",
+#   mask_col_return = "owner_type",
+#   mask_col_filter = NULL,
+#   mask_col_filter_values = NULL,
+#   mask_col_filter_values_negate = FALSE,
+#   join_fun = sf::st_intersects,
+#   path_gpkg = path_background_layers,
+#   mask_rm = TRUE
 # )
-#
-#
+
+
+layer_info <- ngr::ngr_spk_layer_info(path = path_background_layers) |>
+  dplyr::arrange(name)
+
+
+
 # # now that we know this works lets try doing a list of polygons and column names
 # names_poly_col <- dplyr::left_join(
 #   priority_params,
@@ -275,7 +305,9 @@ poly_join_names <- c(
   "whse_tantalis.ta_park_ecores_pa_svw",
   "whse_admin_boundaries.clab_indian_reserves",
   "whse_cadastre.pmbc_parcel_fabric_poly_svw",
-  "whse_forest_tenure.ften_range_poly_carto_vw"
+  "whse_forest_tenure.ften_range_poly_carto_vw",
+  "whse_forest_vegetation.veg_burn_severity_sp",
+  "whse_land_and_natural_resource.prot_historical_fire_polys_sp"
 )
 
 # now filter the csv input to get those rows
@@ -300,13 +332,70 @@ for (i in seq_len(nrow(poly_join))) {
   sites_all_prep7 <- dplyr::mutate(sites_all_prep7, !!new_col := joined[[new_col]])
 }
 
-# rearrange the cols for presenting
-sites_all_prep8 <- sites_all_prep7 |>
+#Land Ownership non result due to no direct overlap -----------------------------------------------------------------------------------------------------
+# for the results that don't have a land ownership type use the nngeo package to find the closeset polgons within 100m
+sites_all_prep7_no_ownership <- sites_all_prep7 |>
+  dplyr::filter(is.na(owner_type)) |>
   dplyr::select(
+    idx
+    # dplyr::everything(),
+    # -owner_type
+    )
+
+sites_all_prep7_no_ownership2 <- ngr::ngr_spk_join(
+  target_tbl = sites_all_prep7_no_ownership,
+  mask_tbl = "whse_cadastre.pmbc_parcel_fabric_poly_svw",
+  mask_col_return = "owner_type",
+  path_gpkg = path_background_layers,
+  join_fun = nngeo::st_nn,
+  k = 2,
+  maxdist = 100
+) |>
+  dplyr::select(idx, owner_type)
+
+sites_all_prep7_no_ownership3 <- sites_all_prep7_no_ownership2 |>
+  dplyr::distinct(idx, owner_type) |>
+  dplyr::group_by(idx) |>
+  dplyr::mutate(rowid = dplyr::row_number()) |>
+  tidyr::pivot_wider(
+    names_from = rowid,
+    values_from = owner_type,
+    names_prefix = "owner_type"
+  ) |>
+  dplyr::mutate(
+    # for non-results
+    owner_type1 = dplyr::case_when(
+      is.na(owner_type1) ~ "Not Matched",
+      TRUE ~ owner_type1
+    )
+  ) |>
+  # so we want to be conservative - if !is.na for owner_type2 and owner_type1 == Private|Mixed Ownership we want
+  # to swap owner_type1 and owner_type2 values
+  dplyr::mutate(
+    swap = !is.na(owner_type2) & owner_type1 %in% c("Private", "Mixed Ownership"),
+    owner_type_tmp = dplyr::if_else(swap, owner_type1, owner_type2),
+    owner_type1 = dplyr::if_else(swap, owner_type2, owner_type1),
+    owner_type2 = dplyr::if_else(swap, owner_type_tmp, owner_type2)
+  ) |>
+  dplyr::select(-swap, -owner_type_tmp) |>
+  sf::st_drop_geometry()
+
+#now join back to the main data
+sites_all_prep8 <- dplyr::left_join(
+  sites_all_prep7,
+  sites_all_prep7_no_ownership3,
+  by = "idx"
+) |>
+  dplyr::mutate(
+    owner_type = dplyr::coalesce(owner_type, owner_type1)
+  ) |>
+  dplyr::select(-owner_type1) |>
+  dplyr::select(
+    idx,
     source:site_name_proposed,
     gnis_name,
     name_wet_house:clan_english,
-    bulkley_falls_downstream:owner_type,
+    bulkley_falls_downstream:fire_year,
     client_name,
     dplyr::everything()
   )
@@ -319,9 +408,7 @@ sites_all_prep8 |>
   append = FALSE
 )
 
-################################################################################################################
 #--------------------------------------------------priority_scorer_numeric---------------------------------------------------
-################################################################################################################
 # example of running the function on 1 column
 out1 <- priority_scorer_numeric(
   dat_values = sites_all_prep8,
@@ -351,12 +438,119 @@ out4 <- out3 |>
     total_score = rowSums(dplyr::across(dplyr::matches("score")), na.rm = TRUE)
   )
 
-################################################################################################################
-#--------------------------------------------------priority_scorer_string--------------------------------------------------
-################################################################################################################
+#--------------------------------------------------priority_scorer_string----------------------------------------------
+
 out1 <- priority_scorer_string(
   dat_values = sites_all_prep8,
   dat_ranks = priority_params,
   col_rank = "owner_type",
   col_filter = "source_column_name"
 )
+
+#TO DO - merge priority_scorer_numeric and priority_scorer_string to 1 function----------------------------------------
+
+# get all the bcfishpass columns from the stream segment joined -------------------------------------------------------
+streams <- sf::st_read(
+  path_background_layers,
+  layer = "bcfishpass.streams_vw"
+)
+
+cols_stream <- priority_params |>
+  # get ranking columns from that target layer
+  dplyr::filter(source_schema_table == "bcfishpass.streams_vw" &
+                  rank == TRUE) |>
+  dplyr::pull(source_column_name)
+
+# run a simple join on the linear_feature_id (generated for each site in the "fwa details" section above
+test <- dplyr::left_join(
+  sites_all_prep8,
+  streams |>
+    dplyr::select(
+      linear_feature_id,
+      dplyr::all_of(
+        cols_stream
+      )
+    ) |>
+    dplyr::mutate(
+      dplyr::across(
+        dplyr::all_of(streams_cols),
+        ~ as.integer(.x)
+      )
+    )|>
+    dplyr::distinct(linear_feature_id, .keep_all = TRUE) |>
+    sf::st_drop_geometry(),
+  by = "linear_feature_id",
+  na_matches = "never"
+)
+
+# run a test of the scorer
+# try passing a list of col_rank
+
+cols_rank2 <- c(
+  cols_stream
+  , cols_rank
+  # string type
+  , "owner_type"
+  )
+
+out2 <- purrr::map(
+  cols_rank2,
+  ~ priority_scorer(
+    dat_values = test,
+    dat_ranks = priority_params,
+    col_rank = .x
+    # col_idx = "idx_test"
+    # need to watch that this is the same as the column name in the dat_ranks
+    # col_filter = "source_column_name"
+  )
+)
+
+out3 <- purrr::reduce(out2, dplyr::inner_join, by = "idx")
+
+out4 <- out3 |>
+  dplyr::mutate(
+    total_score = rowSums(dplyr::across(dplyr::matches("score")), na.rm = TRUE)
+  )
+
+# separate by sub-basin
+# lets build a custom watersehed just for upstream of the confluence of Neexdzii Kwa and Wetzin Kwa
+# blueline key
+blk <- 360873822
+# downstream route measure
+drm <- 166030.4
+
+aoi <- fwapgr::fwa_watershed_at_measure(blue_line_key = blk,
+                                        downstream_route_measure = drm) |>
+  sf::st_transform(crs = 3005)
+
+
+# read in the watersheds clipped by the neexdzi kwa aoi.
+wshds_raw <- sf::st_intersection(
+    sf::st_read(path_background_layers,
+                layer = "whse_basemapping.fwa_named_watersheds_poly"),
+    aoi |>
+      sf::st_geometry()
+  ) |>
+  dplyr::filter(
+    # keep only polygons
+    sf::st_geometry_type(geom) == "POLYGON",
+    # if we wanted to use whse_basemapping.fwa_named_watersheds_poly we would do this - as only 3 parts to the code
+    stringr::str_count(wscode_ltree, "\\.") == 2,
+    sf::st_is_valid(geom)
+  ) |>
+  dplyr::mutate(area_ha2 = as.numeric(sf::st_area(geom)/10000)) |>
+  # we are hacking around here b/c our
+  dplyr::filter(abs(area_ha - area_ha2) <= 0.01)  # 100 m² = 0.01 ha
+
+
+wshds_ass |>
+  sf::st_write(
+    "/Users/airvine/Projects/gis/restoration_wedzin_kwa/test.geojson"
+  )
+
+
+# link sites to "critical habitat" layer built by DFO
+
+
+# score based on !is.na for weight_value_{rank} columns
+#Weight by group (social, biological, cultural-----------------------------------------------------------------------------------------------------
