@@ -5,10 +5,14 @@ library(tibble)
 # Define the GeoServer WFS GetCapabilities URL
 url_base <- "https://maps.skeenasalmon.info/geoserver/ows"
 
+# test out diff versions - 1.0.0 works for crs and bbox but 2.0.0 gives no results for those
+geo_version <- "1.0.0 "
+geo_service = "WFS"
+
 # Send request to GetCapabilities
 response <- httr::GET(url_base, query = list(
-  service = "WFS",
-  version = "1.0.0",
+  service = geo_service,
+  version = geo_version,
   request = "GetCapabilities"
 ))
 
@@ -54,8 +58,8 @@ if (httr::status_code(response) == 200) {
 
   for (layer in layer_names) {
     response_attr <- httr::GET(url_base, query = list(
-      service = "WFS",
-      version = "1.1.0",
+      service = geo_service,
+      version = geo_version,
       request = "DescribeFeatureType",
       typeName = layer
     ))
