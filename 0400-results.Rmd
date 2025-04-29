@@ -115,6 +115,14 @@ readr::read_csv(
 
 <br>
 
+### @mitchell1997RiparianInStream - Riparian and In-stream Assessment of the Bulkley River System - An Examination and Priorization of Impacts on the Tributaries to the Bulkley River Mainstem
+
+In the late 1990s, Nortech Consulting reported to the Department of Fisheries and Oceans on 68 tributaries of the Bulkley River located between Bulkley Lake and Boulder Creek. Boulder Creek flows into the main stem of the Bulkley River approximately 11 km north of Moricetown and about 120 km north of the confluence of the Neexdzii Kwa and Wetzin Kwa Rivers. The 68 streams were assessed using topographic maps and air photo interpretation to evaluate the degree and nature of impacts from transportation and hydroelectric corridors, powerlines, agriculture, grazing, and municipal land use. The most significant sources of impact were identified as agricultural/rangeland and municipal development [@mitchell1997RiparianInStream].
+
+<br>
+
+Streams were prioritized into six categories (1 through 6) based on the number and severity of impacts, the length of potential fish habitat, and the presence of significant (e.g., salmonid or regionally important) fish populations. Neexdzi Kwa tributaries ranked in the highest two priority categories (highly or severely degraded) included Buck Creek, Maxxan Creek, Watson Creek, Airport Creek, Cesford Creek, Richfield Creek, Byman Creek, and McQuarrie Creek. Those falling into categories 3 and 4 (moderately degraded) included Foxy Creek, Jonny David Creek, Barren Creek, Crow Creek, and the Sunset-Elwin system, among others. Tributaries within the lowest two priority categories included Aitken Creek and McKilligan Creek [@mitchell1997RiparianInStream].
+
 ### @price2014UpperBulkleya - Upper Bulkley floodplain habitat: modifications, physical barriers, and sites of potential importance to salmonids
 
 @price2014UpperBulkleya documented human-induced modifications to floodplain habitat and river channelization, investigated potential barriers to fish migration, and assessed areas of upwelling groundwater in the Upper Bulkley mainstem having potential importance to salmonids. The coordinates of points of interest were extracted from a pdf version of the report and are included in the `price_2014_waypoints.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/inputs_extracted/price_2014_waypoints.csv) and were added to the `sites_restoration.gpkg` (layer name = price_2014). Individual waypoint information is also presented in Table \@ref(tab:tab-price-2014-waypoints).
@@ -334,6 +342,15 @@ ncfdc_1998_cleaned %>%
 ```
 
 ### @gaboury_smith2016DevelopmentAquatic - Development of Aquatic Restoration Designs and On-Farm Cattle Management Improvements within the Wet'suwet'en irst Nation Territory
+@gaboury_smith2016DevelopmentAquatic outlines four general types of aquatic restoration designs aimed at improving fish habitat and passage in the bulkley river system: installing large woody debris and rock groin structures at eroding meanders, constructing riffles in channelized sections, adding riffles at backwater culverts to enhance connectivity, and reconstructing a fish bypass channel. These approaches focus on supporting habitat for steelhead, chinook, coho, trout, and char. Funding for the project was provided by Fisheries and Oceans Canada’s Fish Habitat Restoration Initiative and through in-kind support from landowners and West Fraser. Yinka Dene Economic Development Limited Partnership Inc. (YLP), in collaboration with LGL Limited, developed designs and management plans for 16 high-priority sites in Wet’suwet’en First Nation territory between 2015 and 2019. Related construction efforts are documented in @smith_gaboury2016BUILTREPORT and @smith_gaboury2017ASBUILTREPORT, including work at at four of these sites in 2016 as well as Johnny David Creek at Highway 16 in 2017. Site locations and associated data from this report have been added to the shared GIS project.
+
+
+###  @skeenasustainabilityassessmentforum2021Skeenasustainability - State of the Value Report for Fish and Fish Habitat
+The Skeena Sustainability Assessment Forum (SSAF) is a collaborative environmental stewardship initiative established under the Environmental Stewardship Initiative (ESI), bringing together 10 Skeena Nations and the Province of British Columbia. The SSAF supports shared decision-making by integrating Indigenous knowledge, scientific data, and local values to assess the state and trends of key environmental resources, including fish and fish habitat [@environmentalstewardshipinitiative2019Skeenasustainability].
+
+<br>
+
+As part of this work, the SSAF State of the Value Report for Fish and Fish Habitat summarized conditions across the study area using data available up to 2018. The analysis was completed at the [assessment watershed level](https://catalogue.data.gov.bc.ca/dataset/freshwater-atlas-assessment-watersheds) and considered a range of environmental indicators related to land and water use, natural watershed features, and salmon presence. This first phase of work is designed to be built upon with improved monitoring and data over time. The amalgamated results have been integrated into the shared GIS project, and a summary table of indicators and spatial output field descriptions is included in Appendix – State of the Value – Fish and Fish Habitat (#app-esi) [@governmentofbritishcolumbia2023Environmentalstewardship; @skeenasustainabilityassessmentforum2021Skeenasustainability].
 
 ## Future Restoration Site Selection
 
