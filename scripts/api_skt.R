@@ -71,7 +71,7 @@ dataset_filter <- strsplit(dataset_filter_raw, split = "\n")[[1]]
 
 rm(dataset_filter_raw)
 
-# read iin the rds
+#read in the data vs create it again -----------------------------------------------------------------------------------------------------read iin the rds
 data_deets <- readRDS(file_deets)
 
 # filter packages with stringr to find the ones that contain any of the strings in text_filter
