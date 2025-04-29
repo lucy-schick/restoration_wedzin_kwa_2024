@@ -6,7 +6,7 @@ library(fs)
 url_base <- "https://maps.skeenasalmon.info/geoserver/ows"
 
 # define output directory
-dir_out <- "data/gis/skt"
+dir_out <- "data/gis/skt/esi_sows"
 
 # create directory with fs
 fs::dir_create(dir_out)
@@ -16,8 +16,16 @@ usethis::use_git_ignore(dir_out)
 
 # Define the layer to download
 layer_name_raw <- "geonode:bcce_watershed_summary_poly_2015_20150331_skeena"
+layer_name_raw <- "geonode:UBulkley_wshed"
 
-layer_name <- stringr::str_extract(layer_name_raw, "(?<=:).*")
+# layer_name_out <- stringr::str_extract(layer_name_raw, "(?<=:).*")
+
+# turn above into a function
+layer_name_prep <-  function(layer_name_raw = NULL){
+  stringr::str_extract(layer_name_raw, "(?<=:).*")
+}
+
+layer_name_out <- layer_name_prep(layer_name_raw)
 
 # Construct the WFS GetFeature request URL
 query_params <- list(
@@ -31,7 +39,7 @@ query_params <- list(
 )
 
 # Send request and save response to a GeoJSON file
-file_out <- fs::path(dir_out, layer_name, ext = "geojson")
+file_out <- fs::path(dir_out, layer_name_out, ext = "geojson")
 response <- httr::GET(url = url_base, query = query_params, httr::write_disk(file_out, overwrite = TRUE))
 
 # Check if download was successful
