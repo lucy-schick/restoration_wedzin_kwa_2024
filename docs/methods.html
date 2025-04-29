@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Methods | Neexdzii Kwah Restoration Planning 2024</title>
   <meta name="description" content="Restoration Planning for the Neexdzii Kwah (Upper Bulkley River)" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Methods | Neexdzii Kwah Restoration Planning 2024" />
   <meta property="og:type" content="book" />
@@ -75,8 +75,6 @@
 <script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 <script type="text/javascript">
 
@@ -251,6 +249,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="app-climate-anomaly.html"><a href="app-climate-anomaly.html"><i class="fa fa-check"></i><strong>Appendix 1 - Climate Anamoly Data</strong></a></li>
 <li class="chapter" data-level="" data-path="appendix-2---potential-restoration-site-review-and-effectiveness-monitoring-data---2024.html"><a href="appendix-2---potential-restoration-site-review-and-effectiveness-monitoring-data---2024.html"><i class="fa fa-check"></i><strong>Appendix 2 - Potential Restoration Site Review and Effectiveness Monitoring Data - 2024</strong></a></li>
 <li class="chapter" data-level="" data-path="appendix-3---skeena-knowledge-trust---data-available-for-download.html"><a href="appendix-3---skeena-knowledge-trust---data-available-for-download.html"><i class="fa fa-check"></i><strong>Appendix 3 - Skeena Knowledge Trust - Data Available for Download </strong></a></li>
+<li class="chapter" data-level="" data-path="app-esi.html"><a href="app-esi.html"><i class="fa fa-check"></i><strong>Appendix 4 – State of the Value – Fish and Fish Habitat</strong></a></li>
 <li class="chapter" data-level="" data-path="attachment-1---riparian-prescription-example.html"><a href="attachment-1---riparian-prescription-example.html"><i class="fa fa-check"></i><strong>Attachment 1 - Riparian Prescription Example</strong></a></li>
 <li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
@@ -289,15 +288,15 @@ div.csl-indent {
 </li>
 <li>Metadata for individual project spatial layers is kept in the <code>rfp_tracking</code> table within the <code>background_layers.gpkg</code> along with tables related to user supplied stream width/gradient inputs to <code>bcfishpass</code> to model potentially high value habitat that is accessible to fish species of interest.</li>
 </ul>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="methods.html#cb42-1" tabindex="-1"></a><span class="do">## QRis</span></span>
-<span id="cb42-2"><a href="methods.html#cb42-2" tabindex="-1"></a><span class="co"># [QGIS Riverscapes Studio](https://qris.riverscapes.net/) (QRis) is a free plugin for QGIS that helps you digitize your riverscape data. QRis is a great planning tool for helping users with spatial representation of riverscapes. </span></span>
-<span id="cb42-3"><a href="methods.html#cb42-3" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb42-4"><a href="methods.html#cb42-4" tabindex="-1"></a><span class="co"># QRis has two distinct types of features:</span></span>
-<span id="cb42-5"><a href="methods.html#cb42-5" tabindex="-1"></a><span class="co">#   </span></span>
-<span id="cb42-6"><a href="methods.html#cb42-6" tabindex="-1"></a><span class="co">#   * Static: These are features that are relatively permanent, such as the valley bottom.</span></span>
-<span id="cb42-7"><a href="methods.html#cb42-7" tabindex="-1"></a><span class="co">#   * Dynamic: These are features that change over time, such as the active channel.</span></span>
-<span id="cb42-8"><a href="methods.html#cb42-8" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb42-9"><a href="methods.html#cb42-9" tabindex="-1"></a><span class="co"># QRis will be a useful tool for digitizing the upper Wetzin&#39;kwa river and prioritizing restoration sites. To start using QRis, follow the instructions for [getting started](https://qris.riverscapes.net/getting-started/).</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="methods.html#cb45-1" tabindex="-1"></a><span class="do">## QRis</span></span>
+<span id="cb45-2"><a href="methods.html#cb45-2" tabindex="-1"></a><span class="co"># [QGIS Riverscapes Studio](https://qris.riverscapes.net/) (QRis) is a free plugin for QGIS that helps you digitize your riverscape data. QRis is a great planning tool for helping users with spatial representation of riverscapes. </span></span>
+<span id="cb45-3"><a href="methods.html#cb45-3" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb45-4"><a href="methods.html#cb45-4" tabindex="-1"></a><span class="co"># QRis has two distinct types of features:</span></span>
+<span id="cb45-5"><a href="methods.html#cb45-5" tabindex="-1"></a><span class="co">#   </span></span>
+<span id="cb45-6"><a href="methods.html#cb45-6" tabindex="-1"></a><span class="co">#   * Static: These are features that are relatively permanent, such as the valley bottom.</span></span>
+<span id="cb45-7"><a href="methods.html#cb45-7" tabindex="-1"></a><span class="co">#   * Dynamic: These are features that change over time, such as the active channel.</span></span>
+<span id="cb45-8"><a href="methods.html#cb45-8" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb45-9"><a href="methods.html#cb45-9" tabindex="-1"></a><span class="co"># QRis will be a useful tool for digitizing the upper Wetzin&#39;kwa river and prioritizing restoration sites. To start using QRis, follow the instructions for [getting started](https://qris.riverscapes.net/getting-started/).</span></span></code></pre></div>
 </div>
 <div id="open-source---iterative-reporting" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Open Source - Iterative Reporting<a href="methods.html#open-source---iterative-reporting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -323,12 +322,12 @@ discussions are kept <a href="https://github.com/NewGraphEnvironment/restoration
 <div id="tables-and-figures" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Tables and Figures<a href="methods.html#tables-and-figures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are many tables within this document that can take a long time to format. Within this document the tables have been imported often as simple csv files or pages of an excel workbook and pulled into the project using scripts. This allows others to access the data and use it in their own projects. These tables can also then be easily updated with new data as it becomes available often with the formatting for presentation to reader handled by the scripting. Any figures used in the reporting are saved in the project <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/fig/">here</a> and can be leveraged by others.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="methods.html#cb43-1" tabindex="-1"></a><span class="co"># An example of this can be</span></span>
-<span id="cb43-2"><a href="methods.html#cb43-2" tabindex="-1"></a><span class="co"># seen here in Table \@ref(tab:kable-resources) with the actual file served</span></span>
-<span id="cb43-3"><a href="methods.html#cb43-3" tabindex="-1"></a><span class="co"># [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/data):</span></span>
-<span id="cb43-4"><a href="methods.html#cb43-4" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="methods.html#cb43-5" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/aquatic_restoration_resources.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb43-6"><a href="methods.html#cb43-6" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Aquatic Restoration Resources.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="methods.html#cb46-1" tabindex="-1"></a><span class="co"># An example of this can be</span></span>
+<span id="cb46-2"><a href="methods.html#cb46-2" tabindex="-1"></a><span class="co"># seen here in Table \@ref(tab:kable-resources) with the actual file served</span></span>
+<span id="cb46-3"><a href="methods.html#cb46-3" tabindex="-1"></a><span class="co"># [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/data):</span></span>
+<span id="cb46-4"><a href="methods.html#cb46-4" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="methods.html#cb46-5" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/aquatic_restoration_resources.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb46-6"><a href="methods.html#cb46-6" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Aquatic Restoration Resources.&quot;</span>)</span></code></pre></div>
 </div>
 <div id="data-sourceing-from-skeena-salmon-data-centre" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> Data Sourceing from Skeena Salmon Data Centre<a href="methods.html#data-sourceing-from-skeena-salmon-data-centre" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -337,13 +336,13 @@ discussions are kept <a href="https://github.com/NewGraphEnvironment/restoration
 <div id="documentation-of-workflows" class="section level3 hasAnchor" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> Documentation of Workflows<a href="methods.html#documentation-of-workflows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Select workflows were documented in memo format to illustrate the process used for others and promote reproducibility/leverageing of Neexdzii Kwah. The memos are stored in the <code>memo</code> directory of the project <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos">here</a> and can be viewed in Table Table <a href="methods.html#tab:tab-memos">3.1</a> by downloading the <code>.html</code> documents to a local computer and opening in a web browser such as <code>Chrome</code> (usually a double click of the document will open it in the browser).</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="methods.html#cb44-1" tabindex="-1"></a><span class="do">## make a tibble of the list and display it as a fpr_kable</span></span>
-<span id="cb44-2"><a href="methods.html#cb44-2" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;memos&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-3"><a href="methods.html#cb44-3" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">memo_name =</span> .) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-4"><a href="methods.html#cb44-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Memos stored at https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos.&quot;</span>,</span>
-<span id="cb44-5"><a href="methods.html#cb44-5" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb44-6"><a href="methods.html#cb44-6" tabindex="-1"></a>                 <span class="at">scroll_box_height =</span> <span class="st">&quot;300px&quot;</span></span>
-<span id="cb44-7"><a href="methods.html#cb44-7" tabindex="-1"></a>                 )</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="methods.html#cb47-1" tabindex="-1"></a><span class="do">## make a tibble of the list and display it as a fpr_kable</span></span>
+<span id="cb47-2"><a href="methods.html#cb47-2" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;memos&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-3"><a href="methods.html#cb47-3" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">memo_name =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-4"><a href="methods.html#cb47-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Memos stored at https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos.&quot;</span>,</span>
+<span id="cb47-5"><a href="methods.html#cb47-5" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb47-6"><a href="methods.html#cb47-6" tabindex="-1"></a>                 <span class="at">scroll_box_height =</span> <span class="st">&quot;300px&quot;</span></span>
+<span id="cb47-7"><a href="methods.html#cb47-7" tabindex="-1"></a>                 )</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-memos">Table 3.1: </span>Memos stored at <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos" class="uri">https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos</a>.
@@ -438,42 +437,42 @@ Fisheries sites which can be spatialized for the project.</p>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Restoration_Neexdzii_Kwah_2024.pdf", "Restoration_Neexdzii_Kwah_2024.html"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Restoration_Neexdzii_Kwah_2024.pdf", "Restoration_Neexdzii_Kwah_2024.html"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

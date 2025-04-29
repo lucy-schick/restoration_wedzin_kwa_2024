@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Background | Neexdzii Kwah Restoration Planning 2024</title>
   <meta name="description" content="Restoration Planning for the Neexdzii Kwah (Upper Bulkley River)" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Background | Neexdzii Kwah Restoration Planning 2024" />
   <meta property="og:type" content="book" />
@@ -75,8 +75,6 @@
 <script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 <script type="text/javascript">
 
@@ -251,6 +249,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="app-climate-anomaly.html"><a href="app-climate-anomaly.html"><i class="fa fa-check"></i><strong>Appendix 1 - Climate Anamoly Data</strong></a></li>
 <li class="chapter" data-level="" data-path="appendix-2---potential-restoration-site-review-and-effectiveness-monitoring-data---2024.html"><a href="appendix-2---potential-restoration-site-review-and-effectiveness-monitoring-data---2024.html"><i class="fa fa-check"></i><strong>Appendix 2 - Potential Restoration Site Review and Effectiveness Monitoring Data - 2024</strong></a></li>
 <li class="chapter" data-level="" data-path="appendix-3---skeena-knowledge-trust---data-available-for-download.html"><a href="appendix-3---skeena-knowledge-trust---data-available-for-download.html"><i class="fa fa-check"></i><strong>Appendix 3 - Skeena Knowledge Trust - Data Available for Download </strong></a></li>
+<li class="chapter" data-level="" data-path="app-esi.html"><a href="app-esi.html"><i class="fa fa-check"></i><strong>Appendix 4 – State of the Value – Fish and Fish Habitat</strong></a></li>
 <li class="chapter" data-level="" data-path="attachment-1---riparian-prescription-example.html"><a href="attachment-1---riparian-prescription-example.html"><i class="fa fa-check"></i><strong>Attachment 1 - Riparian Prescription Example</strong></a></li>
 <li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
@@ -279,102 +278,101 @@ div.csl-indent {
 <div id="project-location" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Project Location<a href="background.html#project-location" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The study area primarily focuses on the Neexdzii Kwah (Upper Bulkley River), which is located upstream of the confluence of the Widzin Kwah (Morice River) and the Neexdzii Kwah rivers. Although this area is the initial focus of activities, the overall area for project activities can include anywhere within the boundaries of the Widzin Kwah Water Sustainability Project. The boundaries of the Widzin Kwah Water Sustainability Project include not only the Neexdzii Kwah but also the entire drainage area of Widzin Kwah (Morice River) as well as the small portion of the Bulkley River downstream of the Morice River confluence to just north of Dockrill Creek <span class="citation">(<span>“Widzin <span>Kwah Water Sustainability Project</span>”</span> n.d.)</span>.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="background.html#cb9-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/OW_2024_bulk.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="background.html#cb10-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/OW_2024_bulk.png&quot;</span>)</span></code></pre></div>
 <div id="neexdzii-kwah-upper-bulkley-river" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Neexdzii Kwah (Upper Bulkley River)<a href="background.html#neexdzii-kwah-upper-bulkley-river" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="background.html#cb10-1" tabindex="-1"></a>fwapgr<span class="sc">::</span><span class="fu">fwa_watershed_at_measure</span>(<span class="dv">360873822</span>, <span class="dv">164920</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">area_km2 =</span> <span class="fu">round</span>(area_ha<span class="sc">/</span><span class="dv">100</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(area_km2)</span></code></pre></div>
-<p>The Neexdzii Kwah (Upper Bulkley River) is an 8th order stream that drains an area of 2320km<sup>2</sup> in a generally northerly direction from Bulkley Lake on the Nechako Plateau to its confluence with the Widzin Kwah (Morice River) near Houston <span class="citation">(<span>“Widzin <span>Kwah Water Sustainability Project</span>”</span> n.d.)</span>. It has a mean annual discharge of 18.8 m<sup>3</sup>/s at station 08EE003 located near Houston. The hydrograph peaks around May - June during the spring freshet with additional peaks related to significant rain events (Figures <a href="background.html#fig:hydrograph1">2.1</a> and <a href="background.html#fig:hydrology-stats1">2.2</a>)<span class="citation">(Westcott 2022a)</span>. Highway 16 and the CN Railroad parallel the upper Bulkley River and pass through the towns of Topley and Houston.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="background.html#cb11-1" tabindex="-1"></a>hydat_stations <span class="ot">&lt;-</span> fpr<span class="sc">::</span><span class="fu">fpr_db_query</span>(<span class="at">query =</span> <span class="fu">lfpr_dbq_clip</span>(<span class="st">&#39;whse_environmental_monitoring.envcan_hydrometric_stn_sp&#39;</span>,</span>
-<span id="cb11-2"><a href="background.html#cb11-2" tabindex="-1"></a><span class="st">&#39;whse_basemapping.fwa_watershed_groups_poly&#39;</span>, <span class="st">&#39;watershed_group_code&#39;</span>, <span class="fu">c</span>(<span class="st">&quot;BULK&quot;</span>, <span class="st">&quot;MORR&quot;</span>)))</span>
-<span id="cb11-3"><a href="background.html#cb11-3" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="background.html#cb11-4" tabindex="-1"></a>hydat_stations_active <span class="ot">&lt;-</span> hydat_stations <span class="sc">%&gt;%</span> </span>
-<span id="cb11-5"><a href="background.html#cb11-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(station_operating_status <span class="sc">==</span> <span class="st">&quot;ACTIVE-REALTIME&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="background.html#cb12-1" tabindex="-1"></a><span class="fu">lfpr_create_hydrograph</span>(<span class="st">&quot;08EE003&quot;</span>, <span class="at">start_year =</span> <span class="dv">1980</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="background.html#cb13-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrograph_08EE003.png&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:hydrograph1"></span>
-<img src="fig/hydrograph_08EE003.png" alt="Bulkley River Near Houston (Station #08EE003 - Lat 54.39938 Lon -126.71941). Available mean daily discharge data from 1980 to 2022." width="100%" />
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="background.html#cb11-1" tabindex="-1"></a>fwapgr<span class="sc">::</span><span class="fu">fwa_watershed_at_measure</span>(<span class="dv">360873822</span>, <span class="dv">164920</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">area_km2 =</span> <span class="fu">round</span>(area_ha<span class="sc">/</span><span class="dv">100</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(area_km2)</span></code></pre></div>
+<p>The Neexdzii Kwah (Upper Bulkley River) is an 8th order stream that drains an area of 2320km<sup>2</sup> in a generally northerly direction from Bulkley Lake on the Nechako Plateau to its confluence with the Widzin Kwah (Morice River) near Houston <span class="citation">(<span>“Widzin <span>Kwah Water Sustainability Project</span>”</span> n.d.)</span>. It has a mean annual discharge of 18.8 m<sup>3</sup>/s at station 08EE003 located near Houston. The hydrograph peaks around May - June during the spring freshet with additional peaks related to significant rain events (Figure <a href="background.html#fig:hydrograph-fasstr1">2.1</a>). Highway 16 and the CN Railroad parallel the upper Bulkley River and pass through the towns of Topley and Houston.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="background.html#cb12-1" tabindex="-1"></a>hydat_stations <span class="ot">&lt;-</span> fpr<span class="sc">::</span><span class="fu">fpr_db_query</span>(<span class="at">query =</span> <span class="fu">lfpr_dbq_clip</span>(<span class="st">&#39;whse_environmental_monitoring.envcan_hydrometric_stn_sp&#39;</span>,</span>
+<span id="cb12-2"><a href="background.html#cb12-2" tabindex="-1"></a><span class="st">&#39;whse_basemapping.fwa_watershed_groups_poly&#39;</span>, <span class="st">&#39;watershed_group_code&#39;</span>, <span class="fu">c</span>(<span class="st">&quot;BULK&quot;</span>, <span class="st">&quot;MORR&quot;</span>)))</span>
+<span id="cb12-3"><a href="background.html#cb12-3" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="background.html#cb12-4" tabindex="-1"></a>hydat_stations_active <span class="ot">&lt;-</span> hydat_stations <span class="sc">%&gt;%</span> </span>
+<span id="cb12-5"><a href="background.html#cb12-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(station_operating_status <span class="sc">==</span> <span class="st">&quot;ACTIVE-REALTIME&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="background.html#cb13-1" tabindex="-1"></a><span class="fu">lfpr_create_hydrograph</span>(<span class="st">&quot;08EE003&quot;</span>, <span class="at">start_year =</span> <span class="dv">1980</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="background.html#cb14-1" tabindex="-1"></a>plot <span class="ot">&lt;-</span> fasstr<span class="sc">::</span><span class="fu">plot_longterm_monthly_stats</span>(</span>
+<span id="cb14-2"><a href="background.html#cb14-2" tabindex="-1"></a>  <span class="at">station_number =</span> <span class="st">&quot;08EE003&quot;</span>,</span>
+<span id="cb14-3"><a href="background.html#cb14-3" tabindex="-1"></a>  <span class="at">ignore_missing =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-4"><a href="background.html#cb14-4" tabindex="-1"></a>  <span class="at">add_year =</span> <span class="dv">2023</span></span>
+<span id="cb14-5"><a href="background.html#cb14-5" tabindex="-1"></a>)</span>
+<span id="cb14-6"><a href="background.html#cb14-6" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="background.html#cb14-7" tabindex="-1"></a><span class="fu">print</span>(plot<span class="sc">$</span><span class="st">`</span><span class="at">Long-term_Monthly_Statistics</span><span class="st">`</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:hydrograph-fasstr1"></span>
+<img src="fig/background/hydrograph-fasstr1-1.png" alt="Neexdzii Kwah near Houston (Station #08EE003 - Lat 54.39938 Lon -126.71941)." width="100%" />
 <p class="caption">
-Figure 2.1: Bulkley River Near Houston (Station #08EE003 - Lat 54.39938 Lon -126.71941). Available mean daily discharge data from 1980 to 2022.
+Figure 2.1: Neexdzii Kwah near Houston (Station #08EE003 - Lat 54.39938 Lon -126.71941).
 </p>
 </div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="background.html#cb14-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrology_stats_08EE003.png&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:hydrology-stats1"></span>
-<img src="fig/hydrology_stats_08EE003.png" alt="Bulkley River Near Houston (Station #08EE003 - Lat 54.39938 Lon -126.71941). Available daily discharge data from 1980 to 2022." width="100%" />
-<p class="caption">
-Figure 2.2: Bulkley River Near Houston (Station #08EE003 - Lat 54.39938 Lon -126.71941). Available daily discharge data from 1980 to 2022.
-</p>
-</div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="background.html#cb15-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrograph_08EE003.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="background.html#cb16-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrology_stats_08EE003.png&quot;</span>)</span></code></pre></div>
 </div>
 <div id="buck-creek" class="section level3 hasAnchor" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Buck Creek<a href="background.html#buck-creek" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="background.html#cb15-1" tabindex="-1"></a>fwapgr<span class="sc">::</span><span class="fu">fwa_watershed_at_measure</span>(<span class="dv">360886221</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">area_km2 =</span> <span class="fu">round</span>(area_ha<span class="sc">/</span><span class="dv">100</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(area_km2)</span></code></pre></div>
-<p>Buck Creek is a 5th order stream which enters Neexdzii Kwah just upstream of the Wedzin Kwa / Neexdzii Kwah (Morice/Bulkley) confluence adjacent to Houston. The watershed drains an area of 567km<sup>2</sup>. Buck Creek is one of the main tributaries to the Neexdzii Kwah and has a mean annual discharge of 4.4 m<sup>3</sup>/s at station 08EE013 located near the Houston Medical Centre approximately 1 km upstream of the mouth <span class="citation">(Westcott 2022a)</span>. Flows from Buck Creek account for just under 1/3 of the total flows in Neexdzii Kwah. The hydrograph for Buck Creek shows a similar pattern to Neexdzii Kwah with peak flows in May - June (Figures <a href="background.html#fig:hydrograph2">2.3</a> and <a href="background.html#fig:hydrology-stats2">2.4</a>).</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="background.html#cb16-1" tabindex="-1"></a><span class="fu">lfpr_create_hydrograph</span>(<span class="st">&quot;08EE013&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="background.html#cb17-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrograph_08EE013.png&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:hydrograph2"></span>
-<img src="fig/hydrograph_08EE013.png" alt="Buck Creek at the confluence with the Neexdzii Kwah (Station #08EE013 - Lat 54.39608 Lon -126.65024). Available mean daily discharge data from 1973 to 2022." width="100%" />
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="background.html#cb17-1" tabindex="-1"></a>fwapgr<span class="sc">::</span><span class="fu">fwa_watershed_at_measure</span>(<span class="dv">360886221</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">area_km2 =</span> <span class="fu">round</span>(area_ha<span class="sc">/</span><span class="dv">100</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span> <span class="fu">pull</span>(area_km2)</span></code></pre></div>
+<p>Buck Creek is a 5th order stream which enters Neexdzii Kwah just upstream of the Wedzin Kwa / Neexdzii Kwah (Morice/Bulkley) confluence adjacent to Houston. The watershed drains an area of 567km<sup>2</sup>. Buck Creek is one of the main tributaries to the Neexdzii Kwah and has a mean annual discharge of 4.4 m<sup>3</sup>/s at station 08EE013 located near the Houston Medical Centre approximately 1 km upstream of the mouth <span class="citation">(Westcott 2022a)</span>. Flows from Buck Creek account for just under 1/3 of the total flows in Neexdzii Kwah. The hydrograph for Buck Creek shows a similar pattern to Neexdzii Kwah with peak flows in May - June (Figure <a href="background.html#fig:hydrograph-fasstr2">2.2</a>).</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="background.html#cb18-1" tabindex="-1"></a>plot <span class="ot">&lt;-</span> fasstr<span class="sc">::</span><span class="fu">plot_longterm_monthly_stats</span>(<span class="at">station_number =</span> <span class="st">&quot;08EE013&quot;</span>,</span>
+<span id="cb18-2"><a href="background.html#cb18-2" tabindex="-1"></a>                            <span class="at">ignore_missing =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb18-3"><a href="background.html#cb18-3" tabindex="-1"></a>                            <span class="at">add_year =</span> <span class="dv">2023</span>) </span>
+<span id="cb18-4"><a href="background.html#cb18-4" tabindex="-1"></a><span class="fu">print</span>(plot<span class="sc">$</span><span class="st">`</span><span class="at">Long-term_Monthly_Statistics</span><span class="st">`</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:hydrograph-fasstr2"></span>
+<img src="fig/background/hydrograph-fasstr2-1.png" alt="Buck Creek at the confluence with the Neexdzii Kwah (Station #08EE013 - Lat 54.39608 Lon -126.65024)." width="100%" />
 <p class="caption">
-Figure 2.3: Buck Creek at the confluence with the Neexdzii Kwah (Station #08EE013 - Lat 54.39608 Lon -126.65024). Available mean daily discharge data from 1973 to 2022.
+Figure 2.2: Buck Creek at the confluence with the Neexdzii Kwah (Station #08EE013 - Lat 54.39608 Lon -126.65024).
 </p>
 </div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="background.html#cb18-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrology_stats_08EE013.png&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:hydrology-stats2"></span>
-<img src="fig/hydrology_stats_08EE013.png" alt="Buck Creek at the confluence with the Neexdzii Kwah (Station #08EE013 - Lat 54.39608 Lon -126.65024). Available daily discharge data from 1973 to 2022." width="100%" />
-<p class="caption">
-Figure 2.4: Buck Creek at the confluence with the Neexdzii Kwah (Station #08EE013 - Lat 54.39608 Lon -126.65024). Available daily discharge data from 1973 to 2022.
-</p>
-</div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="background.html#cb19-1" tabindex="-1"></a><span class="co"># McQuarrie Creek is a 5th order stream that flows into the Upper Bulkley River \~20 km upstream of Houston, and drains an area of `r fwapgr::fwa_watershed_at_measure(360875378) %&gt;% mutate(area_km2 = round(area_ha/100, 1)) %&gt;% pull(area_km2)` km^2^. There is one hydrometric station on McQuarrie Creek deployed by the BC Ministry of Forests, Land, Natural Resource Operations and Rural Development Groundwater Program (FLNRORD) which was was active from 2016-2018 but has very few data [@westcott2022UpperBulkley]. An estimate of mean annual discharge for the two years of available data is `r round(fasstr::calc_longterm_mean(mq_clean),1)` m^3^/s at station 08EE0002 located near the mouth of the creek. Based of the limited data, the hydrograph for McQuarrie Creek during this time period peaks rapidly in May and again in the winter (Figures \@ref(fig:hydrograph3)).</span></span>
-<span id="cb19-2"><a href="background.html#cb19-2" tabindex="-1"></a><span class="do">### McQuarrie Creek</span></span>
-<span id="cb19-3"><a href="background.html#cb19-3" tabindex="-1"></a><span class="co">#McQuarrie Creek, station number 08EE0002, but station not part of hydat database</span></span>
-<span id="cb19-4"><a href="background.html#cb19-4" tabindex="-1"></a>mq <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/hydrometric/DataSetExport-Discharge.Logger@08EE0002-20240308164919.csv&quot;</span>)</span>
-<span id="cb19-5"><a href="background.html#cb19-5" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="background.html#cb19-6" tabindex="-1"></a>mq_clean <span class="ot">&lt;-</span> mq <span class="sc">%&gt;%</span></span>
-<span id="cb19-7"><a href="background.html#cb19-7" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">row_to_names</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-8"><a href="background.html#cb19-8" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb19-9"><a href="background.html#cb19-9" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>event_timestamp_utc_08_00)<span class="sc">%&gt;%</span></span>
-<span id="cb19-10"><a href="background.html#cb19-10" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Value =</span> value_m_3_s) <span class="sc">%&gt;%</span></span>
-<span id="cb19-11"><a href="background.html#cb19-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Value =</span> <span class="fu">as.numeric</span>(Value)) <span class="sc">%&gt;%</span></span>
-<span id="cb19-12"><a href="background.html#cb19-12" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">timestamp_utc_08_00 =</span> lubridate<span class="sc">::</span><span class="fu">ymd_hms</span>(timestamp_utc_08_00)) <span class="sc">%&gt;%</span></span>
-<span id="cb19-13"><a href="background.html#cb19-13" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Date =</span> lubridate<span class="sc">::</span><span class="fu">date</span>(timestamp_utc_08_00)) <span class="sc">%&gt;%</span></span>
-<span id="cb19-14"><a href="background.html#cb19-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">format</span>(timestamp_utc_08_00, <span class="st">&quot;%H:%M:%S&quot;</span>))</span>
-<span id="cb19-15"><a href="background.html#cb19-15" tabindex="-1"></a></span>
-<span id="cb19-16"><a href="background.html#cb19-16" tabindex="-1"></a>start_year <span class="ot">&lt;-</span> mq_clean<span class="sc">$</span>Date <span class="sc">%&gt;%</span> <span class="fu">min</span>() <span class="sc">%&gt;%</span> lubridate<span class="sc">::</span><span class="fu">year</span>()</span>
-<span id="cb19-17"><a href="background.html#cb19-17" tabindex="-1"></a>end_year <span class="ot">&lt;-</span> mq_clean<span class="sc">$</span>Date <span class="sc">%&gt;%</span> <span class="fu">max</span>() <span class="sc">%&gt;%</span> lubridate<span class="sc">::</span><span class="fu">year</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="background.html#cb20-1" tabindex="-1"></a><span class="co">#Manually creating hydrograph for McQuarrie Creek, station 08EE0002, because station not part of hydat database.</span></span>
-<span id="cb20-2"><a href="background.html#cb20-2" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="background.html#cb20-3" tabindex="-1"></a>flow <span class="ot">&lt;-</span> mq_clean <span class="sc">%&gt;%</span></span>
-<span id="cb20-4"><a href="background.html#cb20-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">day_of_year =</span> <span class="fu">yday</span>(Date)) <span class="sc">%&gt;%</span></span>
-<span id="cb20-5"><a href="background.html#cb20-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(day_of_year) <span class="sc">%&gt;%</span></span>
-<span id="cb20-6"><a href="background.html#cb20-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">daily_ave =</span> <span class="fu">mean</span>(Value, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb20-7"><a href="background.html#cb20-7" tabindex="-1"></a>                   <span class="at">daily_sd =</span> <span class="fu">sd</span>(Value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb20-8"><a href="background.html#cb20-8" tabindex="-1"></a>                   <span class="at">max =</span> <span class="fu">max</span>(Value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb20-9"><a href="background.html#cb20-9" tabindex="-1"></a>                   <span class="at">min =</span> <span class="fu">min</span>(Value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb20-10"><a href="background.html#cb20-10" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">as.Date</span>(day_of_year))</span>
-<span id="cb20-11"><a href="background.html#cb20-11" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="background.html#cb20-12" tabindex="-1"></a>plot <span class="ot">&lt;-</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
-<span id="cb20-13"><a href="background.html#cb20-13" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> flow, <span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">ymax =</span> max,</span>
-<span id="cb20-14"><a href="background.html#cb20-14" tabindex="-1"></a>                                        <span class="at">ymin =</span> min),</span>
-<span id="cb20-15"><a href="background.html#cb20-15" tabindex="-1"></a>                       <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">linetype =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb20-16"><a href="background.html#cb20-16" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">&quot;%b&quot;</span>, <span class="at">date_breaks =</span> <span class="st">&quot;2 month&quot;</span>) <span class="sc">+</span></span>
-<span id="cb20-17"><a href="background.html#cb20-17" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;Mean Daily Discharge (&quot;</span>, m<span class="sc">^</span><span class="dv">3</span>, <span class="st">&quot;/s)&quot;</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)))<span class="sc">+</span></span>
-<span id="cb20-18"><a href="background.html#cb20-18" tabindex="-1"></a>  ggdark<span class="sc">::</span><span class="fu">dark_theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb20-19"><a href="background.html#cb20-19" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> flow, <span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> daily_ave),</span>
-<span id="cb20-20"><a href="background.html#cb20-20" tabindex="-1"></a>                     <span class="at">linetype =</span> <span class="dv">1</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb20-21"><a href="background.html#cb20-21" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;grey10&quot;</span>, <span class="st">&quot;red&quot;</span>))</span>
-<span id="cb20-22"><a href="background.html#cb20-22" tabindex="-1"></a>plot</span>
-<span id="cb20-23"><a href="background.html#cb20-23" tabindex="-1"></a></span>
-<span id="cb20-24"><a href="background.html#cb20-24" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">plot =</span> plot, <span class="at">file=</span><span class="fu">paste0</span>(<span class="st">&quot;fig/hydrograph_&quot;</span>, <span class="st">&quot;08EE0002&quot;</span>, <span class="st">&quot;.png&quot;</span>),</span>
-<span id="cb20-25"><a href="background.html#cb20-25" tabindex="-1"></a>                <span class="at">h=</span><span class="fl">3.4</span>, <span class="at">w=</span><span class="fl">5.11</span>, <span class="at">units=</span><span class="st">&quot;in&quot;</span>, <span class="at">dpi=</span><span class="dv">300</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="background.html#cb21-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrograph_08EE0002.png&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="background.html#cb22-1" tabindex="-1"></a><span class="do">### Widzin Kwah (Morice River)</span></span>
-<span id="cb22-2"><a href="background.html#cb22-2" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="background.html#cb22-3" tabindex="-1"></a><span class="co"># The Widzin Kwah (Morice River) watershed drains `r fwapgr::fwa_watershed_at_measure(360885316) %&gt;% mutate(area_km2 = round(area_ha/100, 1)) %&gt;% pull(area_km2)` km^2^ of Coast Mountains and Interior Plateau in a generally south-eastern direction. The Morice River is an 8th order stream that flows approximatley 80km from Widzin Bin (Morice Lake) to the confluence with the upper Bulkley River just north of Houston. Major tributaries include the Nanika River, the Atna River, Gosnell Creek and the Thautil River. There area numerous large lakes situated on the south side of the watershed including Morice Lake, McBride Lake, Stepp Lake, Nanika Lake, Kid Price Lake, Owen Lake and others. There is one active hydrometric station on the mainstem of the Morice River near the outlet of Morice Lake and one historic station that was located at the mouth of the river near Houston that gathered data in 1971 only [@canada2010NationalWater]. An estimate of mean annual discharge for the one year of data available for the Morice near it&#39;s confluence with the Bulkley River is `r round(fasstr::calc_longterm_mean(station_number = &quot;08ED003&quot;)$LTMAD,1)` m^3^/s. Mean annual discharge is estimated at `r round(fasstr::calc_longterm_mean(station_number = &quot;08ED002&quot;)$LTMAD,1)` m^3^/s at station 08ED002 located near the outlet of Morice Lake. Flow patterns are typical of high elevation watersheds influenced by coastal weather patterns which receive large amounts of winter precipitation as snow in the winter and large precipitation events in the fall. This leads to peak levels of discharge during snowmelt, typically from May to July with isolated high flows related to rain and rain on snow events common in the fall (Figures \@ref(fig:hydrograph4) - \@ref(fig:hydrology-stats4)).</span></span>
-<span id="cb22-4"><a href="background.html#cb22-4" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb22-5"><a href="background.html#cb22-5" tabindex="-1"></a><span class="co"># ```{r, eval=TRUE}</span></span>
-<span id="cb22-6"><a href="background.html#cb22-6" tabindex="-1"></a><span class="co"># lfpr_create_hydrograph(&quot;08ED002&quot;)</span></span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="background.html#cb23-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrograph_08ED002.png&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="background.html#cb24-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrology_stats_08ED002.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="background.html#cb19-1" tabindex="-1"></a><span class="fu">lfpr_create_hydrograph</span>(<span class="st">&quot;08EE013&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="background.html#cb20-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrograph_08EE013.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="background.html#cb21-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrology_stats_08EE013.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="background.html#cb22-1" tabindex="-1"></a><span class="co"># McQuarrie Creek is a 5th order stream that flows into the Upper Bulkley River \~20 km upstream of Houston, and drains an area of `r fwapgr::fwa_watershed_at_measure(360875378) %&gt;% mutate(area_km2 = round(area_ha/100, 1)) %&gt;% pull(area_km2)` km^2^. There is one hydrometric station on McQuarrie Creek deployed by the BC Ministry of Forests, Land, Natural Resource Operations and Rural Development Groundwater Program (FLNRORD) which was was active from 2016-2018 but has very few data [@westcott2022UpperBulkley]. An estimate of mean annual discharge for the two years of available data is `r round(fasstr::calc_longterm_mean(mq_clean),1)` m^3^/s at station 08EE0002 located near the mouth of the creek. Based of the limited data, the hydrograph for McQuarrie Creek during this time period peaks rapidly in May and again in the winter (Figures \@ref(fig:hydrograph3)).</span></span>
+<span id="cb22-2"><a href="background.html#cb22-2" tabindex="-1"></a><span class="do">### McQuarrie Creek</span></span>
+<span id="cb22-3"><a href="background.html#cb22-3" tabindex="-1"></a><span class="co">#McQuarrie Creek, station number 08EE0002, but station not part of hydat database</span></span>
+<span id="cb22-4"><a href="background.html#cb22-4" tabindex="-1"></a>mq <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/hydrometric/DataSetExport-Discharge.Logger@08EE0002-20240308164919.csv&quot;</span>)</span>
+<span id="cb22-5"><a href="background.html#cb22-5" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="background.html#cb22-6" tabindex="-1"></a>mq_clean <span class="ot">&lt;-</span> mq <span class="sc">%&gt;%</span></span>
+<span id="cb22-7"><a href="background.html#cb22-7" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">row_to_names</span>(<span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-8"><a href="background.html#cb22-8" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb22-9"><a href="background.html#cb22-9" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>event_timestamp_utc_08_00)<span class="sc">%&gt;%</span></span>
+<span id="cb22-10"><a href="background.html#cb22-10" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Value =</span> value_m_3_s) <span class="sc">%&gt;%</span></span>
+<span id="cb22-11"><a href="background.html#cb22-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Value =</span> <span class="fu">as.numeric</span>(Value)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-12"><a href="background.html#cb22-12" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">timestamp_utc_08_00 =</span> lubridate<span class="sc">::</span><span class="fu">ymd_hms</span>(timestamp_utc_08_00)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-13"><a href="background.html#cb22-13" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Date =</span> lubridate<span class="sc">::</span><span class="fu">date</span>(timestamp_utc_08_00)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-14"><a href="background.html#cb22-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">time =</span> <span class="fu">format</span>(timestamp_utc_08_00, <span class="st">&quot;%H:%M:%S&quot;</span>))</span>
+<span id="cb22-15"><a href="background.html#cb22-15" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="background.html#cb22-16" tabindex="-1"></a>start_year <span class="ot">&lt;-</span> mq_clean<span class="sc">$</span>Date <span class="sc">%&gt;%</span> <span class="fu">min</span>() <span class="sc">%&gt;%</span> lubridate<span class="sc">::</span><span class="fu">year</span>()</span>
+<span id="cb22-17"><a href="background.html#cb22-17" tabindex="-1"></a>end_year <span class="ot">&lt;-</span> mq_clean<span class="sc">$</span>Date <span class="sc">%&gt;%</span> <span class="fu">max</span>() <span class="sc">%&gt;%</span> lubridate<span class="sc">::</span><span class="fu">year</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="background.html#cb23-1" tabindex="-1"></a><span class="co">#Manually creating hydrograph for McQuarrie Creek, station 08EE0002, because station not part of hydat database.</span></span>
+<span id="cb23-2"><a href="background.html#cb23-2" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="background.html#cb23-3" tabindex="-1"></a>flow <span class="ot">&lt;-</span> mq_clean <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="background.html#cb23-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">day_of_year =</span> <span class="fu">yday</span>(Date)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-5"><a href="background.html#cb23-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(day_of_year) <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href="background.html#cb23-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">daily_ave =</span> <span class="fu">mean</span>(Value, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb23-7"><a href="background.html#cb23-7" tabindex="-1"></a>                   <span class="at">daily_sd =</span> <span class="fu">sd</span>(Value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb23-8"><a href="background.html#cb23-8" tabindex="-1"></a>                   <span class="at">max =</span> <span class="fu">max</span>(Value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb23-9"><a href="background.html#cb23-9" tabindex="-1"></a>                   <span class="at">min =</span> <span class="fu">min</span>(Value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-10"><a href="background.html#cb23-10" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">as.Date</span>(day_of_year))</span>
+<span id="cb23-11"><a href="background.html#cb23-11" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="background.html#cb23-12" tabindex="-1"></a>plot <span class="ot">&lt;-</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>()<span class="sc">+</span></span>
+<span id="cb23-13"><a href="background.html#cb23-13" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_ribbon</span>(<span class="at">data =</span> flow, <span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">ymax =</span> max,</span>
+<span id="cb23-14"><a href="background.html#cb23-14" tabindex="-1"></a>                                        <span class="at">ymin =</span> min),</span>
+<span id="cb23-15"><a href="background.html#cb23-15" tabindex="-1"></a>                       <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">linetype =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb23-16"><a href="background.html#cb23-16" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">&quot;%b&quot;</span>, <span class="at">date_breaks =</span> <span class="st">&quot;2 month&quot;</span>) <span class="sc">+</span></span>
+<span id="cb23-17"><a href="background.html#cb23-17" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;Mean Daily Discharge (&quot;</span>, m<span class="sc">^</span><span class="dv">3</span>, <span class="st">&quot;/s)&quot;</span>, <span class="at">sep=</span><span class="st">&quot;&quot;</span>)))<span class="sc">+</span></span>
+<span id="cb23-18"><a href="background.html#cb23-18" tabindex="-1"></a>  ggdark<span class="sc">::</span><span class="fu">dark_theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb23-19"><a href="background.html#cb23-19" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="at">data =</span> flow, <span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> daily_ave),</span>
+<span id="cb23-20"><a href="background.html#cb23-20" tabindex="-1"></a>                     <span class="at">linetype =</span> <span class="dv">1</span>, <span class="at">linewidth =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb23-21"><a href="background.html#cb23-21" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;grey10&quot;</span>, <span class="st">&quot;red&quot;</span>))</span>
+<span id="cb23-22"><a href="background.html#cb23-22" tabindex="-1"></a>plot</span>
+<span id="cb23-23"><a href="background.html#cb23-23" tabindex="-1"></a></span>
+<span id="cb23-24"><a href="background.html#cb23-24" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(<span class="at">plot =</span> plot, <span class="at">file=</span><span class="fu">paste0</span>(<span class="st">&quot;fig/hydrograph_&quot;</span>, <span class="st">&quot;08EE0002&quot;</span>, <span class="st">&quot;.png&quot;</span>),</span>
+<span id="cb23-25"><a href="background.html#cb23-25" tabindex="-1"></a>                <span class="at">h=</span><span class="fl">3.4</span>, <span class="at">w=</span><span class="fl">5.11</span>, <span class="at">units=</span><span class="st">&quot;in&quot;</span>, <span class="at">dpi=</span><span class="dv">300</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="background.html#cb24-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrograph_08EE0002.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="background.html#cb25-1" tabindex="-1"></a><span class="do">### Widzin Kwah (Morice River)</span></span>
+<span id="cb25-2"><a href="background.html#cb25-2" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="background.html#cb25-3" tabindex="-1"></a><span class="co"># The Widzin Kwah (Morice River) watershed drains `r fwapgr::fwa_watershed_at_measure(360885316) %&gt;% mutate(area_km2 = round(area_ha/100, 1)) %&gt;% pull(area_km2)` km^2^ of Coast Mountains and Interior Plateau in a generally south-eastern direction. The Morice River is an 8th order stream that flows approximatley 80km from Widzin Bin (Morice Lake) to the confluence with the upper Bulkley River just north of Houston. Major tributaries include the Nanika River, the Atna River, Gosnell Creek and the Thautil River. There area numerous large lakes situated on the south side of the watershed including Morice Lake, McBride Lake, Stepp Lake, Nanika Lake, Kid Price Lake, Owen Lake and others. There is one active hydrometric station on the mainstem of the Morice River near the outlet of Morice Lake and one historic station that was located at the mouth of the river near Houston that gathered data in 1971 only [@canada2010NationalWater]. An estimate of mean annual discharge for the one year of data available for the Morice near it&#39;s confluence with the Bulkley River is `r round(fasstr::calc_longterm_mean(station_number = &quot;08ED003&quot;)$LTMAD,1)` m^3^/s. Mean annual discharge is estimated at `r round(fasstr::calc_longterm_mean(station_number = &quot;08ED002&quot;)$LTMAD,1)` m^3^/s at station 08ED002 located near the outlet of Morice Lake. Flow patterns are typical of high elevation watersheds influenced by coastal weather patterns which receive large amounts of winter precipitation as snow in the winter and large precipitation events in the fall. This leads to peak levels of discharge during snowmelt, typically from May to July with isolated high flows related to rain and rain on snow events common in the fall (Figures \@ref(fig:hydrograph4) - \@ref(fig:hydrology-stats4)).</span></span>
+<span id="cb25-4"><a href="background.html#cb25-4" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb25-5"><a href="background.html#cb25-5" tabindex="-1"></a><span class="co"># ```{r, eval=TRUE}</span></span>
+<span id="cb25-6"><a href="background.html#cb25-6" tabindex="-1"></a><span class="co"># lfpr_create_hydrograph(&quot;08ED002&quot;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="background.html#cb26-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrograph_08ED002.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="background.html#cb27-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/hydrology_stats_08ED002.png&quot;</span>)</span></code></pre></div>
 </div>
 <div id="climate-anomalies" class="section level3 hasAnchor" number="2.1.3">
 <h3><span class="header-section-number">2.1.3</span> Climate Anomalies<a href="background.html#climate-anomalies" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -417,43 +415,43 @@ See <a href="app-climate-anomaly.html#app-climate-anomaly">Appendix 1 - Climate 
 <div id="traditional-fishing-sites-within-the-neexdzii-kwah" class="section level4 hasAnchor" number="2.4.1.2">
 <h4><span class="header-section-number">2.4.1.2</span> Traditional Fishing Sites within the Neexdzii Kwah<a href="background.html#traditional-fishing-sites-within-the-neexdzii-kwah" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Traditional fishing areas located within the Neexdzii Kwah as documented by <span class="citation">Wilson and Rabnett (2007)</span> are detailed in Table <a href="background.html#tab:tab-hist-sites">2.1</a>.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="background.html#cb25-1" tabindex="-1"></a><span class="co"># amazingly tabulizer is now not working with the new version of R.  We use tabulapdf now! (see Price 2014 extraction)</span></span>
-<span id="cb25-2"><a href="background.html#cb25-2" tabindex="-1"></a><span class="co"># Extract historical fishing sites</span></span>
-<span id="cb25-3"><a href="background.html#cb25-3" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;/Users/airvine/zotero/storage/8SUN8SYA/Wilson and Rabnett - 2007 - Fish Passage Assessment of.pdf&quot;</span></span>
-<span id="cb25-4"><a href="background.html#cb25-4" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="background.html#cb25-5" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="background.html#cb25-6" tabindex="-1"></a><span class="do">##define the area to extract table from for first page</span></span>
-<span id="cb25-7"><a href="background.html#cb25-7" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="background.html#cb25-8" tabindex="-1"></a><span class="co">#you would run with this the first time</span></span>
-<span id="cb25-9"><a href="background.html#cb25-9" tabindex="-1"></a>tab_trim <span class="ot">&lt;-</span> tabulizer<span class="sc">::</span><span class="fu">locate_areas</span>(path, <span class="dv">64</span>)</span>
-<span id="cb25-10"><a href="background.html#cb25-10" tabindex="-1"></a></span>
-<span id="cb25-11"><a href="background.html#cb25-11" tabindex="-1"></a><span class="do">##since we have done this before though - numbers below are results</span></span>
-<span id="cb25-12"><a href="background.html#cb25-12" tabindex="-1"></a> <span class="co">#      top      left    bottom     right </span></span>
-<span id="cb25-13"><a href="background.html#cb25-13" tabindex="-1"></a> <span class="co"># 70.98383  84.16353 407.17779 521.81754</span></span>
-<span id="cb25-14"><a href="background.html#cb25-14" tabindex="-1"></a>tab_trim <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="fl">70.98383</span>,  <span class="fl">84.16353</span>, <span class="fl">407.17779</span>, <span class="fl">521.81754</span> ))</span>
-<span id="cb25-15"><a href="background.html#cb25-15" tabindex="-1"></a></span>
-<span id="cb25-16"><a href="background.html#cb25-16" tabindex="-1"></a>names_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Site Location&#39;</span>, <span class="st">&#39;Tradional Site Name&#39;</span>, <span class="st">&#39;Fish Species&#39;</span>)</span>
-<span id="cb25-17"><a href="background.html#cb25-17" tabindex="-1"></a></span>
-<span id="cb25-18"><a href="background.html#cb25-18" tabindex="-1"></a><span class="do">##extract the tables useing the areas you defined</span></span>
-<span id="cb25-19"><a href="background.html#cb25-19" tabindex="-1"></a>table_raw <span class="ot">&lt;-</span> tabulizer<span class="sc">::</span><span class="fu">extract_tables</span>(path,</span>
-<span id="cb25-20"><a href="background.html#cb25-20" tabindex="-1"></a>                                       <span class="at">pages =</span> <span class="fu">seq</span>(<span class="dv">64</span>,<span class="dv">64</span>),</span>
-<span id="cb25-21"><a href="background.html#cb25-21" tabindex="-1"></a>                                        <span class="at">method =</span> <span class="st">&quot;lattice&quot;</span>,</span>
-<span id="cb25-22"><a href="background.html#cb25-22" tabindex="-1"></a>                                        <span class="at">area =</span> tab_trim) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-23"><a href="background.html#cb25-23" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb25-24"><a href="background.html#cb25-24" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb25-25"><a href="background.html#cb25-25" tabindex="-1"></a>  <span class="co"># funky column names so we slice the first row and set them as names</span></span>
-<span id="cb25-26"><a href="background.html#cb25-26" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">nrow</span>(.)) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-27"><a href="background.html#cb25-27" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-28"><a href="background.html#cb25-28" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(names_cols) <span class="do">##should do this as input from &quot;pages&quot; part of the function</span></span>
-<span id="cb25-29"><a href="background.html#cb25-29" tabindex="-1"></a></span>
-<span id="cb25-30"><a href="background.html#cb25-30" tabindex="-1"></a><span class="co"># burn out to csv for safe keeping</span></span>
-<span id="cb25-31"><a href="background.html#cb25-31" tabindex="-1"></a>table_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb25-32"><a href="background.html#cb25-32" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(<span class="st">&#39;data/trad_fish_sites_wilson_rabnett2007FishPassage.csv&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="background.html#cb26-1" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;data/trad_fish_sites_wilson_rabnett2007FishPassage.csv&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a href="background.html#cb26-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(<span class="st">`</span><span class="at">Site Location</span><span class="st">`</span>, <span class="st">&quot;Buck|Maxan|McQuarrie|Bulkley Lake|Hwy.16&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-3"><a href="background.html#cb26-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="st">`</span><span class="at">Tradional Site Name</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-4"><a href="background.html#cb26-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Traditional fishing sites in the Neexdzii Kwah.  Adapted from Wilson and Rabnett 2007.&quot;</span>,</span>
-<span id="cb26-5"><a href="background.html#cb26-5" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="background.html#cb28-1" tabindex="-1"></a><span class="co"># amazingly tabulizer is now not working with the new version of R.  We use tabulapdf now! (see Price 2014 extraction)</span></span>
+<span id="cb28-2"><a href="background.html#cb28-2" tabindex="-1"></a><span class="co"># Extract historical fishing sites</span></span>
+<span id="cb28-3"><a href="background.html#cb28-3" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">&quot;/Users/airvine/zotero/storage/8SUN8SYA/Wilson and Rabnett - 2007 - Fish Passage Assessment of.pdf&quot;</span></span>
+<span id="cb28-4"><a href="background.html#cb28-4" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="background.html#cb28-5" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="background.html#cb28-6" tabindex="-1"></a><span class="do">##define the area to extract table from for first page</span></span>
+<span id="cb28-7"><a href="background.html#cb28-7" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="background.html#cb28-8" tabindex="-1"></a><span class="co">#you would run with this the first time</span></span>
+<span id="cb28-9"><a href="background.html#cb28-9" tabindex="-1"></a>tab_trim <span class="ot">&lt;-</span> tabulizer<span class="sc">::</span><span class="fu">locate_areas</span>(path, <span class="dv">64</span>)</span>
+<span id="cb28-10"><a href="background.html#cb28-10" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="background.html#cb28-11" tabindex="-1"></a><span class="do">##since we have done this before though - numbers below are results</span></span>
+<span id="cb28-12"><a href="background.html#cb28-12" tabindex="-1"></a> <span class="co">#      top      left    bottom     right </span></span>
+<span id="cb28-13"><a href="background.html#cb28-13" tabindex="-1"></a> <span class="co"># 70.98383  84.16353 407.17779 521.81754</span></span>
+<span id="cb28-14"><a href="background.html#cb28-14" tabindex="-1"></a>tab_trim <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="fl">70.98383</span>,  <span class="fl">84.16353</span>, <span class="fl">407.17779</span>, <span class="fl">521.81754</span> ))</span>
+<span id="cb28-15"><a href="background.html#cb28-15" tabindex="-1"></a></span>
+<span id="cb28-16"><a href="background.html#cb28-16" tabindex="-1"></a>names_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;Site Location&#39;</span>, <span class="st">&#39;Tradional Site Name&#39;</span>, <span class="st">&#39;Fish Species&#39;</span>)</span>
+<span id="cb28-17"><a href="background.html#cb28-17" tabindex="-1"></a></span>
+<span id="cb28-18"><a href="background.html#cb28-18" tabindex="-1"></a><span class="do">##extract the tables useing the areas you defined</span></span>
+<span id="cb28-19"><a href="background.html#cb28-19" tabindex="-1"></a>table_raw <span class="ot">&lt;-</span> tabulizer<span class="sc">::</span><span class="fu">extract_tables</span>(path,</span>
+<span id="cb28-20"><a href="background.html#cb28-20" tabindex="-1"></a>                                       <span class="at">pages =</span> <span class="fu">seq</span>(<span class="dv">64</span>,<span class="dv">64</span>),</span>
+<span id="cb28-21"><a href="background.html#cb28-21" tabindex="-1"></a>                                        <span class="at">method =</span> <span class="st">&quot;lattice&quot;</span>,</span>
+<span id="cb28-22"><a href="background.html#cb28-22" tabindex="-1"></a>                                        <span class="at">area =</span> tab_trim) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-23"><a href="background.html#cb28-23" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb28-24"><a href="background.html#cb28-24" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb28-25"><a href="background.html#cb28-25" tabindex="-1"></a>  <span class="co"># funky column names so we slice the first row and set them as names</span></span>
+<span id="cb28-26"><a href="background.html#cb28-26" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="fu">nrow</span>(.)) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-27"><a href="background.html#cb28-27" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-28"><a href="background.html#cb28-28" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(names_cols) <span class="do">##should do this as input from &quot;pages&quot; part of the function</span></span>
+<span id="cb28-29"><a href="background.html#cb28-29" tabindex="-1"></a></span>
+<span id="cb28-30"><a href="background.html#cb28-30" tabindex="-1"></a><span class="co"># burn out to csv for safe keeping</span></span>
+<span id="cb28-31"><a href="background.html#cb28-31" tabindex="-1"></a>table_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb28-32"><a href="background.html#cb28-32" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_csv</span>(<span class="st">&#39;data/trad_fish_sites_wilson_rabnett2007FishPassage.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="background.html#cb29-1" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;data/trad_fish_sites_wilson_rabnett2007FishPassage.csv&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="background.html#cb29-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(stringr<span class="sc">::</span><span class="fu">str_detect</span>(<span class="st">`</span><span class="at">Site Location</span><span class="st">`</span>, <span class="st">&quot;Buck|Maxan|McQuarrie|Bulkley Lake|Hwy.16&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="background.html#cb29-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="st">`</span><span class="at">Tradional Site Name</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-4"><a href="background.html#cb29-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Traditional fishing sites in the Neexdzii Kwah.  Adapted from Wilson and Rabnett 2007.&quot;</span>,</span>
+<span id="cb29-5"><a href="background.html#cb29-5" tabindex="-1"></a>                 <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-hist-sites">Table 2.1: </span>Traditional fishing sites in the Neexdzii Kwah. Adapted from Wilson and Rabnett 2007.
@@ -499,10 +497,10 @@ CO, ST, CH
 Bulkley River, Upstream of Morice R.at Hwy.16 crossing.
 </td>
 <td style="text-align:left;">
-Needz Kwe
+|Needz Kwe
 </td>
 <td style="text-align:left;">
-SK, CO, PK, CH, ST.
+|SK, CO, PK, CH, ST.
 </td>
 </tr>
 <tr>
@@ -556,43 +554,43 @@ CO, ST, CH
 <h4><span class="header-section-number">2.4.1.3</span> Salmon Stock Assessment Data<a href="background.html#salmon-stock-assessment-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Fisheries and Oceans Canada stock assessment data was accessed via the <a href="https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6">NuSEDS-New Salmon Escapement Database System</a>
 through the <a href="https://open.canada.ca/en">Open Government Portal</a> with results presented in Table <a href="background.html#tab:tab-dfo-sad-tr-neexdzii">2.2</a>. A brief memo on the data extraction process is available in the <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos">memos directory</a>.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="background.html#cb27-1" tabindex="-1"></a>dfo_sad_raw <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;data/inputs_raw/All Areas NuSEDS.csv&#39;</span>)</span>
-<span id="cb27-2"><a href="background.html#cb27-2" tabindex="-1"></a><span class="co">#names(dfo_sad_raw)</span></span>
-<span id="cb27-3"><a href="background.html#cb27-3" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="background.html#cb27-4" tabindex="-1"></a>dfo_sad_tr <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;data/inputs_raw/All Areas NuSEDS.csv&#39;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-5"><a href="background.html#cb27-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(waterbody <span class="sc">==</span> <span class="st">&quot;BULKLEY RIVER - UPPER&quot;</span> <span class="sc">|</span> waterbody <span class="sc">==</span> <span class="st">&quot;MORICE RIVER&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-6"><a href="background.html#cb27-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(total_return_to_river)) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-7"><a href="background.html#cb27-7" tabindex="-1"></a>  <span class="fu">arrange</span>(species, analysis_yr) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-8"><a href="background.html#cb27-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(waterbody,</span>
-<span id="cb27-9"><a href="background.html#cb27-9" tabindex="-1"></a>                species, analysis_yr, </span>
-<span id="cb27-10"><a href="background.html#cb27-10" tabindex="-1"></a>                total_return_to_river, </span>
-<span id="cb27-11"><a href="background.html#cb27-11" tabindex="-1"></a>                start_spawn_dt_from,</span>
-<span id="cb27-12"><a href="background.html#cb27-12" tabindex="-1"></a>                peak_spawn_dt_from,</span>
-<span id="cb27-13"><a href="background.html#cb27-13" tabindex="-1"></a>                end_spawn_dt_from, </span>
-<span id="cb27-14"><a href="background.html#cb27-14" tabindex="-1"></a>                accuracy,   </span>
-<span id="cb27-15"><a href="background.html#cb27-15" tabindex="-1"></a>                precision,  </span>
-<span id="cb27-16"><a href="background.html#cb27-16" tabindex="-1"></a>                index_yn,   </span>
-<span id="cb27-17"><a href="background.html#cb27-17" tabindex="-1"></a>                reliability,    </span>
-<span id="cb27-18"><a href="background.html#cb27-18" tabindex="-1"></a>                estimate_stage, </span>
-<span id="cb27-19"><a href="background.html#cb27-19" tabindex="-1"></a>                estimate_classification,    </span>
-<span id="cb27-20"><a href="background.html#cb27-20" tabindex="-1"></a>                no_inspections_used,    </span>
-<span id="cb27-21"><a href="background.html#cb27-21" tabindex="-1"></a>                estimate_method)</span>
-<span id="cb27-22"><a href="background.html#cb27-22" tabindex="-1"></a></span>
-<span id="cb27-23"><a href="background.html#cb27-23" tabindex="-1"></a><span class="co"># started looking at GT</span></span>
-<span id="cb27-24"><a href="background.html#cb27-24" tabindex="-1"></a><span class="co"># dfo_sad_tr |&gt; </span></span>
-<span id="cb27-25"><a href="background.html#cb27-25" tabindex="-1"></a><span class="co">#   dplyr::filter(waterbody == &quot;BULKLEY RIVER - UPPER&quot;) |&gt; </span></span>
-<span id="cb27-26"><a href="background.html#cb27-26" tabindex="-1"></a><span class="co">#   dplyr::select(-waterbody) |&gt;</span></span>
-<span id="cb27-27"><a href="background.html#cb27-27" tabindex="-1"></a><span class="co">#   gt::gt() |&gt;</span></span>
-<span id="cb27-28"><a href="background.html#cb27-28" tabindex="-1"></a><span class="co">#   gt::tab_options(table.font.size = 10) |&gt; </span></span>
-<span id="cb27-29"><a href="background.html#cb27-29" tabindex="-1"></a><span class="co">#   # gt::opt_interactive(page_size_default = 5, use_filters = TRUE, use_compact_mode = TRUE) |&gt; </span></span>
-<span id="cb27-30"><a href="background.html#cb27-30" tabindex="-1"></a><span class="co">#   gt::tab_caption(caption = md(&quot;Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with total return to river data.&quot;))</span></span>
-<span id="cb27-31"><a href="background.html#cb27-31" tabindex="-1"></a></span>
-<span id="cb27-32"><a href="background.html#cb27-32" tabindex="-1"></a></span>
-<span id="cb27-33"><a href="background.html#cb27-33" tabindex="-1"></a>dfo_sad_tr <span class="sc">%&gt;%</span></span>
-<span id="cb27-34"><a href="background.html#cb27-34" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(waterbody <span class="sc">==</span> <span class="st">&quot;BULKLEY RIVER - UPPER&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb27-35"><a href="background.html#cb27-35" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>waterbody) <span class="sc">|&gt;</span> </span>
-<span id="cb27-36"><a href="background.html#cb27-36" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with total return to river data.&quot;</span>,</span>
-<span id="cb27-37"><a href="background.html#cb27-37" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="background.html#cb30-1" tabindex="-1"></a>dfo_sad_raw <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;data/inputs_raw/All Areas NuSEDS.csv&#39;</span>)</span>
+<span id="cb30-2"><a href="background.html#cb30-2" tabindex="-1"></a><span class="co">#names(dfo_sad_raw)</span></span>
+<span id="cb30-3"><a href="background.html#cb30-3" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="background.html#cb30-4" tabindex="-1"></a>dfo_sad_tr <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;data/inputs_raw/All Areas NuSEDS.csv&#39;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-5"><a href="background.html#cb30-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(waterbody <span class="sc">==</span> <span class="st">&quot;BULKLEY RIVER - UPPER&quot;</span> <span class="sc">|</span> waterbody <span class="sc">==</span> <span class="st">&quot;MORICE RIVER&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-6"><a href="background.html#cb30-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(total_return_to_river)) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-7"><a href="background.html#cb30-7" tabindex="-1"></a>  <span class="fu">arrange</span>(species, analysis_yr) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-8"><a href="background.html#cb30-8" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(waterbody,</span>
+<span id="cb30-9"><a href="background.html#cb30-9" tabindex="-1"></a>                species, analysis_yr, </span>
+<span id="cb30-10"><a href="background.html#cb30-10" tabindex="-1"></a>                total_return_to_river, </span>
+<span id="cb30-11"><a href="background.html#cb30-11" tabindex="-1"></a>                start_spawn_dt_from,</span>
+<span id="cb30-12"><a href="background.html#cb30-12" tabindex="-1"></a>                peak_spawn_dt_from,</span>
+<span id="cb30-13"><a href="background.html#cb30-13" tabindex="-1"></a>                end_spawn_dt_from, </span>
+<span id="cb30-14"><a href="background.html#cb30-14" tabindex="-1"></a>                accuracy,   </span>
+<span id="cb30-15"><a href="background.html#cb30-15" tabindex="-1"></a>                precision,  </span>
+<span id="cb30-16"><a href="background.html#cb30-16" tabindex="-1"></a>                index_yn,   </span>
+<span id="cb30-17"><a href="background.html#cb30-17" tabindex="-1"></a>                reliability,    </span>
+<span id="cb30-18"><a href="background.html#cb30-18" tabindex="-1"></a>                estimate_stage, </span>
+<span id="cb30-19"><a href="background.html#cb30-19" tabindex="-1"></a>                estimate_classification,    </span>
+<span id="cb30-20"><a href="background.html#cb30-20" tabindex="-1"></a>                no_inspections_used,    </span>
+<span id="cb30-21"><a href="background.html#cb30-21" tabindex="-1"></a>                estimate_method)</span>
+<span id="cb30-22"><a href="background.html#cb30-22" tabindex="-1"></a></span>
+<span id="cb30-23"><a href="background.html#cb30-23" tabindex="-1"></a><span class="co"># started looking at GT</span></span>
+<span id="cb30-24"><a href="background.html#cb30-24" tabindex="-1"></a><span class="co"># dfo_sad_tr |&gt; </span></span>
+<span id="cb30-25"><a href="background.html#cb30-25" tabindex="-1"></a><span class="co">#   dplyr::filter(waterbody == &quot;BULKLEY RIVER - UPPER&quot;) |&gt; </span></span>
+<span id="cb30-26"><a href="background.html#cb30-26" tabindex="-1"></a><span class="co">#   dplyr::select(-waterbody) |&gt;</span></span>
+<span id="cb30-27"><a href="background.html#cb30-27" tabindex="-1"></a><span class="co">#   gt::gt() |&gt;</span></span>
+<span id="cb30-28"><a href="background.html#cb30-28" tabindex="-1"></a><span class="co">#   gt::tab_options(table.font.size = 10) |&gt; </span></span>
+<span id="cb30-29"><a href="background.html#cb30-29" tabindex="-1"></a><span class="co">#   # gt::opt_interactive(page_size_default = 5, use_filters = TRUE, use_compact_mode = TRUE) |&gt; </span></span>
+<span id="cb30-30"><a href="background.html#cb30-30" tabindex="-1"></a><span class="co">#   gt::tab_caption(caption = md(&quot;Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with total return to river data.&quot;))</span></span>
+<span id="cb30-31"><a href="background.html#cb30-31" tabindex="-1"></a></span>
+<span id="cb30-32"><a href="background.html#cb30-32" tabindex="-1"></a></span>
+<span id="cb30-33"><a href="background.html#cb30-33" tabindex="-1"></a>dfo_sad_tr <span class="sc">%&gt;%</span></span>
+<span id="cb30-34"><a href="background.html#cb30-34" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(waterbody <span class="sc">==</span> <span class="st">&quot;BULKLEY RIVER - UPPER&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb30-35"><a href="background.html#cb30-35" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>waterbody) <span class="sc">|&gt;</span> </span>
+<span id="cb30-36"><a href="background.html#cb30-36" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Fisheries and Oceans Canada stock assessment data for the Bulkley River - Upper.  Data is filtered to only include records with total return to river data.&quot;</span>,</span>
+<span id="cb30-37"><a href="background.html#cb30-37" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -5753,54 +5751,54 @@ Unknown Estimate Method
 </table>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="background.html#cb28-1" tabindex="-1"></a>dfo_sad_raw <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="background.html#cb28-2" tabindex="-1"></a>  <span class="fu">ldfo_sad_plot_line</span>(<span class="st">&quot;BULKLEY RIVER - UPPER&quot;</span>, <span class="st">&quot;total_return_to_river&quot;</span>, <span class="st">&quot;species&quot;</span>, <span class="st">&quot;analysis_yr&quot;</span>, <span class="at">col_group_exclude =</span> <span class="st">&quot;Coho&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="background.html#cb31-1" tabindex="-1"></a>dfo_sad_raw <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="background.html#cb31-2" tabindex="-1"></a>  <span class="fu">ldfo_sad_plot_line</span>(<span class="st">&quot;BULKLEY RIVER - UPPER&quot;</span>, <span class="st">&quot;total_return_to_river&quot;</span>, <span class="st">&quot;species&quot;</span>, <span class="st">&quot;analysis_yr&quot;</span>, <span class="at">col_group_exclude =</span> <span class="st">&quot;Coho&quot;</span>)</span></code></pre></div>
 <p><br></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="background.html#cb29-1" tabindex="-1"></a>dfo_sad_raw <span class="sc">%&gt;%</span></span>
-<span id="cb29-2"><a href="background.html#cb29-2" tabindex="-1"></a>  <span class="fu">ldfo_sad_plot_line</span>(<span class="st">&quot;BULKLEY RIVER - UPPER&quot;</span>, <span class="st">&quot;natural_adult_spawners&quot;</span>, <span class="st">&quot;species&quot;</span>, <span class="st">&quot;analysis_yr&quot;</span>, <span class="at">col_group_exclude =</span> <span class="st">&quot;Coho&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="background.html#cb30-1" tabindex="-1"></a><span class="co"># </span><span class="al">###</span><span class="co"> Morice River</span></span>
-<span id="cb30-2"><a href="background.html#cb30-2" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb30-3"><a href="background.html#cb30-3" tabindex="-1"></a><span class="co"># Detailed reviews of Morice River watershed fisheries can be found in @bustard_schell2002ConservingMorice, @gottesfeld_etal2002ConservingSkeena, @schell2003BriefOverview, @gottesfeld_rabnett2007SkeenaFish, and @ilmb2007MoriceLand with a comprehensive review of water quality by @oliver2018Analysiswater Overall, the Morice watershed contains high fisheries values as a major producer of chinook, pink, sockeye, coho and steelhead.</span></span>
-<span id="cb30-4"><a href="background.html#cb30-4" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb30-5"><a href="background.html#cb30-5" tabindex="-1"></a><span class="co"># #### Salmon Stock Assessment Data</span></span>
-<span id="cb30-6"><a href="background.html#cb30-6" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb30-7"><a href="background.html#cb30-7" tabindex="-1"></a><span class="sc">&lt;!--</span> <span class="co"># Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6) --&gt;</span></span>
-<span id="cb30-8"><a href="background.html#cb30-8" tabindex="-1"></a><span class="er">&lt;</span><span class="sc">!--</span> <span class="co"># through the [Open Government Portal](https://open.canada.ca/en) with results presented in Table \@ref(tab:tab-dfo-sad-tr-morice). A brief memo on the data extraction process is available in the [memos directory](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos). --&gt;</span></span></code></pre></div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="background.html#cb31-1" tabindex="-1"></a>dfo_sad_tr <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="background.html#cb31-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(waterbody <span class="sc">==</span> <span class="st">&quot;MORICE RIVER&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-3"><a href="background.html#cb31-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>waterbody) <span class="sc">|&gt;</span> </span>
-<span id="cb31-4"><a href="background.html#cb31-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Fisheries and Oceans Canada stock assessment data for the Morice River.  Data is filtered to only include records with total return to river data.&quot;</span>,</span>
-<span id="cb31-5"><a href="background.html#cb31-5" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="background.html#cb32-1" tabindex="-1"></a><span class="do">#### Salmon Stock Assessment Data</span></span>
-<span id="cb32-2"><a href="background.html#cb32-2" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="background.html#cb32-3" tabindex="-1"></a>dfo_sad_raw <span class="sc">%&gt;%</span></span>
-<span id="cb32-4"><a href="background.html#cb32-4" tabindex="-1"></a>  <span class="fu">ldfo_sad_plot_line</span>(<span class="st">&quot;MORICE RIVER&quot;</span>, <span class="st">&quot;total_return_to_river&quot;</span>, <span class="st">&quot;species&quot;</span>, <span class="st">&quot;analysis_yr&quot;</span>, <span class="at">col_group_exclude =</span> <span class="st">&quot;Coho&quot;</span>, <span class="at">eval =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="background.html#cb33-1" tabindex="-1"></a>dfo_sad_raw <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a href="background.html#cb33-2" tabindex="-1"></a>  <span class="fu">ldfo_sad_plot_line</span>(<span class="st">&quot;MORICE RIVER&quot;</span>, <span class="st">&quot;natural_adult_spawners&quot;</span>, <span class="st">&quot;species&quot;</span>, <span class="st">&quot;analysis_yr&quot;</span>, <span class="at">col_group_exclude =</span> <span class="st">&quot;Coho&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="background.html#cb32-1" tabindex="-1"></a>dfo_sad_raw <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="background.html#cb32-2" tabindex="-1"></a>  <span class="fu">ldfo_sad_plot_line</span>(<span class="st">&quot;BULKLEY RIVER - UPPER&quot;</span>, <span class="st">&quot;natural_adult_spawners&quot;</span>, <span class="st">&quot;species&quot;</span>, <span class="st">&quot;analysis_yr&quot;</span>, <span class="at">col_group_exclude =</span> <span class="st">&quot;Coho&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="background.html#cb33-1" tabindex="-1"></a><span class="co"># </span><span class="al">###</span><span class="co"> Morice River</span></span>
+<span id="cb33-2"><a href="background.html#cb33-2" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb33-3"><a href="background.html#cb33-3" tabindex="-1"></a><span class="co"># Detailed reviews of Morice River watershed fisheries can be found in @bustard_schell2002ConservingMorice, @gottesfeld_etal2002ConservingSkeena, @schell2003BriefOverview, @gottesfeld_rabnett2007SkeenaFish, and @ilmb2007MoriceLand with a comprehensive review of water quality by @oliver2018Analysiswater Overall, the Morice watershed contains high fisheries values as a major producer of chinook, pink, sockeye, coho and steelhead.</span></span>
+<span id="cb33-4"><a href="background.html#cb33-4" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb33-5"><a href="background.html#cb33-5" tabindex="-1"></a><span class="co"># #### Salmon Stock Assessment Data</span></span>
+<span id="cb33-6"><a href="background.html#cb33-6" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb33-7"><a href="background.html#cb33-7" tabindex="-1"></a><span class="sc">&lt;!--</span> <span class="co"># Fisheries and Oceans Canada stock assessment data was accessed via the [NuSEDS-New Salmon Escapement Database System](https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6) --&gt;</span></span>
+<span id="cb33-8"><a href="background.html#cb33-8" tabindex="-1"></a><span class="er">&lt;</span><span class="sc">!--</span> <span class="co"># through the [Open Government Portal](https://open.canada.ca/en) with results presented in Table \@ref(tab:tab-dfo-sad-tr-morice). A brief memo on the data extraction process is available in the [memos directory](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos). --&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="background.html#cb34-1" tabindex="-1"></a>dfo_sad_tr <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="background.html#cb34-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(waterbody <span class="sc">==</span> <span class="st">&quot;MORICE RIVER&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb34-3"><a href="background.html#cb34-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>waterbody) <span class="sc">|&gt;</span> </span>
+<span id="cb34-4"><a href="background.html#cb34-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Fisheries and Oceans Canada stock assessment data for the Morice River.  Data is filtered to only include records with total return to river data.&quot;</span>,</span>
+<span id="cb34-5"><a href="background.html#cb34-5" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="background.html#cb35-1" tabindex="-1"></a><span class="do">#### Salmon Stock Assessment Data</span></span>
+<span id="cb35-2"><a href="background.html#cb35-2" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="background.html#cb35-3" tabindex="-1"></a>dfo_sad_raw <span class="sc">%&gt;%</span></span>
+<span id="cb35-4"><a href="background.html#cb35-4" tabindex="-1"></a>  <span class="fu">ldfo_sad_plot_line</span>(<span class="st">&quot;MORICE RIVER&quot;</span>, <span class="st">&quot;total_return_to_river&quot;</span>, <span class="st">&quot;species&quot;</span>, <span class="st">&quot;analysis_yr&quot;</span>, <span class="at">col_group_exclude =</span> <span class="st">&quot;Coho&quot;</span>, <span class="at">eval =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="background.html#cb36-1" tabindex="-1"></a>dfo_sad_raw <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a href="background.html#cb36-2" tabindex="-1"></a>  <span class="fu">ldfo_sad_plot_line</span>(<span class="st">&quot;MORICE RIVER&quot;</span>, <span class="st">&quot;natural_adult_spawners&quot;</span>, <span class="st">&quot;species&quot;</span>, <span class="st">&quot;analysis_yr&quot;</span>, <span class="at">col_group_exclude =</span> <span class="st">&quot;Coho&quot;</span>)</span></code></pre></div>
 </div>
 <div id="fish-species" class="section level4 hasAnchor" number="2.4.1.4">
 <h4><span class="header-section-number">2.4.1.4</span> Fish Species<a href="background.html#fish-species" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Fish species recorded in the greater Bulkley River watershed group are detailed in Table <a href="background.html#tab:fiss-species-table">2.3</a> <span class="citation">(MoE 2019)</span>. Summaries of fish species life history, biology, stock status, and traditional use are documented in <span class="citation">Schell (2003)</span>, <span class="citation">Wilson and Rabnett (2007)</span>, <span class="citation">Allen Gottesfeld, Rabnett, and Hall (2002)</span> and <span class="citation">Office of the Wet’suwet’en (2013)</span>. <span class="citation">Wilson and Rabnett (2007)</span> discuss chinook, pink, sockeye, coho, steelhead and indigenous freshwater Bulkley River fish stocks within the context of key lower and upper Bulkley River habitats such as the Suskwa River, Station Creek, Harold Price Creek, Telkwa River and Buck Creek. Key areas within the upper Bulkley River watershed with high fishery values, documented in <span class="citation">Schell (2003)</span>, are the upper Bulkley mainstem, Buck Creek, Dungate Creek, Barren Creek, McQuarrie Creek, Byman Creek, Richfield Creek, Johnny David Creek, Aitken Creek and Emerson Creek. Some areas of high fisheries values for chinook, sockeye and coho are noted in <span class="citation">Bustard and Schell (2002)</span> as McBride Lake, Nanika Lake, and Morice Lake watersheds.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="background.html#cb34-1" tabindex="-1"></a><span class="co"># In the 1990&#39;s the Morice River watershed, @gottesfeld_rabnett2007SkeenaFish estimated that chinook comprised 30% of the total Skeena system chinook escapements. It is estimated that Morice River coho comprise approximatley 4% of the Skeena escapement with a declining trend noted since the 1950 in @gottesfeld_rabnett2007SkeenaFish Coho spawn in major tributaries and small streams ideally at locations where downstream dispersal can result in seeding of prime off channel habitats including warm productive sloughs and side channels. Of all the salmon species, coho rely on small tributaries the most [@bustard_schell2002ConservingMorice]. @bustard_schell2002ConservingMorice report that much of the distribution of coho into non-natal tributaries occurs during high flow periods of May - early July with road culverts blocking migration into these habitats.</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="background.html#cb37-1" tabindex="-1"></a><span class="co"># In the 1990&#39;s the Morice River watershed, @gottesfeld_rabnett2007SkeenaFish estimated that chinook comprised 30% of the total Skeena system chinook escapements. It is estimated that Morice River coho comprise approximatley 4% of the Skeena escapement with a declining trend noted since the 1950 in @gottesfeld_rabnett2007SkeenaFish Coho spawn in major tributaries and small streams ideally at locations where downstream dispersal can result in seeding of prime off channel habitats including warm productive sloughs and side channels. Of all the salmon species, coho rely on small tributaries the most [@bustard_schell2002ConservingMorice]. @bustard_schell2002ConservingMorice report that much of the distribution of coho into non-natal tributaries occurs during high flow periods of May - early July with road culverts blocking migration into these habitats.</span></span></code></pre></div>
 <!-- <br> -->
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="background.html#cb35-1" tabindex="-1"></a>fiss_species_table <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;data/inputs_extracted/fiss_species_table.csv&#39;</span>)</span>
-<span id="cb35-2"><a href="background.html#cb35-2" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="background.html#cb35-3" tabindex="-1"></a>fiss_species_table <span class="sc">|&gt;</span> </span>
-<span id="cb35-4"><a href="background.html#cb35-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Morice) <span class="sc">|&gt;</span> </span>
-<span id="cb35-5"><a href="background.html#cb35-5" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&#39;Fish species recorded in the Bulkley River watershed groups.&#39;</span>, </span>
-<span id="cb35-6"><a href="background.html#cb35-6" tabindex="-1"></a>                 <span class="at">footnote_text =</span> <span class="st">&#39;COSEWIC abbreviations : </span></span>
-<span id="cb35-7"><a href="background.html#cb35-7" tabindex="-1"></a><span class="st">                 SC - Special concern </span></span>
-<span id="cb35-8"><a href="background.html#cb35-8" tabindex="-1"></a><span class="st">                 DD - Data deficient</span></span>
-<span id="cb35-9"><a href="background.html#cb35-9" tabindex="-1"></a><span class="st">                 NAR - Not at risk</span></span>
-<span id="cb35-10"><a href="background.html#cb35-10" tabindex="-1"></a><span class="st">                 E - Endangered</span></span>
-<span id="cb35-11"><a href="background.html#cb35-11" tabindex="-1"></a><span class="st">                 T - Threatened</span></span>
-<span id="cb35-12"><a href="background.html#cb35-12" tabindex="-1"></a><span class="st">                 </span></span>
-<span id="cb35-13"><a href="background.html#cb35-13" tabindex="-1"></a><span class="st">                 BC List definitions : </span></span>
-<span id="cb35-14"><a href="background.html#cb35-14" tabindex="-1"></a><span class="st">                 Yellow - Species that is apparently secure </span></span>
-<span id="cb35-15"><a href="background.html#cb35-15" tabindex="-1"></a><span class="st">                 Blue - Species that is of special concern</span></span>
-<span id="cb35-16"><a href="background.html#cb35-16" tabindex="-1"></a><span class="st">                 Exotic - Species that have been moved beyond their natural range as a result of human activity</span></span>
-<span id="cb35-17"><a href="background.html#cb35-17" tabindex="-1"></a><span class="st">                 &#39;</span>,</span>
-<span id="cb35-18"><a href="background.html#cb35-18" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="background.html#cb38-1" tabindex="-1"></a>fiss_species_table <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&#39;data/inputs_extracted/fiss_species_table.csv&#39;</span>)</span>
+<span id="cb38-2"><a href="background.html#cb38-2" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="background.html#cb38-3" tabindex="-1"></a>fiss_species_table <span class="sc">|&gt;</span> </span>
+<span id="cb38-4"><a href="background.html#cb38-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Morice) <span class="sc">|&gt;</span> </span>
+<span id="cb38-5"><a href="background.html#cb38-5" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&#39;Fish species recorded in the Bulkley River watershed groups.&#39;</span>, </span>
+<span id="cb38-6"><a href="background.html#cb38-6" tabindex="-1"></a>                 <span class="at">footnote_text =</span> <span class="st">&#39;COSEWIC abbreviations : </span></span>
+<span id="cb38-7"><a href="background.html#cb38-7" tabindex="-1"></a><span class="st">                 SC - Special concern </span></span>
+<span id="cb38-8"><a href="background.html#cb38-8" tabindex="-1"></a><span class="st">                 DD - Data deficient</span></span>
+<span id="cb38-9"><a href="background.html#cb38-9" tabindex="-1"></a><span class="st">                 NAR - Not at risk</span></span>
+<span id="cb38-10"><a href="background.html#cb38-10" tabindex="-1"></a><span class="st">                 E - Endangered</span></span>
+<span id="cb38-11"><a href="background.html#cb38-11" tabindex="-1"></a><span class="st">                 T - Threatened</span></span>
+<span id="cb38-12"><a href="background.html#cb38-12" tabindex="-1"></a><span class="st">                 </span></span>
+<span id="cb38-13"><a href="background.html#cb38-13" tabindex="-1"></a><span class="st">                 BC List definitions : </span></span>
+<span id="cb38-14"><a href="background.html#cb38-14" tabindex="-1"></a><span class="st">                 Yellow - Species that is apparently secure </span></span>
+<span id="cb38-15"><a href="background.html#cb38-15" tabindex="-1"></a><span class="st">                 Blue - Species that is of special concern</span></span>
+<span id="cb38-16"><a href="background.html#cb38-16" tabindex="-1"></a><span class="st">                 Exotic - Species that have been moved beyond their natural range as a result of human activity</span></span>
+<span id="cb38-17"><a href="background.html#cb38-17" tabindex="-1"></a><span class="st">                 &#39;</span>,</span>
+<span id="cb38-18"><a href="background.html#cb38-18" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
@@ -6908,8 +6906,8 @@ Yes
 <div id="process-based-restoration" class="section level3 hasAnchor" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> Process-based Restoration<a href="background.html#process-based-restoration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Process-based restoration is a relatively new approach to river restoration and is based on the understanding that river form and function is driven by the physical, chemical, and biological processes that take place within them <span class="citation">(Beechie et al. 2010)</span>. Together, these processes shape rivers and flood planes, which is known as a riverscape <span class="citation">(Shahverdian et al. 2019)</span>. The goal of process-based restoration is to restore these processes to their the natural rates and magnitudes (essentially stage 0), which leads to the system restoring itself through biological processes and requires minimal corrective intervention <span class="citation">Polvi and Wohl (2013)</span>. This approach is in contrast to traditional river restoration, which focuses on restoring uniform and static form to the river, such as the channel shape, and is often done through hard engineering and has high costs <span class="citation">(Beechie et al. 2010)</span>. Principles of process-based restoration adapted from <span class="citation">Beechie et al. (2010)</span> are included in Table <a href="background.html#tab:tab-rest-princ-pb">2.4</a>.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="background.html#cb36-1" tabindex="-1"></a>restoration_principles_pb <span class="sc">%&gt;%</span> </span>
-<span id="cb36-2"><a href="background.html#cb36-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> restoration_principles_pb_caption, <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="background.html#cb39-1" tabindex="-1"></a>restoration_principles_pb <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="background.html#cb39-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> restoration_principles_pb_caption, <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-rest-princ-pb">Table 2.4: </span>Principles of process-based restoration adapted from Beechie et al. (2010). Developed with the aid of GPT-4 as tracked in this link <a href="https://chat.openai.com/share/fb0de9b0-0d79-40f8-aec4-a35ac14c1164" class="uri">https://chat.openai.com/share/fb0de9b0-0d79-40f8-aec4-a35ac14c1164</a>.
@@ -6960,20 +6958,20 @@ Restoring natural areas is a slow process, and it may take time to see the resul
 </tbody>
 </table>
 <p><br></p>
-<p>Below is an example of process-based restoration using stage 0 methodology done at Deer Creek in Oregon, USA. In this project they filled in incised channels and added large wood to to the river to restore the natural floodplain elevation and re-establish multiple channels (Figure <a href="background.html#fig:deer-creek-plan">2.5</a>)<span class="citation">(Meyer 2018)</span>. Although this project used relatively aggressive restoration techniques, they observed immediate improvements and the benefits were self-sustaining (Figure <a href="background.html#fig:deer-creek-action">2.6</a>)<span class="citation">(Meyer 2018)</span>.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="background.html#cb37-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/stage0_before_after.png&quot;</span>)</span></code></pre></div>
+<p>Below is an example of process-based restoration using stage 0 methodology done at Deer Creek in Oregon, USA. In this project they filled in incised channels and added large wood to to the river to restore the natural floodplain elevation and re-establish multiple channels (Figure <a href="background.html#fig:deer-creek-plan">2.3</a>)<span class="citation">(Meyer 2018)</span>. Although this project used relatively aggressive restoration techniques, they observed immediate improvements and the benefits were self-sustaining (Figure <a href="background.html#fig:deer-creek-action">2.4</a>)<span class="citation">(Meyer 2018)</span>.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="background.html#cb40-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/stage0_before_after.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:deer-creek-plan"></span>
 <img src="fig/stage0_before_after.png" alt="An example of process-based restoration using stage 0 methodology to restored the natural floodplain elevation. In this project they filled in incised channels and added large wood to restore the natural floodplain elevation and re-establish multiple channels (Meyer, 2018)." width="100%" />
 <p class="caption">
-Figure 2.5: An example of process-based restoration using stage 0 methodology to restored the natural floodplain elevation. In this project they filled in incised channels and added large wood to restore the natural floodplain elevation and re-establish multiple channels (Meyer, 2018).
+Figure 2.3: An example of process-based restoration using stage 0 methodology to restored the natural floodplain elevation. In this project they filled in incised channels and added large wood to restore the natural floodplain elevation and re-establish multiple channels (Meyer, 2018).
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="background.html#cb38-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/deer_creek_before_after.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="background.html#cb41-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/deer_creek_before_after.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:deer-creek-action"></span>
 <img src="fig/deer_creek_before_after.png" alt="Before and after restoration took place at Deer Creek, USA. They observed imediate improvements to the habitat and the benefits were self-sustaining (Meyer, 2018)." width="100%" />
 <p class="caption">
-Figure 2.6: Before and after restoration took place at Deer Creek, USA. They observed imediate improvements to the habitat and the benefits were self-sustaining (Meyer, 2018).
+Figure 2.4: Before and after restoration took place at Deer Creek, USA. They observed imediate improvements to the habitat and the benefits were self-sustaining (Meyer, 2018).
 </p>
 </div>
 <p>Process-based restoration also includes many low-cost and low-tech restoration techniques. Resources are sourced from near-by areas, and the restoration is often done by hand, which makes it more accessible to a broad audience and can be done on a smaller scale <span class="citation">(Shahverdian et al. 2019)</span>. The primary goal of low-tech restoration is to improve the health of as many riverscapes possible by “letting the system do the work” <span class="citation">(Shahverdian et al. 2019)</span>.</p>
@@ -6988,31 +6986,31 @@ Figure 2.6: Before and after restoration took place at Deer Creek, USA. They obs
 </div>
 <div id="stage-0" class="section level3 hasAnchor" number="2.5.2">
 <h3><span class="header-section-number">2.5.2</span> Stage 0<a href="background.html#stage-0" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The Stream Evolution Model (SEM) is used to understanding how the morphology of channels (such as rivers or streams) respond to disturbances like changes in base level, channelization, or alterations in flow and sediment regimes (Figure <a href="background.html#fig:SEM-stages">2.7</a>)<span class="citation">(Cluer and Thorne 2014)</span>. An important features of the SEM is the inclusion of stage 0, which represents the state of the river before disturbances and is categorized as either an anastomosing wet woodland or an anastomosing grassed wetland (Figure <a href="background.html#fig:SEM-stages">2.7</a>)<span class="citation">(Cluer and Thorne 2014)</span>.</p>
+<p>The Stream Evolution Model (SEM) is used to understanding how the morphology of channels (such as rivers or streams) respond to disturbances like changes in base level, channelization, or alterations in flow and sediment regimes (Figure <a href="background.html#fig:SEM-stages">2.5</a>)<span class="citation">(Cluer and Thorne 2014)</span>. An important features of the SEM is the inclusion of stage 0, which represents the state of the river before disturbances and is categorized as either an anastomosing wet woodland or an anastomosing grassed wetland (Figure <a href="background.html#fig:SEM-stages">2.5</a>)<span class="citation">(Cluer and Thorne 2014)</span>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="background.html#cb39-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/SEM_stages.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="background.html#cb42-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/SEM_stages.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:SEM-stages"></span>
 <img src="fig/SEM_stages.png" alt="Cluer and Thorne’s (2014) stream evolution model which introduced stage 0, a stage that represents the state of the river before disturbances." width="100%" />
 <p class="caption">
-Figure 2.7: Cluer and Thorne’s (2014) stream evolution model which introduced stage 0, a stage that represents the state of the river before disturbances.
+Figure 2.5: Cluer and Thorne’s (2014) stream evolution model which introduced stage 0, a stage that represents the state of the river before disturbances.
 </p>
 </div>
 <p><br></p>
-<p>The SEM also assigns a hydrogeomorphic attributes and habitat and ecosystem benefits score to each stage (Figure <a href="background.html#fig:SEM-hab-benifits">2.8</a>). Stage 0 is the ultimate restoration goal, but the SEM suggests that there is a big difference in performance between disconnected and incised streams (stages 3-6) and connected streams (stages 7-1), and that stages 7-1 are the best targets for restoration because they have the highest ecosystem potential (Figure <a href="background.html#fig:SEM-hab-benifits">2.8</a>)<span class="citation">(Cluer and Thorne 2014)</span>.
+<p>The SEM also assigns a hydrogeomorphic attributes and habitat and ecosystem benefits score to each stage (Figure <a href="background.html#fig:SEM-hab-benifits">2.6</a>). Stage 0 is the ultimate restoration goal, but the SEM suggests that there is a big difference in performance between disconnected and incised streams (stages 3-6) and connected streams (stages 7-1), and that stages 7-1 are the best targets for restoration because they have the highest ecosystem potential (Figure <a href="background.html#fig:SEM-hab-benifits">2.6</a>)<span class="citation">(Cluer and Thorne 2014)</span>.
 <br></p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="background.html#cb40-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/SEM_hab_ben.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="background.html#cb43-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/SEM_hab_ben.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:SEM-hab-benifits"></span>
 <img src="fig/SEM_hab_ben.png" alt="Habitat and ecosystem benifits as well as hydrogeomorphic attributes associated with each stage of the SEM, suggesting that stages 7-1 have the highest ecosystem potential (Cluer and Thorne, 2014)." width="100%" />
 <p class="caption">
-Figure 2.8: Habitat and ecosystem benifits as well as hydrogeomorphic attributes associated with each stage of the SEM, suggesting that stages 7-1 have the highest ecosystem potential (Cluer and Thorne, 2014).
+Figure 2.6: Habitat and ecosystem benifits as well as hydrogeomorphic attributes associated with each stage of the SEM, suggesting that stages 7-1 have the highest ecosystem potential (Cluer and Thorne, 2014).
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="background.html#cb41-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/benefits.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="background.html#cb44-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/benefits.png&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:all-benefits"></span>
 <img src="fig/benefits.png" alt="Examples of how a stage 0 stream can benifit the entire riverscape and play an important role in the biophysical interactions between organisms (Hauer et al., 2016)." width="100%" />
 <p class="caption">
-Figure 2.9: Examples of how a stage 0 stream can benifit the entire riverscape and play an important role in the biophysical interactions between organisms (Hauer et al., 2016).
+Figure 2.7: Examples of how a stage 0 stream can benifit the entire riverscape and play an important role in the biophysical interactions between organisms (Hauer et al., 2016).
 </p>
 </div>
 
@@ -7039,42 +7037,42 @@ Figure 2.9: Examples of how a stage 0 stream can benifit the entire riverscape a
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Restoration_Neexdzii_Kwah_2024.pdf", "Restoration_Neexdzii_Kwah_2024.html"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Restoration_Neexdzii_Kwah_2024.pdf", "Restoration_Neexdzii_Kwah_2024.html"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

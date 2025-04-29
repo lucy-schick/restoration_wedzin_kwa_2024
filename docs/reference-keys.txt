@@ -1,8 +1,6 @@
 tab:tab-exec-sum-cap
-fig:hydrograph1
-fig:hydrology-stats1
-fig:hydrograph2
-fig:hydrology-stats2
+fig:hydrograph-fasstr1
+fig:hydrograph-fasstr2
 tab:tab-hist-sites
 tab:tab-dfo-sad-tr-neexdzii
 tab:fiss-species-table
@@ -24,6 +22,8 @@ tab:tab-gis-params-cap
 tab:tab-ree1-caption
 tab:tab-skt-pkgs-cap
 tab:tab-skt-geo-cap
+tab:tab-esi-indicators-cap
+tab:tab-esi-fields-cap
 fig:model-riparian-caption
 introduction
 wetsuweten
@@ -69,9 +69,11 @@ collaborative-gis-environment-1
 methodology
 drone-imagery
 historic-information-regarding-impacts-and-restoration-initiatives-1
+mitchell1997riparianinstream---riparian-and-in-stream-assessment-of-the-bulkley-river-system---an-examination-and-priorization-of-impacts-on-the-tributaries-to-the-bulkley-river-mainstem
 price2014upperbulkleya---upper-bulkley-floodplain-habitat-modifications-physical-barriers-and-sites-of-potential-importance-to-salmonids
 ncfdc1998midbulkleydetailed---mid-bulkley-detailed-fish-habitatriparianchannel-assessment-for-watershed-restoration
 gaboury_smith2016developmentaquatic---development-of-aquatic-restoration-designs-and-on-farm-cattle-management-improvements-within-the-wetsuweten-irst-nation-territory
+skeenasustainabilityassessmentforum2021skeenasustainability---state-of-the-value-report-for-fish-and-fish-habitat
 future-restoration-site-selection-1
 evaluation-of-historic-and-current-imagery-1
 fish-passage-1
