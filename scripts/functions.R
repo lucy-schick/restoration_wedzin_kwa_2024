@@ -164,26 +164,26 @@ fetch_package <- function(package_nm = NULL,
                           store = "disk",
                           path_stub = "data/skt/",
                           csv_output = TRUE) {
-  info <- ckan_info %>%
+  info <- ckan_info |>
     dplyr::filter(package_name == package_nm)
 
-  urls <- info %>%
-    pull(url) %>%
+  urls <- info |>
+    dplyr::pull(url) |>
     # to avoid dl errors we need to remove the NAs as well as those files that end without a file extension at the end (ex. .com/ and *123)
     na.omit() %>%
-    .[str_detect(., ".*\\.[a-zA-Z0-9]+$")]
+    .[stringr::str_detect(., ".*\\.[a-zA-Z0-9]+$")]
 
   # create the directory if it doesn't exist
   dir.create(paste0(path_stub, package_nm))
 
-  walk(.x = urls,
-       .f = ~ckan_fetch(.x, store = store, path = paste0(path_stub, package_nm, "/", basename(.x))))
+  purrr::walk(.x = urls,
+       .f = ~ckanr::ckan_fetch(.x, store = store, path = paste0(path_stub, package_nm, "/", basename(.x))))
 
   # if csv_output = TRUE burn out a little csv file of the information about everything that is downloaded
   if (csv_output) {
-    info %>%
-      arrange(basename(url)) %>%
-      write_csv(paste0(path_stub, package_nm, "/001_pkg_info_", package_nm, ".csv"))
+    info |>
+      dplyr::arrange(basename(url)) |>
+      readr::write_csv(paste0(path_stub, package_nm, "/001_pkg_info_", package_nm, ".csv"))
   }
 }
 
@@ -303,15 +303,26 @@ priority_scorer_numeric <- function(dat_values, dat_ranks, col_filter = "column_
   chk::chk_string(col_rank)
   chk::chk_string(col_idx)
 
-  # Ensure idx column exists and assign if not
+  # if idx column doesn't exist assign
   if (!col_idx %in% names(dat_values)) {
     dat_values <- dplyr::mutate(dat_values, !!col_idx := dplyr::row_number())
+  } else {
+    # if col_idx exists, check for duplicates and NAs
+    vals <- dat_values[[col_idx]]
+    if (any(is.na(vals)) || anyDuplicated(vals) > 0) {
+      cli::cli_abort(c(
+        "Column specified as {.arg col_idx} ({.val {col_idx}}) exists but is invalid.",
+        "x" = "It contains {.val {sum(is.na(vals))}} missing and {.val {anyDuplicated(vals)}} duplicate values.",
+        "i" = "Either correct the column or specify a new name for {.arg col_idx} to be generated."
+      ))
+    }
   }
 
   # Prepare ranking row
   dat_ranks_row <- dplyr::filter(dat_ranks, .data[[col_filter]] == col_rank) |>
     dplyr::select(dplyr::contains("weight"), -dplyr::contains("notes")) |>
     dplyr::mutate(dplyr::across(dplyr::everything(), as.character))
+
 
   # Reshape ranking data
   dat_ranks2 <- dat_ranks_row |>
@@ -330,7 +341,8 @@ priority_scorer_numeric <- function(dat_values, dat_ranks, col_filter = "column_
   dat_out_prep <- dplyr::left_join(
     dplyr::mutate(dat_values, dplyr::across(dplyr::everything(), as.character)) |>
       sf::st_drop_geometry(),
-    dplyr::select(dat_ranks2, -level),
+    dat_ranks2 |>
+      dplyr::select(-level),
     by = rlang::set_names(paste0(col_rank, "_value"), col_rank),
     na_matches = "never"
   )
@@ -349,10 +361,6 @@ priority_scorer_numeric <- function(dat_values, dat_ranks, col_filter = "column_
 }
 
 
-################################################################################################################
-#--------------------------------------------------priority_scorer_string---------------------------------------------------
-################################################################################################################
-
 # this one needs to detect if the string we have for our result matches one of the strings in one of the columns of the
 # weights_value_{*} columns. If it does, then we need to get the score from the corresponding weight_score_{*} column
 priority_scorer_string <- function(dat_values, dat_ranks, col_filter = "column_name_raw", col_rank, col_idx = "idx"){
@@ -364,9 +372,19 @@ priority_scorer_string <- function(dat_values, dat_ranks, col_filter = "column_n
   chk::chk_string(col_rank)
   chk::chk_string(col_idx)
 
-  # Ensure idx column exists and assign if not
+  # if idx column doesn't exist assign
   if (!col_idx %in% names(dat_values)) {
     dat_values <- dplyr::mutate(dat_values, !!col_idx := dplyr::row_number())
+  } else {
+    # if col_idx exists, check for duplicates and NAs
+    vals <- dat_values[[col_idx]]
+    if (any(is.na(vals)) || anyDuplicated(vals) > 0) {
+      cli::cli_abort(c(
+        "Column specified as {.arg col_idx} ({.val {col_idx}}) exists but is invalid.",
+        "x" = "It contains {.val {sum(is.na(vals))}} missing and {.val {anyDuplicated(vals)}} duplicate values.",
+        "i" = "Either correct the column or specify a new name for {.arg col_idx} to be generated."
+      ))
+    }
   }
 
   # Prepare ranking row
@@ -389,7 +407,8 @@ priority_scorer_string <- function(dat_values, dat_ranks, col_filter = "column_n
 
   # so only this section differs from the numeric version. can prob join the two with if statement
   # this bit searches for our strings to see if they are present in the weight_value_{*} columns
-  # then replaces the multiple strings with just the matched on so we can join
+  # then replaces the multiple strings with just the matched string so we can join
+  # Could deal with NA values here somehow.  Not done yet
   dat_out_prep <- purrr::map_dfr(
     seq_len(nrow(dat_values)),
     function(i) {
@@ -398,6 +417,7 @@ priority_scorer_string <- function(dat_values, dat_ranks, col_filter = "column_n
       match_row <- dat_ranks2 |>
         dplyr::filter(
           stringr::str_detect(
+            # then replace the multiple strings with just the matched on so we can join
             .data[[paste0(col_rank, "_value")]],
             value
           )
@@ -411,6 +431,158 @@ priority_scorer_string <- function(dat_values, dat_ranks, col_filter = "column_n
     }
   ) |>
     sf::st_drop_geometry()
+
+  # Select and convert scores to numeric
+  dat_out <- dat_out_prep |>
+    dplyr::select(
+      # You need all_of() to tell dplyr: "Use the value of this string as the column name."
+      dplyr::all_of(col_idx),
+      dplyr::contains("score")
+    ) |>
+    # convert the score back to numeric so we can add it up later
+    dplyr::mutate(dplyr::across(dplyr::matches("score"), as.numeric))
+
+  dat_out
+}
+
+# priority_scorer ----------------------------------------------------------------------------------------------------
+#' Priority Scoring
+#'
+#' Applies priority scoring to a dataset based on numeric values and corresponding rank weights.
+#'
+#' This function joins a data frame of values to be scored with a data frame of ranking weights.
+#' It matches values dynamically by category, extracts scores, and prepares an output with numeric
+#' scores suitable for downstream summarization.
+#'
+#' @param dat_values [data.frame] A data frame containing the numeric values to be scored. The name of the column
+#' that contains the numeric scores must align with `col_rank` param.
+#' @param dat_ranks [data.frame] A data frame containing the ranking weights and categories. Contains the columns
+#' "weight_value_low" "weight_value_mod" "weight_value_high" "weight_score_low" "weight_score_mod" "weight_score_high"
+#' @param col_filter [character] A single string specifying the column in `dat_ranks` used to filter for the scoring category. Default is `'column_name_raw'`.
+#' @param col_rank [character] A single string specifying the ranking category to use for scoring. This string must
+#' match the name of the column from `dat_values` that contains the numeric value that will recieve its coinciding score.  Must also match
+#' the name of a parameter found in the `col_filter` column of `dat_ranks` (ex. a `weight_value_low
+#' for `bulkley_falls_downstream` is 1 and and if that value of 1 is present in the `bulkley_falls_downstream` column of `dat_values`
+#' then it will be joined with a cooinciding `weight_score_low` of 0 - from the `dat_ranks` dataframe)
+#' @param col_idx [character] Optional. A single string specifying the column name to use as an identifier in the output.
+#' If the column does not exist, row numbers will be used. Default is `'idx'`.
+#'
+#' @returns A [tibble][tibble::tibble] containing the identifier column and numeric score columns.
+#' If `col_idx` does not exist in `dat_values`, it is created as row numbers. All score columns are converted to numeric.
+#'
+#' @details
+#' The function works by:
+#' 1. Filtering `dat_ranks` for the desired ranking category.
+#' 2. Reshaping and cleaning the ranking data.
+#' 3. Joining `dat_values` with the cleaned ranks based on the dynamic value category.
+#' 4. Extracting and converting score columns to numeric.
+#'
+#' Note: Input validation is performed using [chk::chk_*()] functions.
+#'
+#' @seealso
+#' [dplyr::filter()], [dplyr::left_join()], [tidyr::pivot_longer()], [tidyr::pivot_wider()], [stringr::str_remove()]
+#'
+#' @importFrom dplyr filter select mutate across left_join contains rename_with all_of row_number matches
+#' @importFrom tidyr pivot_longer separate pivot_wider
+#' @importFrom stringr str_remove
+#' @importFrom sf st_drop_geometry
+#' @importFrom rlang .data set_names
+#' @export
+priority_scorer <- function(dat_values, dat_ranks, col_filter = "source_column_name", col_rank, col_idx = "idx"){
+
+  # Validate inputs
+  chk::chk_data(dat_values)
+  chk::chk_data(dat_ranks)
+  chk::chk_string(col_filter)
+  chk::chk_string(col_rank)
+  chk::chk_string(col_idx)
+
+  # if idx column doesn't exist assign
+  if (!col_idx %in% names(dat_values)) {
+    dat_values <- dplyr::mutate(dat_values, !!col_idx := dplyr::row_number())
+  } else {
+    # if col_idx exists, check for duplicates and NAs
+    vals <- dat_values[[col_idx]]
+    if (any(is.na(vals)) || anyDuplicated(vals) > 0) {
+      cli::cli_abort(c(
+        "Column specified as {.arg col_idx} ({.val {col_idx}}) exists but is invalid.",
+        "x" = "It contains {.val {sum(is.na(vals))}} missing and {.val {anyDuplicated(vals)}} duplicate values.",
+        "i" = "Either correct the column or specify a new name for {.arg col_idx} to be generated."
+      ))
+    }
+  }
+
+  # Prepare ranking row
+  dat_ranks_row <- dplyr::filter(dat_ranks, .data[[col_filter]] == col_rank) |>
+    dplyr::select(dplyr::contains("weight"), -dplyr::contains("notes")) |>
+    dplyr::mutate(dplyr::across(dplyr::everything(), as.character))
+
+  # Reshape ranking data
+  dat_ranks2 <- dat_ranks_row |>
+    tidyr::pivot_longer(
+      cols = dplyr::everything(),
+      names_to = "name",
+      values_to = "value"
+    ) |>
+    dplyr::mutate(name = stringr::str_remove(name, "weight_")) |>
+    # separate off the category (ie. value vs score vs notes)
+    tidyr::separate(name, into = c("category", "level"), sep = "_(?=[^_]+$)") |>
+    tidyr::pivot_wider(names_from = category, values_from = value) |>
+    dplyr::rename_with(~ paste0(col_rank, "_", .x), -level)
+
+  # # check type: numeric vs string ---------------------------------------------------------------------------------------
+  col_rank_value <- paste0(col_rank, "_value")
+
+  # keep only non-NA values, test conversion
+  vals <- dat_ranks2[[col_rank_value]][!is.na(dat_ranks2[[col_rank_value]])]
+  col_rank_value_is_numeric <- all(!is.na(suppressWarnings(as.numeric(vals))))
+
+  if (col_rank_value_is_numeric) {
+    # Join data
+    dat_out_prep <- dplyr::left_join(
+      dat_values |>
+        dplyr::mutate(
+          dplyr::across(dplyr::all_of(col_rank), as.numeric)
+        ) |>
+        sf::st_drop_geometry(),
+      dat_ranks2 |>
+        dplyr::mutate(
+          dplyr::across(dplyr::all_of(col_rank_value), as.numeric)
+        ) |>
+        dplyr::select(-level),
+      by = rlang::set_names(col_rank_value, col_rank),
+      na_matches = "never"
+    )
+
+  } else {
+    # this bit searches for our strings to see if they are present in the weight_value_{*} columns
+    # then replaces the multiple strings with just the matched string so we can join
+    # Could deal with NA values here somehow.  Not done yet
+    dat_out_prep <- purrr::map_dfr(
+      seq_len(nrow(dat_values)),
+      function(i) {
+        value <- dat_values[[i, col_rank]]
+
+        match_row <- dat_ranks2 |>
+          dplyr::filter(
+            stringr::str_detect(
+              # then replace the multiple strings with just the matched one so we can join
+              .data[[paste0(col_rank, "_value")]],
+              value
+            )
+          )
+
+        dplyr::bind_cols(
+          dat_values[i, ],
+          match_row |>
+            dplyr::select(paste0(col_rank, "_score"))
+        )
+      }
+    ) |>
+      sf::st_drop_geometry()
+  }
+
+  #type end-----------------------------------------------------------------------------------------------------
 
   # Select and convert scores to numeric
   dat_out <- dat_out_prep |>
