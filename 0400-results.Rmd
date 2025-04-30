@@ -67,39 +67,76 @@ rfp_tracking_prep %>%
 
 
 ```
-### Drone Imagery
-Orthoimagery has been gathered for past monitoring of historic restoration sites as well as part of fish passage restoration planning efforts in the Neexdzii Kwah watershed. Data has been stored as Cloud Optimized Geotiffs on a cloud service provider (AWS) with select imagery linked to in the imagery collaborative GIS project. Additionally - a tile service has been set up to facilitate viewing of individual images (Table \@ref(tab:tab-uav-imagery-cap).  
 
-```{r tab-uav-imagery-cap, results="asis" }
+## Aerial Imagery
+Orthoimagery has been gathered in the Neexdzii Kwah watershed for past monitoring of historic restoration sites, as part of fish passage restoration planning efforts, and specifically for this project by Matt Sakals (WLRS Provincial Drone Specialist) and New Graph Environment Ltd. team members. Data has been stored as Cloud Optimized Geotiffs on a cloud service provider (AWS) with most outputs linked to in the collaborative GIS project. Data can be downloaded and viewed through the links provided in Table \@ref(tab:tab-uav-imagery-cap).  
+
+
+```{r uav-get, eval = T}
+
+# only needs to be run at the beginning or if we want to update
+
+# Grab the imagery from the stac
+
+# neexdzii kwa
+
+bbox = c(-126.77000, 54.08832, -125.88822, 54.68786)
+
+# use rstac to query the collection
+q <- rstac::stac("https://images.a11s.one/") |>
+    rstac::stac_search(
+      collections = "imagery-uav-bc-prod",
+                      bbox = bbox
+                      
+                     ) |>
+  rstac::post_request()
+
+# get deets of the items
+uav_raw <- q |>
+  rstac::items_fetch()
+
+# build the table to display the info
+uav_tab <- tibble::tibble(url_download = purrr::map_chr(r$features, ~ purrr::pluck(.x, "assets", "image", "href"))) |> 
+  dplyr::mutate(stub = stringr::str_replace_all(url_download, "https://imagery-uav-bc.s3.amazonaws.com/", "")) |> 
+  tidyr::separate(
+    col = stub, 
+    into = c("region", "watershed_group", "year", "item", "rest"),
+    sep = "/",
+    extra = "drop"
+  ) |> 
+  dplyr::mutate(
+    link_view = 
+                  dplyr::case_when(
+                    !tools::file_path_sans_ext(basename(url_download)) %in% c("dsm", "dtm") ~ 
+                      ngr::ngr_str_link_url(
+                        url_base = "https://viewer.a11s.one/?cog=",
+                        url_resource = url_download, 
+                        url_resource_path = FALSE,
+                        # anchor_text= "URL View"
+                        anchor_text= tools::file_path_sans_ext(basename(url_download))),
+                    T ~ "-"),
+                        link_download = ngr::ngr_str_link_url(url_base = url_download, anchor_text = url_download)
+    )|> 
+  dplyr::select(year, item, link_view, link_download)
+
+# burn to the repo for safe keeping
+uav_tab |> 
+  readr::write_csv(
+  "data/inputs_extracted/uav.csv"
+)
+
+```
+
+```{r tab-uav-imagery-cap, results="asis", eval= gitbook_on}
 my_caption <- "Drone imagery download and viewer links."
 
-my_tab_caption(tip_text = " <b>NOTE: Links to viewer current may need to be manually altered in browser to begin with http vs https! This should resolved soon.</b>")
+my_tab_caption()
 ```
 
-```{r tab-uav-imagery}
-
-# read in the csv created with "scripts/gis/uav_query_stac_aoi.qmd"
-
-
-uav_urls_raw <- readr::read_csv("data/inputs_extracted/uav_urls_raw.csv")
-
-
-# add links to the tile service and make all links pretty
-uav_urls <- uav_urls_raw |> 
-  dplyr::mutate(url_view = ngr::ngr_str_link_url(
-                  url_base = "http:/23cog.s3.amazonaws.com/viewer.html?cog=",
-                  url_resource = url_download, 
-                  url_resource_path = FALSE,
-                  anchor_text= "URL View"
-                  ),
-                url_download = ngr::ngr_str_link_url(url_base = url_download, anchor_text = "URL Download"))
-  
-uav_urls |> 
+```{r tab-uav-imagery, eval= gitbook_on}
+uav_tab |> 
   my_dt_table(cols_freeze_left = 0, escape = FALSE)
-
-
 ```
-
 
 
 ## Historic Information Regarding Impacts and Restoration Initiatives
@@ -360,9 +397,12 @@ We developed a system as part of this project to identify the IDs of historic or
 
 ### Fish Passage
 
-High priority fish passage restoration opportunities in the Neexdzii Kwah watershed include mulitple culverts on Highway 16 such as Richfield Creek, Johnny David Creek, and Byman Creek along with crossings on private roads, secondary roads and the railway such as Ailport Creek, Perow Creek, tributary to Buck Creek (PSCIS 197640) and Cesford Creek. Some sites have had past work (Johnny Davide) and others are currently progressing through the design process (trib to Buck) with details presented in the following reports which are updated intermittently:
+High priority fish passage restoration opportunities in the Neexdzii Kwah watershed include mulitple culverts on Highway 16 such as Richfield Creek, Johnny David Creek, and Byman Creek along with crossings on private roads, secondary roads and the railway such as Ailport Creek, Perow Creek, tributary to Buck Creek (PSCIS 197640) and Cesford Creek. Some sites have had past work (Johnny David) and others are currently progressing through the design process (trib to Buck) with details presented in the reports below - which are updated intermittently. Of note @irvine_schick2025SkeenaWatershed includes summary tables within the "Results and Discussion" section which detail all sites surveyed since 2020 and link the reader to individual reports and detailed site memos for each site (when available). Additionally, the top priorities within the greater Bulkley River watershed group are ranked numerically within 
+the table includeing Richfield Creek, Ailport Creek, Cesford Creek and Johnny David Creek within the top ten.
 
--   [Bulkley Watershed Fish Passage Restoration Planning 2022](https://www.newgraphenvironment.com/fish_passage_bulkley_2022_reporting/)[@irvine2023BulkleyWatershed]
+-   [Skeena Watershed Fish Passage Restoration Planning 2024](https://www.newgraphenvironment.com/fish_passage_skeena_2024_reporting/)[@irvine_schick2025SkeenaWatershed]
+-   [Skeena Watershed Fish Passage Restoration Planning 2023](https://www.newgraphenvironment.com/fish_passage_skeena_2023_reporting/)[@irvine_schick2024SkeenaWatershed]
+-   [Bulkley Watershed Fish Passage Restoration Planning 2022](https://www.newgraphenvironment.com/fish_passage_bulkley_2022_reporting/)[@irvine_etal2023BulkleyWatershed]
 -   [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2021](https://www.newgraphenvironment.com/fish_passage_skeena_2021_reporting/)[@irvine2022BulkleyRiver]
 -   [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2020](https://www.newgraphenvironment.com/fish_passage_bulkley_2020_reporting/)[@irvine2021BulkleyRiver]
 -   Development Of Aquatic Restoration Designs And On-Farm Cattle Management Improvements within the Wet’suwet’en First Nation Territory [@gaboury_smith2016DevelopmentAquatic]
