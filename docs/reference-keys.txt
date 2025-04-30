@@ -51,6 +51,7 @@ process-based-restoration
 stage-0
 methods
 collaborative-gis-environment
+aerial-imagery
 open-source---iterative-reporting
 issue-and-discussion-tracking
 tables-and-figures
@@ -67,7 +68,7 @@ results
 field-review
 collaborative-gis-environment-1
 methodology
-drone-imagery
+aerial-imagery-1
 historic-information-regarding-impacts-and-restoration-initiatives-1
 mitchell1997riparianinstream---riparian-and-in-stream-assessment-of-the-bulkley-river-system---an-examination-and-priorization-of-impacts-on-the-tributaries-to-the-bulkley-river-mainstem
 price2014upperbulkleya---upper-bulkley-floodplain-habitat-modifications-physical-barriers-and-sites-of-potential-importance-to-salmonids

@@ -233,16 +233,18 @@ div.csl-indent {
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#collaborative-gis-environment"><i class="fa fa-check"></i><b>3.1</b> Collaborative GIS Environment</a></li>
-<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#open-source---iterative-reporting"><i class="fa fa-check"></i><b>3.2</b> Open Source - Iterative Reporting</a></li>
-<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#historic-information-regarding-impacts-and-restoration-initiatives"><i class="fa fa-check"></i><b>3.3</b> Historic Information Regarding Impacts and Restoration Initiatives</a></li>
-<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#future-restoration-site-selection"><i class="fa fa-check"></i><b>3.4</b> Future Restoration Site Selection</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#aerial-imagery"><i class="fa fa-check"></i><b>3.2</b> Aerial Imagery</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#open-source---iterative-reporting"><i class="fa fa-check"></i><b>3.3</b> Open Source - Iterative Reporting</a></li>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#historic-information-regarding-impacts-and-restoration-initiatives"><i class="fa fa-check"></i><b>3.4</b> Historic Information Regarding Impacts and Restoration Initiatives</a></li>
+<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#future-restoration-site-selection"><i class="fa fa-check"></i><b>3.5</b> Future Restoration Site Selection</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#field-review"><i class="fa fa-check"></i><b>4.1</b> Field Review</a></li>
 <li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#collaborative-gis-environment-1"><i class="fa fa-check"></i><b>4.2</b> Collaborative GIS Environment</a></li>
-<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#historic-information-regarding-impacts-and-restoration-initiatives-1"><i class="fa fa-check"></i><b>4.3</b> Historic Information Regarding Impacts and Restoration Initiatives</a></li>
-<li class="chapter" data-level="4.4" data-path="results.html"><a href="results.html#future-restoration-site-selection-1"><i class="fa fa-check"></i><b>4.4</b> Future Restoration Site Selection</a></li>
+<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#aerial-imagery-1"><i class="fa fa-check"></i><b>4.3</b> Aerial Imagery</a></li>
+<li class="chapter" data-level="4.4" data-path="results.html"><a href="results.html#historic-information-regarding-impacts-and-restoration-initiatives-1"><i class="fa fa-check"></i><b>4.4</b> Historic Information Regarding Impacts and Restoration Initiatives</a></li>
+<li class="chapter" data-level="4.5" data-path="results.html"><a href="results.html#future-restoration-site-selection-1"><i class="fa fa-check"></i><b>4.5</b> Future Restoration Site Selection</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>5</b> Recommendations</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -298,8 +300,12 @@ div.csl-indent {
 <span id="cb45-8"><a href="methods.html#cb45-8" tabindex="-1"></a><span class="co"># </span></span>
 <span id="cb45-9"><a href="methods.html#cb45-9" tabindex="-1"></a><span class="co"># QRis will be a useful tool for digitizing the upper Wetzin&#39;kwa river and prioritizing restoration sites. To start using QRis, follow the instructions for [getting started](https://qris.riverscapes.net/getting-started/).</span></span></code></pre></div>
 </div>
-<div id="open-source---iterative-reporting" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Open Source - Iterative Reporting<a href="methods.html#open-source---iterative-reporting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="aerial-imagery" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Aerial Imagery<a href="methods.html#aerial-imagery" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Scripted processing and serving of UAV imagery collected during the project is available at <a href="https://github.com/NewGraphEnvironment/stac_uav_bc/" class="uri">https://github.com/NewGraphEnvironment/stac_uav_bc/</a> <span class="citation">(Irvine [2025] 2025)</span>. <a href="https://github.com/OpenDroneMap/ODM"><code>OpenDroneMap</code></a> was utilized to produce orthomosaics, digital surface models (DSMs), and digital terrain models (DTMs) <span class="citation">(OpenDroneMap Authors [2014] 2025)</span>. To support efficient web-based access - imagery products were converted to cloud-optimized GeoTIFFs (COGs) using <code>rio-cogeo</code>, then collated accordiong to the <a href="https://github.com/radiantearth/stac-spec">SpatioTemporal Asset Catalog (STAC)</a> specification with <code>pystac</code> and uploaded to S3 storage <span class="citation">Amazon Web Services (2025)</span>. A <code>titiler</code> tile server was set up to facilitate interactive viewing of the orthoimagery and an Application Program Interface (API) leveraging <code>stac-fastapi-pgstac</code> is served at <a href="https://images.a11s.one" class="uri">https://images.a11s.one</a> to enable linking of collection images through QGIS as well as remote spatial and temporal querying using open source software such as <code>rstac</code> <span class="citation">(Development Seed [2019] 2025; stac-utils 2025; Simoes et al. 2021)</span>.</p>
+</div>
+<div id="open-source---iterative-reporting" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Open Source - Iterative Reporting<a href="methods.html#open-source---iterative-reporting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A key question we have been asking ourselves is:</p>
 <p><br></p>
 <blockquote>
@@ -314,13 +320,13 @@ with a permissive license is a great way to do all those things. Although there 
 can be demonstrated within this <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024">code
 repository</a> which builds and serves this
 <a href="https://newgraphenvironment.github.io/restoration_wedzin_kwa_2024/">online report</a>.</p>
-<div id="issue-and-discussion-tracking" class="section level3 hasAnchor" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Issue and Discussion Tracking<a href="methods.html#issue-and-discussion-tracking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="issue-and-discussion-tracking" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Issue and Discussion Tracking<a href="methods.html#issue-and-discussion-tracking" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Issues and discussions are effective ways to track tasks, enhancements, and bugs for the project. Issues can be used to keep track of all the things that need to be done, and can be used to discuss in-line with references to code used to address them linked to the issues through <code>git</code> commit messages. Issues for this project are kept <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/issues">here</a> and
 discussions are kept <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/discussions">here</a>.</p>
 </div>
-<div id="tables-and-figures" class="section level3 hasAnchor" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Tables and Figures<a href="methods.html#tables-and-figures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="tables-and-figures" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Tables and Figures<a href="methods.html#tables-and-figures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are many tables within this document that can take a long time to format. Within this document the tables have been imported often as simple csv files or pages of an excel workbook and pulled into the project using scripts. This allows others to access the data and use it in their own projects. These tables can also then be easily updated with new data as it becomes available often with the formatting for presentation to reader handled by the scripting. Any figures used in the reporting are saved in the project <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/fig/">here</a> and can be leveraged by others.</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="methods.html#cb46-1" tabindex="-1"></a><span class="co"># An example of this can be</span></span>
 <span id="cb46-2"><a href="methods.html#cb46-2" tabindex="-1"></a><span class="co"># seen here in Table \@ref(tab:kable-resources) with the actual file served</span></span>
@@ -329,12 +335,12 @@ discussions are kept <a href="https://github.com/NewGraphEnvironment/restoration
 <span id="cb46-5"><a href="methods.html#cb46-5" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/aquatic_restoration_resources.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb46-6"><a href="methods.html#cb46-6" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&quot;Aquatic Restoration Resources.&quot;</span>)</span></code></pre></div>
 </div>
-<div id="data-sourceing-from-skeena-salmon-data-centre" class="section level3 hasAnchor" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Data Sourceing from Skeena Salmon Data Centre<a href="methods.html#data-sourceing-from-skeena-salmon-data-centre" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="data-sourceing-from-skeena-salmon-data-centre" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Data Sourceing from Skeena Salmon Data Centre<a href="methods.html#data-sourceing-from-skeena-salmon-data-centre" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Whenever possible we have attempted to tie into existing data govenment infrastructure in the Skeena region by downloading data directly from the <a href="https://data.skeenasalmon.info/">Skeena Salmon Data Centre</a> using the application programming interface to their <a href="https://ckan.org/features/api">CKAN</a> database. To facilitate and simlify this process we developed a function to download data from the CKAN database and load it into local versions of the project repository. This <code>fetch_package</code> function is kept in the <code>scripts/functions.R</code> file of the project and can be used to download entire “packages” of data from the Skeena Salmon Data Centre.</p>
 </div>
-<div id="documentation-of-workflows" class="section level3 hasAnchor" number="3.2.4">
-<h3><span class="header-section-number">3.2.4</span> Documentation of Workflows<a href="methods.html#documentation-of-workflows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="documentation-of-workflows" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Documentation of Workflows<a href="methods.html#documentation-of-workflows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Select workflows were documented in memo format to illustrate the process used for others and promote reproducibility/leverageing of Neexdzii Kwah. The memos are stored in the <code>memo</code> directory of the project <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/memos">here</a> and can be viewed in Table Table <a href="methods.html#tab:tab-memos">3.1</a> by downloading the <code>.html</code> documents to a local computer and opening in a web browser such as <code>Chrome</code> (usually a double click of the document will open it in the browser).</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="methods.html#cb47-1" tabindex="-1"></a><span class="do">## make a tibble of the list and display it as a fpr_kable</span></span>
 <span id="cb47-2"><a href="methods.html#cb47-2" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;memos&quot;</span>, <span class="at">full.names =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
@@ -374,18 +380,18 @@ track_sites_restoration.html
 </table>
 </div>
 </div>
-<div id="historic-information-regarding-impacts-and-restoration-initiatives" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Historic Information Regarding Impacts and Restoration Initiatives<a href="methods.html#historic-information-regarding-impacts-and-restoration-initiatives" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="historic-information-regarding-impacts-and-restoration-initiatives" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Historic Information Regarding Impacts and Restoration Initiatives<a href="methods.html#historic-information-regarding-impacts-and-restoration-initiatives" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Historic information regarding impacts and restoration initiatives, prescriptions and activities is an important component of the restoration planning process. A wealth of information is present for the Neexdzii Kwah however it is located in many different locations and not always spatially represented. To address this, a comprehensive review of past impact indentification and restoration recommendations is underway. This review included a review of the literature, interviews with local experts, and a review of the restoration prescriptions and activities that have been conducted in the Neexdzii Kwah. For information regarding relatively recent restoration efforts such as physical works conducted through Healthy Watersheds Initiative, representatives from the Morice Watershed Monitoring Trust amalgamated all information located on physical drives and either provided emails with the data attached or provided links to the data for the study team for download and review. This information was then subsequently downloaded and re-uploaded to a <code>OneDrive</code> folder for the study team to access.</p>
 </div>
-<div id="future-restoration-site-selection" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Future Restoration Site Selection<a href="methods.html#future-restoration-site-selection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="evaluation-of-historic-and-current-imagery" class="section level3 hasAnchor" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> Evaluation of Historic and Current Imagery<a href="methods.html#evaluation-of-historic-and-current-imagery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="future-restoration-site-selection" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Future Restoration Site Selection<a href="methods.html#future-restoration-site-selection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="evaluation-of-historic-and-current-imagery" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Evaluation of Historic and Current Imagery<a href="methods.html#evaluation-of-historic-and-current-imagery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Evaluation of historic and current imagery to understand and quantify watershed characteristics and morphological changes in the Neexdzii Kwah and its major tributaries over time and guide future restoration efforts. This will require that the study team acquire, georeference, archive and analyze historic imagery for the Neexdzii Kwah watershed and compare with an analysis of recent data to quantify historic changes in stream morphology resulting in loss of quantity and quality of water and fish habitat. Through this process we hope to highlight areas of historic dredging, realignment, and floodplain disconnections due to infrastructure that have degraded watershed health and fish habitat.</p>
 </div>
-<div id="fish-passage" class="section level3 hasAnchor" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> Fish Passage<a href="methods.html#fish-passage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="fish-passage" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Fish Passage<a href="methods.html#fish-passage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>At the time of writing, extensive work related to fish passage restoration planning was underway in the Neexdzii Kwah watershed
 as well as other areas of the greater Skeena watershed. Methodology for this work is presented in <span class="citation">Irvine (2023)</span>,
 <span class="citation">Irvine ([2021] 2022)</span> and <span class="citation">Irvine (2021)</span>. Although these references detail work related to linear connectivity
@@ -394,21 +400,21 @@ realted to disconnections due to the railway documented in <code>bcfishpass</cod
 The results of this analysis and future analysis incorporating major roadways as well (currently under development) will
 be added to the shared QGIS project and used to inform future restoration activity prioritization.</p>
 </div>
-<div id="local-knowledge-for-riparian-area-and-erosion-protection-site-selection" class="section level3 hasAnchor" number="3.4.3">
-<h3><span class="header-section-number">3.4.3</span> Local Knowledge for Riparian Area and Erosion Protection Site Selection<a href="methods.html#local-knowledge-for-riparian-area-and-erosion-protection-site-selection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="local-knowledge-for-riparian-area-and-erosion-protection-site-selection" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Local Knowledge for Riparian Area and Erosion Protection Site Selection<a href="methods.html#local-knowledge-for-riparian-area-and-erosion-protection-site-selection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To facilitate project activities in the short term - the project team will select among some known areas of riparian
 removal and bank erosion where landowners are amenable to project activities including installation of cattle exclusion
 fencing and riparian planting in the next two fiscal years.</p>
 </div>
-<div id="delineation-of-areas-of-high-fisheries-values" class="section level3 hasAnchor" number="3.4.4">
-<h3><span class="header-section-number">3.4.4</span> Delineation of Areas of High Fisheries Values<a href="methods.html#delineation-of-areas-of-high-fisheries-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="delineation-of-areas-of-high-fisheries-values" class="section level3 hasAnchor" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Delineation of Areas of High Fisheries Values<a href="methods.html#delineation-of-areas-of-high-fisheries-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Spatially delineate areas of high fisheries values based on modelled and known spawning and rearing habitat for fish species of interest.<br />
 Project team members have mentioned that there was work done in the past to spatially delineate areas of high value habitat
 for chinook and potentially sockeye salmon. This data will hopefully be aquired. Additionally background literature includes some decriptions of traditional Wet’suwet’en
 Fisheries sites which can be spatialized for the project.</p>
 </div>
-<div id="parameter-ranking-to-select-future-restoration-sites" class="section level3 hasAnchor" number="3.4.5">
-<h3><span class="header-section-number">3.4.5</span> Parameter Ranking to Select Future Restoration Sites<a href="methods.html#parameter-ranking-to-select-future-restoration-sites" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="parameter-ranking-to-select-future-restoration-sites" class="section level3 hasAnchor" number="3.5.5">
+<h3><span class="header-section-number">3.5.5</span> Parameter Ranking to Select Future Restoration Sites<a href="methods.html#parameter-ranking-to-select-future-restoration-sites" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Analysis of background and current data will be used to inform priority ranking criteria used to select sites for restoration activities in the long term. <strong>Although this has not yet been conducted</strong> - included in this process can be:</p>
 <ul>
 <li>GIS and user input parameters were selected based on project team meetings and review of available spatial information to rank future restoration sites. Whenever possible standardized names for layers (schema and table) and fields were used to facilitate the reproducibility of similiar analysis on other or updated datasets, both by ourselves and by others.</li>

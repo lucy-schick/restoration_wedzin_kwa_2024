@@ -8,7 +8,7 @@
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       America/Vancouver
- date     2025-04-29
+ date     2025-04-30
  rstudio  2024.12.0+467 Kousa Dogwood (desktop)
  pandoc   3.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
 
@@ -74,6 +74,7 @@
  httpuv            1.6.15     2024-03-26 [1] CRAN (R 4.4.0)
  httr            * 1.4.7      2023-08-15 [1] CRAN (R 4.4.0)
  janitor           2.2.1      2024-12-22 [1] CRAN (R 4.4.1)
+ jpeg              0.1-10     2022-11-29 [1] CRAN (R 4.4.1)
  jquerylib         0.1.4      2021-04-26 [1] CRAN (R 4.4.0)
  jsonlite          1.8.9      2024-09-20 [1] CRAN (R 4.4.1)
  kableExtra      * 1.4.0      2024-01-24 [1] CRAN (R 4.4.0)
@@ -98,6 +99,7 @@
  pkgconfig         2.0.3      2019-09-22 [1] CRAN (R 4.4.1)
  pkgload           1.4.0      2024-06-28 [1] CRAN (R 4.4.0)
  plyr              1.8.9      2023-10-02 [1] CRAN (R 4.4.1)
+ png               0.1-8      2022-11-29 [1] CRAN (R 4.4.1)
  poisutils         0.0.0.9010 2024-05-14 [2] Github (poissonconsulting/poisutils@8310dc4)
  processx          3.8.5      2025-01-08 [1] CRAN (R 4.4.1)
  profvis           0.3.8      2023-05-02 [2] CRAN (R 4.4.0)
@@ -124,6 +126,7 @@
  rprojroot         2.0.4      2023-11-05 [1] CRAN (R 4.4.1)
  rsconnect         1.3.4      2025-01-22 [2] CRAN (R 4.4.1)
  RSQLite           2.3.9      2024-12-03 [1] CRAN (R 4.4.1)
+ rstac             1.0.1      2024-07-18 [1] CRAN (R 4.4.0)
  rstudioapi        0.17.1     2024-10-22 [1] CRAN (R 4.4.1)
  rvest             1.0.4      2024-02-12 [1] CRAN (R 4.4.0)
  sass              0.4.9      2024-03-15 [1] CRAN (R 4.4.0)
