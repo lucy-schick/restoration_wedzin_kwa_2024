@@ -1,3 +1,9 @@
+# Download the entire ESI state of value fish and fish habitat package from skt, clip the east skeena layer and add to project-----------------------------------------------------------------------------------------------------
+
+
+
+
+# Roll up the geojsons exported from the skt geoserver-----------------------------------------------------------------------------------------------------
 # get the bbox of our aoi
 # separate by sub-basin
 # lets build a custom watersehed just for upstream of the confluence of Neexdzii Kwa and Wetzin Kwa
@@ -116,14 +122,14 @@ wshd_esi |>
     delete_dsn = TRUE
   )
 
-library(geosapi)
-# ok this worked but guessing our credentials got changed after we hit it up.  Our function seems a bit more robust
-# but this is likely the better way.
-# https://github.com/eblondel/geosapi
-gsman <- geosapi::GSManager$new(
-  url = "https://maps.skeenasalmon.info/geoserver", #baseUrl of the Geoserver
-  user = "al_irvine", pwd = "salmon2020!", #credentials
-  logger = "INFO" #logger, for info or debugging purpose
-)
+# library(geosapi)
+# # ok this worked but guessing our credentials got changed after we hit it up.  Our function seems a bit more robust
+# # but this is likely the better way.
+# # https://github.com/eblondel/geosapi
+# gsman <- geosapi::GSManager$new(
+#   url = "https://maps.skeenasalmon.info/geoserver", #baseUrl of the Geoserver
+#   user = "al_irvine", pwd = "salmon2020!", #credentials
+#   logger = "INFO" #logger, for info or debugging purpose
+# )
 
 # layerNames <- gsman$getLayerNames()
