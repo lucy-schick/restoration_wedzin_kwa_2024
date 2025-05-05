@@ -1,5 +1,4 @@
 source('scripts/functions.R')
-
 # aoi <- sf::st_read()
 #
 # # grab all the railways
