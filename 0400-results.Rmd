@@ -35,7 +35,7 @@ rfp_tracking_raw <- sf::st_read(paste0(q_path_stub, "background_layers.gpkg"),
             quite = TRUE)
 
 # grab the metadata
-md <- rfp_meta_bcd_xref()
+md <- rfp::rfp_meta_bcd_xref()
 
 # remove the `_vw` from the end of content
 rfp_tracking_prep <- dplyr::left_join(
@@ -96,7 +96,7 @@ uav_raw <- q |>
   rstac::items_fetch()
 
 # build the table to display the info
-uav_tab <- tibble::tibble(url_download = purrr::map_chr(r$features, ~ purrr::pluck(.x, "assets", "image", "href"))) |> 
+uav_tab <- tibble::tibble(url_download = purrr::map_chr(uav_raw$features, ~ purrr::pluck(.x, "assets", "image", "href"))) |> 
   dplyr::mutate(stub = stringr::str_replace_all(url_download, "https://imagery-uav-bc.s3.amazonaws.com/", "")) |> 
   tidyr::separate(
     col = stub, 
@@ -433,11 +433,14 @@ gis_params_raw_all <- readr::read_csv(
 
 
 gis_params_raw_to_update <- gis_params_raw_all %>% 
-  dplyr::filter(!is.na(source_schema_table) & 
+  # dplyr::filter(!is.na(source_schema_table) & 
+  #                 !is.na(source_column_name) &
+  #                 !str_detect(source_schema_table, "bcfishobs|bcfishpass")) |> 
+    dplyr::filter(!is.na(source_layer) & 
                   !is.na(source_column_name) &
-                  !str_detect(source_schema_table, "bcfishobs|bcfishpass")) %>% 
+                  !str_detect(source_layer, "bcfishobs|bcfishpass")) |> 
   # we know that tenures and the land ownership layers are problematic so lets remove
-  dplyr::filter(!str_detect(source_schema_table, "whse_forest_tenure.ften_range_poly_carto_vw|whse_cadastre.pmbc_parcel_fabric_poly_svw"))
+  dplyr::filter(!str_detect(source_layer, "whse_forest_tenure.ften_range_poly_carto_vw|whse_cadastre.pmbc_parcel_fabric_poly_svw"))
 
 
 # grab the details about the source_schema_table as source_schema_table_details and then the 
@@ -448,7 +451,7 @@ gis_param_details_prep_schtab <- dplyr::left_join(
   
   rfp::rfp_meta_bcd_xref(),
   
-  by = c("source_schema_table" = "object_name")
+  by = c("source_layer" = "object_name")
 )
   
 
