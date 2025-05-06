@@ -24,6 +24,7 @@ tab:tab-skt-pkgs-cap
 tab:tab-skt-geo-cap
 tab:tab-esi-indicators-cap
 tab:tab-esi-fields-cap
+tab:tab-sites-ranked-cap
 fig:model-riparian-caption
 introduction
 wetsuweten
