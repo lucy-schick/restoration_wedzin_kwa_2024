@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# restoration_wedzin_kwa_2024 DRAFT 0.1.1 (2025-05-06)
+
+- Update prioritization ranking system results and table with links to source code
+- Include methodology for UAV imagery processing and sharing.
+- Update UAV imagery summary table to pull from stac.
+- Include links to updated fish passage reporting and details of top priority sites
+- add esi data summary and update background lit review details
+
+
 # restoration_wedzin_kwa_2024 DRAFT 0.1.0 (2025-05-06)
 
 - Include methodology for UAV imagery processing and sharing.
