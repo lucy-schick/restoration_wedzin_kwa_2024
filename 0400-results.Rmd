@@ -415,16 +415,16 @@ At the time of writing, lateral connectivity analysis had been run for areas of 
 
 ### Local Knowledge for Riparian Area and Erosion Protection Site Selection
 
-Sites proposed for riparian area and erosion protection activities in the next two fiscal years are located in the `sites_restoration.gpkg` and are viewable in the `restoration_wedzin_kwa` project. These sites were selected based on local knowledge and landowner willingness to participate in restoration activities.
+Numerous sites proposed for riparian area and erosion protection activities are are viewable in the `restoration_wedzin_kwa` project. These sites were selected based on local knowledge and landowner willingness to participate in restoration activities.
 
 
 ### Delineation of Areas of High Fisheries Values
 
-This work is ongoing and will be added to the `restoration_wedzin_kwa` project in the future.
+As noted within the methods - past work to spatially delineate areas of high value habitat known to be utilized historically for chinook and sockeye salmon spawning (among other data) undertaken by DFO, Arocha Canada and others has been stored within a secure location and linked within the shared GIS project.  @wilson_rabnett2007FishPassage includes descriptions of traditional Wet'suwet'en Fisheries sites within the Neexdzi Kwa which will be spatialized for the project - with progress tracked [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/issues/64).
 
 ### Parameter Ranking to Select Future Restoration Sites
 
-A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the `restoration_site_priority_parameters.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv) is included in Table \@ref(tab:tab-gis-params-cap). Using custom functions and scripted workflows based on layers kept within the shared GIS project - we prioritize proposed sites dynamically based on a range of metrics and user defined ranking.  Scripts to conduct the analysis can be found [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/scripts/gis/prioritize.R) with custom functions [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/scripts/functions.R). Please note that any parameters included in the Skeena Sustainability Assessment Forum - State of the Value - Fish and Fish Habitat assessment [here](#app-esi) can now be included in the ranking - provided the attribute to rank is added to the input spreadsheet and ranking weights applied.
+A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the `restoration_site_priority_parameters.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv) is included in Table \@ref(tab:tab-gis-params-cap). Outputs from an intitial proof of concept run are included within the shared GIS project and collated within [Appendix 5 – Example of Potential Restoration Sites Prioritized](#sites-ranked). Please note that any parameters included in the Skeena Sustainability Assessment Forum - State of the Value - Fish and Fish Habitat assessment [here](#app-esi) can now be included in the ranking - provided the attribute to rank is added to the input spreadsheet and ranking weights applied.
 
 <br>
 
@@ -523,7 +523,7 @@ tab_gis_params_raw <- readr::read_csv("data/restoration_site_priority_parameters
 ```
 
 ```{r tab-gis-params-cap, results="asis"}
-caption_text = "Example of parameter selection and ranking system to prioritize potential restoration/enhancement sites."
+my_caption = "Example of parameter selection and ranking system to prioritize potential restoration/enhancement sites."
 
 my_tab_caption()
 ```

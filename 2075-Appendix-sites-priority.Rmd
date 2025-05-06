@@ -1,0 +1,39 @@
+
+
+# **Appendix 5 – Example of Potential Restoration Sites Prioritized** {-#sites-ranked}
+
+Summary tables of indicators and spatial output field descriptions from @skeenasustainabilityassessmentforum2021Skeenasustainability 
+are included in Tables \@ref(tab:tab-skt-pkgs-cap). 
+
+```{r tab-sites-ranked-cap, results="asis"}
+my_caption <- ("Example of potential restoration sites prioritized.")
+my_tab_caption()
+```
+
+```{r sites-copy, eval=params$update_gis}
+# copy over the sites from the gis project into the repo for reproducability
+path_in <- "/Users/airvine/Projects/gis/restoration_wedzin_kwa/sites_prioritized.geojson"
+path_out <- "data/gis/sites_prioritized.geojson"
+
+fs::file_copy(
+  path_in,
+  path_out,
+  overwrite = TRUE
+)
+
+
+
+```
+
+
+```{r tab-sites-ranked}
+path <- "data/gis/sites_prioritized.geojson"
+  
+sf::st_read(path, quiet = TRUE) |> 
+  sf::st_drop_geometry() |> 
+  my_dt_table(cols_freeze_left = 2, page_length = 5, escape = TRUE)
+
+```
+
+
+
