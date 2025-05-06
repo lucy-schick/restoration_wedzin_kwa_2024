@@ -43,11 +43,14 @@ rfp_tracking_prep <- dplyr::left_join(
     dplyr::arrange(desc(timestamp)) %>% 
     dplyr::distinct(content, .keep_all = FALSE),
   
-  md %>% 
+  md |> 
     dplyr::select(content = object_name, url = url_browser, description),
   
   by = "content"
-) %>% 
+) |> 
+    dplyr::mutate(url = dplyr::case_when(
+    stringr::str_detect(content, "bcfishobs|bcfishpass") ~ "https://smnorris.github.io/bcfishpass/06_data_dictionary.html",
+    TRUE ~ url)) |>
   arrange(content)
 
 rfp_tracking_prep %>% 
@@ -392,7 +395,8 @@ As part of this work, the SSAF State of the Value Report for Fish and Fish Habit
 ## Future Restoration Site Selection
 
 ### Evaluation of Historic and Current Imagery
-We developed a system as part of this project to identify the IDs of historic ortho photos for specific timeframes and areas within the Upper Bulkley watershed. This system is designed to be flexible, allowing adjustments to parameters such as input year and location, and it can be adapted for use in other regions across the province. The next step involves accessing these photos at the UBC library for physical scanning, which will enable georeferencing, amalgamation, and further analysis. Details on the system and the code we developed are outlined in a blog post [here](https://www.newgraphenvironment.com/new_graphiti/posts/2024-11-15-bcdata-ortho-historic/), with outputs available [here](https://github.com/NewGraphEnvironment/new_graphiti/tree/main/posts/2024-11-15-bcdata-ortho-historic/exports/). 
+As part of this project - we developed a system to identify the IDs of historic ortho photos for specific timeframes and areas within the Upper Bulkley watershed. The system is designed to be flexible, allowing adjustments to parameters such as input year and location, and it can be adapted for use in other regions across the province. Next steps include aquisition of photos from the province which will enable georeferencing, amalgamation, storage and analysis. Details on the system and the code developed are outlined [here](https://www.newgraphenvironment.com/new_graphiti/posts/2024-11-15-bcdata-ortho-historic/), with individual photo IDs for the study area available [here](https://github.com/NewGraphEnvironment/new_graphiti/tree/main/posts/2024-11-15-bcdata-ortho-historic/exports/). Of note, direct communications with the provincial Image Warehouse Specialist resulted in details of images available for the study area for 1949 and 1963 (prior to those detailed at the above site) - which at the time of reporting had not yet been updated to [Web Imagery Search Interface](https://www2.gov.bc.ca/gov/content/data/geographic-data-services/digital-imagery/imagery-search) or the provincial [
+Base Map Online Store](https://www2.gov.bc.ca/gov/content/data/geographic-data-services/topographic-data/base-map-online-store) [@governmentofbritishcolumbia2024Webimagery; @governmentofbritishcolumbia2025Basemap; pers comm Koraley Tylor - Image Warehouse Specialist]. We have included this information within the project code repository [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/tree/main/data/gis/imagery_historic). 
 
 
 ### Fish Passage
@@ -420,7 +424,7 @@ This work is ongoing and will be added to the `restoration_wedzin_kwa` project i
 
 ### Parameter Ranking to Select Future Restoration Sites
 
-A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the `restoration_site_priority_parameters.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv) is included in Table \@ref(tab:tab-gis-params-cap).
+A summary of an initial draft of GIS and user input parameters used to rank future restoration sites generated from the `restoration_site_priority_parameters.csv` file located [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/data/restoration_site_priority_parameters.csv) is included in Table \@ref(tab:tab-gis-params-cap). Please note that any parameters included in the Skeena Sustainability Assessment Forum - State of the Value - Fish and Fish Habitat assessment [here](#app-esi) can now be included in the ranking - provided the attribute to rank is added to the input spreadsheet and ranking weights applied.
 
 <br>
 
@@ -439,9 +443,9 @@ gis_params_raw_to_update <- gis_params_raw_all|>
     dplyr::filter(!is.na(source_layer) & 
                   !is.na(source_column_name) &
                     # remove bcfishpass, esi, local hab layers
-                  !str_detect(source_layer, "bcfishobs|bcfishpass|chinook|skeena_east")) |> 
+                  !stringr::str_detect(source_layer, "bcfishobs|bcfishpass|chinook|skeena_east")) |> 
   # we know that tenures and the land ownership layers are problematic so lets remove
-  dplyr::filter(!str_detect(source_layer, "whse_forest_tenure.ften_range_poly_carto_vw|whse_cadastre.pmbc_parcel_fabric_poly_svw"))
+  dplyr::filter(!stringr::str_detect(source_layer, "whse_forest_tenure.ften_range_poly_carto_vw|whse_cadastre.pmbc_parcel_fabric_poly_svw"))
 
 
 # grab the details about the source_layer as source_schema_table_details and then the 
@@ -472,31 +476,37 @@ gis_param_details_prep <- dplyr::left_join(
 
 # need to add back all the layers filtered out above - this should not be repeated but will do for now
 gis_params_raw_all_updated <- dplyr::bind_rows(
-  gis_params_raw_all %>% 
+  gis_params_raw_all |> 
     dplyr::filter(is.na(source_layer) | 
                     is.na(source_column_name) |
-                    stringr::str_detect(source_layer, "bcfishobs|bcfishpass") |
+                    stringr::str_detect(source_layer, "bcfishobs|bcfishpass|chinook|skeena_east") |
                     # not accessible via bcdata 
                     stringr::str_detect(source_layer, "whse_forest_tenure.ften_range_poly_carto_vw|whse_cadastre.pmbc_parcel_fabric_poly_svw")),
   gis_param_details_prep
-) %>% 
-  dplyr::mutate(url_browser = case_when(
+) |> 
+  dplyr::mutate(url_browser = dplyr::case_when(
     stringr::str_detect(source_layer, "bcfishobs|bcfishpass") ~ "https://smnorris.github.io/bcfishpass/06_data_dictionary.html",
     TRUE ~ url_browser)
-  ) %>% 
-  dplyr::mutate(is_wet_cultural_site = column_name == "wet_cultural_site") %>%
-  dplyr::arrange(desc(is_wet_cultural_site), rank, source_layer, source_column_name, column_name) %>%
+  ) |> 
+  dplyr::mutate(is_wet_cultural_site = source_column_name == "wet_cultural_site") |> 
+  dplyr::arrange(
+    desc(is_wet_cultural_site), 
+    rank
+    # source_layer, 
+    # source_column_name, 
+    # column_name
+  )|> 
   dplyr::select(-is_wet_cultural_site)
-  # dplyr::arrange(rank, source_layer, source_column_name, column_name)
+# dplyr::arrange(rank, source_layer, source_column_name, column_name)
 
 # this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag
-gis_params_raw_all_updated %>% 
+gis_params_raw_all_updated |> 
   readr::write_csv("data/restoration_site_priority_parameters.csv")
 
 ```
 
 ```{r gis-params, eval = TRUE}
-tab_gis_params_raw <- readr::read_csv("data/restoration_site_priority_parameters.csv") |> 
+tab_gis_params_raw <- readr::read_csv("data/restoration_site_priority_parameters.csv") 
   # dplyr::select(
   #   source_layer, 
   #   source_column_name,
@@ -507,13 +517,13 @@ tab_gis_params_raw <- readr::read_csv("data/restoration_site_priority_parameters
   #   # description_table = description,
   #   col_comments
   # ) |> 
-  dplyr::arrange(user_input, group, group_sub, column_name) |> 
-  dplyr::select(column_name, source_column_name, everything())
+  # dplyr::arrange(user_input, group, group_sub, column_name) |> 
+  # dplyr::select(column_name, source_column_name, everything())
 
 ```
 
 ```{r tab-gis-params-cap, results="asis"}
-caption_text = "WORK IN PROGRESS!! Proposed parameters used to document and rank future potential restoration/enhancement sites."
+caption_text = "Example of parameter selection and ranking system to prioritize potential restoration/enhancement sites."
 
 my_tab_caption()
 ```
@@ -525,6 +535,11 @@ tab_gis_params_raw |>
     url_browser = ngr::ngr_str_link_url(url_browser, anchor_text = url_browser),
     url_download = ngr::ngr_str_link_url(url_download, anchor_text = url_download)
   ) |> 
+  dplyr::select(group:source_column_name, 
+                user_input:rank,
+                weight_value_low:comments
+                ) |> 
+  dplyr::mutate(sort = dplyr::row_number()) |> 
   my_dt_table(cols_freeze_left = 2, escape = FALSE)
 
 ```
