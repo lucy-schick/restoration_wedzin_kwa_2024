@@ -118,10 +118,10 @@ removal and bank erosion where landowners are amenable to project activities inc
 
 
 ### Delineation of Areas of High Fisheries Values
-Spatially delineate areas of high fisheries values based on modelled and known spawning and rearing habitat for fish species of interest. Past work to spatially delineate areas of high value habitat known to be utilized historically for chinook and sockeye salmon spawning has been included within the shared GIS project.  Additionally background literature includes some decriptions of traditional Wet'suwet'en Fisheries sites which will be spatialized for the project.
+Past work to spatially delineate areas of high value habitat known to be utilized historically for chinook and sockeye salmon spawning (among other data) undertaken by DFO, Arocha Canada and others has been stored within a secure location and linked within the shared GIS project.  @wilson_rabnett2007FishPassage includes descriptions of traditional Wet'suwet'en Fisheries sites within the Neexdzi Kwa which will be spatialized for the project.
 
 ### Parameter Ranking to Select Future Restoration Sites 
-Analysis of background and current data can be used to inform priority ranking criteria used to select sites for restoration activities in the long term. Although the process is ongoing - GIS and user input parameters were selected based on ongoing project team meetings and review of available spatial information to rank future restoration sites.  Whenever possible standardized names for layers (schema and table) and fields were used to facilitate the reproducibility of similiar analysis on other or updated datasets, both by ourselves and by others.  
+Analysis of background and current data can be used to inform priority ranking criteria used to select sites for restoration activities in the long term. Although the process is ongoing - GIS and user input parameters were selected based on ongoing project team meetings and review of available spatial information to rank future restoration sites.   Using custom functions and scripted workflows based on layers kept within the shared GIS project - we prioritized proposed sites dynamically based on a range of metrics and user defined ranking.  Scripts to conduct the analysis can be found [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/scripts/gis/prioritize.R) with custom functions [here](https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024/blob/main/scripts/functions.R).
 
   
 
