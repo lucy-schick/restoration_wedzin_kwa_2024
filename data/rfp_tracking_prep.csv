@@ -1,7 +1,7 @@
 content,url,description
-bcfishobs.fiss_fish_obsrvtn_events_vw,NA,NA
-bcfishpass.crossings_vw,NA,NA
-bcfishpass.streams_vw,NA,NA
+bcfishobs.fiss_fish_obsrvtn_events_vw,https://smnorris.github.io/bcfishpass/06_data_dictionary.html,NA
+bcfishpass.crossings_vw,https://smnorris.github.io/bcfishpass/06_data_dictionary.html,NA
+bcfishpass.streams_vw,https://smnorris.github.io/bcfishpass/06_data_dictionary.html,NA
 reg_legal_and_admin_boundaries.qsoi_bc_regions,https://catalogue.data.gov.bc.ca/dataset/69ea1b64-e7ce-481c-b0b5-e6450111697d,Statement of Intent Boundaries Registered with the BC Treaty Commission at date of production
 whse_admin_boundaries.clab_indian_reserves,https://catalogue.data.gov.bc.ca/dataset/8efe9193-80d2-4fdf-a18c-d531a94196ad,"Provide the administrative boundaries (extent) of Canada Lands which includes Indian Reserves.   Administrative boundaries were compiled from Legal Surveys Division's cadastral datasets and survey records archived in the Canada Lands Survey Records. See the Natural Resource Canada's GeoGratis website, Aboriginal Lands."
 whse_admin_boundaries.clab_national_parks,https://catalogue.data.gov.bc.ca/dataset/88e61a14-19a0-46ab-bdae-f68401d3d0fb,"This dataset provides the administrative boundaries of National Parks and National Park Reserves within the province of British Columbia.  Administrative boundaries were compiled from Legal Surveys Division's cadastral datasets and survey records archived in the Canada Lands Survey Records.  Canada Lands Administrative Boundaries (CLAB) were adjusted to match British Columbia's authoritative base mapping features.  The Fresh Water Atlas (FWA) was used for streams, rivers, coastlines, and height of land. The Integrated Cadastral Fabric (ICF) was used for parcel boundaries. Tantalis Cadastre was used where ICF parcels were not available."
