@@ -35,7 +35,7 @@ rfp_tracking_raw <- sf::st_read(paste0(q_path_stub, "background_layers.gpkg"),
             quite = TRUE)
 
 # grab the metadata
-md <- rfp_meta_bcd_xref()
+md <- rfp::rfp_meta_bcd_xref()
 
 # remove the `_vw` from the end of content
 rfp_tracking_prep <- dplyr::left_join(
@@ -96,7 +96,7 @@ uav_raw <- q |>
   rstac::items_fetch()
 
 # build the table to display the info
-uav_tab <- tibble::tibble(url_download = purrr::map_chr(r$features, ~ purrr::pluck(.x, "assets", "image", "href"))) |> 
+uav_tab <- tibble::tibble(url_download = purrr::map_chr(uav_raw$features, ~ purrr::pluck(.x, "assets", "image", "href"))) |> 
   dplyr::mutate(stub = stringr::str_replace_all(url_download, "https://imagery-uav-bc.s3.amazonaws.com/", "")) |> 
   tidyr::separate(
     col = stub, 
@@ -432,15 +432,19 @@ gis_params_raw_all <- readr::read_csv(
 ) 
 
 
-gis_params_raw_to_update <- gis_params_raw_all %>% 
-  dplyr::filter(!is.na(source_schema_table) & 
+gis_params_raw_to_update <- gis_params_raw_all|> 
+  # dplyr::filter(!is.na(source_layer) & 
+  #                 !is.na(source_column_name) &
+  #                 !str_detect(source_layer, "bcfishobs|bcfishpass")) |> 
+    dplyr::filter(!is.na(source_layer) & 
                   !is.na(source_column_name) &
-                  !str_detect(source_schema_table, "bcfishobs|bcfishpass")) %>% 
+                    # remove bcfishpass, esi, local hab layers
+                  !str_detect(source_layer, "bcfishobs|bcfishpass|chinook|skeena_east")) |> 
   # we know that tenures and the land ownership layers are problematic so lets remove
-  dplyr::filter(!str_detect(source_schema_table, "whse_forest_tenure.ften_range_poly_carto_vw|whse_cadastre.pmbc_parcel_fabric_poly_svw"))
+  dplyr::filter(!str_detect(source_layer, "whse_forest_tenure.ften_range_poly_carto_vw|whse_cadastre.pmbc_parcel_fabric_poly_svw"))
 
 
-# grab the details about the source_schema_table as source_schema_table_details and then the 
+# grab the details about the source_layer as source_schema_table_details and then the 
 # source_column_name as source_column_name_details
 gis_param_details_prep_schtab <- dplyr::left_join(
   
@@ -448,13 +452,13 @@ gis_param_details_prep_schtab <- dplyr::left_join(
   
   rfp::rfp_meta_bcd_xref(),
   
-  by = c("source_schema_table" = "object_name")
+  by = c("source_layer" = "object_name")
 )
   
 
 # grab the column details
 params_cols_des <- purrr::map2_df(
-  gis_param_details_prep_schtab$source_schema_table, 
+  gis_param_details_prep_schtab$source_layer, 
   gis_param_details_prep_schtab$source_column_name, 
   rfp::rfp_meta_bcd_xref_col_comments
   )
@@ -463,24 +467,27 @@ params_cols_des <- purrr::map2_df(
 gis_param_details_prep <- dplyr::left_join(
   gis_param_details_prep_schtab,
   params_cols_des,
-  by = c("source_schema_table" = "object_name", "source_column_name" = "col_name")
+  by = c("source_layer" = "object_name", "source_column_name" = "col_name")
 )
 
 # need to add back all the layers filtered out above - this should not be repeated but will do for now
 gis_params_raw_all_updated <- dplyr::bind_rows(
   gis_params_raw_all %>% 
-    dplyr::filter(is.na(source_schema_table) | 
+    dplyr::filter(is.na(source_layer) | 
                     is.na(source_column_name) |
-                    stringr::str_detect(source_schema_table, "bcfishobs|bcfishpass") |
+                    stringr::str_detect(source_layer, "bcfishobs|bcfishpass") |
                     # not accessible via bcdata 
-                    stringr::str_detect(source_schema_table, "whse_forest_tenure.ften_range_poly_carto_vw|whse_cadastre.pmbc_parcel_fabric_poly_svw")),
+                    stringr::str_detect(source_layer, "whse_forest_tenure.ften_range_poly_carto_vw|whse_cadastre.pmbc_parcel_fabric_poly_svw")),
   gis_param_details_prep
 ) %>% 
   dplyr::mutate(url_browser = case_when(
-    stringr::str_detect(source_schema_table, "bcfishobs|bcfishpass") ~ "https://smnorris.github.io/bcfishpass/06_data_dictionary.html",
+    stringr::str_detect(source_layer, "bcfishobs|bcfishpass") ~ "https://smnorris.github.io/bcfishpass/06_data_dictionary.html",
     TRUE ~ url_browser)
   ) %>% 
-  dplyr::arrange(source_schema_table, source_column_name, column_name_raw)
+  dplyr::mutate(is_wet_cultural_site = column_name == "wet_cultural_site") %>%
+  dplyr::arrange(desc(is_wet_cultural_site), rank, source_layer, source_column_name, column_name) %>%
+  dplyr::select(-is_wet_cultural_site)
+  # dplyr::arrange(rank, source_layer, source_column_name, column_name)
 
 # this is time consuming so lets save it as a csv and make this chunk conditional on the gis_update flag
 gis_params_raw_all_updated %>% 
@@ -491,17 +498,17 @@ gis_params_raw_all_updated %>%
 ```{r gis-params, eval = TRUE}
 tab_gis_params_raw <- readr::read_csv("data/restoration_site_priority_parameters.csv") |> 
   # dplyr::select(
-  #   source_schema_table, 
+  #   source_layer, 
   #   source_column_name,
-  #   column_name_raw,
+  #   column_name,
   #   user_input,
   #   type,
   #   url_browser,
   #   # description_table = description,
   #   col_comments
   # ) |> 
-  dplyr::arrange(user_input, group, group_sub, column_name_raw) |> 
-  dplyr::select(column_name_raw, source_column_name, everything())
+  dplyr::arrange(user_input, group, group_sub, column_name) |> 
+  dplyr::select(column_name, source_column_name, everything())
 
 ```
 

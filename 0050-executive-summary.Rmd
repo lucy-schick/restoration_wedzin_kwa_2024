@@ -9,6 +9,7 @@ exec_summary_raw <- readr::read_csv(
 exec_summary <- exec_summary_raw |> 
   # remove the row with the R packages
   dplyr::filter(resource != "Custom R Packages and code repositories") |> 
+  dplyr::filter(resource != "Additional Aquatic Restoration Resources") |> 
   purrr::set_names(nm = stringr::str_to_title(names(exec_summary_raw)))
 ```
 
