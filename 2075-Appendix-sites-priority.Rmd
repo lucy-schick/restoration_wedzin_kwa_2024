@@ -2,8 +2,9 @@
 
 # **Appendix 5 – Example of Potential Restoration Sites Prioritized** {-#sites-ranked}
 
-Summary tables of indicators and spatial output field descriptions from @skeenasustainabilityassessmentforum2021Skeenasustainability 
-are included in Tables \@ref(tab:tab-skt-pkgs-cap). 
+A summary of potential restoration sites prioritized based on ranking criteria detailed in Table \@ref(tab-gis-params-cap)
+is presented in Table \@ref(tab:tab-sites-ranked-cap). Please note that data is preliminary with ranking parameters and 
+weights evolving based on ongoing research and consultation.
 
 ```{r tab-sites-ranked-cap, results="asis"}
 my_caption <- ("Example of potential restoration sites prioritized.")
@@ -30,6 +31,7 @@ fs::file_copy(
 path <- "data/gis/sites_prioritized.geojson"
   
 sf::st_read(path, quiet = TRUE) |> 
+  dplyr::filter(source != "ncfdc_1998_riparian") |> 
   sf::st_drop_geometry() |> 
   my_dt_table(cols_freeze_left = 2, page_length = 5, escape = TRUE)
 
