@@ -3,7 +3,7 @@
 # **Appendix 4 – State of the Value – Fish and Fish Habitat** {-#app-esi}
 
 Summary tables of indicators and spatial output field descriptions from @skeenasustainabilityassessmentforum2021Skeenasustainability 
-are included in Tables \@ref(tab:tab-skt-pkgs-cap). 
+are included in Tables \@ref(tab:tab-esi-indicators-cap) - \@ref(tab:tab-esi-fields-cap). 
 
 ```{r tab-esi-indicators-cap, results="asis"}
 my_caption <- ("SSAF State of the Value Report for Fish and Fish Habitat - indicator summaries.")
