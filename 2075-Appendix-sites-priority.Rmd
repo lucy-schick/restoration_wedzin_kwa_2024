@@ -2,7 +2,7 @@
 
 # **Appendix 5 – Example of Potential Restoration Sites Prioritized** {-#sites-ranked}
 
-A summary of potential restoration sites prioritized based on ranking criteria detailed in Table \@ref(tab-gis-params-cap)
+A summary of potential restoration sites prioritized based on ranking criteria detailed in Table \@ref(tab:tab-gis-params-cap)
 is presented in Table \@ref(tab:tab-sites-ranked-cap). Please note that data is preliminary with ranking parameters and 
 weights evolving based on ongoing research and consultation.
 
