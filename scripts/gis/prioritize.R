@@ -47,9 +47,9 @@ sites_hist_pt1 <- sf::st_read(
 
 path_hist_layers <- c(
   "sites_wfn_proposed",
-  "ncfdc_1998_prescriptions"
+  "ncfdc_1998_prescriptions",
   # these are out of place b/c they are aligned with the reach-breaks
-  # "ncfdc_1998_riparian"
+  "ncfdc_1998_riparian"
 )
 
 # read in each layer
@@ -446,39 +446,39 @@ sites_all_prep7_no_ownership2 <- ngr::ngr_spk_join(
 
 
 # this fails when there are not two different outcomes!!! Skipping this for now!!
-# sites_all_prep7_no_ownership3 <- sites_all_prep7_no_ownership2 |>
-#   dplyr::distinct(idx, owner_type) |>
-#   dplyr::group_by(idx) |>
-#   dplyr::mutate(rowid = dplyr::row_number())
-#   tidyr::pivot_wider(
-#     names_from = rowid,
-#     values_from = owner_type,
-#     names_prefix = "owner_type"
-#   )
-#   dplyr::mutate(
-#     # for non-results
-#     owner_type1 = dplyr::case_when(
-#       is.na(owner_type1) ~ "Not Matched",
-#       TRUE ~ owner_type1
-#     )
-#   )
-#   # so we want to be conservative - if !is.na for owner_type2 and owner_type1 == Private|Mixed Ownership we want
-#   # to swap owner_type1 and owner_type2 values
-#   dplyr::mutate(
-#     swap = !is.na(owner_type2) & owner_type1 %in% c("Private", "Mixed Ownership"),
-#     owner_type_tmp = dplyr::if_else(swap, owner_type1, owner_type2),
-#     owner_type1 = dplyr::if_else(swap, owner_type2, owner_type1),
-#     owner_type2 = dplyr::if_else(swap, owner_type_tmp, owner_type2)
-#   ) |>
-#   dplyr::select(-swap, -owner_type_tmp) |>
-#   sf::st_drop_geometry()
+sites_all_prep7_no_ownership3 <- sites_all_prep7_no_ownership2 |>
+  dplyr::distinct(idx, owner_type1) |>
+  dplyr::group_by(idx) |>
+  dplyr::mutate(rowid = dplyr::row_number()) |>
+  tidyr::pivot_wider(
+    names_from = rowid,
+    values_from = owner_type1,
+    names_prefix = "owner_type"
+  ) |>
+  dplyr::mutate(
+    # for non-results
+    owner_type1 = dplyr::case_when(
+      is.na(owner_type1) ~ "Not Matched",
+      TRUE ~ owner_type1
+    )
+  ) |>
+  # so we want to be conservative - if !is.na for owner_type2 and owner_type1 == Private|Mixed Ownership we want
+  # to swap owner_type1 and owner_type2 values
+  dplyr::mutate(
+    swap = !is.na(owner_type2) & owner_type1 %in% c("Private", "Mixed Ownership"),
+    owner_type_tmp = dplyr::if_else(swap, owner_type1, owner_type2),
+    owner_type1 = dplyr::if_else(swap, owner_type2, owner_type1),
+    owner_type2 = dplyr::if_else(swap, owner_type_tmp, owner_type2)
+  ) |>
+  dplyr::select(-swap, -owner_type_tmp) |>
+  sf::st_drop_geometry()
 
 #now join back to the main data
 sites_all_prep8 <- dplyr::left_join(
   sites_all_prep6,
-  sites_all_prep7_no_ownership2,
+  # sites_all_prep7_no_ownership2,
   #swap this in when we have multiple ownership types
-  # sites_all_prep7_no_ownership3,
+  sites_all_prep7_no_ownership3,
   by = "idx"
 ) |>
   dplyr::mutate(owner_type = dplyr::case_when(is.na(owner_type) ~ owner_type1, T ~ owner_type)) |>
@@ -625,10 +625,14 @@ sites_all_ranked <- dplyr::left_join(
   out4,
   by = "idx"
 ) |>
-  dplyr::select(total_score, dplyr::everything())
+  dplyr::select(total_score, dplyr::everything())|>
+  # add the lat longs to keep it simple
+  fpr::fpr_sp_assign_latlong()
 
 
 sites_all_ranked |>
+  # stamp a version
+  dplyr::mutate(version = format(Sys.Date(), "%Y%m%d")) |>
   sf::st_write(
     fs::path(path_gis, "sites_prioritized.geojson"),
     delete_dsn = TRUE,
