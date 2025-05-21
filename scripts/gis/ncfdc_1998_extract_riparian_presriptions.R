@@ -1,7 +1,54 @@
 # wrangle the Nadina prescriptions into a spatial dataset
 
+# make a subset of the stream/blk xref used in fwatlasbc::fwa_add_blks_to_stream_name
+xref_str_blk <- fwatlasbc::fwa_stream_name |>
+  dplyr::filter(stringr::str_starts(as.character(blk), "360"))
 
-path <- '/Users/airvine/Library/CloudStorage/OneDrive-Personal/Projects/2024-069-ow-wedzin-kwa-restoration/background/ncfdc_1998/Mid Bulkley Detailed FHAP_CAP_RAP/Appendix/AppF.xls'
+#reach breaks-----------------------------------------------------------------------------------------------------
+path_reach <- 'data/inputs_raw/ncfdc_1998/reach_breaks.csv'
+reaches_raw <- readr::read_csv(path_reach)
+
+reaches <- reaches_raw |>
+  # need to ditch those we don't have coords for
+  dplyr::filter(!is.na(reach_easting)) |>
+  sf::st_as_sf(coords = c("reach_easting", "reach_northing"), crs = 32609) |>
+  # create stream_name column so we can use fwatlasbc::fwa_add_blks_to_stream_name to get blueline key
+  dplyr::mutate(
+    stream_name = stringr::str_remove(reach_name_corrected, "\\s\\d+$") |>
+      paste("Creek") |>
+      stringr::str_replace("^Bulkley Creek$", "Bulkley River")
+  ) |>
+  # add the bluelinekey
+  fwatlasbc::fwa_add_blks_to_stream_name(stream_name = xref_str_blk) |>
+  sf::st_transform(crs = 4326) |>
+
+
+
+# get the downtreawm_route_measure for the breaks
+# here we grab the point on a stream corresponding to the river metre
+reaches_pt <- purrr::map2(
+  reaches$blk,
+  d_raw$rm,
+  ~fwapgr::fwa_index_point(
+    tolerance = 1000,
+    blue_line_key = .x,
+    downstream_route_measure = .y
+  )
+) |>
+  dplyr::bind_rows()
+
+d <- dplyr::bind_cols(
+  d_raw,
+  d_pt
+) |>
+  sf::st_as_sf()
+
+
+# burn toproject for viewing
+reaches |>
+  sf::st_write("/Users/airvine/Projects/gis/restoration_wedzin_kwa/ncfdc_1998_reach_breaks.geojson", delete_dsn = TRUE)
+
+path <- 'data/inputs_raw/ncfdc_1998/AppF_riparian_prescriptions.xls'
 
 
 library(readxl)
@@ -33,10 +80,7 @@ aoi <- sf::st_read("data/gis/aoi.geojson")
 aoi_bb <- sf::st_bbox(aoi)
 
 
-# make a subset of the stream/blk xref used in fwatlasbc::fwa_add_blks_to_stream_name
 
-xref_str_blk <- fwatlasbc::fwa_stream_name |>
-  dplyr::filter(stringr::str_starts(as.character(blk), "360"))
 
 # Function to conditionally rename columns
 col_rename <- function(df) {
@@ -66,6 +110,9 @@ d_raw <- purrr::map(d_sheets, ~readxl::read_excel(path, sheet = .x)) |>
   # we havea funky value
 
 
+
+
+# here we grab the point on a stream corresponding to the river metre
 d_pt <- purrr::map2(
   d_raw$blk,
   d_raw$rm,
