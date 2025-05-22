@@ -16,13 +16,11 @@ my_tab_caption()
 path_in <- "/Users/airvine/Projects/gis/restoration_wedzin_kwa/sites_prioritized.geojson"
 path_out <- "data/gis/sites_prioritized.geojson"
 
-fs::file_copy(
-  path_in,
-  path_out,
-  overwrite = TRUE
-)
 
-
+# convert to wsg84 so displays natively on github
+sf::st_read(path_in, quiet = TRUE) |>
+  sf::st_transform(4326) |>
+  sf::st_write(path_out, quiet = TRUE, delete_dsn = TRUE)
 
 ```
 
