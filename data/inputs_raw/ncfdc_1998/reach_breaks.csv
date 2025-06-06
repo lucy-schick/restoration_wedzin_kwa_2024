@@ -1,4 +1,4 @@
-﻿reach_name,reach_name_corrected,reach_drm,segmented_stream_id,reach_length,reach_utm_zone,reach_easting,reach_northing,reach_notes
+﻿reach_name,reach_name_corrected,reach_drm,segmented_stream_id,reach_length,utm_zone,easting_fhap,northing_fhap,reach_notes
 Bulkley 1,Bulkley 1,164920,360873822.2,,9,646180,6031250,
 Bulkley 2,Bulkley 2,175539.68,360873822.2,,9,651950,6031050,
 Bulkley 3,Bulkley 3,,,9510,9,662680,6040170,

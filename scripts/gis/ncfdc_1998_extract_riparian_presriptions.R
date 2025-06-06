@@ -10,8 +10,8 @@ reaches_raw <- readr::read_csv(path_reach)
 
 reaches <- reaches_raw |>
   # need to ditch those we don't have coords for
-  dplyr::filter(!is.na(reach_easting)) |>
-  sf::st_as_sf(coords = c("reach_easting", "reach_northing"), crs = 32609) |>
+  dplyr::filter(!is.na(easting_fhap)) |>
+  sf::st_as_sf(coords = c("easting_fhap", "northing_fhap"), crs = 32609, remove = FALSE) |>
   # create stream_name column so we can use fwatlasbc::fwa_add_blks_to_stream_name to get blueline key
   dplyr::mutate(
     stream_name = stringr::str_remove(reach_name_corrected, "\\s\\d+$") |>
@@ -20,7 +20,7 @@ reaches <- reaches_raw |>
   ) |>
   # add the bluelinekey
   fwatlasbc::fwa_add_blks_to_stream_name(stream_name = xref_str_blk) |>
-  sf::st_transform(crs = 4326) |>
+  sf::st_transform(crs = 4326)
 
 
 
@@ -28,7 +28,7 @@ reaches <- reaches_raw |>
 # here we grab the point on a stream corresponding to the river metre
 reaches_pt <- purrr::map2(
   reaches$blk,
-  d_raw$rm,
+  reaches$reach_drm,
   ~fwapgr::fwa_index_point(
     tolerance = 1000,
     blue_line_key = .x,
@@ -44,7 +44,7 @@ d <- dplyr::bind_cols(
   sf::st_as_sf()
 
 
-# burn toproject for viewing
+# burn to project for viewing
 reaches |>
   sf::st_write("/Users/airvine/Projects/gis/restoration_wedzin_kwa/ncfdc_1998_reach_breaks.geojson", delete_dsn = TRUE)
 
