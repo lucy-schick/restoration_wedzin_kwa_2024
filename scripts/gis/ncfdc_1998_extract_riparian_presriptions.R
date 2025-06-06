@@ -19,8 +19,8 @@ reaches <- reaches_raw |>
       stringr::str_replace("^Bulkley Creek$", "Bulkley River")
   ) |>
   # add the bluelinekey
-  fwatlasbc::fwa_add_blks_to_stream_name(stream_name = xref_str_blk) |>
-  sf::st_transform(crs = 4326)
+  fwatlasbc::fwa_add_blks_to_stream_name(stream_name = xref_str_blk)
+  # sf::st_transform(crs = 4326)
 
 
 
