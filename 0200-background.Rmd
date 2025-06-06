@@ -251,14 +251,14 @@ table_raw <- tabulizer::extract_tables(path,
 
 # burn out to csv for safe keeping
 table_raw %>% 
-  readr::write_csv('data/trad_fish_sites_wilson_rabnett2007FishPassage.csv')
+  readr::write_csv('data/trad_fish_sites_gottesfeld_rabnett2007FishPassage.csv')
 ```
 
 ```{r tab-hist-sites}
-readr::read_csv('data/trad_fish_sites_wilson_rabnett2007FishPassage.csv') %>% 
+readr::read_csv('data/trad_fish_sites_gottesfeld_rabnett2007FishPassage.csv') %>% 
   dplyr::filter(stringr::str_detect(`Site Location`, "Buck|Maxan|McQuarrie|Bulkley Lake|Hwy.16")) %>% 
   arrange(`Tradional Site Name`) %>% 
-  fpr::fpr_kable(caption_text = "Traditional fishing sites in the Neexdzii Kwah.  Adapted from Wilson and Rabnett 2007.",
+  fpr::fpr_kable(caption_text = "Traditional fishing sites in the Neexdzii Kwah.  Adapted from Gottesfeld and Rabnett 2007.",
                  scroll = FALSE)
 ```
 
